@@ -246,45 +246,35 @@ export default function WhyChooseUsSection() {
                         width: 100%;
                     }
 
-                    /* Watch banner — horizontal layout */
+                    /* Watch banner — horizontal layout (no absolute!) */
                     .why-watch-banner {
                         align-self: stretch;
-                        height: 320px;
-                        position: relative;
                         background: var(--color-white);
                         overflow: hidden;
                         border-radius: var(--radius-xl);
                         display: flex;
+                        flex-direction: row;
                         justify-content: center;
                         align-items: center;
+                        gap: var(--space-4);
+                        padding: var(--space-4);
                     }
 
                     .why-watch-banner__image {
                         width: 198px;
-                        height: 320px;
+                        height: auto;
                         object-fit: contain;
-                        position: absolute;
-                        left: var(--space-16);
-                        top: 0;
+                        flex-shrink: 0;
                     }
 
                     .why-watch-banner__quote {
-                        width: 253px;
-                        height: 320px;
-                        padding: var(--space-6);
-                        position: absolute;
-                        right: 0;
-                        top: 0;
-                        background: rgba(255, 255, 255, 0);
-                        backdrop-filter: blur(7.5px);
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        gap: var(--space-4);
+                        padding: var(--space-4);
                     }
 
                     .why-watch-banner__quote-text {
-                        flex: 1 1 0;
                         text-align: center;
                         color: var(--color-primary);
                         font-size: var(--text-xl);
@@ -316,38 +306,24 @@ export default function WhyChooseUsSection() {
                         gap: var(--space-4);
                     }
 
-                    /* Watch banner — vertical stacked */
+                    /* Watch banner — vertical stacked on mobile */
                     .why-watch-banner {
-                        height: auto;
-                        border-radius: var(--radius-xl);
                         flex-direction: column;
-                        justify-content: flex-start;
-                        align-items: center;
-                        position: relative;
+                        gap: 0;
+                        padding: var(--space-4) var(--space-4) 0;
                     }
 
                     .why-watch-banner__image {
-                        position: static;
-                        width: 198px;
-                        height: 320px;
-                        object-fit: contain;
+                        width: 180px;
                     }
 
                     .why-watch-banner__quote {
-                        position: static;
                         width: 100%;
-                        height: auto;
-                        padding: var(--space-6) var(--space-12);
-                        background: var(--color-white);
-                        backdrop-filter: blur(7.5px);
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        gap: var(--space-3);
+                        padding: var(--space-4) var(--space-6);
                     }
 
                     .why-watch-banner__quote-text {
-                        text-align: left;
+                        text-align: center;
                     }
                 }
             `}</style>
