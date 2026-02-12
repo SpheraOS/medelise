@@ -15,32 +15,32 @@ export default function StatCard({ label, value }: StatCardProps) {
             <style jsx>{`
                 .stat-card {
                     flex: 1 1 0;
-                    padding: 24px;
+                    padding: var(--space-6);
                     background: var(--color-primary);
-                    border-radius: 8px;
+                    border-radius: var(--radius-main);
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: center;
-                    gap: 8px;
+                    gap: var(--space-2);
                     display: inline-flex;
                 }
 
                 .stat-label {
                     align-self: stretch;
                     text-align: center;
-                    color: white;
-                    font-size: 18px;
+                    color: var(--color-white);
+                    font-size: var(--text-lg);
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 28px;
+                    line-height: var(--lh-body);
                 }
 
                 .stat-value {
-                    color: white;
-                    font-size: 48px;
+                    color: var(--color-white);
+                    font-size: var(--text-4xl);
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 60px;
+                    line-height: var(--lh-heading);
                 }
 
                 /* ─── Mobile ≤640px ────────── */
@@ -48,11 +48,6 @@ export default function StatCard({ label, value }: StatCardProps) {
                     .stat-card {
                         flex: unset;
                         align-self: stretch;
-                    }
-
-                    .stat-value {
-                        font-size: 36px;
-                        line-height: 44px;
                     }
                 }
             `}</style>

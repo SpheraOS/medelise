@@ -22,15 +22,15 @@ export default function FeatureCard({
                 .feature-card {
                     align-self: stretch;
                     flex: 1 1 0;
-                    padding: 24px;
-                    background: white;
-                    border-radius: 12px;
+                    padding: var(--space-6);
+                    background: var(--color-white);
+                    border-radius: var(--radius-lg);
                     outline: 1px var(--color-surface-border) solid;
                     outline-offset: -1px;
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    gap: 12px;
+                    gap: var(--space-3);
                     display: flex;
                     transition: box-shadow 0.2s ease;
                 }
@@ -45,39 +45,34 @@ export default function FeatureCard({
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    gap: 12px;
+                    gap: var(--space-3);
                     display: flex;
                 }
 
                 .feature-card__title {
                     align-self: stretch;
                     color: var(--color-primary);
-                    font-size: 24px;
+                    font-size: var(--text-xl);
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 32px;
+                    line-height: var(--lh-heading);
                     word-wrap: break-word;
                 }
 
                 .feature-card__description {
                     align-self: stretch;
                     color: var(--color-primary);
-                    font-size: 18px;
+                    font-size: var(--text-lg);
                     font-family: var(--font-heading);
                     font-weight: 400;
-                    line-height: 28px;
+                    line-height: var(--lh-body);
                     word-wrap: break-word;
                 }
 
                 /* ─── Mobile ≤640px ──────── */
                 @media (max-width: 640px) {
                     .feature-card {
-                        border-radius: 8px;
-                    }
-
-                    .feature-card__title {
-                        font-size: 20px;
-                        line-height: 28px;
+                        border-radius: var(--radius-main);
                     }
 
                     .feature-card__description {

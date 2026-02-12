@@ -194,7 +194,7 @@ export default function TestimonialsSection() {
         .tm-section {
           width: 100%;
           padding-left: var(--space-section-px);
-          background: white;
+          background: var(--color-white);
           display: inline-flex;
           flex-direction: column;
           justify-content: flex-start;
@@ -203,9 +203,9 @@ export default function TestimonialsSection() {
 
         .tm-inner {
           align-self: stretch;
-          padding-top: 80px;
-          padding-bottom: 80px;
-          background: white;
+          padding-top: var(--space-section-py);
+          padding-bottom: var(--space-section-py);
+          background: var(--color-white);
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
@@ -226,14 +226,14 @@ export default function TestimonialsSection() {
          * ═══════════════════════════════════════ */
         .tm-header-row {
           align-self: stretch;
-          padding-top: 32px;
-          padding-bottom: 32px;
+          padding-top: var(--space-8);
+          padding-bottom: var(--space-8);
           padding-right: var(--space-section-px);
-          background: white;
+          background: var(--color-white);
           display: flex;
           justify-content: flex-start;
           align-items: center;
-          gap: 32px;
+          gap: var(--space-8);
         }
 
         .tm-header-text {
@@ -241,25 +241,25 @@ export default function TestimonialsSection() {
           flex-direction: column;
           justify-content: flex-start;
           align-items: flex-start;
-          gap: 12px;
+          gap: var(--space-3);
         }
 
         .tm-title {
           color: var(--color-primary);
-          font-size: 36px;
+          font-size: var(--text-3xl);
           font-family: var(--font-heading);
           font-weight: 600;
-          line-height: 44px;
+          line-height: var(--lh-heading);
           margin: 0;
         }
 
         .tm-subtitle {
           width: 478px;
           color: var(--color-primary);
-          font-size: 18px;
+          font-size: var(--text-lg);
           font-family: var(--font-heading);
           font-weight: 400;
-          line-height: 28px;
+          line-height: var(--lh-body);
           margin: 0;
         }
 
@@ -268,7 +268,7 @@ export default function TestimonialsSection() {
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;
-          gap: 32px;
+          gap: var(--space-8);
           margin-left: auto;
         }
 
@@ -276,8 +276,8 @@ export default function TestimonialsSection() {
           width: 56px;
           height: 56px;
           position: relative;
-          background: var(--color-surface-light);
-          border-radius: 300px;
+          background: var(--color-surface);
+          border-radius: var(--radius-full);
           border: none;
           cursor: pointer;
           display: flex;
@@ -319,7 +319,7 @@ export default function TestimonialsSection() {
         .tm-cards-track {
           display: inline-flex;
           align-items: stretch;
-          gap: 16px;
+          gap: var(--space-4);
           padding-right: var(--space-section-px);
         }
 
@@ -329,14 +329,14 @@ export default function TestimonialsSection() {
         .tm-card {
           width: 380px;
           min-width: 380px;
-          padding: 24px;
+          padding: var(--space-6);
           background: var(--color-surface-card);
-          border-radius: 12px;
+          border-radius: var(--radius-lg);
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
           align-items: flex-start;
-          gap: 12px;
+          gap: var(--space-3);
           scroll-snap-align: start;
         }
 
@@ -346,17 +346,17 @@ export default function TestimonialsSection() {
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-start;
-          gap: 24px;
+          gap: var(--space-6);
           flex: 1;
         }
 
         .tm-card-text {
           align-self: stretch;
           color: var(--color-primary);
-          font-size: 16px;
+          font-size: var(--text-body);
           font-family: var(--font-heading);
           font-weight: 400;
-          line-height: 24px;
+          line-height: var(--lh-body);
           margin: 0;
         }
 
@@ -365,14 +365,14 @@ export default function TestimonialsSection() {
           display: flex;
           justify-content: flex-start;
           align-items: center;
-          gap: 12px;
+          gap: var(--space-3);
         }
 
         .tm-avatar-circle {
-          width: 48px;
-          height: 48px;
-          border-radius: 300px;
-          background: linear-gradient(135deg, var(--color-primary) 0%, #3a57c4 100%);
+          width: var(--space-12);
+          height: var(--space-12);
+          border-radius: var(--radius-full);
+          background: var(--color-primary);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -380,8 +380,8 @@ export default function TestimonialsSection() {
         }
 
         .tm-avatar-initials {
-          color: white;
-          font-size: 16px;
+          color: var(--color-white);
+          font-size: var(--text-body);
           font-family: var(--font-heading);
           font-weight: 600;
           letter-spacing: 0.5px;
@@ -397,26 +397,26 @@ export default function TestimonialsSection() {
 
         .tm-author-name {
           color: var(--color-primary);
-          font-size: 16px;
+          font-size: var(--text-body);
           font-family: var(--font-heading);
           font-weight: 500;
-          line-height: 24px;
+          line-height: var(--lh-body);
         }
 
         .tm-author-company {
           color: var(--color-text-muted);
-          font-size: 14px;
+          font-size: var(--text-sm);
           font-family: var(--font-heading);
           font-weight: 400;
-          line-height: 20px;
+          line-height: var(--lh-body);
         }
 
         /* ─── Stars ─── */
         .tm-stars {
           display: flex;
           flex-direction: row;
-          gap: 4px;
-          height: 24px;
+          gap: var(--space-1);
+          height: var(--space-6);
           align-items: center;
         }
 
@@ -426,11 +426,6 @@ export default function TestimonialsSection() {
         @media (max-width: 1024px) {
           .tm-section {
             padding-right: var(--space-section-px);
-          }
-
-          .tm-inner {
-            padding-top: 64px;
-            padding-bottom: 64px;
           }
 
           .tm-header-row {
@@ -450,28 +445,10 @@ export default function TestimonialsSection() {
          * MOBILE — ≤640px
          * ═══════════════════════════════════════ */
         @media (max-width: 640px) {
-          .tm-section {
-          }
-
-          .tm-inner {
-            padding-top: 40px;
-            padding-bottom: 40px;
-          }
-
           .tm-header-row {
             padding-right: var(--space-section-px);
-            padding-top: 24px;
-            padding-bottom: 24px;
-          }
-
-          .tm-title {
-            font-size: 28px;
-            line-height: 36px;
-          }
-
-          .tm-subtitle {
-            font-size: 16px;
-            line-height: 24px;
+            padding-top: var(--space-6);
+            padding-bottom: var(--space-6);
           }
 
           .tm-cards-track {
@@ -481,7 +458,7 @@ export default function TestimonialsSection() {
           .tm-card {
             width: 280px;
             min-width: 280px;
-            padding: 20px;
+            padding: var(--space-5);
           }
         }
       `}</style>

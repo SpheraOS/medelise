@@ -110,7 +110,7 @@ export default function QualitySection() {
          * ═══════════════════════════════════════ */
         .quality-section {
           width: 100%;
-          background: white;
+          background: var(--color-white);
           overflow: hidden;
         }
 
@@ -133,12 +133,12 @@ export default function QualitySection() {
 
         .quality-row {
           width: 100%;
-          padding-top: 32px;
-          padding-bottom: 32px;
+          padding-top: var(--space-section-py-tight);
+          padding-bottom: var(--space-section-py-tight);
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 32px;
+          gap: var(--space-8);
         }
 
         /* ═══════════════════════════════════════
@@ -150,7 +150,7 @@ export default function QualitySection() {
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
-          gap: 24px;
+          gap: var(--space-6);
         }
 
         .quality-text-content {
@@ -159,22 +159,22 @@ export default function QualitySection() {
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
-          gap: 36px;
+          gap: var(--space-8);
         }
 
         .quality-heading-group {
           width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: var(--space-6);
         }
 
         .quality-heading {
           color: var(--color-primary);
-          font-size: 28px;
+          font-size: var(--text-2xl);
           font-family: var(--font-heading);
           font-weight: 600;
-          line-height: 36px;
+          line-height: var(--lh-heading);
           margin: 0;
         }
 
@@ -182,15 +182,15 @@ export default function QualitySection() {
           width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: var(--space-6);
         }
 
         .quality-body {
           color: var(--color-primary);
-          font-size: 18px;
+          font-size: var(--text-lg);
           font-family: var(--font-heading);
           font-weight: 500;
-          line-height: 28px;
+          line-height: var(--lh-body);
           margin: 0;
         }
 
@@ -198,20 +198,20 @@ export default function QualitySection() {
         .quality-checklist {
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: var(--space-3);
         }
 
         .quality-check-item {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: var(--space-2);
         }
 
         .quality-check-icon {
-          width: 32px;
-          height: 32px;
+          width: var(--space-8);
+          height: var(--space-8);
           background: var(--color-surface-card);
-          border-radius: 500px;
+          border-radius: var(--radius-full);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -221,17 +221,17 @@ export default function QualitySection() {
 
         .quality-check-text {
           color: var(--color-primary);
-          font-size: 16px;
+          font-size: var(--text-body);
           font-family: var(--font-heading);
           font-weight: 500;
-          line-height: 24px;
+          line-height: var(--lh-body);
         }
 
         /* ─── Email + CTA ─── */
         .quality-cta-row {
           display: flex;
           align-items: flex-start;
-          gap: 12px;
+          gap: var(--space-3);
         }
 
         .quality-input-wrap {
@@ -240,16 +240,16 @@ export default function QualitySection() {
 
         .quality-email-input {
           width: 100%;
-          padding: 10px 8px 10px 12px;
-          background: white;
-          border-radius: 8px;
+          padding: var(--space-3) var(--space-2) var(--space-3) var(--space-3);
+          background: var(--color-white);
+          border-radius: var(--radius-main);
           border: none;
           outline: 1px var(--color-input-border) solid;
           outline-offset: -1px;
           font-family: var(--font-heading);
-          font-size: 12px;
+          font-size: var(--text-sm);
           font-weight: 400;
-          line-height: 16px;
+          line-height: var(--lh-body);
           color: var(--color-primary);
           transition: outline-color 0.2s ease;
         }
@@ -264,22 +264,23 @@ export default function QualitySection() {
         }
 
         .quality-cta-btn {
-          padding: 10px 20px;
+          padding: var(--space-3) var(--space-5);
           background: var(--color-primary);
-          border-radius: 8px;
+          border-radius: var(--radius-main);
           border: none;
-          color: white;
+          color: var(--color-white);
           font-family: var(--font-heading);
-          font-size: 16px;
+          font-size: var(--text-body);
           font-weight: 600;
-          line-height: 24px;
+          line-height: var(--lh-body);
           cursor: pointer;
           white-space: nowrap;
-          transition: background-color 0.2s ease, transform 0.15s ease;
+          transition: all 0.2s ease-in-out;
         }
 
         .quality-cta-btn:hover {
           background: var(--color-primary-hover);
+          box-shadow: var(--shadow-md);
           transform: translateY(-1px);
         }
 
@@ -322,9 +323,7 @@ export default function QualitySection() {
           .quality-row {
             flex-direction: column;
             align-items: stretch;
-            gap: 40px;
-            padding-top: 64px;
-            padding-bottom: 64px;
+            gap: var(--space-10);
           }
 
           .quality-text-col {
@@ -357,25 +356,13 @@ export default function QualitySection() {
          * ═══════════════════════════════════════ */
         @media (max-width: 640px) {
           .quality-row {
-            padding-top: 48px;
-            padding-bottom: 48px;
-            gap: 32px;
-          }
-
-          .quality-heading {
-            font-size: 24px;
-            line-height: 32px;
-          }
-
-          .quality-body {
-            font-size: 16px;
-            line-height: 24px;
+            gap: var(--space-8);
           }
 
           .quality-cta-row {
             flex-direction: column;
             width: 100%;
-            gap: 12px;
+            gap: var(--space-3);
           }
 
           .quality-input-wrap {

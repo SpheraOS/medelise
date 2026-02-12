@@ -58,9 +58,9 @@ export default function WhyChooseUsSection() {
 
                 .why-section {
                     width: 100%;
-                    padding-top: 32px;
-                    padding-bottom: 64px;
-                    background: white;
+                    padding-top: var(--space-section-py);
+                    padding-bottom: var(--space-section-py);
+                    background: var(--color-white);
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: center;
@@ -80,7 +80,7 @@ export default function WhyChooseUsSection() {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    gap: 24px;
+                    gap: var(--space-6);
                     display: flex;
                 }
 
@@ -88,9 +88,9 @@ export default function WhyChooseUsSection() {
 
                 .why-text-block {
                     align-self: stretch;
-                    padding-top: 16px;
-                    padding-bottom: 64px;
-                    background: white;
+                    padding-top: var(--space-4);
+                    padding-bottom: var(--space-16);
+                    background: var(--color-white);
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
@@ -103,16 +103,16 @@ export default function WhyChooseUsSection() {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    gap: 12px;
+                    gap: var(--space-3);
                     display: flex;
                 }
 
                 .why-heading {
                     color: var(--color-primary);
-                    font-size: 36px;
+                    font-size: var(--text-3xl);
                     font-family: var(--font-heading);
                     font-weight: 700;
-                    line-height: 44px;
+                    line-height: var(--lh-heading);
                     word-wrap: break-word;
                     text-align: center;
                 }
@@ -122,10 +122,10 @@ export default function WhyChooseUsSection() {
                     max-width: 650px;
                     text-align: center;
                     color: var(--color-primary);
-                    font-size: 18px;
+                    font-size: var(--text-lg);
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 28px;
+                    line-height: var(--lh-body);
                     word-wrap: break-word;
                 }
 
@@ -137,7 +137,7 @@ export default function WhyChooseUsSection() {
                     justify-content: space-between;
                     align-items: stretch;
                     display: inline-flex;
-                    gap: 32px;
+                    gap: var(--space-8);
                 }
 
                 .why-card-col {
@@ -145,7 +145,7 @@ export default function WhyChooseUsSection() {
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    gap: 32px;
+                    gap: var(--space-8);
                     display: inline-flex;
                 }
 
@@ -159,13 +159,13 @@ export default function WhyChooseUsSection() {
                 .why-image-col {
                     flex: 1 1 0;
                     align-self: stretch;
-                    background: white;
+                    background: var(--color-white);
                     overflow: hidden;
-                    border-radius: 20px;
+                    border-radius: var(--radius-xl);
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: center;
-                    gap: 16px;
+                    gap: var(--space-4);
                     display: inline-flex;
                 }
 
@@ -175,7 +175,7 @@ export default function WhyChooseUsSection() {
                     display: flex;
                     justify-content: center;
                     align-items: flex-start;
-                    padding-top: 36px;
+                    padding-top: var(--space-8);
                 }
 
                 .why-watch-image {
@@ -186,15 +186,15 @@ export default function WhyChooseUsSection() {
 
                 .why-quote {
                     width: 354px;
-                    padding: 24px;
-                    background: white;
-                    border-radius: 12px;
+                    padding: var(--space-6);
+                    background: var(--color-white);
+                    border-radius: var(--radius-lg);
                     text-align: center;
                     color: var(--color-primary);
-                    font-size: 24px;
+                    font-size: var(--text-xl);
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 32px;
+                    line-height: var(--lh-heading);
                     word-wrap: break-word;
                     flex-shrink: 0;
                 }
@@ -210,17 +210,12 @@ export default function WhyChooseUsSection() {
                    ═══════════════════════════════════════ */
 
                 @media (max-width: 1024px) {
-                    .why-section {
-                        padding-top: 64px;
-                        padding-bottom: 64px;
-                    }
-
                     .why-text-block {
-                        padding-bottom: 48px;
+                        padding-bottom: var(--space-12);
                     }
 
                     .why-text-inner {
-                        gap: 12px;
+                        gap: var(--space-3);
                     }
 
                     .why-subtitle {
@@ -238,7 +233,7 @@ export default function WhyChooseUsSection() {
                         flex-direction: column;
                         justify-content: flex-start;
                         align-items: center;
-                        gap: 32px;
+                        gap: var(--space-8);
                         display: flex;
                     }
 
@@ -246,7 +241,7 @@ export default function WhyChooseUsSection() {
                         flex-direction: column;
                         justify-content: flex-start;
                         align-items: flex-start;
-                        gap: 24px;
+                        gap: var(--space-6);
                         display: flex;
                         width: 100%;
                     }
@@ -256,9 +251,9 @@ export default function WhyChooseUsSection() {
                         align-self: stretch;
                         height: 320px;
                         position: relative;
-                        background: white;
+                        background: var(--color-white);
                         overflow: hidden;
-                        border-radius: 20px;
+                        border-radius: var(--radius-xl);
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -269,14 +264,14 @@ export default function WhyChooseUsSection() {
                         height: 320px;
                         object-fit: contain;
                         position: absolute;
-                        left: 64px;
+                        left: var(--space-16);
                         top: 0;
                     }
 
                     .why-watch-banner__quote {
                         width: 253px;
                         height: 320px;
-                        padding: 24px;
+                        padding: var(--space-6);
                         position: absolute;
                         right: 0;
                         top: 0;
@@ -285,17 +280,17 @@ export default function WhyChooseUsSection() {
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        gap: 16px;
+                        gap: var(--space-4);
                     }
 
                     .why-watch-banner__quote-text {
                         flex: 1 1 0;
                         text-align: center;
                         color: var(--color-primary);
-                        font-size: 24px;
+                        font-size: var(--text-xl);
                         font-family: var(--font-heading);
                         font-weight: 600;
-                        line-height: 32px;
+                        line-height: var(--lh-heading);
                         word-wrap: break-word;
                     }
                 }
@@ -305,22 +300,12 @@ export default function WhyChooseUsSection() {
                    ═══════════════════════════════════════ */
 
                 @media (max-width: 640px) {
-                    .why-section {
-                        padding-top: 48px;
-                        padding-bottom: 48px;
-                    }
-
                     .why-text-block {
-                        padding-bottom: 32px;
+                        padding-bottom: var(--space-8);
                     }
 
                     .why-text-inner {
-                        gap: 8px;
-                    }
-
-                    .why-heading {
-                        font-size: 32px;
-                        line-height: 44px;
+                        gap: var(--space-2);
                     }
 
                     .why-subtitle {
@@ -328,13 +313,13 @@ export default function WhyChooseUsSection() {
                     }
 
                     .why-cards-list {
-                        gap: 16px;
+                        gap: var(--space-4);
                     }
 
                     /* Watch banner — vertical stacked */
                     .why-watch-banner {
                         height: auto;
-                        border-radius: 20px;
+                        border-radius: var(--radius-xl);
                         flex-direction: column;
                         justify-content: flex-start;
                         align-items: center;
@@ -352,19 +337,17 @@ export default function WhyChooseUsSection() {
                         position: static;
                         width: 100%;
                         height: auto;
-                        padding: 24px 44px;
-                        background: white;
+                        padding: var(--space-6) var(--space-12);
+                        background: var(--color-white);
                         backdrop-filter: blur(7.5px);
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
-                        gap: 10px;
+                        gap: var(--space-3);
                     }
 
                     .why-watch-banner__quote-text {
                         text-align: left;
-                        font-size: 20px;
-                        line-height: 28px;
                     }
                 }
             `}</style>
@@ -440,7 +423,7 @@ export default function WhyChooseUsSection() {
                                     />
                                     <div className="why-watch-banner__quote">
                                         <span className="why-watch-banner__quote-text">
-                                            {'„Smart alerts. Real care.”'}
+                                            {'„Smart alerts. Real care."'}
                                         </span>
                                     </div>
                                 </div>

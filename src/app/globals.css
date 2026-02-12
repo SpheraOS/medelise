@@ -1,76 +1,52 @@
 /**
- * SpheraOS Design System — globals.css
- * MEDELISE / MEDVITA / careOS Ecosystem
- *
- * Singurul punct de adevăr pentru variabile, fonturi și clase utilitare.
- * design-system.css → doar documentație & token-uri TS.
- *
- * REGULI INVIOLABILE:
- *  1. CTA principal → Indigo (#213170) cu text alb
- *  2. Orange (#FE5D16) pentru highlights, eyebrow, accente vizuale
- *  3. Pe Indigo (#213170) DOAR alb sau Baby Blue (#BDE0FF)
- *  4. Michroma pt branding, Inter pt body, DM Sans pt CTA text
- *
- * GRID: Strict 8pt system — every spacing value is a multiple of 4px.
- *        Preferred sizes are multiples of 8.
+ * ╔══════════════════════════════════════════════════════════════════════════╗
+ * ║  SpheraOS Design System — Mathematical Web Governance Protocol        ║
+ * ║  MEDELISE / MEDVITA / careOS Ecosystem                                ║
+ * ║                                                                        ║
+ * ║  Singurul punct de adevăr. Fiecare valoare derivă din --base-unit.    ║
+ * ║  Schimbarea unei singure variabile refactorizează vizual tot proiectul.║
+ * ╠══════════════════════════════════════════════════════════════════════════╣
+ * ║  REGULI INVIOLABILE:                                                   ║
+ * ║   1. CTA principal → Indigo (#213170) cu text alb                     ║
+ * ║   2. Orange (#FE5D16) pentru highlights, eyebrow, accente vizuale     ║
+ * ║   3. Pe Indigo (#213170) DOAR alb sau Baby Blue (#BDE0FF)             ║
+ * ║   4. Michroma pt branding, Inter pt body, DM Sans pt CTA text        ║
+ * ║   5. GRID: Strict 8pt — every value = N × var(--base-unit)           ║
+ * ╚══════════════════════════════════════════════════════════════════════════╝
  */
 
 @import "tailwindcss";
 
 /* ══════════════════════════════════════════════════════════════════════════
  * THEME REGISTRATION — Tailwind CSS v4
- * Register all custom properties so TW doesn't tree-shake them.
+ *
+ * Register ALL custom properties so TW doesn't tree-shake them.
  * Uses `inline` to avoid auto-generating utility classes.
+ * Every variable used in styled-jsx MUST be registered here.
  * ══════════════════════════════════════════════════════════════════════════ */
 @theme inline {
-  --color-primary-hover: #1A2659;
-  --color-surface-card: #f0f6ff;
-  --color-text-muted: #637083;
-  --color-input-border: #97a1af;
-  --color-border-light: #CED2DA;
-}
-
-/* ==========================================================================
- * 1. CSS VARIABLES — Central Control Panel
- * ========================================================================== */
-:root {
-  /* ─── 1a. Core Brand Colors ──────────────────────────────────────────── */
+  /* ── Colors ──────────────────────────────────────────────────────────── */
   --color-primary: #213170;
-  --color-accent: #FE5D16;
-  --color-secondary: #BDE0FF;
-  --color-neutral-dark: #232123;
-
-  /* ─── 1b. Semantic Colors ────────────────────────────────────────────── */
-  --color-success: #10B981;
-  --color-error: #E11D48;
-  --color-warning: #F59E0B;
-  --color-info: #0EA5E9;
-
-  /* ─── 1c. UI Surface / Depth Colors ──────────────────────────────────── */
   --color-primary-hover: #1A2659;
-  --color-surface-light: #F8F9FA;
+  --color-accent: #FE5D16;
+  --color-accent-hover: #E54D0F;
+  --color-secondary: #BDE0FF;
+
+  --color-surface: #F8F9FA;
   --color-surface-card: #f0f6ff;
   --color-surface-border: #E5E7EB;
+  --color-text: #232123;
   --color-text-muted: #637083;
   --color-input-border: #97a1af;
   --color-border-light: #CED2DA;
   --color-white: #FFFFFF;
 
-  /* ─── 1d. Typography Families (loaded via next/font in layout.tsx) ──── */
-  --font-brand: var(--font-michroma), sans-serif;
-  --font-heading: var(--font-montserrat), sans-serif;
-  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-cta: var(--font-dm-sans), var(--font-inter), sans-serif;
+  --color-success: #10B981;
+  --color-error: #E11D48;
+  --color-warning: #F59E0B;
+  --color-info: #0EA5E9;
 
-  /* =====================================================================
-   * 2. STRICT 8PT GRID — Spacing Scale (4px base unit)
-   *
-   *    Every value = N × 4px.
-   *    Preferred layout values are multiples of 8 (space-2, space-4, …).
-   *    Odd multiples (space-1, space-3, space-5) for fine-tuning only.
-   *
-   *    Rule: padding / margin / gap / width / height must be divisible by 4.
-   * =================================================================== */
+  /* ── Spacing (derived from --base-unit in :root) ─────────────────────── */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -87,7 +63,102 @@
   --space-24: 96px;
   --space-28: 112px;
 
-  /* ─── Fluid Section Padding (375px → 1440px) ─────────────────────────
+  /* ── Border Radius ───────────────────────────────────────────────────── */
+  --radius-sm: 4px;
+  --radius-main: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
+  /* ── Shadows ─────────────────────────────────────────────────────────── */
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ==========================================================================
+ * 1. CSS VARIABLES — Central Control Panel
+ *
+ *    --base-unit este fundamentul matematic. Toate valorile derivă din el.
+ *    Schimbarea --base-unit rescalează întreg sistemul.
+ * ========================================================================== */
+:root {
+  /* ═══════════════════════════════════════════════════════════════════════
+   * 1a. THE MATHEMATICAL FOUNDATION
+   * ═══════════════════════════════════════════════════════════════════════ */
+  --base-unit: 4px;
+
+  /* ─── Core Brand Colors ──────────────────────────────────────────────── */
+  --color-primary: #213170;
+  --color-primary-hover: #1A2659;
+  --color-accent: #FE5D16;
+  --color-accent-hover: #E54D0F;
+  --color-secondary: #BDE0FF;
+
+  /* ─── Semantic Surface / Text Aliases ────────────────────────────────── */
+  --color-surface: #F8F9FA;
+  --color-surface-card: #f0f6ff;
+  --color-surface-border: #E5E7EB;
+  --color-text: #232123;
+  --color-text-muted: #637083;
+  --color-input-border: #97a1af;
+  --color-border-light: #CED2DA;
+  --color-white: #FFFFFF;
+
+  /* ─── Semantic Colors ────────────────────────────────────────────────── */
+  --color-success: #10B981;
+  --color-error: #E11D48;
+  --color-warning: #F59E0B;
+  --color-info: #0EA5E9;
+
+  /* ─── Typography Families (loaded via next/font in layout.tsx) ────── */
+  --font-brand: var(--font-michroma), sans-serif;
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-cta: var(--font-dm-sans), var(--font-inter), sans-serif;
+
+  /* ═══════════════════════════════════════════════════════════════════════
+   * 2. STRICT 8PT GRID — Spacing Scale
+   *
+   *    Every value = N × var(--base-unit).
+   *    Preferred layout values are multiples of 8 (space-2, space-4, …).
+   *    Odd multiples (space-1, space-3, space-5) for micro-spacing only.
+   *
+   *    Rule: padding / margin / gap / width / height must ÷ 4 = 0.
+   * ═══════════════════════════════════════════════════════════════════════ */
+  --space-1: calc(var(--base-unit) * 1);
+  /*  4px  */
+  --space-2: calc(var(--base-unit) * 2);
+  /*  8px  */
+  --space-3: calc(var(--base-unit) * 3);
+  /* 12px  */
+  --space-4: calc(var(--base-unit) * 4);
+  /* 16px  */
+  --space-5: calc(var(--base-unit) * 5);
+  /* 20px  */
+  --space-6: calc(var(--base-unit) * 6);
+  /* 24px  */
+  --space-7: calc(var(--base-unit) * 7);
+  /* 28px  */
+  --space-8: calc(var(--base-unit) * 8);
+  /* 32px  */
+  --space-10: calc(var(--base-unit) * 10);
+  /* 40px  */
+  --space-12: calc(var(--base-unit) * 12);
+  /* 48px  */
+  --space-14: calc(var(--base-unit) * 14);
+  /* 56px  */
+  --space-16: calc(var(--base-unit) * 16);
+  /* 64px  */
+  --space-20: calc(var(--base-unit) * 20);
+  /* 80px  */
+  --space-24: calc(var(--base-unit) * 24);
+  /* 96px  */
+  --space-28: calc(var(--base-unit) * 28);
+  /* 112px */
+
+  /* ─── Fluid Section Spacing (375px → 1440px) ─────────────────────────
    *    Formula: clamp(min, calc(min + (max − min) × (100vw − 375px) / 1065), max)
    *    1065 = 1440 − 375
    * ──────────────────────────────────────────────────────────────────── */
@@ -95,57 +166,76 @@
   /* Section horizontal padding: 16px @375 → 112px @1440 */
   --space-section-px: clamp(16px, calc(16px + (112 - 16) * (100vw - 375px) / 1065), 112px);
 
+  /* Section vertical padding: 48px @375 → 96px @1440 (py-12 → py-24) */
+  --space-section-py: clamp(48px, calc(48px + (96 - 48) * (100vw - 375px) / 1065), 96px);
+
+  /* Tight section vertical: 32px @375 → 48px @1440 */
+  --space-section-py-tight: clamp(32px, calc(32px + (48 - 32) * (100vw - 375px) / 1065), 48px);
+
   /* Navbar horizontal padding: 16px @375 → 32px @1440 */
   --space-nav-x: clamp(16px, calc(16px + (32 - 16) * (100vw - 375px) / 1065), 32px);
 
-  /* =====================================================================
-   * 3. BORDER RADIUS — 8pt-aligned scale
-   * =================================================================== */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-2xl: 24px;
+  /* ─── Container Gutter: 16px @mobile → 32px @tablet → auto @desktop ── */
+  --gutter: clamp(16px, calc(16px + (32 - 16) * (100vw - 375px) / 1065), 32px);
 
-  /* =====================================================================
+  /* ─── Max Width ──────────────────────────────────────────────────────── */
+  --max-width: 1280px;
+
+  /* ═══════════════════════════════════════════════════════════════════════
+   * 3. BORDER RADIUS — derived from --base-unit
+   * ═══════════════════════════════════════════════════════════════════════ */
+  --radius-sm: calc(var(--base-unit) * 1);
+  /*  4px */
+  --radius-main: calc(var(--base-unit) * 2);
+  /*  8px — the golden radius */
+  --radius-lg: calc(var(--base-unit) * 4);
+  /* 16px */
+  --radius-xl: calc(var(--base-unit) * 5);
+  /* 20px */
+  --radius-2xl: calc(var(--base-unit) * 6);
+  /* 24px */
+  --radius-full: 500px;
+
+  /* ═══════════════════════════════════════════════════════════════════════
    * 4. SHADOW SYSTEM — 3 levels, 4px-aligned offsets
-   *    Each level doubles the blur and offset.
-   * =================================================================== */
+   * ═══════════════════════════════════════════════════════════════════════ */
   --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
 
-  /* =====================================================================
+  /* ═══════════════════════════════════════════════════════════════════════
    * 5. FLUID TYPOGRAPHY — clamp() based (375px → 1440px)
    *
-   *    Formula: clamp(mobileSize, calc(mobileSize + Δ × (100vw − 375px) / 1065), desktopSize)
-   *
+   *    Formula: clamp(mobile, calc(mobile + Δ × (100vw − 375px) / 1065), desktop)
    *    No manual media-query breakpoints needed.
-   * =================================================================== */
+   * ═══════════════════════════════════════════════════════════════════════ */
 
-  /* Body:  16px → 18px */
+  /* Small:     14px → 14px (fixed) */
+  --text-sm: 14px;
+
+  /* Body:      16px → 18px */
   --text-body: clamp(16px, calc(16px + 2 * (100vw - 375px) / 1065), 18px);
 
-  /* Large: 18px → 20px */
+  /* Large:     18px → 20px */
   --text-lg: clamp(18px, calc(18px + 2 * (100vw - 375px) / 1065), 20px);
 
-  /* XL:    20px → 24px */
+  /* XL:        20px → 24px */
   --text-xl: clamp(20px, calc(20px + 4 * (100vw - 375px) / 1065), 24px);
 
-  /* 2XL:   24px → 32px */
+  /* 2XL / H3:  24px → 32px */
   --text-2xl: clamp(24px, calc(24px + 8 * (100vw - 375px) / 1065), 32px);
 
-  /* 3XL:   28px → 36px */
+  /* 3XL / H2:  28px → 36px */
   --text-3xl: clamp(28px, calc(28px + 8 * (100vw - 375px) / 1065), 36px);
 
-  /* 4XL:   32px → 64px (display / H1 hero) */
+  /* 4XL / H1:  32px → 64px (display / hero) */
   --text-4xl: clamp(32px, calc(32px + 32 * (100vw - 375px) / 1065), 64px);
 
   /* ─── Line Heights ──────────────────────────────────────────────────── */
   --lh-body: 1.6;
   --lh-heading: 1.2;
 
-  /* ─── Readable Width ────────────────────────────────────────────────── */
+  /* ─── Readable Width (Measure) ──────────────────────────────────────── */
   --max-prose: 70ch;
 }
 
@@ -154,18 +244,116 @@
  * 6. GLOBAL RESETS & BASE STYLES
  * ========================================================================== */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  background: var(--color-surface-light);
-  color: var(--color-neutral-dark);
+  background: var(--color-surface);
+  color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--text-body);
   line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography Resets ───────────────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--lh-heading);
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+p {
+  max-width: var(--max-prose);
+  margin: 0;
 }
 
 
 /* ==========================================================================
- * 7. TYPOGRAPHY UTILITIES
+ * 7. TYPOGRAPHY UTILITY CLASSES
+ *
+ *    Semantic classes for consistent hierarchy.
+ *    Use these instead of arbitrary font-size values.
  * ========================================================================== */
+
+/* ─── Headings ────────────────────────────────────────────────────────── */
+.heading-1 {
+  font-size: var(--text-4xl);
+  line-height: var(--lh-heading);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.heading-2 {
+  font-size: var(--text-3xl);
+  line-height: var(--lh-heading);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.heading-3 {
+  font-size: var(--text-2xl);
+  line-height: var(--lh-heading);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.heading-4 {
+  font-size: var(--text-xl);
+  line-height: var(--lh-heading);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ─── Body Text ───────────────────────────────────────────────────────── */
+.body-text {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  max-width: var(--max-prose);
+}
+
+.body-lg {
+  font-size: var(--text-lg);
+  line-height: var(--lh-body);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  max-width: var(--max-prose);
+}
+
+.body-sm {
+  font-size: var(--text-sm);
+  line-height: var(--lh-body);
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+}
+
+/* ─── Eyebrow / Label ─────────────────────────────────────────────────── */
+.eyebrow {
+  font-size: var(--text-sm);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+/* ─── Font Family Utilities ───────────────────────────────────────────── */
 .font-brand {
   font-family: var(--font-brand);
 }
@@ -176,6 +364,10 @@ body {
 
 .font-body {
   font-family: var(--font-body);
+}
+
+.font-cta {
+  font-family: var(--font-cta);
 }
 
 
@@ -206,59 +398,116 @@ body {
   background-color: var(--color-secondary);
 }
 
-.text-neutral-dark {
-  color: var(--color-neutral-dark);
+
+.text-muted {
+  color: var(--color-text-muted);
 }
 
-.bg-neutral-dark {
-  background-color: var(--color-neutral-dark);
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-surface-card {
+  background-color: var(--color-surface-card);
 }
 
 
 /* ==========================================================================
- * 9. BUTTON — CTA (Orange, Exclusive)
+ * 9. BUTTON SYSTEM
+ *
+ *    All button heights, padding, and radii are --base-unit multiples.
  * ========================================================================== */
+
+/* ─── CTA Button (Indigo) ─────────────────────────────────────────────── */
 .btn-cta {
-  background-color: var(--color-accent);
+  background-color: var(--color-primary);
   color: var(--color-white);
-  font-family: var(--font-body);
+  font-family: var(--font-cta);
   font-weight: 600;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: var(--text-sm);
+  line-height: 1;
+  padding: var(--space-3) var(--space-6);
+  /* 12px 24px */
+  border-radius: var(--radius-main);
+  border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .btn-cta:hover {
-  background-color: #E54D0F;
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ─── Primary Button (Indigo, larger) ─────────────────────────────────── */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-5);
+  /* 12px 20px */
+  border-radius: var(--radius-main);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-secondary);
+}
+
+/* ─── Accent Button (Orange) ──────────────────────────────────────────── */
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-main);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-hover);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(254, 93, 22, 0.3);
 }
 
 
 /* ==========================================================================
- * 10. BUTTON — Primary (Indigo)
+ * 10. LAYOUT UTILITIES — Section & Container
+ *
+ *     These mirror the <Section /> and <Container /> React components.
+ *     Use these CSS classes in styled-jsx or non-React contexts.
  * ========================================================================== */
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  font-family: var(--font-body);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
 
-.btn-primary:hover {
-  background-color: #1A2659;
-  color: var(--color-secondary);
-}
-
-
-/* ==========================================================================
- * 11. SECTION PADDING — Global Fluid Rule
- *     Uses --space-section-px (16px @375 → 112px @1440) — zero breakpoint jumps
- * ========================================================================== */
+/* ─── Section Padding (vertical rhythm) ───────────────────────────────── */
 .section-padding {
   padding-left: var(--space-section-px);
   padding-right: var(--space-section-px);
+}
+
+.section-py {
+  padding-top: var(--space-section-py);
+  padding-bottom: var(--space-section-py);
+}
+
+.section-py-tight {
+  padding-top: var(--space-section-py-tight);
+  padding-bottom: var(--space-section-py-tight);
+}
+
+/* ─── Container (max-width + gutter) ──────────────────────────────────── */
+.container-main {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }

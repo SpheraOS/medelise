@@ -10,9 +10,9 @@ export default function HeroSection() {
                 /* ─── Fluid base ────────────────────── */
                 .hero-section {
                     width: 100%;
-                    padding-top: 32px;
-                    padding-bottom: 32px;
-                    background: white;
+                    padding-top: var(--space-section-py);
+                    padding-bottom: var(--space-section-py);
+                    background: var(--color-white);
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: center;
@@ -21,7 +21,7 @@ export default function HeroSection() {
 
                 .hero-row {
                     align-self: stretch;
-                    padding: 32px 0;
+                    padding: var(--space-8) 0;
                     justify-content: space-between;
                     align-items: center;
                     display: inline-flex;
@@ -31,7 +31,7 @@ export default function HeroSection() {
                     flex: 1 1 0;
                     justify-content: flex-start;
                     align-items: center;
-                    gap: 32px;
+                    gap: var(--space-8);
                     display: flex;
                 }
 
@@ -39,18 +39,17 @@ export default function HeroSection() {
                     flex: 1 1 0;
                     justify-content: space-between;
                     align-items: center;
-                    /* 32px @1024 → 64px @1440 */
-                    gap: clamp(32px, calc(32px + (64 - 32) * (100vw - 1024px) / (1440 - 1024)), 64px);
+                    gap: var(--space-16);
                     display: flex;
                 }
 
                 .hero-text-col {
                     flex: 1 1 0;
-                    padding-bottom: 40px;
+                    padding-bottom: var(--space-10);
                     flex-direction: column;
                     justify-content: center;
                     align-items: flex-start;
-                    gap: 64px;
+                    gap: var(--space-16);
                     display: inline-flex;
                 }
 
@@ -60,19 +59,16 @@ export default function HeroSection() {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    gap: 48px;
+                    gap: var(--space-12);
                     display: flex;
                 }
-
-
 
                 .hero-text-group {
                     align-self: stretch;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    /* 32px gap between eyebrow block, heading, subtitle */
-                    gap: clamp(24px, calc(24px + (32 - 24) * (100vw - 375px) / (1440 - 375)), 32px);
+                    gap: var(--space-8);
                     display: flex;
                 }
 
@@ -82,7 +78,7 @@ export default function HeroSection() {
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    gap: 8px;
+                    gap: var(--space-2);
                     display: flex;
                 }
 
@@ -90,11 +86,10 @@ export default function HeroSection() {
                     align-self: stretch;
                     text-align: center;
                     color: var(--color-accent);
-                    /* 20px @375 → 32px @1440 */
-                    font-size: clamp(20px, calc(20px + (32 - 20) * (100vw - 375px) / (1440 - 375)), 32px);
+                    font-size: var(--text-2xl);
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 32px;
+                    line-height: var(--lh-heading);
                     word-wrap: break-word;
                 }
 
@@ -102,11 +97,10 @@ export default function HeroSection() {
                     align-self: stretch;
                     text-align: center;
                     color: var(--color-primary);
-                    /* 16px @375 → 24px @1440 */
-                    font-size: clamp(16px, calc(16px + (24 - 16) * (100vw - 375px) / (1440 - 375)), 24px);
-                    font-family: var(--font-michroma);
+                    font-size: var(--text-lg);
+                    font-family: var(--font-brand);
                     font-weight: 400;
-                    line-height: 32px;
+                    line-height: var(--lh-heading);
                     word-wrap: break-word;
                 }
 
@@ -115,25 +109,23 @@ export default function HeroSection() {
                     align-self: stretch;
                     text-align: center;
                     color: var(--color-primary);
-                    /* 28px @375 → 36px @1440 */
-                    font-size: clamp(28px, calc(28px + (36 - 28) * (100vw - 375px) / (1440 - 375)), 36px);
+                    font-size: var(--text-3xl);
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    /* 36px @375 → 44px @1440 */
-                    line-height: clamp(36px, calc(36px + (44 - 36) * (100vw - 375px) / (1440 - 375)), 44px);
+                    line-height: var(--lh-heading);
                     word-wrap: break-word;
                 }
 
                 /* ─── Subtitle ──────────────────────── */
                 .hero-subtitle {
                     width: 100%;
-                    max-width: 604px;
+                    max-width: var(--max-prose);
                     text-align: center;
                     color: var(--color-primary);
-                    font-size: clamp(16px, calc(16px + (18 - 16) * (100vw - 375px) / (1440 - 375)), 18px);
+                    font-size: var(--text-body);
                     font-family: var(--font-heading);
                     font-weight: 500;
-                    line-height: clamp(24px, calc(24px + (28 - 24) * (100vw - 375px) / (1440 - 375)), 28px);
+                    line-height: var(--lh-body);
                     word-wrap: break-word;
                 }
 
@@ -141,38 +133,39 @@ export default function HeroSection() {
                 .hero-cta {
                     width: 100%;
                     max-width: 592px;
-                    padding: 12px 40px;
+                    padding: var(--space-3) var(--space-10);
                     background: var(--color-primary);
-                    border-radius: 10px;
+                    border-radius: var(--radius-main);
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: center;
                     display: flex;
                     cursor: pointer;
                     border: none;
-                    transition: background 0.2s ease;
+                    transition: all 0.2s ease-in-out;
                 }
                 .hero-cta:hover {
                     background: var(--color-primary-hover);
+                    box-shadow: var(--shadow-md);
                 }
                 .hero-cta-text {
                     text-align: center;
                     justify-content: center;
                     display: flex;
                     flex-direction: column;
-                    color: white;
-                    font-size: 16px;
+                    color: var(--color-white);
+                    font-size: var(--text-body);
                     font-family: var(--font-cta);
                     font-weight: 500;
                     text-transform: capitalize;
-                    line-height: 24px;
+                    line-height: var(--lh-body);
                     word-wrap: break-word;
                 }
 
                 /* ─── Watch column ──────────────────── */
                 .hero-watch-col {
                     flex-shrink: 0;
-                    padding: 8px;
+                    padding: var(--space-2);
                     align-items: center;
                     display: flex;
                 }
@@ -195,17 +188,16 @@ export default function HeroSection() {
                         align-items: center;
                         max-width: 704px;
                     }
-
                 }
 
                 /* ─── Mobile ≤640px ─────────────────── */
                 @media (max-width: 640px) {
                     .hero-row {
-                        padding: 16px 0;
+                        padding: var(--space-4) 0;
                     }
                     .hero-text-col {
-                        padding-bottom: 24px;
-                        gap: 48px;
+                        padding-bottom: var(--space-6);
+                        gap: var(--space-12);
                     }
                     .hero-subtitle {
                         max-width: 100%;

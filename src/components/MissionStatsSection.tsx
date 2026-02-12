@@ -21,7 +21,7 @@ export default function MissionStatsSection() {
 
                 .mission-section {
                     width: 100%;
-                    background: white;
+                    background: var(--color-white);
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: center;
@@ -30,8 +30,8 @@ export default function MissionStatsSection() {
 
                 .mission-inner {
                     align-self: stretch;
-                    padding-top: 80px;
-                    padding-bottom: 80px;
+                    padding-top: var(--space-section-py);
+                    padding-bottom: var(--space-section-py);
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: center;
@@ -48,9 +48,9 @@ export default function MissionStatsSection() {
 
                 .mission-text-block {
                     align-self: stretch;
-                    padding-top: 16px;
-                    padding-bottom: 64px;
-                    background: white;
+                    padding-top: var(--space-4);
+                    padding-bottom: var(--space-16);
+                    background: var(--color-white);
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
@@ -62,7 +62,7 @@ export default function MissionStatsSection() {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    gap: 36px;
+                    gap: var(--space-8);
                     display: flex;
                 }
 
@@ -71,7 +71,7 @@ export default function MissionStatsSection() {
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    gap: 12px;
+                    gap: var(--space-3);
                     display: flex;
                 }
 
@@ -79,10 +79,10 @@ export default function MissionStatsSection() {
                     align-self: stretch;
                     text-align: center;
                     color: var(--color-primary);
-                    font-size: 36px;
+                    font-size: var(--text-3xl);
                     font-family: var(--font-heading);
                     font-weight: 700;
-                    line-height: 44px;
+                    line-height: var(--lh-heading);
                     word-wrap: break-word;
                 }
 
@@ -90,10 +90,10 @@ export default function MissionStatsSection() {
                     align-self: stretch;
                     text-align: center;
                     color: var(--color-primary);
-                    font-size: 16px;
+                    font-size: var(--text-body);
                     font-family: var(--font-heading);
                     font-weight: 500;
-                    line-height: 24px;
+                    line-height: var(--lh-body);
                     word-wrap: break-word;
                 }
 
@@ -101,10 +101,10 @@ export default function MissionStatsSection() {
                     align-self: stretch;
                     text-align: center;
                     color: var(--color-primary);
-                    font-size: 16px;
+                    font-size: var(--text-body);
                     font-family: var(--font-heading);
                     font-weight: 500;
-                    line-height: 24px;
+                    line-height: var(--lh-body);
                     word-wrap: break-word;
                 }
 
@@ -112,7 +112,7 @@ export default function MissionStatsSection() {
                     align-self: stretch;
                     justify-content: center;
                     align-items: stretch;
-                    gap: 32px;
+                    gap: var(--space-8);
                     display: inline-flex;
                 }
 
@@ -121,21 +121,16 @@ export default function MissionStatsSection() {
                    ═══════════════════════════════════════ */
 
                 @media (max-width: 1024px) {
-                    .mission-inner {
-                        padding-top: 64px;
-                        padding-bottom: 64px;
-                    }
-
                     .mission-content {
-                        gap: 24px;
+                        gap: var(--space-6);
                     }
 
                     .mission-text-block {
-                        padding-bottom: 48px;
+                        padding-bottom: var(--space-12);
                     }
 
                     .mission-text-group {
-                        gap: 16px;
+                        gap: var(--space-4);
                     }
 
                     .mission-heading {
@@ -144,15 +139,13 @@ export default function MissionStatsSection() {
 
                     .mission-description,
                     .mission-description--narrow {
-                        font-size: 18px;
                         font-weight: 400;
-                        line-height: 28px;
                     }
 
                     .mission-stats-row {
                         display: grid;
                         grid-template-columns: 1fr 1fr;
-                        gap: 32px;
+                        gap: var(--space-8);
                     }
                 }
 
@@ -161,48 +154,39 @@ export default function MissionStatsSection() {
                    ═══════════════════════════════════════ */
 
                 @media (max-width: 640px) {
-                    .mission-inner {
-                        padding-top: 32px;
-                        padding-bottom: 32px;
-                    }
-
                     .mission-content {
-                        padding-top: 48px;
-                        padding-bottom: 48px;
-                        gap: 24px;
+                        padding-top: var(--space-12);
+                        padding-bottom: var(--space-12);
+                        gap: var(--space-6);
                     }
 
                     .mission-text-block {
-                        padding-top: 16px;
-                        padding-bottom: 32px;
+                        padding-top: var(--space-4);
+                        padding-bottom: var(--space-8);
                     }
 
                     .mission-text-inner {
-                        gap: 24px;
+                        gap: var(--space-6);
                     }
 
                     .mission-text-group {
-                        gap: 16px;
+                        gap: var(--space-4);
                     }
 
                     .mission-heading {
-                        font-size: 24px;
                         font-weight: 600;
-                        line-height: 32px;
                     }
 
                     .mission-description,
                     .mission-description--narrow {
-                        font-size: 16px;
                         font-weight: 400;
-                        line-height: 24px;
                         text-align: left;
                     }
 
                     .mission-stats-row {
                         display: flex;
                         flex-direction: column;
-                        gap: 16px;
+                        gap: var(--space-4);
                     }
                 }
             `}</style>
