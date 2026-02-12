@@ -1,143 +1,188 @@
-# Code Organization & Anti-Redundancy Checklist
+# MEDELISE — Project Architecture Checklist
 
-Use this checklist before committing code to ensure zero redundancy.
+> **Last updated:** 2026-02-11  
+> **Stack:** Next.js 16.1.6 · React 19.2.3 · Tailwind CSS v4 · styled-jsx · TypeScript  
+> **Design System:** SpheraOS (globals.css)
 
-## 🔍 Pre-Commit Checks
+---
 
-### Component Redundancy
-- [ ] Searched for similar components in `src/components/`
-- [ ] No duplicate component logic exists
-- [ ] Common patterns extracted to shared components
-- [ ] Variants use single component with props, not separate files
+## 1. Global Design System — `globals.css`
 
-### Style Redundancy
-- [ ] No repeated Tailwind class combinations (3+ uses)
-- [ ] Common styles extracted to CSS utilities or components
-- [ ] All colors use design tokens from `src/styles/tokens/`
-- [ ] No hardcoded spacing values
+### 1.1 CSS Variables (`:root`)
 
-### Logic Redundancy
-- [ ] No duplicate hooks or utilities
-- [ ] Common logic extracted to `src/hooks/` or `src/lib/utils/`
-- [ ] API calls use shared client from `src/lib/api/`
-- [ ] Form validation uses shared schemas
+| Token | Value / Formula | Status |
+|---|---|---|
+| `--color-primary` | `#213170` | ✅ |
+| `--color-accent` | `#FE5D16` | ✅ |
+| `--color-secondary` | `#BDE0FF` | ✅ |
+| `--color-neutral-dark` | `#232123` | ✅ |
+| `--color-success` | `#10B981` | ✅ |
+| `--color-error` | `#E11D48` | ✅ |
+| `--color-warning` | `#F59E0B` | ✅ |
+| `--color-info` | `#0EA5E9` | ✅ |
+| `--color-surface-light` | `#F8F9FA` | ✅ |
+| `--color-surface-border` | `#E5E7EB` | ✅ |
+| `--color-white` | `#FFFFFF` | ✅ |
+| `--font-brand` | Michroma | ✅ |
+| `--font-body` | Inter | ✅ |
+| `--space-section-px` | clamp 16px→112px (375→1440) | ✅ **AUTHORITATIVE** |
+| `--space-nav-x` | clamp 16px→32px (375→1440) | ✅ used by Navbar |
 
-### Import Redundancy
-- [ ] Imports organized (external, internal, relative, types)
-- [ ] No duplicate imports in same file
-- [ ] Barrel exports used where appropriate
-- [ ] Import aliases (`@/*`) used consistently
+### 1.2 Utility Classes
 
-### Icon Redundancy
-- [ ] Icon categorized correctly in `public/icons/`
-- [ ] Icon name follows convention: `{category}-{descriptor}.svg`
-- [ ] No duplicate icon files
-- [ ] Icon uses `viewBox="0 0 24 24"` and `currentColor`
+| Class | Purpose | Status |
+|---|---|---|
+| `.section-padding` | Fluid horizontal padding via `--space-section-px` | ✅ |
+| `.font-brand` / `.font-body` | Typography | ✅ |
+| `.text-primary` / `.bg-primary` | Color | ✅ |
+| `.text-accent` / `.bg-accent` | Color | ✅ |
+| `.text-secondary` / `.bg-secondary` | Color | ✅ |
+| `.text-neutral-dark` / `.bg-neutral-dark` | Color | ✅ |
+| `.btn-cta` | Orange CTA button | ✅ |
+| `.btn-primary` | Indigo button | ✅ |
 
-### Type Redundancy
-- [ ] Types defined in `src/types/` if shared
-- [ ] No duplicate type definitions
-- [ ] Extends existing types where possible
-- [ ] Use discriminated unions over multiple interfaces
+### 1.3 Brand Rules (Inviolabile)
 
-### Constant Redundancy
-- [ ] Magic numbers extracted to constants
-- [ ] Magic strings extracted to enums/constants
-- [ ] Constants in `src/lib/constants.ts` if global
-- [ ] No duplicate constant definitions
+- [x] Orange (`#FE5D16`) → EXCLUSIV pentru CTA
+- [x] Pe Indigo (`#213170`) → DOAR alb sau Baby Blue (`#BDE0FF`)
+- [x] Michroma pt branding, Inter pt body
 
-## 🎯 Specific Checks
+---
 
-### Before Adding Component
-```bash
-# Search for similar patterns
-grep -r "className.*<pattern>" src/components/
+## 2. Layout Architecture
+
+### 2.1 Root Layout — `src/app/layout.tsx`
+
+| Item | Status |
+|---|---|
+| Google Fonts: Inter, Michroma, Montserrat, DM Sans | ✅ |
+| CSS variables attached to `<body>` | ✅ |
+| `<Navbar />` rendered before `{children}` | ✅ |
+| `lang="ro"` attribute | ✅ |
+
+### 2.2 Homepage — `src/app/page.tsx`
+
+| Section | Component | `.section-padding` | Status |
+|---|---|---|---|
+| Hero | `<HeroSection />` | ✅ | ✅ |
+| Mission Stats | `<MissionStatsSection />` | ✅ | ✅ |
+| Why Choose Us | `<WhyChooseUsSection />` | ✅ | ✅ |
+
+### 2.3 Sub-pages
+
+| Route | File | Status |
+|---|---|---|
+| `/cariera` | `src/app/cariera/page.tsx` | 🔲 Empty shell |
+| `/contact` | `src/app/contact/page.tsx` | 🔲 Empty shell |
+| `/despre-noi` | `src/app/despre-noi/page.tsx` | 🔲 Empty shell |
+
+---
+
+## 3. Navbar System — `src/components/layout/`
+
+| File | Breakpoint | Status |
+|---|---|---|
+| `DesktopNav.tsx` | ≥1024px, uses `--space-nav-x` | ✅ |
+| `TabletNav.tsx` | 768–1023px | ✅ |
+| `MobileNav.tsx` | <768px | ✅ |
+| `Navbar.tsx` | Orchestrator | ✅ |
+| `Logo.tsx` / `BookNowButton.tsx` / `SearchIcon.tsx` / `ChevronDown.tsx` / `MenuButton.tsx` / `ArrowCircleIcon.tsx` | Shared components | ✅ |
+
+---
+
+## 4. Section Components
+
+### 4.1 HeroSection — `src/components/HeroSection.tsx`
+
+- [x] Horizontal padding via `.section-padding`
+- [x] Fluid `clamp()` typography (eyebrow, heading, subtitle)
+- [x] Watch image hidden ≤1024px
+- [x] CTA button (Indigo, hover darken)
+
+### 4.2 MissionStatsSection — `src/components/MissionStatsSection.tsx`
+
+- [x] Horizontal padding via `.section-padding`
+- [x] 4 stat cards: row (desktop) → 2×2 grid (tablet) → stacked (mobile)
+- [x] Uses `<StatCard />` reusable component
+
+### 4.3 WhyChooseUsSection — `src/components/WhyChooseUsSection.tsx`
+
+- [x] Horizontal padding via `.section-padding`
+- [x] 6 feature cards: 3-col (desktop) → 2-col (tablet) → 1-col (mobile)
+- [x] Uses `<FeatureCard />` reusable component
+
+---
+
+## 5. Reusable UI Components — `src/components/ui/`
+
+| Component | Props | Status |
+|---|---|---|
+| `StatCard.tsx` | `label`, `value` | ✅ |
+| `FeatureCard.tsx` | `title`, `description`, `elevated?` | ✅ |
+
+---
+
+## 6. Global Fluid Padding — Compliance
+
+| Section | `.section-padding` | Local override | Compliant |
+|---|---|---|---|
+| HeroSection | ✅ | ❌ None | ✅ |
+| MissionStatsSection | ✅ | ❌ None | ✅ |
+| WhyChooseUsSection | ✅ | ❌ None | ✅ |
+| Navbar | `--space-nav-x` (separate) | N/A | ✅ |
+
+---
+
+## 7. Assets — `public/`
+
+| File | Used By | Status |
+|---|---|---|
+| `iwatch-hero.png` | HeroSection | ✅ |
+| `iwatch.png` | WhyChooseUsSection | ✅ |
+| `iwatch_ultra_medelise.png` | WhyChooseUsSection | ✅ |
+| `icon.png` | Favicon | ✅ |
+| `icons/` (7 files) | Nav icons | ✅ |
+
+---
+
+## 8. Dependencies
+
+| Package | Version | Purpose | Status |
+|---|---|---|---|
+| `next` | 16.1.6 | Framework | ✅ |
+| `react` / `react-dom` | 19.2.3 | UI | ✅ |
+| `tailwindcss` | v4 | CSS utilities | ✅ |
+| `eslint` + config | v9 | Linting | ✅ |
+| `prettier` + plugin | 3.8.1 | Formatting | ✅ |
+
+---
+
+## 9. Pending — Future Work
+
+### 🔴 Critical
+- [ ] Sub-pages empty (`/cariera`, `/contact`, `/despre-noi`)
+- [ ] No footer section
+
+### 🟢 Future Sections
+- [ ] Services / IV Drip Therapy
+- [ ] Team / About
+- [ ] Testimonials
+- [ ] Contact form
+- [ ] FAQ
+- [ ] Footer
+
+---
+
+## 10. Fluid Padding Formula
+
+```
+--space-section-px = clamp(16px, calc(16px + 96 × (100vw - 375px) / 1065), 112px)
+
+  375px →  16px
+  562px →  33px
+  768px →  52px
+ 1024px →  74px
+ 1440px → 112px
 ```
 
-### Before Adding Hook
-```bash
-# Search for similar hooks
-grep -r "use[A-Z]" src/hooks/
-```
-
-### Before Adding Utility
-```bash
-# Search for similar functions
-grep -r "export function" src/lib/
-```
-
-### Before Adding Icon
-```bash
-# Check if icon exists
-find public/icons/ -name "*<keyword>*"
-```
-
-## ✅ Quality Gates
-
-All must pass before commit:
-- [ ] TypeScript: `npm run type-check` - No errors
-- [ ] Linting: `npm run lint` - No errors
-- [ ] Formatting: `npm run format:check` - Passes
-- [ ] Build: `npm run build` - Success
-- [ ] No `.only` in tests
-- [ ] No `console.log` statements
-- [ ] No commented code blocks
-- [ ] All TODOs have issue numbers
-
-## 🚫 Common Redundancy Patterns to Avoid
-
-### ❌ Duplicate Buttons
-```tsx
-// Wrong
-<button className="bg-blue-600 text-white px-4 py-2 rounded">
-<button className="bg-gray-100 text-gray-900 px-4 py-2 rounded">
-
-// Right
-<Button variant="primary">
-<Button variant="secondary">
-```
-
-### ❌ Duplicate Fetch Logic  
-```tsx
-// Wrong
-useEffect(() => { fetch('/api/user')... }, [])
-useEffect(() => { fetch('/api/user')... }, [])
-
-// Right
-const user = useUser()  // Shared hook
-```
-
-### ❌ Duplicate Styles
-```tsx
-// Wrong (used 5+ times)
-className="flex items-center justify-between"
-
-// Right
-className="flex-between"  // CSS utility
-```
-
-### ❌ Duplicate Types
-```tsx
-// Wrong
-interface User { id: string; name: string }
-interface UserData { id: string; name: string }
-
-// Right
-import type { User } from '@/types'
-```
-
-## 📊 Redundancy Metrics
-
-Target: **0% code redundancy**
-
-Track with:
-```bash
-# Find duplicate code blocks
-npx jscpd src/
-
-# Find duplicate npm packages
-npx depcheck
-
-# Find unused exports
-npx ts-prune
-```
+> Apply via `className="... section-padding"` or use `var(--space-section-px)` directly.
