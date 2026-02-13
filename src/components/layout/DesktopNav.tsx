@@ -66,7 +66,8 @@ export default function DesktopNav() {
                 ref={navRef}
                 className="absolute top-0 left-0 z-50 w-full"
                 style={{
-                    // ... style ...
+                    backgroundColor: isFullIndigo ? '#213170' : 'transparent',
+                    transition: 'background-color 300ms ease-in-out',
                 }}
             >
                 {/* News Ticker Bar - Added above Top Bar */}
@@ -135,6 +136,7 @@ export default function DesktopNav() {
                     <div
                         className="overflow-hidden"
                         style={{
+                            backgroundColor: '#213170',
                             opacity: isAnimating ? 1 : 0,
                             transform: isAnimating ? 'translateY(0)' : 'translateY(-20px)',
                             maxHeight: isAnimating ? '600px' : '0px',

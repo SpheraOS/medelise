@@ -63,11 +63,23 @@ export default function HeroSection() {
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
+                }
+
+                .hero-subtitle-cta {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
                     gap: 32px;
+                    width: 100%;
+                    max-width: 600px;
+                    align-self: flex-start; /* Left edge */
+                    margin-top: auto; /* Push to bottom */
                 }
 
                 .hero-heading {
                     align-self: stretch;
+                    max-width: 728px;
                     color: var(--color-primary);
                     /* User requested 50px/65px. 
                        --text-h1 is ~48px on desktop (clamp 32-48). Close enough, using token for consistency. */
@@ -80,7 +92,7 @@ export default function HeroSection() {
 
                 .hero-subtitle {
                     width: 100%;
-                    max-width: 600px;
+                    max-width: 448px;
                     color: var(--color-primary);
                     /* User requested 20px/28px. 
                        --text-body-lg is ~20px on desktop. */
@@ -259,30 +271,29 @@ export default function HeroSection() {
                 </div>
 
                 <div className="hero-content">
-                    {/* Top Left Block */}
+                    {/* Heading + Subtitle + CTA grouped, pushed to bottom-left */}
                     <div className="hero-top-block">
-                        <div className="hero-text-group">
-                            <h1 className="hero-heading">
-                                Vizite medicale acasă, programabile în sub 60 de secunde.
-                            </h1>
+                        <h1 className="hero-heading">
+                            Vizite medicale acasă, programabile în sub 60 de secunde.
+                        </h1>
+
+                        <div className="hero-subtitle-cta">
                             <p className="hero-subtitle">
                                 Creează-ți contul gratuit în Portalul MEDELISE și programează o vizită medicală acasă, fără apeluri sau cozi.
                             </p>
-                        </div>
-
-                        {/* CTA */}
-                        <div className="hero-cta-group">
-                            <div className="hero-btn-primary">
-                                <span className="hero-btn-text">Creeaza contul gratuit</span>
-                            </div>
-                            <div className="hero-btn-icon-wrapper">
-                                <Image
-                                    src={ICONS.arrowUpRight}
-                                    alt=""
-                                    width={32}
-                                    height={32}
-                                    className="hero-icon"
-                                />
+                            <div className="hero-cta-group">
+                                <div className="hero-btn-primary">
+                                    <span className="hero-btn-text">Creeaza contul gratuit</span>
+                                </div>
+                                <div className="hero-btn-icon-wrapper">
+                                    <Image
+                                        src={ICONS.arrowUpRight}
+                                        alt=""
+                                        width={32}
+                                        height={32}
+                                        className="hero-icon"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
