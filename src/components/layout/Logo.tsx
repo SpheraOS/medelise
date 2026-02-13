@@ -8,26 +8,21 @@ interface LogoProps {
 }
 
 export default function Logo({ variant = 'full', white = false, className = '' }: LogoProps) {
-  const logoSrc =
-    variant === 'full'
-      ? '/icons/medelise-logo-full.png'
-      : '/icons/medelise-wordmark.png';
-
-  const dimensions =
-    variant === 'full'
-      ? { width: 108, height: 38 }
-      : { width: 80, height: 12 };
+  // If variant is 'wordmark', usually distinct, but for Michroma text logo we might just 
+  // use the full text. The user request specific "MEDELISE".
 
   return (
-    <Link href="/" className={`flex-shrink-0 ${className}`}>
-      <Image
-        src={logoSrc}
-        alt="MEDELISE"
-        width={dimensions.width}
-        height={dimensions.height}
-        priority
-        style={white ? { filter: 'brightness(0) invert(1)' } : undefined}
-      />
+    <Link href="/" className={`flex-shrink-0 flex items-center ${className}`}>
+      <span style={{
+        fontFamily: 'var(--font-michroma)',
+        fontSize: '24px',
+        textTransform: 'uppercase',
+        color: white ? 'var(--color-white)' : 'var(--color-primary)',
+        letterSpacing: '0.05em',
+        lineHeight: 1
+      }}>
+        MEDELISE
+      </span>
     </Link>
   );
 }

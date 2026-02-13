@@ -33,6 +33,13 @@ export const IMAGES = {
         /** Apple Watch Ultra with Medelise notifications on screen */
         iwatchNotifications: '/images/watch/iwatch-ultra-notifications.png',
     },
+    /** Hero Section Assets */
+    hero: {
+        background: '/images/hero/Gemini_Generated_Image_zcoer0zcoer0zcoe.jpeg',
+        avatar1: '/images/hero/avatar-1.png',
+        avatar2: '/images/hero/avatar-2.png',
+        avatar3: '/images/hero/avatar-3.png',
+    },
 } as const;
 
 /** Type-safe image section key */

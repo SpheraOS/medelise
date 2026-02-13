@@ -42,6 +42,7 @@ export const ICONS = {
 
     /** Timer — countdown / scheduling (portal section) */
     timer: '/icons/icon-timer.svg',
+    arrowUpRight: '/icons/icon-arrow-up-right.svg',
 } as const;
 
 /** Type-safe icon key */

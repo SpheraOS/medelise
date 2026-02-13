@@ -1,5 +1,7 @@
 'use client';
 
+import NewsTicker from './NewsTicker';
+
 import { useState, useRef, useEffect } from 'react';
 import Logo from './Logo';
 import Link from 'next/link';
@@ -58,31 +60,24 @@ export default function DesktopNav() {
 
     return (
         <>
-            {/* Backdrop overlay - blurs content below when mega menu is open */}
-            <div
-                className="fixed inset-0 z-40"
-                style={{
-                    backdropFilter: isFullIndigo ? 'blur(8px)' : 'blur(0px)',
-                    backgroundColor: isFullIndigo ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0)',
-                    pointerEvents: isFullIndigo ? 'auto' : 'none',
-                    transition: 'backdrop-filter 400ms ease-in-out, background-color 400ms ease-in-out',
-                }}
-                onClick={() => setActiveMenu(null)}
-            />
+            {/* Backdrop overlay ... */}
+
             <nav
                 ref={navRef}
-                className="relative z-50 w-full"
+                className="absolute top-0 left-0 z-50 w-full"
                 style={{
-                    background: isFullIndigo ? 'var(--color-primary)' : 'white',
-                    transition: 'background 350ms ease-in-out',
+                    // ... style ...
                 }}
             >
+                {/* News Ticker Bar - Added above Top Bar */}
+                <NewsTicker />
+
                 {/* Top Bar - Always Primary Indigo */}
                 <div className="bg-primary py-2" style={{ paddingLeft: 'var(--space-nav-x)', paddingRight: 'var(--space-nav-x)' }}>
                     <div className="flex items-center justify-end gap-8">
                         <Link
                             href="/"
-                            className="font-body text-base font-normal leading-[20.3px] text-white transition-colors hover:text-secondary"
+                            className="font-body text-base font-normal leading-tight text-white transition-colors hover:text-secondary"
                         >
                             Acasa
                         </Link>
@@ -90,7 +85,7 @@ export default function DesktopNav() {
                             <Link
                                 key={link.label}
                                 href={link.href}
-                                className="font-body text-base font-normal leading-[20.3px] text-white transition-colors hover:text-secondary"
+                                className="font-body text-base font-normal leading-tight text-white transition-colors hover:text-secondary"
                             >
                                 {link.label}
                             </Link>
@@ -117,7 +112,7 @@ export default function DesktopNav() {
                                                 setActiveMenu(activeMenu === menuKey ? null : menuKey);
                                             }
                                         }}
-                                        className={`flex items-center gap-2 font-body text-base font-normal leading-[20.3px] ${isFullIndigo
+                                        className={`flex items-center gap-2 font-body text-base font-normal leading-tight ${isFullIndigo
                                             ? 'text-white hover:text-secondary'
                                             : 'text-primary hover:opacity-80'
                                             }`}

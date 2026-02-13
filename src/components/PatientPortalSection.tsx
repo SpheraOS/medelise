@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import { ICONS } from '@/constants/icons';
 import { IMAGES } from '@/constants/images';
@@ -34,6 +35,7 @@ const checklistItems = [
  * Governance: 100 % design-token compliant (globals.css)
  * ═══════════════════════════════════════════════════════════════════════════ */
 export default function PatientPortalSection() {
+  const [activeTab, setActiveTab] = useState(0);
   return (
     <>
       <section
@@ -54,9 +56,11 @@ export default function PatientPortalSection() {
             {/* ─── Tab Bar ─── */}
             <nav className="portal-tabs" aria-label="Servicii portal">
               {portalTabs.map((tab, i) => (
-                <div
+                <button
                   key={i}
-                  className={`portal-tab${i === 0 ? ' portal-tab--active' : ''}`}
+                  type="button"
+                  className={`portal-tab${i === activeTab ? ' portal-tab--active' : ''}`}
+                  onClick={() => setActiveTab(i)}
                 >
                   <Image
                     src={tab.icon}
@@ -67,7 +71,7 @@ export default function PatientPortalSection() {
                     aria-hidden="true"
                   />
                   <span className="portal-tab-label">{tab.label}</span>
-                </div>
+                </button>
               ))}
             </nav>
 
@@ -172,10 +176,10 @@ export default function PatientPortalSection() {
 
         .portal-display {
           color: var(--color-primary);
-          font-size: var(--text-xl);
+          font-size: var(--text-h2);
           font-family: var(--font-heading);
           font-weight: 600;
-          line-height: 1.4;
+          line-height: 1.25;
           margin: 0;
         }
 
@@ -208,8 +212,20 @@ export default function PatientPortalSection() {
           gap: var(--space-3);
           padding: var(--space-3) var(--space-3);
           cursor: pointer;
+          border: none;
+          background: transparent;
+          text-align: left;
           border-bottom: 0.4px solid var(--color-primary);
-          transition: border-color 0.2s ease, color 0.2s ease;
+          transition: border-color 0.25s ease, color 0.25s ease,
+                      background-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .portal-tab:hover {
+          background: rgba(33, 49, 112, 0.06);
+        }
+
+        .portal-tab:active {
+          transform: scale(0.97);
         }
 
         .portal-tab--active {
@@ -217,7 +233,7 @@ export default function PatientPortalSection() {
         }
 
         .portal-tab--active .portal-tab-label {
-          color: var(--color-accent);
+          color: var(--color-primary);
           font-weight: 500;
         }
 
@@ -230,10 +246,10 @@ export default function PatientPortalSection() {
         .portal-tab-label {
           flex: 1;
           color: var(--color-primary);
-          font-size: var(--text-xs);
+          font-size: var(--text-body);
           font-family: var(--font-heading);
-          font-weight: 400;
-          line-height: 1.33;
+          font-weight: 500;
+          line-height: 1.4;
         }
 
         /* ═══════════════════════════════════════════════
@@ -291,9 +307,9 @@ export default function PatientPortalSection() {
         }
 
         .portal-check-icon {
-          width: 12px;
-          height: 12px;
-          min-width: 12px;
+          width: 16px;
+          height: 16px;
+          min-width: 16px;
           background: var(--color-primary);
           border-radius: var(--radius-full);
           display: flex;
@@ -345,8 +361,7 @@ export default function PatientPortalSection() {
           }
 
           .portal-display {
-            font-size: var(--text-3xl);
-            line-height: 1.29;
+            line-height: 1.25;
           }
 
           /* --- Tabs: scale up icons & labels --- */
@@ -356,7 +371,6 @@ export default function PatientPortalSection() {
           }
 
           .portal-tab-label {
-            font-size: var(--text-sm);
             line-height: 1.43;
           }
 
@@ -395,6 +409,12 @@ export default function PatientPortalSection() {
             font-size: var(--text-sm);
             line-height: 1.43;
           }
+
+          .portal-check-icon {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+          }
         }
 
         /* ═══════════════════════════════════════════════
@@ -413,14 +433,13 @@ export default function PatientPortalSection() {
           }
 
           .portal-display {
-            font-size: var(--text-4xl);
             line-height: var(--lh-heading);
           }
 
           /* --- Tabs: single row --- */
           .portal-tab {
             flex: 1 1 0;
-            border-bottom: 2px solid transparent;
+            border-bottom: 2px solid var(--color-surface-border);
             padding-bottom: var(--space-6);
             padding-left: var(--space-3);
             align-items: flex-start;
@@ -431,7 +450,6 @@ export default function PatientPortalSection() {
           }
 
           .portal-tab-label {
-            font-size: var(--text-lg);
             line-height: 1.4;
           }
 
@@ -463,7 +481,7 @@ export default function PatientPortalSection() {
           }
 
           .portal-info-heading {
-            font-size: var(--text-xl);
+            font-size: var(--text-h4);
             font-weight: 600;
             line-height: var(--lh-heading);
           }
@@ -475,6 +493,12 @@ export default function PatientPortalSection() {
           .portal-cta-btn {
             font-size: var(--text-body);
             padding: var(--space-3) var(--space-8);
+          }
+
+          .portal-check-icon {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
           }
         }
       `}</style>

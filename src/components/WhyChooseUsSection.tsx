@@ -110,7 +110,7 @@ export default function WhyChooseUsSection() {
 
                 .why-heading {
                     color: var(--color-primary);
-                    font-size: var(--text-3xl);
+                    font-size: var(--text-h2);
                     font-family: var(--font-heading);
                     font-weight: 700;
                     line-height: var(--lh-heading);
@@ -123,10 +123,10 @@ export default function WhyChooseUsSection() {
                     max-width: 650px;
                     text-align: center;
                     color: var(--color-primary);
-                    font-size: var(--text-lg);
+                    font-size: var(--text-h3);
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: var(--lh-body);
+                    line-height: var(--lh-heading);
                     word-wrap: break-word;
                 }
 
@@ -192,7 +192,7 @@ export default function WhyChooseUsSection() {
                     border-radius: var(--radius-lg);
                     text-align: center;
                     color: var(--color-primary);
-                    font-size: var(--text-xl);
+                    font-size: var(--text-h4);
                     font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: var(--lh-heading);
@@ -278,7 +278,7 @@ export default function WhyChooseUsSection() {
                     .why-watch-banner__quote-text {
                         text-align: center;
                         color: var(--color-primary);
-                        font-size: var(--text-xl);
+                        font-size: var(--text-h4);
                         font-family: var(--font-heading);
                         font-weight: 600;
                         line-height: var(--lh-heading);
@@ -338,11 +338,11 @@ export default function WhyChooseUsSection() {
                                 <h2 className="why-heading">
                                     De ce să alegi serviciile noastre?
                                 </h2>
-                                <p className="why-subtitle">
+                                <h3 className="why-subtitle">
                                     Mai simplu. Mai rapid. Mai sigur.
                                     <br />
                                     Totul pentru sănătatea ta.
-                                </p>
+                                </h3>
                             </div>
                         </div>
 
@@ -369,9 +369,9 @@ export default function WhyChooseUsSection() {
                                         height={400}
                                     />
                                 </div>
-                                <div className="why-quote">
+                                <h4 className="why-quote">
                                     {'„Smart alerts. Real care."'}
-                                </div>
+                                </h4>
                             </div>
 
                             <div className="why-card-col">
@@ -399,9 +399,9 @@ export default function WhyChooseUsSection() {
                                         height={270}
                                     />
                                     <div className="why-watch-banner__quote">
-                                        <span className="why-watch-banner__quote-text">
+                                        <h4 className="why-watch-banner__quote-text">
                                             {'„Smart alerts. Real care."'}
-                                        </span>
+                                        </h4>
                                     </div>
                                 </div>
 

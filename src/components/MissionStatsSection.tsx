@@ -83,7 +83,7 @@ export default function MissionStatsSection() {
                     align-self: stretch;
                     text-align: center;
                     color: var(--color-primary);
-                    font-size: var(--text-3xl);
+                    font-size: var(--text-h2);
                     font-family: var(--font-heading);
                     font-weight: 700;
                     line-height: var(--lh-heading);

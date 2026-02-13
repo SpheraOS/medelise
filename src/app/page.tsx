@@ -19,8 +19,8 @@ export default function Home() {
       <MissionStatsSection />
       <WhyChooseUsSection />
       <QualitySection />
-      <PatientPortalSection />
       <TestimonialsSection />
+      <PatientPortalSection />
     </main>
   );
 }

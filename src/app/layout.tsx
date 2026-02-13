@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Michroma, Montserrat, DM_Sans } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
+import { DM_Sans, Poppins, Michroma } from "next/font/google";
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
@@ -12,20 +16,10 @@ const inter = Inter({
 const michroma = Michroma({
   variable: "--font-michroma",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400"],
 });
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
   title: "Medelise - MEDVITA HEALTH SOLUTIONS",
@@ -38,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ro" className={`${inter.variable} ${michroma.variable} ${montserrat.variable} ${dmSans.variable}`}>
+    <html lang="ro" className={`${dmSans.variable} ${poppins.variable} ${michroma.variable}`}>
       <body className="antialiased">
         <Navbar />
         {children}

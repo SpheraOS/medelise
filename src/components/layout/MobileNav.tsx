@@ -50,7 +50,7 @@ export default function MobileNav() {
             >
                 {/* ── SUB-MENU VIEW ── */}
                 {currentSub ? (
-                    <div className="flex w-full flex-col" style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 32, paddingBottom: 32 }}>
+                    <div className="flex w-full flex-col" style={{ paddingLeft: 'var(--space-section-px)', paddingRight: 'var(--space-section-px)', paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-8)' }}>
                         {/* Row 1: Logo + Close × */}
                         <div className="flex w-full items-center justify-between">
                             <Logo variant="full" white />
@@ -83,10 +83,10 @@ export default function MobileNav() {
                             <span
                                 className="text-white"
                                 style={{
-                                    fontSize: 14,
+                                    fontSize: 'var(--text-sm)',
                                     fontFamily: 'var(--font-body)',
                                     fontWeight: 400,
-                                    lineHeight: '20.3px',
+                                    lineHeight: '1.45',
                                 }}
                             >
                                 Înapoi la Meniu
@@ -125,10 +125,7 @@ export default function MobileNav() {
                                         className="flex items-center justify-between transition-colors hover:bg-white/5"
                                         style={{
                                             height: 75,
-                                            paddingLeft: 24,
-                                            paddingRight: 24,
-                                            paddingTop: 14,
-                                            paddingBottom: 14,
+                                            padding: 'var(--space-4) var(--space-6)',
                                             border: '1px solid white',
                                         }}
                                     >
@@ -136,10 +133,10 @@ export default function MobileNav() {
                                             <span
                                                 className="text-white"
                                                 style={{
-                                                    fontSize: 14,
+                                                    fontSize: 'var(--text-sm)',
                                                     fontFamily: 'var(--font-body)',
                                                     fontWeight: 700,
-                                                    lineHeight: '20.3px',
+                                                    lineHeight: '1.45',
                                                 }}
                                             >
                                                 {item.title}
@@ -147,10 +144,10 @@ export default function MobileNav() {
                                             <span
                                                 className="text-white"
                                                 style={{
-                                                    fontSize: 12,
+                                                    fontSize: 'var(--text-xs)',
                                                     fontFamily: 'var(--font-body)',
                                                     fontWeight: 400,
-                                                    lineHeight: '20.3px',
+                                                    lineHeight: '1.4',
                                                 }}
                                             >
                                                 {item.subtitle}
@@ -166,7 +163,7 @@ export default function MobileNav() {
                     /* ── MAIN MENU VIEW ── */
                     <div
                         className="flex w-full flex-col"
-                        style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 32, paddingBottom: 32, gap: 32 }}
+                        style={{ paddingLeft: 'var(--space-section-px)', paddingRight: 'var(--space-section-px)', paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-8)', gap: 'var(--space-8)' }}
                     >
                         {/* Header section */}
                         <div className="flex w-full flex-col" style={{ gap: 32 }}>
@@ -193,10 +190,10 @@ export default function MobileNav() {
                                     <p
                                         className="text-white"
                                         style={{
-                                            fontSize: 14,
+                                            fontSize: 'var(--text-body)',
                                             fontFamily: 'var(--font-body)',
                                             fontWeight: 400,
-                                            lineHeight: '20.3px',
+                                            lineHeight: '1.6',
                                         }}
                                     >
                                         Începe-ți viața fără limite.
@@ -204,10 +201,10 @@ export default function MobileNav() {
                                     <p
                                         className="text-white"
                                         style={{
-                                            fontSize: 14,
+                                            fontSize: 'var(--text-body)',
                                             fontFamily: 'var(--font-body)',
                                             fontWeight: 400,
-                                            lineHeight: '20.3px',
+                                            lineHeight: '1.6',
                                         }}
                                     >
                                         Programează-ți tratamentul astăzi la unul dintre partenerii locali
@@ -230,10 +227,7 @@ export default function MobileNav() {
                                             className="flex w-full cursor-pointer items-center justify-between transition-colors hover:bg-white/5"
                                             style={{
                                                 height: 74,
-                                                paddingLeft: 24,
-                                                paddingRight: 24,
-                                                paddingTop: 16,
-                                                paddingBottom: 16,
+                                                padding: 'var(--space-4) var(--space-6)',
                                                 outline: '1px solid white',
                                                 outlineOffset: '-1px',
                                             }}
@@ -241,10 +235,10 @@ export default function MobileNav() {
                                             <span
                                                 className="text-white"
                                                 style={{
-                                                    fontSize: 16,
+                                                    fontSize: 'var(--text-body)',
                                                     fontFamily: 'var(--font-body)',
                                                     fontWeight: 400,
-                                                    lineHeight: '20.3px',
+                                                    lineHeight: '1.6',
                                                 }}
                                             >
                                                 {item.label}
@@ -265,10 +259,7 @@ export default function MobileNav() {
                                             className="flex items-center transition-colors hover:bg-white/5"
                                             style={{
                                                 height: 74,
-                                                paddingLeft: 24,
-                                                paddingRight: 24,
-                                                paddingTop: 16,
-                                                paddingBottom: 16,
+                                                padding: 'var(--space-4) var(--space-6)',
                                                 outline: '1px solid white',
                                                 outlineOffset: '-1px',
                                             }}
@@ -276,10 +267,10 @@ export default function MobileNav() {
                                             <span
                                                 className="text-white"
                                                 style={{
-                                                    fontSize: 16,
+                                                    fontSize: 'var(--text-body)',
                                                     fontFamily: 'var(--font-body)',
                                                     fontWeight: 400,
-                                                    lineHeight: '20.3px',
+                                                    lineHeight: '1.6',
                                                 }}
                                             >
                                                 {item.label}
@@ -299,10 +290,7 @@ export default function MobileNav() {
                                             className="flex items-center transition-colors hover:bg-white/5"
                                             style={{
                                                 height: 74,
-                                                paddingLeft: 24,
-                                                paddingRight: 24,
-                                                paddingTop: 16,
-                                                paddingBottom: 16,
+                                                padding: 'var(--space-4) var(--space-6)',
                                                 outline: '1px solid white',
                                                 outlineOffset: '-1px',
                                             }}
@@ -310,10 +298,10 @@ export default function MobileNav() {
                                             <span
                                                 className="text-white"
                                                 style={{
-                                                    fontSize: 16,
+                                                    fontSize: 'var(--text-body)',
                                                     fontFamily: 'var(--font-body)',
                                                     fontWeight: 400,
-                                                    lineHeight: '20.3px',
+                                                    lineHeight: '1.6',
                                                 }}
                                             >
                                                 {link.label}

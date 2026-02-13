@@ -50,7 +50,7 @@ export default function TabletNav() {
             >
                 {/* ── SUB-MENU VIEW ── */}
                 {currentSub ? (
-                    <div className="flex w-full flex-col" style={{ paddingLeft: 40, paddingRight: 40, paddingTop: 32, paddingBottom: 32 }}>
+                    <div className="flex w-full flex-col" style={{ paddingLeft: 'var(--space-section-px)', paddingRight: 'var(--space-section-px)', paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-8)' }}>
                         {/* Row 1: Logo + Close × */}
                         <div className="flex w-full items-center justify-between">
                             <Logo variant="full" white />
@@ -83,10 +83,10 @@ export default function TabletNav() {
                             <span
                                 className="text-white"
                                 style={{
-                                    fontSize: 14,
+                                    fontSize: 'var(--text-sm)',
                                     fontFamily: 'var(--font-body)',
                                     fontWeight: 400,
-                                    lineHeight: '20.3px',
+                                    lineHeight: '1.45',
                                 }}
                             >
                                 Înapoi la Meniu
@@ -106,10 +106,10 @@ export default function TabletNav() {
                                 <h2
                                     className="text-white underline"
                                     style={{
-                                        fontSize: 24,
+                                        fontSize: 'var(--text-h3)',
                                         fontFamily: 'var(--font-body)',
                                         fontWeight: 600,
-                                        lineHeight: '20.3px',
+                                        lineHeight: '1.25',
                                     }}
                                 >
                                     {currentSub.heading}
@@ -125,10 +125,10 @@ export default function TabletNav() {
                                         className="flex items-center justify-between transition-colors hover:bg-white/5"
                                         style={{
                                             height: 75,
-                                            paddingLeft: 40,
-                                            paddingRight: 40,
-                                            paddingTop: 14,
-                                            paddingBottom: 14,
+                                            paddingLeft: 'var(--space-section-px)',
+                                            paddingRight: 'var(--space-section-px)',
+                                            paddingTop: 'var(--space-4)',
+                                            paddingBottom: 'var(--space-4)',
                                             border: '1px solid white',
                                         }}
                                     >
@@ -136,10 +136,10 @@ export default function TabletNav() {
                                             <span
                                                 className="text-white"
                                                 style={{
-                                                    fontSize: 16,
+                                                    fontSize: 'var(--text-body)',
                                                     fontFamily: 'var(--font-body)',
                                                     fontWeight: 700,
-                                                    lineHeight: '20.3px',
+                                                    lineHeight: '1.6',
                                                 }}
                                             >
                                                 {item.title}
@@ -147,10 +147,10 @@ export default function TabletNav() {
                                             <span
                                                 className="text-white"
                                                 style={{
-                                                    fontSize: 14,
+                                                    fontSize: 'var(--text-sm)',
                                                     fontFamily: 'var(--font-body)',
                                                     fontWeight: 400,
-                                                    lineHeight: '20.3px',
+                                                    lineHeight: '1.45',
                                                 }}
                                             >
                                                 {item.subtitle}
@@ -164,7 +164,7 @@ export default function TabletNav() {
                     </div>
                 ) : (
                     /* ── MAIN MENU VIEW ── */
-                    <div className="flex w-full flex-col items-center px-10 pt-8 pb-8">
+                    <div className="flex w-full flex-col items-center pt-8 pb-8" style={{ paddingLeft: 'var(--space-section-px)', paddingRight: 'var(--space-section-px)' }}>
                         {/* Header: Logo + Close */}
                         <div className="flex w-full items-center justify-between">
                             <Logo variant="full" white />
@@ -187,10 +187,10 @@ export default function TabletNav() {
                             <p
                                 className="text-white"
                                 style={{
-                                    fontSize: 14,
+                                    fontSize: 'var(--text-sm)',
                                     fontFamily: 'var(--font-body)',
                                     fontWeight: 400,
-                                    lineHeight: '20.3px',
+                                    lineHeight: '1.45',
                                 }}
                             >
                                 Începe-ți viața fără limite.
@@ -198,10 +198,10 @@ export default function TabletNav() {
                             <p
                                 className="text-white"
                                 style={{
-                                    fontSize: 14,
+                                    fontSize: 'var(--text-sm)',
                                     fontFamily: 'var(--font-body)',
                                     fontWeight: 400,
-                                    lineHeight: '20.3px',
+                                    lineHeight: '1.45',
                                 }}
                             >
                                 Programează-ți tratamentul astăzi la unul dintre partenerii locali
@@ -225,10 +225,10 @@ export default function TabletNav() {
                                     className="flex w-full cursor-pointer items-center justify-between transition-colors hover:bg-white/5"
                                     style={{
                                         height: 74,
-                                        paddingLeft: 40,
-                                        paddingRight: 40,
-                                        paddingTop: 20,
-                                        paddingBottom: 20,
+                                        paddingLeft: 'var(--space-section-px)',
+                                        paddingRight: 'var(--space-section-px)',
+                                        paddingTop: 'var(--space-5)',
+                                        paddingBottom: 'var(--space-5)',
                                         outline: '1px solid white',
                                         outlineOffset: '-1px',
                                     }}
@@ -236,10 +236,10 @@ export default function TabletNav() {
                                     <span
                                         className="text-white"
                                         style={{
-                                            fontSize: 22,
+                                            fontSize: 'var(--text-h4)',
                                             fontFamily: 'var(--font-body)',
                                             fontWeight: 400,
-                                            lineHeight: '20.3px',
+                                            lineHeight: '1.3',
                                         }}
                                     >
                                         {item.label}
@@ -258,10 +258,10 @@ export default function TabletNav() {
                                     className="flex items-center transition-colors hover:bg-white/5"
                                     style={{
                                         height: 74,
-                                        paddingLeft: 40,
-                                        paddingRight: 40,
-                                        paddingTop: 26,
-                                        paddingBottom: 26,
+                                        paddingLeft: 'var(--space-section-px)',
+                                        paddingRight: 'var(--space-section-px)',
+                                        paddingTop: 'var(--space-6)',
+                                        paddingBottom: 'var(--space-6)',
                                         outline: '1px solid white',
                                         outlineOffset: '-1px',
                                     }}
@@ -269,10 +269,10 @@ export default function TabletNav() {
                                     <span
                                         className="text-white"
                                         style={{
-                                            fontSize: 22,
+                                            fontSize: 'var(--text-h4)',
                                             fontFamily: 'var(--font-body)',
                                             fontWeight: 400,
-                                            lineHeight: '20.3px',
+                                            lineHeight: '1.3',
                                         }}
                                     >
                                         {item.label}
@@ -290,10 +290,10 @@ export default function TabletNav() {
                                     className="flex items-center transition-colors hover:bg-white/5"
                                     style={{
                                         height: 74,
-                                        paddingLeft: 40,
-                                        paddingRight: 40,
-                                        paddingTop: 26,
-                                        paddingBottom: 26,
+                                        paddingLeft: 'var(--space-section-px)',
+                                        paddingRight: 'var(--space-section-px)',
+                                        paddingTop: 'var(--space-6)',
+                                        paddingBottom: 'var(--space-6)',
                                         outline: '1px solid white',
                                         outlineOffset: '-1px',
                                     }}
@@ -301,10 +301,10 @@ export default function TabletNav() {
                                     <span
                                         className="text-white"
                                         style={{
-                                            fontSize: 22,
+                                            fontSize: 'var(--text-h4)',
                                             fontFamily: 'var(--font-body)',
                                             fontWeight: 400,
-                                            lineHeight: '20.3px',
+                                            lineHeight: '1.3',
                                         }}
                                     >
                                         {link.label}

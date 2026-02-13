@@ -2,264 +2,318 @@
 
 import Image from 'next/image';
 import { IMAGES } from '@/constants/images';
+import { ICONS } from '@/constants/icons';
 
 /* ── Hero Section ──────────────────────────────────────────────── */
 export default function HeroSection() {
     return (
         <>
             <style jsx>{`
-                /* ─── Fluid base ────────────────────── */
+                /* ─── Base ──────────────────────────── */
                 .hero-section {
                     width: 100%;
-                    padding-top: var(--space-section-py);
-                    padding-bottom: var(--space-section-py);
-                    background: var(--color-white);
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: center;
-                    display: inline-flex;
-                }
-
-                .hero-row {
-                    align-self: stretch;
-                    padding: var(--space-8) 0;
-                    justify-content: space-between;
-                    align-items: center;
-                    display: inline-flex;
-                }
-
-                .hero-inner {
-                    flex: 1 1 0;
-                    justify-content: flex-start;
-                    align-items: center;
-                    gap: var(--space-8);
-                    display: flex;
-                }
-
-                .hero-cols {
-                    flex: 1 1 0;
-                    justify-content: space-between;
-                    align-items: center;
-                    gap: var(--space-16);
-                    display: flex;
-                }
-
-                .hero-text-col {
-                    flex: 1 1 0;
-                    padding-bottom: var(--space-10);
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-start;
-                    gap: var(--space-16);
-                    display: inline-flex;
-                }
-
-                .hero-text-stack {
-                    align-self: stretch;
+                    min-height: 800px;
                     position: relative;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    gap: var(--space-12);
+                    background: var(--color-white);
+                    overflow: hidden;
                     display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                }
+
+                .hero-background {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 0;
+                    /* transform removed for 0deg rotation (Option 2) */
+                }
+
+                .hero-content {
+                    width: 100%;
+                    /* max-width removed to allow full spread as per user request */
+                    height: 100%;
+                    /* pt-210px to clear absolute navbar (Ticker 48px + TopBar ~40px + Nav ~80px) */
+                    padding: 210px var(--space-section-px) 64px var(--space-section-px);
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                }
+
+                /* ─── Top Block: Text + CTA ─────────── */
+                .hero-top-block {
+                    align-self: stretch;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: 64px;
                 }
 
                 .hero-text-group {
-                    align-self: stretch;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    gap: var(--space-8);
+                    width: 100%;
+                    max-width: 800px;
                     display: flex;
-                }
-
-                /* ─── Eyebrow (stacked) ─────────────── */
-                .hero-eyebrow-block {
-                    align-self: stretch;
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    gap: var(--space-2);
-                    display: flex;
+                    gap: 32px;
                 }
 
-                .hero-eyebrow-orange {
-                    align-self: stretch;
-                    text-align: center;
-                    color: var(--color-accent);
-                    font-size: var(--text-2xl);
-                    font-family: var(--font-heading);
-                    font-weight: 600;
-                    line-height: var(--lh-heading);
-                    word-wrap: break-word;
-                }
-
-                .hero-eyebrow-brand {
-                    align-self: stretch;
-                    text-align: center;
-                    color: var(--color-primary);
-                    font-size: var(--text-lg);
-                    font-family: var(--font-brand);
-                    font-weight: 400;
-                    line-height: var(--lh-heading);
-                    word-wrap: break-word;
-                }
-
-                /* ─── Heading ───────────────────────── */
                 .hero-heading {
                     align-self: stretch;
-                    text-align: center;
                     color: var(--color-primary);
-                    font-size: var(--text-3xl);
-                    font-family: var(--font-heading);
-                    font-weight: 600;
-                    line-height: var(--lh-heading);
+                    /* User requested 50px/65px. 
+                       --text-h1 is ~48px on desktop (clamp 32-48). Close enough, using token for consistency. */
+                    font-size: var(--text-h1); 
+                    font-family: var(--font-poppins); /* Poppins mapped to brand/heading */
+                    font-weight: 500;
+                    line-height: 1.3;
                     word-wrap: break-word;
                 }
 
-                /* ─── Subtitle ──────────────────────── */
                 .hero-subtitle {
                     width: 100%;
-                    max-width: var(--max-prose);
-                    text-align: center;
+                    max-width: 600px;
                     color: var(--color-primary);
-                    font-size: var(--text-body);
-                    font-family: var(--font-heading);
+                    /* User requested 20px/28px. 
+                       --text-body-lg is ~20px on desktop. */
+                    font-size: var(--text-body-lg); 
+                    font-family: var(--font-poppins); /* Montserrat mapped via body */
                     font-weight: 500;
-                    line-height: var(--lh-body);
+                    line-height: 1.4;
                     word-wrap: break-word;
                 }
 
-                /* ─── CTA ───────────────────────────── */
-                .hero-cta {
-                    width: 100%;
-                    max-width: 592px;
-                    padding: var(--space-3) var(--space-10);
-                    background: var(--color-primary);
-                    border-radius: var(--radius-main);
-                    flex-direction: column;
+                /* ─── CTA Group ─────────────────────── */
+                .hero-cta-group {
+                    display: inline-flex;
                     justify-content: flex-start;
                     align-items: center;
-                    display: flex;
+                    gap: 16px;
                     cursor: pointer;
-                    border: none;
-                    transition: all 0.2s ease-in-out;
                 }
-                .hero-cta:hover {
-                    background: var(--color-primary-hover);
+
+                .hero-btn-primary {
+                    padding: 16px 32px;
+                    background: var(--color-primary);
+                    border-radius: 16px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                }
+                
+                .hero-cta-group:hover .hero-btn-primary {
+                    transform: translateY(-2px);
                     box-shadow: var(--shadow-md);
                 }
-                .hero-cta-text {
-                    text-align: center;
+
+                .hero-btn-text {
+                    color: var(--color-white);
+                    font-size: 16px; /* User requested 16px */
+                    font-family: var(--font-poppins); /* Manrope */
+                    font-weight: 500;
+                    line-height: 1.5;
+                }
+
+                .hero-btn-icon-wrapper {
+                    padding: 12px;
+                    background: var(--color-primary);
+                    border-radius: 100px;
+                    display: flex;
                     justify-content: center;
+                    align-items: center;
+                    transition: transform 0.2s ease;
+                }
+                
+                .hero-cta-group:hover .hero-btn-icon-wrapper {
+                    transform: translateX(4px) translateY(-2px);
+                }
+
+                .hero-icon {
+                    width: 32px;
+                    height: 32px;
+                }
+
+                /* ─── Social Proof (Right Aligned) ──── */
+                .hero-social-proof {
+                    align-self: flex-end; /* Right align as per design structure */
+                    width: 280px;
                     display: flex;
                     flex-direction: column;
-                    color: var(--color-white);
-                    font-size: var(--text-body);
-                    font-family: var(--font-cta);
+                    justify-content: flex-start;
+                    align-items: flex-end; /* Right align text inside */
+                    gap: 16px;
+                    text-align: right;
+                }
+
+                .hero-sp-label {
+                    color: #222222; /* Black */
+                    font-size: 18px; /* User requested 18px */
+                    font-family: var(--font-poppins); /* Manrope */
                     font-weight: 500;
-                    text-transform: capitalize;
-                    line-height: var(--lh-body);
+                    line-height: 1.4;
                     word-wrap: break-word;
                 }
 
-                /* ─── Watch column ──────────────────── */
-                .hero-watch-col {
-                    flex-shrink: 0;
-                    padding: var(--space-2);
+                .hero-avatars {
+                    display: inline-flex;
+                    justify-content: flex-start;
                     align-items: center;
+                    /* Negative margin overlap if needed, user didn't specify overlap but typically avatars overlap. 
+                       User design output shows separate images with padding/bg? 
+                       "padding: 10, background: #213170, borderRadius: 100" 
+                       Wait, the user snippet shows they are separate. */
+                    gap: 0px; 
+                }
+
+                .hero-avatar-wrapper {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    border: 2px solid var(--color-white); /* Add border for clean separation if overlapping */
+                    margin-left: -10px; /* Slight overlap for aesthetics */
+                }
+                .hero-avatar-wrapper:first-child {
+                    margin-left: 0;
+                }
+
+                .hero-avatar-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .hero-sp-stat {
                     display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-end;
+                    text-align: right;
                 }
 
-                .hero-watch {
-                    width: clamp(280px, calc(280px + (350 - 280) * (100vw - 1024px) / (1440 - 1024)), 350px);
-                    height: clamp(440px, calc(440px + (550 - 440) * (100vw - 1024px) / (1440 - 1024)), 550px);
-                    object-fit: contain;
+                .hero-sp-stat-highlight {
+                    color: #CC0A00; /* User specific red */
+                    font-size: 18px;
+                    font-family: var(--font-poppins);
+                    font-weight: 500;
+                    line-height: 1.4;
                 }
 
-                /* ─── Tablet ≤1024px ────────────────── */
+                .hero-sp-description {
+                    color: #707070; /* Grey */
+                    font-size: 14px;
+                    font-family: var(--font-poppins);
+                    font-weight: 300;
+                    line-height: 1.5;
+                    margin-top: 4px;
+                }
+
+                /* ─── Responsive (Hidden on Mobile for now as per instructions) ── */
                 @media (max-width: 1024px) {
-                    .hero-watch-col {
-                        display: none;
+                    .hero-section {
+                        min-height: auto;
                     }
-                    .hero-inner {
-                        justify-content: center;
-                    }
-                    .hero-text-col {
+                    .hero-content {
                         align-items: center;
-                        max-width: 704px;
+                        gap: 48px;
                     }
-                }
-
-                /* ─── Mobile ≤640px ─────────────────── */
-                @media (max-width: 640px) {
-                    .hero-row {
-                        padding: var(--space-4) 0;
-                    }
-                    .hero-text-col {
-                        padding-bottom: var(--space-6);
-                        gap: var(--space-12);
+                    .hero-heading {
+                        text-align: center;
+                        font-size: var(--text-h2);
                     }
                     .hero-subtitle {
-                        max-width: 100%;
+                        text-align: center;
+                    }
+                    .hero-text-group {
+                        align-items: center;
+                    }
+                    .hero-social-proof {
+                        align-self: center;
+                        align-items: center;
+                        text-align: center;
+                    }
+                    .hero-sp-stat {
+                        align-items: center;
+                        text-align: center;
                     }
                 }
             `}</style>
 
-            <section className="hero-section section-padding">
-                <div className="hero-row">
-                    <div className="hero-inner">
-                        <div className="hero-cols">
-                            {/* Text column */}
-                            <div className="hero-text-col">
-                                <div className="hero-text-stack">
+            <section className="hero-section">
+                {/* Background Image */}
+                <div className="hero-background">
+                    <Image
+                        src={IMAGES.hero.background}
+                        alt="Medelise Hero Background"
+                        fill
+                        priority
+                        style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    />
+                </div>
 
-                                    <div className="hero-text-group">
-                                        {/* Eyebrow — stacked */}
-                                        <div className="hero-eyebrow-block">
-                                            <div className="hero-eyebrow-orange">
-                                                Bine ai venit la,
-                                            </div>
-                                            <div className="hero-eyebrow-brand">
-                                                MEDELISE
-                                            </div>
-                                        </div>
+                <div className="hero-content">
+                    {/* Top Left Block */}
+                    <div className="hero-top-block">
+                        <div className="hero-text-group">
+                            <h1 className="hero-heading">
+                                Vizite medicale acasă, programabile în sub 60 de secunde.
+                            </h1>
+                            <p className="hero-subtitle">
+                                Creează-ți contul gratuit în Portalul MEDELISE și programează o vizită medicală acasă, fără apeluri sau cozi.
+                            </p>
+                        </div>
 
-                                        {/* Heading */}
-                                        <div className="hero-heading">
-                                            Vizite medicale acasă, programabile
-                                            în sub 60 de secunde.
-                                        </div>
-
-                                        {/* Subtitle */}
-                                        <div className="hero-subtitle">
-                                            Creează-ți contul gratuit în
-                                            Portalul MEDELISE și programează o
-                                            vizită medicală acasă, fără apeluri
-                                            sau cozi.
-                                        </div>
-                                    </div>
-
-                                    {/* CTA */}
-                                    <button className="hero-cta">
-                                        <span className="hero-cta-text">
-                                            Creeaza contul gratuit
-                                        </span>
-                                    </button>
-                                </div>
+                        {/* CTA */}
+                        <div className="hero-cta-group">
+                            <div className="hero-btn-primary">
+                                <span className="hero-btn-text">Creeaza contul gratuit</span>
                             </div>
-
-                            {/* Watch column */}
-                            <div className="hero-watch-col">
+                            <div className="hero-btn-icon-wrapper">
                                 <Image
-                                    className="hero-watch"
-                                    src={IMAGES.watch.iwatchNotifications}
-                                    alt="Apple Watch Ultra cu aplicația MEDELISE"
-                                    width={350}
-                                    height={550}
-                                    priority
+                                    src={ICONS.arrowUpRight}
+                                    alt=""
+                                    width={32}
+                                    height={32}
+                                    className="hero-icon"
                                 />
                             </div>
+                        </div>
+                    </div>
+
+                    {/* Bottom Right Social Proof */}
+                    <div className="hero-social-proof">
+                        <span className="hero-sp-label">
+                            Apreciat de cei mai buni medici
+                        </span>
+
+                        <div className="hero-avatars">
+                            <div className="hero-avatar-wrapper">
+                                <Image src={IMAGES.hero.avatar1} alt="Medic 1" width={50} height={50} className="hero-avatar-img" />
+                            </div>
+                            <div className="hero-avatar-wrapper">
+                                <Image src={IMAGES.hero.avatar2} alt="Medic 2" width={50} height={50} className="hero-avatar-img" />
+                            </div>
+                            <div className="hero-avatar-wrapper">
+                                <Image src={IMAGES.hero.avatar3} alt="Medic 3" width={50} height={50} className="hero-avatar-img" />
+                            </div>
+                        </div>
+
+                        <div className="hero-sp-stat">
+                            <span className="hero-sp-stat-highlight">
+                                Peste 40 de specialiști
+                            </span>
+                            <span className="hero-sp-description">
+                                Medici experți colaborează cu MEDELISE pentru diagnostice precise și rapide.
+                            </span>
                         </div>
                     </div>
                 </div>

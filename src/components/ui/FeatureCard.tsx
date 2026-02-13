@@ -52,7 +52,7 @@ export default function FeatureCard({
                 .feature-card__title {
                     align-self: stretch;
                     color: var(--color-primary);
-                    font-size: var(--text-xl);
+                    font-size: var(--text-h4);
                     font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: var(--lh-heading);
@@ -62,7 +62,7 @@ export default function FeatureCard({
                 .feature-card__description {
                     align-self: stretch;
                     color: var(--color-primary);
-                    font-size: var(--text-lg);
+                    font-size: var(--text-body-lg);
                     font-family: var(--font-heading);
                     font-weight: 400;
                     line-height: var(--lh-body);

@@ -176,7 +176,7 @@ export default function QualitySection() {
         /* H2 — Fluid Typography: clamp(24px → 32px) via --text-2xl */
         .quality-heading {
           color: var(--color-primary);
-          font-size: var(--text-2xl);
+          font-size: var(--text-h2);
           font-family: var(--font-heading);
           font-weight: 600;
           line-height: var(--lh-heading);
@@ -194,8 +194,8 @@ export default function QualitySection() {
          * line-height: 1.6 via --lh-body
          * color: --color-text (dark grey for readability) */
         .quality-body {
-          color: var(--color-text);
-          font-size: var(--text-lg);
+          color: var(--color-primary);
+          font-size: var(--text-body-lg);
           font-family: var(--font-heading);
           font-weight: 500;
           line-height: var(--lh-body);
@@ -231,7 +231,7 @@ export default function QualitySection() {
         }
 
         .quality-check-text {
-          color: var(--color-text);
+          color: var(--color-primary);
           font-size: var(--text-body);
           font-family: var(--font-heading);
           font-weight: 500;
