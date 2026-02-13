@@ -60,8 +60,19 @@ export default function DesktopNav() {
 
     return (
         <>
-            {/* Backdrop overlay ... */}
-
+            {/* Backdrop overlay — blurs page content when mega menu is open */}
+            {isFullIndigo && (
+                <div
+                    className="fixed inset-0 z-40"
+                    style={{
+                        backdropFilter: 'blur(8px)',
+                        WebkitBackdropFilter: 'blur(8px)',
+                        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                        transition: 'opacity 300ms ease-in-out',
+                    }}
+                    onClick={() => setActiveMenu(null)}
+                />
+            )}
             <nav
                 ref={navRef}
                 className="absolute top-0 left-0 z-50 w-full"
@@ -78,7 +89,7 @@ export default function DesktopNav() {
                     <div className="flex items-center justify-end gap-8">
                         <Link
                             href="/"
-                            className="font-body text-base font-normal leading-tight text-white transition-colors hover:text-secondary"
+                            className="font-body text-base font-normal leading-tight text-white transition-all duration-200 hover:scale-105 hover:font-semibold"
                         >
                             Acasa
                         </Link>
@@ -86,7 +97,7 @@ export default function DesktopNav() {
                             <Link
                                 key={link.label}
                                 href={link.href}
-                                className="font-body text-base font-normal leading-tight text-white transition-colors hover:text-secondary"
+                                className="font-body text-base font-normal leading-tight text-white transition-all duration-200 hover:scale-105 hover:font-semibold"
                             >
                                 {link.label}
                             </Link>
@@ -113,14 +124,14 @@ export default function DesktopNav() {
                                                 setActiveMenu(activeMenu === menuKey ? null : menuKey);
                                             }
                                         }}
-                                        className={`flex items-center gap-2 font-body text-base font-normal leading-tight ${isFullIndigo
-                                            ? 'text-white hover:text-secondary'
-                                            : 'text-primary hover:opacity-80'
+                                        className={`flex items-center gap-2 font-body text-base font-normal leading-tight transition-all duration-200 hover:scale-105 hover:font-semibold ${isFullIndigo
+                                            ? 'text-white'
+                                            : 'text-primary'
                                             }`}
-                                        style={{ transition: 'color 350ms ease-in-out' }}
+                                        style={{ transition: 'all 200ms ease-in-out' }}
                                     >
                                         {item}
-                                        {hasMenu && <ChevronDown white={isFullIndigo} />}
+                                        {hasMenu && <ChevronDown white={isFullIndigo} rotated={activeMenu === menuKey} />}
                                     </button>
                                 );
                             })}

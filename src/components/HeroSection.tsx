@@ -73,8 +73,24 @@ export default function HeroSection() {
                     gap: 32px;
                     width: 100%;
                     max-width: 600px;
-                    align-self: flex-start; /* Left edge */
-                    margin-top: auto; /* Push to bottom */
+                    align-self: flex-start;
+                    margin-top: auto;
+                    position: relative;
+                    z-index: 10;
+                }
+
+                /* Glassmorphism blur behind subtitle for readability */
+                .hero-subtitle-cta::before {
+                    content: "";
+                    position: absolute;
+                    inset: -40px;
+                    z-index: -1;
+                    backdrop-filter: blur(12px);
+                    -webkit-backdrop-filter: blur(12px);
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 24px;
+                    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
+                    mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
                 }
 
                 .hero-heading {

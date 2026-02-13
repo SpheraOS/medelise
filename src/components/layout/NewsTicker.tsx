@@ -9,13 +9,13 @@ export default function NewsTicker() {
         <div className="news-ticker-container">
             <style jsx>{`
                 .news-ticker-container {
-                    background-color: #000000; /* Pure Black */
-                    color: #ffffff;
+                    background-color: #F5F5F5; /* Light Grey */
+                    color: var(--color-primary);
                     overflow: hidden;
                     white-space: nowrap;
                     position: relative;
                     width: 100%;
-                    height: 48px; /* Slightly taller for elegance */
+                    height: 32px;
                     display: flex;
                     align-items: center;
                     z-index: 51; /* Above navbar main */
@@ -28,14 +28,6 @@ export default function NewsTicker() {
                     padding-left: 100%; /* Start from right */
                 }
 
-                .ticker-ambulance-wrapper {
-                    display: flex;
-                    align-items: center;
-                    margin-right: 24px;
-                    flex-shrink: 0;
-                    /* Optional: slight bounce to simulate driving */
-                    animation: car-bounce 1s ease-in-out infinite alternate;
-                }
 
                 .ticker-item {
                     display: inline-block;
@@ -47,7 +39,7 @@ export default function NewsTicker() {
                 }
 
                 .ticker-link {
-                    color: #ffffff;
+                    color: var(--color-primary);
                     text-decoration: none;
                     transition: color 0.2s ease;
                 }
@@ -65,31 +57,13 @@ export default function NewsTicker() {
                     }
                 }
 
-                @keyframes car-bounce {
-                    0% { transform: translateY(0); }
-                    100% { transform: translateY(-2px); }
-                }
 
-                /* Pause animation on hover for readability */
-                .news-ticker-container:hover .ticker-content {
-                    animation-play-state: paused;
-                }
-                 .news-ticker-container:hover .ticker-ambulance-wrapper {
+                 .news-ticker-container:hover .ticker-content {
                     animation-play-state: paused;
                 }
             `}</style>
 
             <div className="ticker-content">
-                {/* Ambulance "Pulling" the text */}
-                <div className="ticker-ambulance-wrapper">
-                    <Image
-                        src={ICONS.ambulance}
-                        alt="Emergency Intervention"
-                        width={40}
-                        height={40}
-                        className="object-contain"
-                    />
-                </div>
 
                 <span className="ticker-item">
                     🎉 <Link href="#" className="ticker-link">Oferte Speciale Octombrie: 20% Reducere la Prima Consultatie</Link>
