@@ -142,70 +142,77 @@ export default function HeroSection() {
                     height: 32px;
                 }
 
-                /* ─── Social Proof (Strict Replacement - Right Aligned) ──── */
+                /* ─── Social Proof (Left Aligned, Overlapping Avatars) ──── */
                 .hero-social-proof {
                     width: 280px;
-                    height: 190px;
                     display: inline-flex;
                     flex-direction: column;
                     justify-content: flex-start;
-                    align-items: flex-end; /* Grouped to the right end */
+                    align-items: flex-start; /* LEFT aligned text */
                     gap: 16px;
+                    align-self: flex-end; /* Push to RIGHT edge */
+                    margin-top: auto; /* Push to BOTTOM */
                 }
 
                 .hero-sp-label {
-                    text-align: right;
-                    color: var(--color-primary);
+                    text-align: left;
+                    color: #213170; /* Indigo */
                     font-size: 18px;
                     font-family: var(--font-dm-sans);
                     font-weight: 500;
                     line-height: 25.2px;
                     word-wrap: break-word;
-                    width: 100%;
                 }
 
                 .hero-avatars-group {
-                    justify-content: flex-end; /* Align avatars to right */
+                    justify-content: flex-start;
                     align-items: center;
                     display: inline-flex;
-                    gap: 0;
-                    width: 100%; /* Take full width to allow right alignment within container */
                 }
+
+                .hero-avatar-wrapper {
+                    width: 64px;
+                    height: 64px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    border: 2px solid #FFFFFF;
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: flex-end; /* Align doctor image to bottom of circle */
+                }
+                .hero-avatar-wrapper:not(:first-child) {
+                    margin-left: -16px; /* 25% overlap of 64px */
+                }
+                /* Z-index stacking: first on top */
+                .hero-avatar-wrapper:nth-child(1) { z-index: 3; }
+                .hero-avatar-wrapper:nth-child(2) { z-index: 2; }
+                .hero-avatar-wrapper:nth-child(3) { z-index: 1; }
 
                 .hero-avatar-img {
                     width: 100%;
-                    height: 100%;
+                    height: 56px; /* Fixed 56px height inside 64px circle */
                     object-fit: cover;
+                    object-position: top; /* Keep face/head visible when cropping */
                 }
 
                 .hero-sp-stat-title {
-                    text-align: right; /* Right align text */
-                    justify-content: center;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end; /* Align flex children (text) to right */
-                    color: var(--color-accent);
+                    text-align: left;
+                    color: #FE5D16; /* Orange highlight */
                     font-size: 18px;
                     font-family: var(--font-dm-sans);
                     font-weight: 500;
                     line-height: 25.2px;
                     word-wrap: break-word;
-                    width: 100%;
                 }
 
                 .hero-sp-stat-desc {
-                    align-self: stretch;
-                    justify-content: center;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end; /* Align flex children to right */
-                    color: var(--color-primary);
+                    text-align: left;
+                    color: #213170; /* Indigo */
                     font-size: 14px;
                     font-family: var(--font-dm-sans);
                     font-weight: 300;
                     line-height: 21px;
                     word-wrap: break-word;
-                    text-align: right; /* Right align text */
                 }
 
                 /* ─── Responsive (Hidden on Mobile for now as per instructions) ── */
@@ -280,14 +287,20 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    {/* Bottom Right Social Proof - STRICT REPLACEMENT */}
+                    {/* Social Proof – Left aligned, overlapping avatars */}
                     <div className="hero-social-proof">
                         <div className="hero-sp-label">Apreciat de cei mai buni medici</div>
 
                         <div className="hero-avatars-group">
-                            <Image src={IMAGES.hero.avatar1} alt="Medic 1" width={50} height={50} className="hero-avatar-img" style={{ width: '100%', height: '100%', padding: 10, background: '#FE5D16', borderRadius: 100 }} />
-                            <Image src={IMAGES.hero.avatar2} alt="Medic 2" width={50} height={50} className="hero-avatar-img" style={{ width: '100%', height: '100%', padding: 10, background: '#BDE0FF', borderRadius: 100 }} />
-                            <Image src={IMAGES.hero.avatar3} alt="Medic 3" width={50} height={50} className="hero-avatar-img" style={{ width: '100%', height: '100%', padding: 10, background: '#213170', borderRadius: 100 }} />
+                            <div className="hero-avatar-wrapper" style={{ background: '#FE5D16' }}>
+                                <Image src={IMAGES.hero.avatar1} alt="Medic 1" width={64} height={64} className="hero-avatar-img" style={{ width: '100%', height: '56px', objectFit: 'cover', objectPosition: 'top' }} />
+                            </div>
+                            <div className="hero-avatar-wrapper" style={{ background: '#BDE0FF' }}>
+                                <Image src={IMAGES.hero.avatar2} alt="Medic 2" width={64} height={64} className="hero-avatar-img" style={{ width: '100%', height: '56px', objectFit: 'cover', objectPosition: 'top' }} />
+                            </div>
+                            <div className="hero-avatar-wrapper" style={{ background: '#213170' }}>
+                                <Image src={IMAGES.hero.avatar3} alt="Medic 3" width={64} height={64} className="hero-avatar-img" style={{ width: '100%', height: '56px', objectFit: 'cover', objectPosition: 'top' }} />
+                            </div>
                         </div>
 
                         <div className="hero-sp-stat-title">Peste 40 de specialiști</div>
