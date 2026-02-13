@@ -19,13 +19,14 @@ export default function MissionStatsSection() {
                    Desktop-first base (≥1025px)
                    ═══════════════════════════════════════ */
 
+                /* S1 · display: flex (standard) — nu inline-flex */
                 .mission-section {
                     width: 100%;
                     background: var(--color-white);
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: center;
-                    display: inline-flex;
+                    display: flex;
                 }
 
                 .mission-inner {
@@ -46,6 +47,7 @@ export default function MissionStatsSection() {
                     display: flex;
                 }
 
+                /* align-items: stretch → copiii umplu toată lățimea */
                 .mission-text-block {
                     align-self: stretch;
                     padding-top: var(--space-4);
@@ -53,24 +55,26 @@ export default function MissionStatsSection() {
                     background: var(--color-white);
                     flex-direction: column;
                     justify-content: center;
-                    align-items: center;
+                    align-items: stretch;
                     display: flex;
                 }
 
+                /* gap: --space-2 (8px) per Figma · align-items: stretch */
                 .mission-text-inner {
                     align-self: stretch;
                     flex-direction: column;
                     justify-content: center;
-                    align-items: center;
-                    gap: var(--space-8);
+                    align-items: stretch;
+                    gap: var(--space-2);
                     display: flex;
                 }
 
+                /* align-items: stretch → H2 + P full-width */
                 .mission-text-group {
                     align-self: stretch;
                     flex-direction: column;
                     justify-content: center;
-                    align-items: center;
+                    align-items: stretch;
                     gap: var(--space-3);
                     display: flex;
                 }
@@ -84,10 +88,14 @@ export default function MissionStatsSection() {
                     font-weight: 700;
                     line-height: var(--lh-heading);
                     word-wrap: break-word;
+                    margin: 0;
                 }
 
+                /* width: 100% + max-width: none → override global p { max-width: 70ch } */
                 .mission-description {
                     align-self: stretch;
+                    width: 100%;
+                    max-width: none;
                     text-align: center;
                     color: var(--color-primary);
                     font-size: var(--text-body);
@@ -95,10 +103,16 @@ export default function MissionStatsSection() {
                     font-weight: 500;
                     line-height: var(--lh-body);
                     word-wrap: break-word;
+                    margin: 0;
                 }
 
+                /* T4 governance: max-width: 60ch (Figma width ≈ 984px) */
                 .mission-description--narrow {
                     align-self: stretch;
+                    width: 100%;
+                    max-width: 60ch;
+                    margin-left: auto;
+                    margin-right: auto;
                     text-align: center;
                     color: var(--color-primary);
                     font-size: var(--text-body);
@@ -106,14 +120,17 @@ export default function MissionStatsSection() {
                     font-weight: 500;
                     line-height: var(--lh-body);
                     word-wrap: break-word;
+                    margin-top: 0;
+                    margin-bottom: 0;
                 }
 
+                /* display: flex (nu inline-flex) */
                 .mission-stats-row {
                     align-self: stretch;
                     justify-content: center;
                     align-items: stretch;
                     gap: var(--space-8);
-                    display: inline-flex;
+                    display: flex;
                 }
 
                 /* ═══════════════════════════════════════
@@ -191,14 +208,14 @@ export default function MissionStatsSection() {
                 }
             `}</style>
 
-            <section className="mission-section section-padding">
+            <section className="mission-section section-padding" aria-labelledby="mission-heading">
                 <div className="mission-inner">
                     <div className="mission-content">
                         {/* Text block */}
                         <div className="mission-text-block">
                             <div className="mission-text-inner">
                                 <div className="mission-text-group">
-                                    <h2 className="mission-heading">
+                                    <h2 id="mission-heading" className="mission-heading">
                                         Vă doriți o viață sănătoasă și
                                         echilibrată?
                                     </h2>

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { IMAGES } from '@/constants/images';
 
 const checklistItems = [
   'Răspuns rapid, fără așteptare',
@@ -84,7 +85,7 @@ export default function QualitySection() {
               <div className="quality-laptop-wrap">
                 {/* Desktop: SVG mockup (high fidelity) */}
                 <Image
-                  src="/images/quality/macbook-mockup.svg"
+                  src={IMAGES.quality.macbookMockup}
                   alt="Previzualizare a platformei medicale Medelise pe un MacBook Pro — dashboard cu informații despre pacient, anatomie 3D interactivă și monitorizare a semnelor vitale"
                   width={676}
                   height={468}
@@ -93,7 +94,7 @@ export default function QualitySection() {
                 />
                 {/* Tablet/Mobile: PNG fallback */}
                 <Image
-                  src="/images/quality/macbook-tablet.png"
+                  src={IMAGES.quality.macbookTablet}
                   alt="Platforma medicală Medelise afișată pe laptop — interfață modernă cu anatomie interactivă și semnele vitale ale pacientului"
                   width={676}
                   height={468}
@@ -412,6 +413,22 @@ export default function QualitySection() {
           }
           .quality-laptop-wrap :global(.quality-laptop-mobile) {
             display: none;
+          }
+
+          /* CTA form: stay stacked in desktop two-column layout
+             so it doesn't overlap with the MacBook image */
+          .quality-cta-row {
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .quality-input-wrap {
+            width: 100%;
+          }
+
+          .quality-cta-btn {
+            width: 100%;
+            text-align: center;
           }
         }
       `}</style>

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { IMAGES } from '@/constants/images';
 import FeatureCard from '@/components/ui/FeatureCard';
 
 /* ── Why Choose Us Section ─────────────────────────────────────── */
@@ -362,7 +363,7 @@ export default function WhyChooseUsSection() {
                                 <div className="why-image-wrapper">
                                     <Image
                                         className="why-watch-image"
-                                        src="/iwatch_ultra_medelise.png"
+                                        src={IMAGES.watch.iwatchNotifications}
                                         alt="Apple Watch Ultra cu aplicația MEDELISE"
                                         width={300}
                                         height={400}
@@ -392,7 +393,7 @@ export default function WhyChooseUsSection() {
                                 <div className="why-watch-banner">
                                     <Image
                                         className="why-watch-banner__image"
-                                        src="/iwatch_ultra_medelise.png"
+                                        src={IMAGES.watch.iwatchNotifications}
                                         alt="Apple Watch Ultra cu aplicația MEDELISE"
                                         width={200}
                                         height={270}

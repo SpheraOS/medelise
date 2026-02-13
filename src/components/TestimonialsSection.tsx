@@ -2,6 +2,7 @@
 
 import { useRef, useCallback } from 'react';
 import Image from 'next/image';
+import { ICONS } from '@/constants/icons';
 
 /* ─── Testimonial data ─── */
 const testimonials = [
@@ -135,7 +136,7 @@ export default function TestimonialsSection() {
                   aria-label="Testimonial anterior"
                 >
                   <Image
-                    src="/images/testimonials/arrow-left.png"
+                    src={ICONS.arrowLeft}
                     alt=""
                     width={32}
                     height={32}
@@ -147,7 +148,7 @@ export default function TestimonialsSection() {
                   aria-label="Testimonial următor"
                 >
                   <Image
-                    src="/images/testimonials/arrow-right.png"
+                    src={ICONS.arrowRight}
                     alt=""
                     width={32}
                     height={32}

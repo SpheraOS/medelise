@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { ICONS } from '@/constants/icons';
 
 interface MenuButtonProps {
     size?: 'medium' | 'small';
@@ -22,7 +23,7 @@ export default function MenuButton({ size = 'medium', onClick }: MenuButtonProps
             onClick={onClick}
         >
             <Image
-                src="/icons/hamburger-menu.png"
+                src={ICONS.menu}
                 alt="Menu"
                 width={iconSize}
                 height={iconSize}

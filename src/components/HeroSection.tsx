@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { IMAGES } from '@/constants/images';
 
 /* ── Hero Section ──────────────────────────────────────────────── */
 export default function HeroSection() {
@@ -252,7 +253,7 @@ export default function HeroSection() {
                             <div className="hero-watch-col">
                                 <Image
                                     className="hero-watch"
-                                    src="/iwatch-hero.png"
+                                    src={IMAGES.watch.iwatchNotifications}
                                     alt="Apple Watch Ultra cu aplicația MEDELISE"
                                     width={350}
                                     height={550}

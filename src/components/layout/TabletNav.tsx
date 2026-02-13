@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { ICONS } from '@/constants/icons';
 import Logo from './Logo';
 import MenuButton from './MenuButton';
 import BookNowButton from './BookNowButton';
@@ -59,7 +60,7 @@ export default function TabletNav() {
                                 style={{ width: 18, height: 18 }}
                             >
                                 <Image
-                                    src="/icons/close.png"
+                                    src={ICONS.close}
                                     alt="Close menu"
                                     width={18}
                                     height={18}
@@ -73,7 +74,7 @@ export default function TabletNav() {
                             className="mt-12 flex cursor-pointer items-center gap-2 self-start transition-opacity hover:opacity-80"
                         >
                             <Image
-                                src="/icons/chevron-down.png"
+                                src={ICONS.chevronDown}
                                 alt="Back"
                                 width={9}
                                 height={9}
@@ -173,7 +174,7 @@ export default function TabletNav() {
                                 style={{ width: 18, height: 18 }}
                             >
                                 <Image
-                                    src="/icons/close.png"
+                                    src={ICONS.close}
                                     alt="Close menu"
                                     width={18}
                                     height={18}
