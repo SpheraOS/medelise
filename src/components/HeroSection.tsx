@@ -142,48 +142,34 @@ export default function HeroSection() {
                     height: 32px;
                 }
 
-                /* ─── Social Proof (Right Aligned) ──── */
+                /* ─── Social Proof (Strict Replacement - Right Aligned) ──── */
                 .hero-social-proof {
-                    align-self: flex-end; /* Right align as per design structure */
                     width: 280px;
-                    display: flex;
+                    height: 190px;
+                    display: inline-flex;
                     flex-direction: column;
                     justify-content: flex-start;
-                    align-items: flex-end; /* Right align text inside */
+                    align-items: flex-end; /* Grouped to the right end */
                     gap: 16px;
-                    text-align: right;
                 }
 
                 .hero-sp-label {
-                    color: #222222; /* Black */
-                    font-size: 18px; /* User requested 18px */
-                    font-family: var(--font-poppins); /* Manrope */
+                    text-align: right;
+                    color: var(--color-primary);
+                    font-size: 18px;
+                    font-family: var(--font-dm-sans);
                     font-weight: 500;
-                    line-height: 1.4;
+                    line-height: 25.2px;
                     word-wrap: break-word;
+                    width: 100%;
                 }
 
-                .hero-avatars {
-                    display: inline-flex;
-                    justify-content: flex-start;
+                .hero-avatars-group {
+                    justify-content: flex-end; /* Align avatars to right */
                     align-items: center;
-                    /* Negative margin overlap if needed, user didn't specify overlap but typically avatars overlap. 
-                       User design output shows separate images with padding/bg? 
-                       "padding: 10, background: #213170, borderRadius: 100" 
-                       Wait, the user snippet shows they are separate. */
-                    gap: 0px; 
-                }
-
-                .hero-avatar-wrapper {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    border: 2px solid var(--color-white); /* Add border for clean separation if overlapping */
-                    margin-left: -10px; /* Slight overlap for aesthetics */
-                }
-                .hero-avatar-wrapper:first-child {
-                    margin-left: 0;
+                    display: inline-flex;
+                    gap: 0;
+                    width: 100%; /* Take full width to allow right alignment within container */
                 }
 
                 .hero-avatar-img {
@@ -192,29 +178,34 @@ export default function HeroSection() {
                     object-fit: cover;
                 }
 
-                .hero-sp-stat {
+                .hero-sp-stat-title {
+                    text-align: right; /* Right align text */
+                    justify-content: center;
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-end;
-                    text-align: right;
-                }
-
-                .hero-sp-stat-highlight {
-                    color: #CC0A00; /* User specific red */
+                    align-items: flex-end; /* Align flex children (text) to right */
+                    color: var(--color-accent);
                     font-size: 18px;
-                    font-family: var(--font-poppins);
+                    font-family: var(--font-dm-sans);
                     font-weight: 500;
-                    line-height: 1.4;
+                    line-height: 25.2px;
+                    word-wrap: break-word;
+                    width: 100%;
                 }
 
-                .hero-sp-description {
-                    color: #707070; /* Grey */
+                .hero-sp-stat-desc {
+                    align-self: stretch;
+                    justify-content: center;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end; /* Align flex children to right */
+                    color: var(--color-primary);
                     font-size: 14px;
-                    font-family: var(--font-poppins);
+                    font-family: var(--font-dm-sans);
                     font-weight: 300;
-                    line-height: 1.5;
-                    margin-top: 4px;
+                    line-height: 21px;
+                    word-wrap: break-word;
+                    text-align: right; /* Right align text */
                 }
 
                 /* ─── Responsive (Hidden on Mobile for now as per instructions) ── */
@@ -289,32 +280,18 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    {/* Bottom Right Social Proof */}
+                    {/* Bottom Right Social Proof - STRICT REPLACEMENT */}
                     <div className="hero-social-proof">
-                        <span className="hero-sp-label">
-                            Apreciat de cei mai buni medici
-                        </span>
+                        <div className="hero-sp-label">Apreciat de cei mai buni medici</div>
 
-                        <div className="hero-avatars">
-                            <div className="hero-avatar-wrapper">
-                                <Image src={IMAGES.hero.avatar1} alt="Medic 1" width={50} height={50} className="hero-avatar-img" />
-                            </div>
-                            <div className="hero-avatar-wrapper">
-                                <Image src={IMAGES.hero.avatar2} alt="Medic 2" width={50} height={50} className="hero-avatar-img" />
-                            </div>
-                            <div className="hero-avatar-wrapper">
-                                <Image src={IMAGES.hero.avatar3} alt="Medic 3" width={50} height={50} className="hero-avatar-img" />
-                            </div>
+                        <div className="hero-avatars-group">
+                            <Image src={IMAGES.hero.avatar1} alt="Medic 1" width={50} height={50} className="hero-avatar-img" style={{ width: '100%', height: '100%', padding: 10, background: '#FE5D16', borderRadius: 100 }} />
+                            <Image src={IMAGES.hero.avatar2} alt="Medic 2" width={50} height={50} className="hero-avatar-img" style={{ width: '100%', height: '100%', padding: 10, background: '#BDE0FF', borderRadius: 100 }} />
+                            <Image src={IMAGES.hero.avatar3} alt="Medic 3" width={50} height={50} className="hero-avatar-img" style={{ width: '100%', height: '100%', padding: 10, background: '#213170', borderRadius: 100 }} />
                         </div>
 
-                        <div className="hero-sp-stat">
-                            <span className="hero-sp-stat-highlight">
-                                Peste 40 de specialiști
-                            </span>
-                            <span className="hero-sp-description">
-                                Medici experți colaborează cu MEDELISE pentru diagnostice precise și rapide.
-                            </span>
-                        </div>
+                        <div className="hero-sp-stat-title">Peste 40 de specialiști</div>
+                        <div className="hero-sp-stat-desc">Medici experți colaborează cu MEDELISE pentru diagnostice precise și rapide.</div>
                     </div>
                 </div>
             </section>
