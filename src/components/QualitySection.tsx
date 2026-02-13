@@ -376,6 +376,10 @@ export default function QualitySection() {
          * Laptop bleeds right edge
          * ═══════════════════════════════════════════════ */
         @media (min-width: 1025px) {
+          .quality-section {
+            overflow: visible;
+          }
+
           .quality-container {
             max-width: none;
             padding-left: var(--space-section-px);
@@ -395,9 +399,8 @@ export default function QualitySection() {
           }
 
           .quality-laptop-col {
-            flex: 0 0 auto;
+            flex: 1 0 auto;
             width: auto;
-            max-width: 55%;
             justify-content: flex-end;
             align-items: flex-end;
           }

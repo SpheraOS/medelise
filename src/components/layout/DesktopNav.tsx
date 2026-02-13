@@ -44,17 +44,14 @@ export default function DesktopNav() {
         };
     }, [activeMenu]);
 
-    // Trigger animation on menu open
+    // Trigger animation on menu open — minimal delay
     useEffect(() => {
         if (activeMenu !== null) {
-            // Use double rAF to avoid setState-in-effect lint warnings
-            // and ensure DOM has committed before re-triggering animation
-            requestAnimationFrame(() => {
-                setIsAnimating(false);
-                requestAnimationFrame(() => {
-                    setIsAnimating(true);
-                });
-            });
+            setIsAnimating(false);
+            const timer = setTimeout(() => setIsAnimating(true), 10);
+            return () => clearTimeout(timer);
+        } else {
+            setIsAnimating(false);
         }
     }, [activeMenu]);
 
@@ -78,7 +75,6 @@ export default function DesktopNav() {
                 className="absolute top-0 left-0 z-50 w-full"
                 style={{
                     backgroundColor: isFullIndigo ? '#213170' : 'transparent',
-                    transition: 'background-color 300ms ease-in-out',
                 }}
             >
                 {/* News Ticker Bar - Added above Top Bar */}
@@ -111,30 +107,45 @@ export default function DesktopNav() {
                     <div className="flex flex-1 items-center gap-16">
                         <Logo variant="full" white={isFullIndigo} />
 
-                        <div className="flex flex-1 items-center gap-10">
-                            {MAIN_MENU_ITEMS.map((item) => {
-                                const menuKey = MENU_KEY_MAP[item] || null;
-                                const hasMenu = menuKey !== null;
+                        {/* Floating Pill-Shaped Nav Container */}
+                        <div className="relative">
+                            {/* Glow/blur effect behind the pill */}
+                            <div
+                                className="absolute inset-0 rounded-full scale-110 opacity-50"
+                                style={{
+                                    background: 'rgba(255, 255, 255, 0.1)',
+                                    filter: 'blur(24px)',
+                                }}
+                            />
 
-                                return (
-                                    <button
-                                        key={item}
-                                        onClick={() => {
-                                            if (hasMenu) {
-                                                setActiveMenu(activeMenu === menuKey ? null : menuKey);
-                                            }
-                                        }}
-                                        className={`flex items-center gap-2 font-body text-base font-normal leading-tight transition-all duration-200 hover:scale-105 hover:font-semibold ${isFullIndigo
-                                            ? 'text-white'
-                                            : 'text-primary'
-                                            }`}
-                                        style={{ transition: 'all 200ms ease-in-out' }}
-                                    >
-                                        {item}
-                                        {hasMenu && <ChevronDown white={isFullIndigo} rotated={activeMenu === menuKey} />}
-                                    </button>
-                                );
-                            })}
+                            {/* Pill container */}
+                            <div
+                                className="relative flex items-center gap-10 rounded-full shadow-lg bg-primary"
+                                style={{
+                                    padding: '12px 32px',
+                                }}
+                            >
+                                {MAIN_MENU_ITEMS.map((item) => {
+                                    const menuKey = MENU_KEY_MAP[item] || null;
+                                    const hasMenu = menuKey !== null;
+
+                                    return (
+                                        <button
+                                            key={item}
+                                            onClick={() => {
+                                                if (hasMenu) {
+                                                    setActiveMenu(activeMenu === menuKey ? null : menuKey);
+                                                }
+                                            }}
+                                            className="flex items-center gap-2 font-body text-base font-normal leading-tight text-white transition-all duration-200 hover:scale-105 hover:font-semibold"
+                                            style={{ transition: 'all 200ms ease-in-out' }}
+                                        >
+                                            {item}
+                                            {hasMenu && <ChevronDown white rotated={activeMenu === menuKey} />}
+                                        </button>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
 
@@ -149,10 +160,8 @@ export default function DesktopNav() {
                         style={{
                             backgroundColor: '#213170',
                             opacity: isAnimating ? 1 : 0,
-                            transform: isAnimating ? 'translateY(0)' : 'translateY(-20px)',
-                            maxHeight: isAnimating ? '600px' : '0px',
-                            transition:
-                                'opacity 400ms ease-out, transform 400ms ease-out, max-height 400ms ease-out',
+                            transform: isAnimating ? 'translateY(0)' : 'translateY(-8px)',
+                            transition: 'opacity 250ms ease-out, transform 250ms ease-out',
                         }}
                     >
                         <div className="px-[112px] pt-4 pb-16">
