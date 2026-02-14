@@ -475,7 +475,7 @@ export default function LoginPage() {
                     position: relative;
                     background: linear-gradient(145deg, #ff6b35, #ff4444, #cc2200);
                     border-radius: 30px;
-                    margin: 40px 40px 40px 0;
+                    margin: 0;
                     overflow: hidden;
                     display: flex;
                     flex-direction: column;
