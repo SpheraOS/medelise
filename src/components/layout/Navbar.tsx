@@ -6,7 +6,7 @@ import MobileNav from './MobileNav';
 
 export default function Navbar() {
     return (
-        <>
+        <div className="absolute top-0 left-0 w-full z-50">
             {/* Desktop Navigation - visible on screens >= 1024px */}
             <div className="hidden lg:block">
                 <DesktopNav />
@@ -21,6 +21,6 @@ export default function Navbar() {
             <div className="block md:hidden">
                 <MobileNav />
             </div>
-        </>
+        </div>
     );
 }

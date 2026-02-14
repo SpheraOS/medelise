@@ -31,7 +31,7 @@ export default function MobileNav() {
     return (
         <>
             {/* Default top bar */}
-            <nav className="flex w-full flex-col items-center justify-center border-b border-[var(--color-surface-border)] bg-white py-2.5">
+            <nav className="flex w-full flex-col items-center justify-center py-2.5">
                 <div className="flex w-full items-center justify-between" style={{ paddingLeft: 'var(--space-nav-x)', paddingRight: 'var(--space-nav-x)' }}>
                     <Logo variant="wordmark" />
                     <MenuButton size="small" onClick={() => setIsOpen(true)} />

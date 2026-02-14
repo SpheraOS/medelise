@@ -72,7 +72,7 @@ export default function DesktopNav() {
             )}
             <nav
                 ref={navRef}
-                className="absolute top-0 left-0 z-50 w-full"
+                className="relative w-full"
                 style={{
                     backgroundColor: isFullIndigo ? '#213170' : 'transparent',
                 }}

@@ -31,7 +31,7 @@ export default function TabletNav() {
     return (
         <>
             {/* Default top bar */}
-            <nav className="flex w-full items-center justify-center bg-white py-2.5">
+            <nav className="flex w-full items-center justify-center py-2.5">
                 <div className="flex w-full items-center justify-between" style={{ paddingLeft: 'var(--space-nav-x)', paddingRight: 'var(--space-nav-x)' }}>
                     <Logo variant="full" />
                     <MenuButton size="medium" onClick={() => setIsOpen(true)} />

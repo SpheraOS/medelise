@@ -32,7 +32,7 @@ export default function HeroSection() {
                 .hero-content {
                     width: 100%;
                     height: 100%;
-                    padding: 180px 16px 32px;
+                    padding: 68px 16px 32px;
                     position: relative;
                     z-index: 1;
                     display: flex;
@@ -230,7 +230,7 @@ export default function HeroSection() {
                  * ═══════════════════════════════════════ */
                 @media (min-width: 641px) {
                     .hero-content {
-                        padding: 180px 32px 32px;
+                        padding: 68px 32px 32px;
                     }
 
                     .hero-text-group {
