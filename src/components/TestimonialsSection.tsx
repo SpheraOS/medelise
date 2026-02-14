@@ -129,7 +129,32 @@ export default function TestimonialsSection() {
                   satisfacția clienților și utilizatorilor noștri.
                 </p>
               </div>
-
+              <div className="tm-nav-buttons">
+                <button
+                  className="tm-nav-btn"
+                  onClick={() => scroll('left')}
+                  aria-label="Testimonial anterior"
+                >
+                  <Image
+                    src={ICONS.arrowLeft}
+                    alt=""
+                    width={32}
+                    height={32}
+                  />
+                </button>
+                <button
+                  className="tm-nav-btn"
+                  onClick={() => scroll('right')}
+                  aria-label="Testimonial următor"
+                >
+                  <Image
+                    src={ICONS.arrowRight}
+                    alt=""
+                    width={32}
+                    height={32}
+                  />
+                </button>
+              </div>
             </div>
 
             {/* ─── Cards Row ─── */}
