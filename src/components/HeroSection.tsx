@@ -140,6 +140,8 @@ export default function HeroSection() {
                     align-items: center;
                     gap: 16px;
                     cursor: pointer;
+                    text-decoration: none;
+                    align-self: flex-start;
                 }
 
                 .hero-btn-primary {
