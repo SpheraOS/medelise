@@ -367,7 +367,7 @@ export default function Footer() {
                 @media (min-width: 1025px) {
                     .footer-container {
                         max-width: 1440px;
-                        padding: 32px 112px;
+                        padding: 32px 64px;
                         gap: 16px;
                     }
 
@@ -389,7 +389,7 @@ export default function Footer() {
                     }
 
                     .footer-regulatory {
-                        padding: 8px 112px;
+                        padding: 8px 64px;
                     }
                 }
             `}</style>
