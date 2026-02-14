@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from '@/components/layout/Logo';
 
 /* ── Footer Data ──────────────────────────────────────────────── */
 const COMPANY_LINKS = [
@@ -12,32 +11,17 @@ const COMPANY_LINKS = [
 
 const CONTACT_ITEMS = [
     {
-        icon: (
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3.33325 5.83333L9.10825 9.58333C9.38436 9.75863 9.70256 9.85166 10.0274 9.85166C10.3523 9.85166 10.6705 9.75863 10.9466 9.58333L16.6666 5.83333" stroke="#213170" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <rect x="2.5" y="4.16667" width="15" height="11.6667" rx="2" stroke="#213170" strokeWidth="1.5" />
-            </svg>
-        ),
+        icon: '/images/quality/Email.svg',
         text: 'office@medvita.ro',
         href: 'mailto:office@medvita.ro',
     },
     {
-        icon: (
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.5001 17.5C12.5001 17.5 15.8334 15.8333 15.8334 11.6667V5.41667L12.5001 4.16667L10.0001 2.5L7.50008 4.16667L4.16675 5.41667V11.6667C4.16675 15.8333 7.50008 17.5 7.50008 17.5" stroke="#213170" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M10 10.8333C11.3807 10.8333 12.5 9.71404 12.5 8.33333C12.5 6.95262 11.3807 5.83333 10 5.83333C8.61929 5.83333 7.5 6.95262 7.5 8.33333C7.5 9.71404 8.61929 10.8333 10 10.8333Z" stroke="#213170" strokeWidth="1.5" />
-            </svg>
-        ),
+        icon: '/images/quality/Phone.svg',
         text: '+40 (784) 414 555',
         href: 'tel:+40784414555',
     },
     {
-        icon: (
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10.0001 10.8333C10.4603 10.8333 10.8334 10.4602 10.8334 10C10.8334 9.53976 10.4603 9.16667 10.0001 9.16667C9.53984 9.16667 9.16675 9.53976 9.16675 10C9.16675 10.4602 9.53984 10.8333 10.0001 10.8333Z" fill="#213170" />
-                <path d="M10 2.5C6.5 2.5 3.33325 5 3.33325 9.16667C3.33325 11.875 5.41659 15.1667 9.58325 17.5C9.85325 17.6667 10.1466 17.6667 10.4166 17.5C14.5833 15.1667 16.6666 11.875 16.6666 9.16667C16.6666 5 13.5001 2.5 10.0001 2.5H10Z" stroke="#213170" strokeWidth="1.5" />
-            </svg>
-        ),
+        icon: '/images/quality/Location Point.svg',
         text: 'București & Ilfov',
         href: '#',
     },
@@ -51,36 +35,12 @@ const LEGAL_LINKS = [
     { label: 'Politica de confidențialitate GDPR', href: '#' },
 ];
 
-/* ── Social Icons ─────────────────────────────────────────────── */
-const InstagramIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="2" y="2" width="16" height="16" rx="4" stroke="white" strokeWidth="1.5" />
-        <circle cx="10" cy="10" r="4" stroke="white" strokeWidth="1.5" />
-        <circle cx="14.5" cy="5.5" r="1" fill="white" />
-    </svg>
-);
-
-const FacebookIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11.5 8.5V6C11.5 5.17157 12.1716 4.5 13 4.5H14V2H12C10.067 2 8.5 3.567 8.5 5.5V8.5H6V11H8.5V18H11.5V11H14L14.5 8.5H11.5Z" fill="white" />
-    </svg>
-);
-
-const TwitterIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.5 3L8.5 10.5L2.5 17H4L9.2 11.4L13.5 17H18L11.7 9L17.3 3H15.8L11 8.1L7 3H2.5ZM4.5 4H6.5L16 16H14L4.5 4Z" fill="white" />
-    </svg>
-);
-
-const LinkedInIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5.5 8.5V15" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M5.5 5V5.01" stroke="white" strokeWidth="2" strokeLinecap="round" />
-        <path d="M10 15V11C10 9.89543 10.8954 9 12 9C13.1046 9 14 9.89543 14 11V15" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M10 15V8.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <rect x="2" y="2" width="16" height="16" rx="4" stroke="white" strokeWidth="1.5" />
-    </svg>
-);
+const SOCIAL_LINKS = [
+    { icon: '/images/quality/instagram.svg', href: 'https://instagram.com', label: 'Instagram' },
+    { icon: '/images/quality/Facebook.svg', href: 'https://facebook.com', label: 'Facebook', round: true },
+    { icon: '/images/quality/twitter.svg', href: 'https://x.com', label: 'X / Twitter' },
+    { icon: '/images/quality/linkedin.svg', href: 'https://linkedin.com', label: 'LinkedIn' },
+];
 
 /* ── Footer Component ─────────────────────────────────────────── */
 export default function Footer() {
@@ -92,7 +52,9 @@ export default function Footer() {
                     <div className="footer-top">
                         {/* Left: Logo + tagline */}
                         <div className="footer-brand">
-                            <Logo />
+                            <Link href="/">
+                                <Image src="/images/quality/Logo.svg" alt="MEDVITA" width={200} height={40} />
+                            </Link>
                             <p className="footer-tagline">
                                 We love working with ambitious people. Let&apos;s build something great together now.
                             </p>
@@ -130,7 +92,7 @@ export default function Footer() {
                                 <div className="footer-col-links">
                                     {CONTACT_ITEMS.map((item) => (
                                         <a key={item.text} href={item.href} className="footer-contact-item">
-                                            <span className="footer-contact-icon">{item.icon}</span>
+                                            <Image src={item.icon} alt="" width={20} height={20} className="footer-contact-icon" />
                                             <span className="footer-link">{item.text}</span>
                                         </a>
                                     ))}
@@ -149,18 +111,11 @@ export default function Footer() {
                             Toate drepturile rezervate
                         </p>
                         <div className="footer-socials">
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="Instagram">
-                                <InstagramIcon />
-                            </a>
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer-social-icon footer-social-icon--fb" aria-label="Facebook">
-                                <FacebookIcon />
-                            </a>
-                            <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="X / Twitter">
-                                <TwitterIcon />
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="LinkedIn">
-                                <LinkedInIcon />
-                            </a>
+                            {SOCIAL_LINKS.map((social) => (
+                                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className={`footer-social-icon${social.round ? ' footer-social-icon--fb' : ''}`} aria-label={social.label}>
+                                    <Image src={social.icon} alt={social.label} width={20} height={20} />
+                                </a>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -282,15 +237,6 @@ export default function Footer() {
                     gap: 8px;
                     text-decoration: none;
                     border-radius: 8px;
-                }
-
-                .footer-contact-icon {
-                    width: 20px;
-                    height: 20px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-shrink: 0;
                 }
 
                 /* ── Divider ── */
