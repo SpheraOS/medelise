@@ -390,21 +390,25 @@ export default function QualitySection() {
 
           .quality-row {
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-between;
             align-items: stretch;
-            gap: var(--space-8);
+            gap: 0;
           }
 
           .quality-text-col {
-            flex: 1 1 0;
+            flex: 0 0 50%;
+            max-width: 50%;
             min-width: 0;
+            padding-right: 32px;
           }
 
           .quality-laptop-col {
-            flex: 1 0 auto;
+            flex: 0 0 50%;
+            max-width: 50%;
             width: auto;
             justify-content: flex-end;
             align-items: flex-end;
+            overflow: visible;
           }
 
           .quality-laptop-wrap {
