@@ -322,7 +322,7 @@ export default function PatientPortalSection() {
         .portal-check-text {
           flex: 1;
           color: var(--color-primary);
-          font-size: var(--text-xs);
+          font-size: 16px;
           font-family: var(--font-heading);
           font-weight: 400;
           line-height: 1.33;
