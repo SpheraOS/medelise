@@ -1,15 +1,22 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import DesktopNav from './DesktopNav';
 import TabletNav from './TabletNav';
 import MobileNav from './MobileNav';
 
 export default function Navbar() {
+    const pathname = usePathname();
+    const isHomePage = pathname === '/';
+
     return (
-        <div className="absolute top-0 left-0 w-full z-50">
+        <div
+            className={`left-0 w-full z-50 ${isHomePage ? 'absolute top-0' : 'relative'}`}
+            style={isHomePage ? undefined : { backgroundColor: 'white' }}
+        >
             {/* Desktop Navigation - visible on screens >= 1025px */}
             <div className="hidden min-[1025px]:block">
-                <DesktopNav />
+                <DesktopNav isHomePage={isHomePage} />
             </div>
 
             {/* Tablet Navigation - visible on screens 641px - 1024px */}

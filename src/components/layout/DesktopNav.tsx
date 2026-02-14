@@ -19,13 +19,16 @@ import {
 
 type MegaMenu = MegaMenuKey | null;
 
-export default function DesktopNav() {
+export default function DesktopNav({ isHomePage = true }: { isHomePage?: boolean }) {
     const [activeMenu, setActiveMenu] = useState<MegaMenu>(null);
     const [isAnimating, setIsAnimating] = useState(false);
     const navRef = useRef<HTMLElement>(null);
 
     const isFullIndigo = activeMenu !== null;
     const currentMenu = activeMenu ? MEGA_MENUS[activeMenu] : null;
+
+    // Determine nav background: mega menu open → full indigo, homepage → transparent, other → white
+    const navBg = isFullIndigo ? '#213170' : isHomePage ? 'transparent' : 'white';
 
     // Close mega menu when clicking outside the nav
     useEffect(() => {
@@ -74,7 +77,7 @@ export default function DesktopNav() {
                 ref={navRef}
                 className="relative z-50 w-full"
                 style={{
-                    backgroundColor: isFullIndigo ? '#213170' : 'transparent',
+                    backgroundColor: navBg,
                 }}
             >
                 {/* News Ticker Bar - Added above Top Bar */}
