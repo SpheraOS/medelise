@@ -195,6 +195,8 @@ export default function LoginPage() {
                     min-height: 100vh;
                     background: #F6F8FA;
                     font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+                    padding-left: 64px;
+                    padding-right: 64px;
                 }
 
                 /* ── LEFT PANEL ── */
