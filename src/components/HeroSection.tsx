@@ -142,6 +142,7 @@ export default function HeroSection() {
                     cursor: pointer;
                     text-decoration: none;
                     align-self: flex-start;
+                    flex-wrap: nowrap;
                 }
 
                 .hero-btn-primary {
