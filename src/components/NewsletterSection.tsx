@@ -76,63 +76,34 @@ export default function NewsletterSection() {
 
       <style jsx>{`
         /* ═══════════════════════════════════════
-         * §1  SECTION WRAPPER
+         * §1  BASE / MOBILE
          * ═══════════════════════════════════════ */
         .newsletter-section {
           width: 100%;
-          overflow: hidden;
-          background: var(--color-white);
+          background: white;
         }
 
         .newsletter-outer {
           width: 100%;
           padding: 48px 16px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
         }
 
-        /* ═══════════════════════════════════════
-         * §2  CONTAINER + CARD
-         * ═══════════════════════════════════════ */
         .newsletter-container {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          max-width: 343px;
+          margin: 0 auto;
         }
 
         .newsletter-card {
           width: 100%;
-          padding: 32px 0;
-          background: var(--color-white);
-          overflow: hidden;
-          border-radius: 16px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
         }
 
-        /* ═══════════════════════════════════════
-         * §3  ROW LAYOUT (stacked on mobile)
-         * ═══════════════════════════════════════ */
         .newsletter-row {
-          width: 100%;
-          max-width: 343px;
-          margin: 0 auto;
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
           gap: 32px;
         }
 
-        /* ═══════════════════════════════════════
-         * §4  TEXT CONTENT (left on desktop)
-         * ═══════════════════════════════════════ */
         .newsletter-text {
-          width: 100%;
           display: flex;
           flex-direction: column;
           gap: 24px;
@@ -144,7 +115,6 @@ export default function NewsletterSection() {
           font-family: var(--font-heading);
           font-weight: 600;
           line-height: 32px;
-          text-align: left;
           margin: 0;
         }
 
@@ -154,15 +124,10 @@ export default function NewsletterSection() {
           font-family: var(--font-heading);
           font-weight: 500;
           line-height: 24px;
-          text-align: left;
           margin: 0;
         }
 
-        /* ═══════════════════════════════════════
-         * §5  RIGHT — Image + Form
-         * ═══════════════════════════════════════ */
         .newsletter-right {
-          width: 100%;
           display: flex;
           flex-direction: column;
           align-items: flex-end;
@@ -170,9 +135,6 @@ export default function NewsletterSection() {
         }
 
         .newsletter-illustration {
-          width: 174px;
-          height: 87px;
-          flex-shrink: 0;
           display: none;
         }
 
@@ -190,7 +152,7 @@ export default function NewsletterSection() {
         .newsletter-input {
           width: 100%;
           padding: 10px 12px;
-          background: var(--color-surface-card, #F2F4F7);
+          background: #F2F4F7;
           border-radius: 8px;
           border: none;
           color: var(--color-primary);
@@ -212,25 +174,19 @@ export default function NewsletterSection() {
         }
 
         /* ═══════════════════════════════════════
-         * §6  TABLET ≥641px
+         * §2  TABLET ≥641px
          * ═══════════════════════════════════════ */
         @media (min-width: 641px) {
           .newsletter-outer {
-            padding: 64px 0;
+            padding: 64px 16px;
           }
 
           .newsletter-container {
             max-width: 704px;
           }
 
-          .newsletter-card {
-            padding: 0;
-          }
-
           .newsletter-row {
-            max-width: 704px;
             gap: 40px;
-            align-items: flex-start;
           }
 
           .newsletter-text {
@@ -239,18 +195,18 @@ export default function NewsletterSection() {
 
           .newsletter-illustration {
             display: block;
+            width: 174px;
+            height: 87px;
           }
 
           .newsletter-heading {
             font-size: 28px;
             line-height: 36px;
-            text-align: left;
           }
 
           .newsletter-description {
             font-size: 18px;
             line-height: 28px;
-            text-align: left;
           }
 
           .newsletter-right {
@@ -260,6 +216,7 @@ export default function NewsletterSection() {
           .newsletter-form {
             flex-direction: row;
             align-items: flex-start;
+            gap: 16px;
           }
 
           .newsletter-input-wrap {
@@ -269,7 +226,7 @@ export default function NewsletterSection() {
         }
 
         /* ═══════════════════════════════════════
-         * §7  DESKTOP ≥1025px
+         * §3  DESKTOP ≥1025px
          * ═══════════════════════════════════════ */
         @media (min-width: 1025px) {
           .newsletter-outer {
@@ -277,7 +234,7 @@ export default function NewsletterSection() {
           }
 
           .newsletter-container {
-            max-width: none;
+            max-width: 1312px;
           }
 
           .newsletter-card {
@@ -285,7 +242,6 @@ export default function NewsletterSection() {
           }
 
           .newsletter-row {
-            max-width: none;
             flex-direction: row;
             align-items: center;
             gap: 64px;
@@ -299,13 +255,11 @@ export default function NewsletterSection() {
           .newsletter-heading {
             font-size: 36px;
             line-height: 44px;
-            text-align: left;
           }
 
           .newsletter-description {
             font-size: 18px;
             line-height: 28px;
-            text-align: left;
           }
 
           .newsletter-right {
@@ -320,7 +274,7 @@ export default function NewsletterSection() {
 
           .newsletter-input-wrap {
             width: 100%;
-            flex-shrink: unset;
+            flex-shrink: 1;
           }
         }
       `}</style>
