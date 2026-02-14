@@ -29,6 +29,24 @@ export default function HeroSection() {
                     z-index: 0;
                 }
 
+                .hero-blur-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 60%;
+                    z-index: 1;
+                    backdrop-filter: blur(16px);
+                    -webkit-backdrop-filter: blur(16px);
+                    background: linear-gradient(
+                        to bottom,
+                        rgba(255, 255, 255, 0.7) 0%,
+                        rgba(255, 255, 255, 0.5) 50%,
+                        rgba(255, 255, 255, 0) 100%
+                    );
+                    pointer-events: none;
+                }
+
                 .hero-content {
                     width: 100%;
                     height: 100%;
@@ -303,6 +321,10 @@ export default function HeroSection() {
                  * Only differences from tablet.
                  * ═══════════════════════════════════════ */
                 @media (min-width: 1025px) {
+                    .hero-blur-overlay {
+                        display: none;
+                    }
+
                     .hero-section {
                         min-height: 800px;
                     }
@@ -413,6 +435,9 @@ export default function HeroSection() {
                         style={{ objectFit: 'cover', objectPosition: 'center' }}
                     />
                 </div>
+
+                {/* Blur overlay for mobile/tablet readability */}
+                <div className="hero-blur-overlay" />
 
                 <div className="hero-content">
                     {/* Heading + Subtitle + CTA grouped, pushed to bottom-left */}
