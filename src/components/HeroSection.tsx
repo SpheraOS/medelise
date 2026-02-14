@@ -39,6 +39,7 @@ export default function HeroSection() {
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: flex-start;
+                    gap: 64px;
                 }
 
                 /* ── Top: Text + CTA ─────────────────── */
