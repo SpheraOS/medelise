@@ -31,36 +31,33 @@ export default function HeroSection() {
 
                 .hero-blur-overlay {
                     position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    height: 60%;
+                    inset: 0;
                     z-index: 1;
-                    backdrop-filter: blur(16px);
-                    -webkit-backdrop-filter: blur(16px);
+                    backdrop-filter: blur(14px);
+                    -webkit-backdrop-filter: blur(14px);
                     background: linear-gradient(
                         to bottom,
-                        rgba(255, 255, 255, 0.7) 0%,
-                        rgba(255, 255, 255, 0.5) 50%,
-                        rgba(255, 255, 255, 0) 100%
+                        rgba(255, 255, 255, 0.65) 0%,
+                        rgba(255, 255, 255, 0.3) 35%,
+                        rgba(255, 255, 255, 0.05) 55%,
+                        rgba(255, 255, 255, 0.3) 75%,
+                        rgba(255, 255, 255, 0.55) 100%
                     );
-                    pointer-events: none;
-                }
-
-                .hero-blur-bottom {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    height: 45%;
-                    z-index: 1;
-                    backdrop-filter: blur(12px);
-                    -webkit-backdrop-filter: blur(12px);
-                    background: linear-gradient(
-                        to top,
-                        rgba(255, 255, 255, 0.6) 0%,
-                        rgba(255, 255, 255, 0.35) 50%,
-                        rgba(255, 255, 255, 0) 100%
+                    -webkit-mask-image: linear-gradient(
+                        to bottom,
+                        black 0%,
+                        rgba(0, 0, 0, 0.7) 30%,
+                        rgba(0, 0, 0, 0.25) 50%,
+                        rgba(0, 0, 0, 0.6) 70%,
+                        black 100%
+                    );
+                    mask-image: linear-gradient(
+                        to bottom,
+                        black 0%,
+                        rgba(0, 0, 0, 0.7) 30%,
+                        rgba(0, 0, 0, 0.25) 50%,
+                        rgba(0, 0, 0, 0.6) 70%,
+                        black 100%
                     );
                     pointer-events: none;
                 }
@@ -315,8 +312,7 @@ export default function HeroSection() {
                  * Only differences from tablet.
                  * ═══════════════════════════════════════ */
                 @media (min-width: 1025px) {
-                    .hero-blur-overlay,
-                    .hero-blur-bottom {
+                    .hero-blur-overlay {
                         display: none;
                     }
 
@@ -393,9 +389,8 @@ export default function HeroSection() {
                     />
                 </div>
 
-                {/* Blur overlays for mobile/tablet readability */}
+                {/* Blur overlay for mobile/tablet readability */}
                 <div className="hero-blur-overlay" />
-                <div className="hero-blur-bottom" />
 
                 <div className="hero-content">
                     {/* Heading + Subtitle + CTA grouped, pushed to bottom-left */}
