@@ -20,6 +20,7 @@ const michroma = Michroma({
 });
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Medelise - MEDVITA HEALTH SOLUTIONS",
@@ -36,6 +37,7 @@ export default function RootLayout({
       <body className="antialiased">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
