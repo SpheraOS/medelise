@@ -191,6 +191,21 @@ export default function HeroSection() {
                     align-items: flex-start;
                     gap: 16px;
                     margin-top: auto;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .hero-social-proof::before {
+                    content: "";
+                    position: absolute;
+                    inset: -32px;
+                    z-index: -1;
+                    backdrop-filter: blur(16px);
+                    -webkit-backdrop-filter: blur(16px);
+                    background: rgba(255, 255, 255, 0.15);
+                    border-radius: 24px;
+                    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 35%, transparent 75%);
+                    mask-image: radial-gradient(ellipse at 50% 50%, black 35%, transparent 75%);
                 }
 
                 .hero-sp-label {
