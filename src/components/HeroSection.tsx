@@ -68,14 +68,14 @@ export default function HeroSection() {
                 .hero-content {
                     width: 100%;
                     height: 100%;
-                    padding: 68px 16px 32px;
+                    padding: clamp(64px, 12vh, 210px) 16px 32px;
                     position: relative;
                     z-index: 1;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: flex-end;
-                    gap: 40px;
+                    gap: 64px;
                 }
 
                 /* ── Top: Text + CTA ─────────────────── */
@@ -128,7 +128,7 @@ export default function HeroSection() {
                     font-family: var(--font-heading);
                     font-weight: 500;
                     line-height: 22px;
-                    max-width: 239px;
+                    max-width: 75%;
                     margin: 0;
                 }
 
@@ -291,7 +291,7 @@ export default function HeroSection() {
                  * ═══════════════════════════════════════ */
                 @media (min-width: 641px) {
                     .hero-content {
-                        padding: 68px 32px 32px;
+                        padding: clamp(68px, 14vh, 210px) 32px 32px;
                     }
 
                     .hero-text-group {
