@@ -160,8 +160,8 @@ export default function HeroSection() {
                 }
 
                 .hero-avatar-wrapper {
-                    width: 40px;
-                    height: 40px;
+                    width: 24px;
+                    height: 24px;
                     border-radius: 50%;
                     overflow: hidden;
                     border: 2px solid #FFFFFF;
@@ -171,7 +171,7 @@ export default function HeroSection() {
                 }
 
                 .hero-avatar-wrapper:not(:first-child) {
-                    margin-left: -8px;
+                    margin-left: -4px;
                 }
 
                 .hero-avatar-wrapper:nth-child(1) { z-index: 4; }
@@ -180,14 +180,14 @@ export default function HeroSection() {
 
                 .hero-avatar-img {
                     width: 100%;
-                    height: 36px;
+                    height: 20px;
                     object-fit: cover;
                     object-position: top;
                 }
 
                 .hero-avatar-count {
-                    width: 40px;
-                    height: 40px;
+                    width: 24px;
+                    height: 24px;
                     border-radius: 50%;
                     background: #F6F6F6;
                     display: flex;
@@ -195,16 +195,16 @@ export default function HeroSection() {
                     align-items: center;
                     flex-shrink: 0;
                     border: 2px solid #FFFFFF;
-                    margin-left: -8px;
+                    margin-left: -4px;
                     z-index: 1;
                 }
 
                 .hero-avatar-count-text {
                     color: #CC0A00;
-                    font-size: 14px;
+                    font-size: 10px;
                     font-family: var(--font-dm-sans);
                     font-weight: 500;
-                    line-height: 19.6px;
+                    line-height: 14px;
                 }
 
                 .hero-sp-stat-title {
@@ -266,6 +266,30 @@ export default function HeroSection() {
                         font-weight: 300;
                         line-height: 18px;
                         max-width: 252px;
+                    }
+
+                    .hero-avatar-wrapper {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .hero-avatar-wrapper:not(:first-child) {
+                        margin-left: -8px;
+                    }
+
+                    .hero-avatar-img {
+                        height: 36px;
+                    }
+
+                    .hero-avatar-count {
+                        width: 40px;
+                        height: 40px;
+                        margin-left: -8px;
+                    }
+
+                    .hero-avatar-count-text {
+                        font-size: 14px;
+                        line-height: 19.6px;
                     }
                 }
 
