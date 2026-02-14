@@ -31,7 +31,10 @@ export default function HeroSection() {
 
                 .hero-blur-overlay {
                     position: absolute;
-                    inset: 0;
+                    top: 64px;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
                     z-index: 1;
                     backdrop-filter: blur(14px);
                     -webkit-backdrop-filter: blur(14px);
@@ -45,7 +48,8 @@ export default function HeroSection() {
                     );
                     -webkit-mask-image: linear-gradient(
                         to bottom,
-                        black 0%,
+                        transparent 0%,
+                        black 8%,
                         rgba(0, 0, 0, 0.7) 30%,
                         rgba(0, 0, 0, 0.25) 50%,
                         rgba(0, 0, 0, 0.6) 70%,
@@ -53,7 +57,8 @@ export default function HeroSection() {
                     );
                     mask-image: linear-gradient(
                         to bottom,
-                        black 0%,
+                        transparent 0%,
+                        black 8%,
                         rgba(0, 0, 0, 0.7) 30%,
                         rgba(0, 0, 0, 0.25) 50%,
                         rgba(0, 0, 0, 0.6) 70%,
