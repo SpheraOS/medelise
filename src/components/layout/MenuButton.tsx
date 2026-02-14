@@ -8,7 +8,7 @@ interface MenuButtonProps {
 
 export default function MenuButton({ size = 'medium', onClick }: MenuButtonProps) {
     const dim = size === 'medium' ? 44 : 36;
-    const iconSize = size === 'medium' ? 18 : 14;
+    const iconSize = size === 'medium' ? 18 : 24;
     const borderColor = size === 'medium' ? 'var(--color-border-light)' : 'var(--color-surface-border)';
 
     return (
