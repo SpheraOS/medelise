@@ -68,14 +68,13 @@ export default function HeroSection() {
                 .hero-content {
                     width: 100%;
                     height: 100%;
-                    padding: clamp(64px, 12vh, 210px) 16px 32px;
+                    padding: clamp(64px, 12vh, 210px) 16px 24px;
                     position: relative;
                     z-index: 1;
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-between;
+                    justify-content: flex-start;
                     align-items: flex-end;
-                    gap: 64px;
                 }
 
                 /* ── Top: Text + CTA ─────────────────── */
