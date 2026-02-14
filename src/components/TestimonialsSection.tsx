@@ -266,11 +266,17 @@ export default function TestimonialsSection() {
 
         /* ─── Navigation Buttons ─── */
         .tm-nav-buttons {
-          display: flex;
+          display: none;
           justify-content: flex-start;
           align-items: flex-start;
           gap: var(--space-8);
           margin-left: auto;
+        }
+
+        @media (min-width: 641px) {
+          .tm-nav-buttons {
+            display: flex;
+          }
         }
 
         .tm-nav-btn {
