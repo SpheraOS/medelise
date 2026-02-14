@@ -14,7 +14,7 @@ export default function HeroSection() {
                  * ═══════════════════════════════════════ */
                 .hero-section {
                     width: 100%;
-                    min-height: auto;
+                    min-height: 100svh;
                     position: relative;
                     background: var(--color-white);
                     overflow: hidden;
