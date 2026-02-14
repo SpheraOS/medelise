@@ -65,7 +65,7 @@ export default function HeroSection() {
                     align-self: stretch;
                     display: flex;
                     flex-direction: column;
-                    gap: 124px;
+                    gap: 32px;
                 }
 
                 .hero-text-group {
@@ -91,7 +91,16 @@ export default function HeroSection() {
                 }
 
                 .hero-subtitle-cta::before {
-                    display: none;
+                    content: "";
+                    position: absolute;
+                    inset: -24px;
+                    z-index: -1;
+                    backdrop-filter: blur(12px);
+                    -webkit-backdrop-filter: blur(12px);
+                    background: rgba(255, 255, 255, 0.15);
+                    border-radius: 16px;
+                    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+                    mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
                 }
 
                 .hero-subtitle {
@@ -159,7 +168,7 @@ export default function HeroSection() {
                     width: 100%;
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-start;
+                    align-items: flex-end;
                     gap: 12px;
                     align-self: flex-end;
                     margin-top: auto;
