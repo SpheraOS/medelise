@@ -193,7 +193,7 @@ export default function LoginPage() {
                 .login-page {
                     display: flex;
                     min-height: 100vh;
-                    background: #F6F8FA;
+                    background: white;
                     font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
                     padding-left: 64px;
                     padding-right: 64px;
