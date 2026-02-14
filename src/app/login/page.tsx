@@ -511,6 +511,7 @@ export default function LoginPage() {
                     display: flex;
                     align-items: center;
                     gap: 20px;
+                    margin-left: 32px;
                 }
 
                 .login-preview-logo-line {
