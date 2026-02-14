@@ -105,10 +105,10 @@ export default function HeroSection() {
 
                 .hero-subtitle {
                     color: var(--color-primary);
-                    font-size: 12px;
+                    font-size: 16px;
                     font-family: var(--font-heading);
                     font-weight: 500;
-                    line-height: 16px;
+                    line-height: 22px;
                     max-width: 239px;
                     margin: 0;
                 }
@@ -244,10 +244,10 @@ export default function HeroSection() {
 
                 .hero-sp-stat-desc {
                     color: #213170;
-                    font-size: 12px;
+                    font-size: 16px;
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 16px;
+                    line-height: 22px;
                     max-width: 232px;
                 }
 
