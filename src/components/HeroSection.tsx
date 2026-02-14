@@ -47,6 +47,24 @@ export default function HeroSection() {
                     pointer-events: none;
                 }
 
+                .hero-blur-bottom {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 45%;
+                    z-index: 1;
+                    backdrop-filter: blur(12px);
+                    -webkit-backdrop-filter: blur(12px);
+                    background: linear-gradient(
+                        to top,
+                        rgba(255, 255, 255, 0.6) 0%,
+                        rgba(255, 255, 255, 0.35) 50%,
+                        rgba(255, 255, 255, 0) 100%
+                    );
+                    pointer-events: none;
+                }
+
                 .hero-content {
                     width: 100%;
                     height: 100%;
@@ -106,10 +124,10 @@ export default function HeroSection() {
 
                 .hero-subtitle {
                     color: var(--color-primary);
-                    font-size: 12px;
+                    font-size: 16px;
                     font-family: var(--font-heading);
                     font-weight: 500;
-                    line-height: 16px;
+                    line-height: 22px;
                     max-width: 239px;
                     margin: 0;
                 }
@@ -169,7 +187,7 @@ export default function HeroSection() {
                     align-self: stretch;
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-start;
+                    align-items: flex-end;
                     gap: 12px;
                     margin-top: auto;
                 }
@@ -304,7 +322,8 @@ export default function HeroSection() {
                  * Only differences from tablet.
                  * ═══════════════════════════════════════ */
                 @media (min-width: 1025px) {
-                    .hero-blur-overlay {
+                    .hero-blur-overlay,
+                    .hero-blur-bottom {
                         display: none;
                     }
 
@@ -419,8 +438,9 @@ export default function HeroSection() {
                     />
                 </div>
 
-                {/* Blur overlay for mobile/tablet readability */}
+                {/* Blur overlays for mobile/tablet readability */}
                 <div className="hero-blur-overlay" />
+                <div className="hero-blur-bottom" />
 
                 <div className="hero-content">
                     {/* Heading + Subtitle + CTA grouped, pushed to bottom-left */}
