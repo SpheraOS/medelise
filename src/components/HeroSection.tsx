@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { IMAGES } from '@/constants/images';
 import { ICONS } from '@/constants/icons';
 
@@ -399,7 +400,7 @@ export default function HeroSection() {
                             <p className="hero-subtitle">
                                 Creează-ți contul gratuit în Portalul MEDELISE și programează o vizită medicală acasă, fără apeluri sau cozi.
                             </p>
-                            <div className="hero-cta-group">
+                            <Link href="/login" className="hero-cta-group">
                                 <div className="hero-btn-primary">
                                     <span className="hero-btn-text">Creeaza contul gratuit</span>
                                 </div>
@@ -412,7 +413,7 @@ export default function HeroSection() {
                                         className="hero-icon"
                                     />
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                     </div>
 

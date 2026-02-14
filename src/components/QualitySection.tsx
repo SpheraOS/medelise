@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { IMAGES } from '@/constants/images';
 
 const checklistItems = [
@@ -73,9 +74,9 @@ export default function QualitySection() {
                       placeholder="Introduceti adresa dumneavoastra de email"
                     />
                   </div>
-                  <button type="submit" className="quality-cta-btn">
+                  <Link href="/login" className="quality-cta-btn">
                     Intră în contul tău Medelise
-                  </button>
+                  </Link>
                 </form>
               </div>
             </div>

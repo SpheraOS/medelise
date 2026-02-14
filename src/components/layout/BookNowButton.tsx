@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface BookNowButtonProps {
     variant?: 'primary' | 'inverted';
     size?: 'default' | 'small';
@@ -35,17 +37,19 @@ export default function BookNowButton({
             : { background: 'white', color: 'var(--color-primary)', border: '1px solid var(--color-primary)' };
 
     return (
-        <button
-            className={`cursor-pointer rounded-lg font-body font-normal transition-all duration-300 hover:brightness-110 hover:scale-105 ${className}`}
-            style={{
-                width: fullWidth ? '100%' : (children ? 'auto' : dims.width),
-                height: children ? 'auto' : dims.height,
-                fontSize: dims.fontSize,
-                padding: children ? '12px 32px' : undefined,
-                ...colors,
-            }}
-        >
-            {children || 'Book Now'}
-        </button>
+        <Link href="/login">
+            <button
+                className={`cursor-pointer rounded-lg font-body font-normal transition-all duration-300 hover:brightness-110 hover:scale-105 ${className}`}
+                style={{
+                    width: fullWidth ? '100%' : (children ? 'auto' : dims.width),
+                    height: children ? 'auto' : dims.height,
+                    fontSize: dims.fontSize,
+                    padding: children ? '12px 32px' : undefined,
+                    ...colors,
+                }}
+            >
+                {children || 'Book Now'}
+            </button>
+        </Link>
     );
 }

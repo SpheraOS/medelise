@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ICONS } from '@/constants/icons';
 import { IMAGES } from '@/constants/images';
 import Button from '@/components/ui/Button';
@@ -135,9 +136,11 @@ export default function PatientPortalSection() {
               </ul>
 
               {/* CTA */}
-              <Button variant="primary" isFullWidth className="portal-cta-btn">
-                Intră în contul tău Medelise
-              </Button>
+              <Link href="/login">
+                <Button variant="primary" isFullWidth className="portal-cta-btn">
+                  Intră în contul tău Medelise
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
