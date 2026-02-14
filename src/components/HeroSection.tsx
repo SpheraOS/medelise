@@ -141,11 +141,12 @@ export default function HeroSection() {
                     gap: 16px;
                     cursor: pointer;
                     text-decoration: none;
-                    align-self: flex-start;
+                    align-self: stretch;
                     flex-wrap: nowrap;
                 }
 
                 .hero-btn-primary {
+                    width: 100%;
                     padding: 6px 18px;
                     background: var(--color-primary);
                     border-radius: 8px;
