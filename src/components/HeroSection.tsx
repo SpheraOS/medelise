@@ -408,15 +408,6 @@ export default function HeroSection() {
                                 <div className="hero-btn-primary">
                                     <span className="hero-btn-text">Creeaza contul gratuit</span>
                                 </div>
-                                <div className="hero-btn-icon-wrapper">
-                                    <Image
-                                        src={ICONS.arrowUpRight}
-                                        alt=""
-                                        width={32}
-                                        height={32}
-                                        className="hero-icon"
-                                    />
-                                </div>
                             </Link>
                         </div>
                     </div>
