@@ -376,24 +376,107 @@ export default function HeroSection() {
                     .hero-section {
                         min-height: auto;
                     }
+
                     .hero-content {
-                        align-items: center;
-                        gap: 48px;
+                        padding: 180px 16px 32px 16px;
+                        gap: 0;
                     }
-                    .hero-heading {
-                        text-align: center;
-                        font-size: var(--text-h2);
+
+                    .hero-top-block {
+                        gap: 40px;
                     }
-                    .hero-subtitle {
-                        text-align: center;
-                    }
+
                     .hero-text-group {
-                        align-items: center;
+                        max-width: none;
+                        gap: 0;
                     }
+
+                    .hero-heading {
+                        font-size: 26px;
+                        line-height: 33.8px;
+                        text-align: left;
+                    }
+
+                    .hero-subtitle-cta {
+                        max-width: none;
+                        gap: 40px;
+                    }
+
+                    .hero-subtitle-cta::before {
+                        display: none;
+                    }
+
+                    .hero-subtitle {
+                        font-size: 12px;
+                        line-height: 16px;
+                        max-width: 239px;
+                        text-align: left;
+                    }
+
+                    .hero-btn-primary {
+                        padding: 8px 26px;
+                        border-radius: 8px;
+                    }
+
+                    .hero-btn-icon-wrapper {
+                        padding: 4px;
+                    }
+
                     .hero-social-proof {
-                        align-self: center;
-                        align-items: center;
-                        text-align: center;
+                        width: 100%;
+                        gap: 12px;
+                        align-self: flex-end;
+                        align-items: flex-start;
+                        text-align: left;
+                        margin-top: auto;
+                    }
+
+                    .hero-sp-label {
+                        font-size: 16px;
+                        line-height: 24px;
+                        font-family: var(--font-heading);
+                        font-weight: 600;
+                        text-align: left;
+                    }
+
+                    .hero-avatars-group {
+                        gap: 0;
+                    }
+
+                    .hero-avatar-wrapper {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .hero-avatar-wrapper:not(:first-child) {
+                        margin-left: -8px;
+                    }
+
+                    .hero-avatar-img {
+                        height: 36px;
+                    }
+
+                    .hero-avatar-count {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .hero-avatar-count:not(:first-child) {
+                        margin-left: -8px;
+                    }
+
+                    .hero-sp-stat-title {
+                        font-size: 14px;
+                        line-height: 19.6px;
+                    }
+
+                    .hero-sp-stat-desc {
+                        font-size: 12px;
+                        line-height: 16px;
+                        font-family: var(--font-heading);
+                        font-weight: 600;
+                        max-width: 232px;
+                        text-align: left;
                     }
                 }
             `}</style>
