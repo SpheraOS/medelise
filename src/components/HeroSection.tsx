@@ -243,8 +243,136 @@ export default function HeroSection() {
                     word-wrap: break-word;
                 }
 
-                /* ─── Responsive (Hidden on Mobile for now as per instructions) ── */
-                @media (max-width: 1024px) {
+                .hero-avatar-count {
+                    width: 64px;
+                    height: 64px;
+                    border-radius: 50%;
+                    background: #F6F6F6;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-shrink: 0;
+                    border: 2px solid #FFFFFF;
+                }
+
+                .hero-avatar-count:not(:first-child) {
+                    margin-left: -16px;
+                }
+
+                .hero-avatar-count-text {
+                    color: #CC0A00;
+                    font-size: 14px;
+                    font-family: var(--font-dm-sans);
+                    font-weight: 500;
+                    line-height: 19.6px;
+                    text-align: center;
+                }
+
+                /* ─── Tablet (641px – 1024px) ───────── */
+                @media (min-width: 641px) and (max-width: 1024px) {
+                    .hero-section {
+                        min-height: auto;
+                    }
+
+                    .hero-content {
+                        padding: 180px 32px 32px 32px;
+                        gap: 0;
+                    }
+
+                    .hero-top-block {
+                        gap: 40px;
+                    }
+
+                    .hero-text-group {
+                        max-width: 293px;
+                        gap: 0;
+                    }
+
+                    .hero-heading {
+                        font-size: 26px;
+                        line-height: 33.8px;
+                        max-width: 293px;
+                        text-align: left;
+                    }
+
+                    .hero-subtitle-cta {
+                        max-width: 293px;
+                        gap: 40px;
+                    }
+
+                    .hero-subtitle-cta::before {
+                        display: none;
+                    }
+
+                    .hero-subtitle {
+                        font-size: 12px;
+                        line-height: 16px;
+                        max-width: 293px;
+                        text-align: left;
+                    }
+
+                    .hero-btn-primary {
+                        padding: 8px 26px;
+                        border-radius: 8px;
+                    }
+
+                    .hero-btn-icon-wrapper {
+                        padding: 4px;
+                    }
+
+                    .hero-social-proof {
+                        width: 252px;
+                        gap: 8px;
+                        align-self: flex-end;
+                        margin-top: auto;
+                    }
+
+                    .hero-sp-label {
+                        font-size: 18px;
+                        line-height: 25.2px;
+                        text-align: left;
+                    }
+
+                    .hero-avatars-group {
+                        gap: 0;
+                    }
+
+                    .hero-avatar-wrapper {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .hero-avatar-wrapper:not(:first-child) {
+                        margin-left: -8px;
+                    }
+
+                    .hero-avatar-img {
+                        height: 36px;
+                    }
+
+                    .hero-avatar-count {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .hero-avatar-count:not(:first-child) {
+                        margin-left: -8px;
+                    }
+
+                    .hero-sp-stat-title {
+                        font-size: 14px;
+                        line-height: 19.6px;
+                    }
+
+                    .hero-sp-stat-desc {
+                        font-size: 12px;
+                        line-height: 18px;
+                        max-width: 252px;
+                    }
+                }
+
+                /* ─── Mobile (≤640px) ─────────────────── */
+                @media (max-width: 640px) {
                     .hero-section {
                         min-height: auto;
                     }
@@ -264,10 +392,6 @@ export default function HeroSection() {
                     }
                     .hero-social-proof {
                         align-self: center;
-                        align-items: center;
-                        text-align: center;
-                    }
-                    .hero-sp-stat {
                         align-items: center;
                         text-align: center;
                     }
@@ -327,6 +451,9 @@ export default function HeroSection() {
                             </div>
                             <div className="hero-avatar-wrapper" style={{ background: '#213170' }}>
                                 <Image src={IMAGES.hero.avatar3} alt="Medic 3" width={64} height={64} className="hero-avatar-img" style={{ width: '100%', height: '56px', objectFit: 'cover', objectPosition: 'top' }} />
+                            </div>
+                            <div className="hero-avatar-count">
+                                <span className="hero-avatar-count-text">40+</span>
                             </div>
                         </div>
 
