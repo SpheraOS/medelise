@@ -14,7 +14,7 @@ export default function HeroSection() {
                  * ═══════════════════════════════════════ */
                 .hero-section {
                     width: 100%;
-                    min-height: 100svh;
+                    height: 100svh;
                     position: relative;
                     background: var(--color-white);
                     overflow: hidden;
@@ -67,7 +67,7 @@ export default function HeroSection() {
 
                 .hero-content {
                     width: 100%;
-                    height: 100%;
+                    flex: 1;
                     padding: clamp(64px, 12vh, 210px) 16px 24px;
                     position: relative;
                     z-index: 1;
@@ -321,7 +321,7 @@ export default function HeroSection() {
                     }
 
                     .hero-section {
-                        min-height: 800px;
+                        height: 100svh;
                     }
 
                     .hero-content {
