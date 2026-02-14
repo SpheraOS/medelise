@@ -11,70 +11,70 @@ import Button from '@/components/ui/Button';
  * ═══════════════════════════════════════════════════════════ */
 
 export default function NewsletterSection() {
-    const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('');
 
-    return (
-        <>
-            <section className="newsletter-section" aria-labelledby="newsletter-heading">
-                <div className="newsletter-outer">
-                    <div className="newsletter-container">
-                        <div className="newsletter-card">
-                            <div className="newsletter-row">
-                                {/* ─── LEFT — Text ─── */}
-                                <div className="newsletter-text">
-                                    <h2 id="newsletter-heading" className="newsletter-heading">
-                                        Intră în comunitatea Medelise, a celor care văd sănătatea altfel.
-                                    </h2>
-                                    <p className="newsletter-description">
-                                        Viitorul sănătății este personalizat, digital și uman. Noi construim acest viitor
-                                        pas cu pas, alături de cei care cred că medicina înseamnă mai mult decât rețete
-                                        și protocoale.
-                                    </p>
-                                </div>
-
-                                {/* ─── RIGHT — Image + Form ─── */}
-                                <div className="newsletter-right">
-                                    {/* Girl illustration */}
-                                    <div className="newsletter-illustration">
-                                        <Image
-                                            src="/images/quality/girl 2.svg"
-                                            alt="Medelise community"
-                                            width={174}
-                                            height={87}
-                                        />
-                                    </div>
-
-                                    {/* Subscribe Form */}
-                                    <form
-                                        className="newsletter-form"
-                                        onSubmit={(e) => {
-                                            e.preventDefault();
-                                            /* handle subscribe */
-                                        }}
-                                    >
-                                        <div className="newsletter-input-wrap">
-                                            <input
-                                                type="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                placeholder="Your e-mail address"
-                                                className="newsletter-input"
-                                                aria-label="Email address"
-                                                required
-                                            />
-                                        </div>
-                                        <Button variant="primary" isFullWidth type="submit">
-                                            Subscribe
-                                        </Button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <>
+      <section className="newsletter-section" aria-labelledby="newsletter-heading">
+        <div className="newsletter-outer">
+          <div className="newsletter-container">
+            <div className="newsletter-card">
+              <div className="newsletter-row">
+                {/* ─── LEFT — Text ─── */}
+                <div className="newsletter-text">
+                  <h2 id="newsletter-heading" className="newsletter-heading">
+                    Intră în comunitatea Medelise, a celor care văd sănătatea altfel.
+                  </h2>
+                  <p className="newsletter-description">
+                    Viitorul sănătății este personalizat, digital și uman. Noi construim acest viitor
+                    pas cu pas, alături de cei care cred că medicina înseamnă mai mult decât rețete
+                    și protocoale.
+                  </p>
                 </div>
-            </section>
 
-            <style jsx>{`
+                {/* ─── RIGHT — Image + Form ─── */}
+                <div className="newsletter-right">
+                  {/* Girl illustration */}
+                  <div className="newsletter-illustration">
+                    <Image
+                      src="/images/quality/girl 2.svg"
+                      alt="Medelise community"
+                      width={174}
+                      height={87}
+                    />
+                  </div>
+
+                  {/* Subscribe Form */}
+                  <form
+                    className="newsletter-form"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      /* handle subscribe */
+                    }}
+                  >
+                    <div className="newsletter-input-wrap">
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Your e-mail address"
+                        className="newsletter-input"
+                        aria-label="Email address"
+                        required
+                      />
+                    </div>
+                    <Button variant="primary" isFullWidth type="submit">
+                      Subscribe
+                    </Button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
         /* ═══════════════════════════════════════
          * §1  SECTION WRAPPER
          * ═══════════════════════════════════════ */
@@ -276,6 +276,10 @@ export default function NewsletterSection() {
             padding: 64px;
           }
 
+          .newsletter-container {
+            max-width: none;
+          }
+
           .newsletter-card {
             padding: 64px 0;
           }
@@ -306,8 +310,6 @@ export default function NewsletterSection() {
 
           .newsletter-right {
             flex: 1 1 0;
-            justify-content: space-between;
-            height: 189px;
             gap: 0;
           }
 
@@ -318,9 +320,10 @@ export default function NewsletterSection() {
 
           .newsletter-input-wrap {
             width: 100%;
+            flex-shrink: unset;
           }
         }
       `}</style>
-        </>
-    );
+    </>
+  );
 }
