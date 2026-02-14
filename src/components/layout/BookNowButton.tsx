@@ -28,7 +28,7 @@ export default function BookNowButton({
 }: BookNowButtonProps) {
     const dims =
         size === 'default'
-            ? { width: 123, height: 38, fontSize: 14 }
+            ? { width: 123, height: 38, fontSize: 16 }
             : { width: 100, height: 32, fontSize: 12 };
 
     const colors =

@@ -85,7 +85,7 @@ export default function DesktopNav() {
                     <div className="flex items-center justify-end gap-8">
                         <Link
                             href="/"
-                            className="font-body text-base font-normal leading-tight text-white transition-all duration-200 hover:scale-105 hover:font-semibold"
+                            className="font-body text-[16px] font-normal leading-tight text-white transition-all duration-200 hover:scale-105 hover:font-semibold"
                         >
                             Acasa
                         </Link>
@@ -93,7 +93,7 @@ export default function DesktopNav() {
                             <Link
                                 key={link.label}
                                 href={link.href}
-                                className="font-body text-base font-normal leading-tight text-white transition-all duration-200 hover:scale-105 hover:font-semibold"
+                                className="font-body text-[16px] font-normal leading-tight text-white transition-all duration-200 hover:scale-105 hover:font-semibold"
                             >
                                 {link.label}
                             </Link>
@@ -137,7 +137,7 @@ export default function DesktopNav() {
                                                     setActiveMenu(activeMenu === menuKey ? null : menuKey);
                                                 }
                                             }}
-                                            className="flex items-center gap-2 font-body text-base font-normal leading-tight text-white transition-all duration-200 hover:scale-105 hover:font-semibold"
+                                            className="flex items-center gap-2 font-body text-[16px] font-normal leading-tight text-white transition-all duration-200 hover:scale-105 hover:font-semibold"
                                             style={{ transition: 'all 200ms ease-in-out' }}
                                         >
                                             {item}
