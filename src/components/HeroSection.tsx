@@ -146,7 +146,7 @@ export default function HeroSection() {
                 }
 
                 .hero-btn-primary {
-                    padding: 8px 26px;
+                    padding: 6px 18px;
                     background: var(--color-primary);
                     border-radius: 8px;
                     display: flex;
@@ -162,10 +162,10 @@ export default function HeroSection() {
 
                 .hero-btn-text {
                     color: var(--color-white);
-                    font-size: 16px;
+                    font-size: 14px;
                     font-family: var(--font-poppins);
                     font-weight: 500;
-                    line-height: 24px;
+                    line-height: 20px;
                 }
 
                 .hero-btn-icon-wrapper {
