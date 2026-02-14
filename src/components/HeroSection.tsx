@@ -157,7 +157,7 @@ export default function HeroSection() {
                 /* ── Social Proof ─────────────────────── */
                 .hero-social-proof {
                     width: 100%;
-                    display: none;
+                    display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     gap: 12px;
@@ -252,9 +252,7 @@ export default function HeroSection() {
                         padding: 68px 32px 32px;
                     }
 
-                    .hero-social-proof {
-                        display: flex;
-                    }
+
 
                     .hero-text-group {
                         max-width: 293px;
