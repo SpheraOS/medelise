@@ -284,7 +284,7 @@ export default function PatientPortalSection() {
         /* ─── Info Heading ─── */
         .portal-info-heading {
           color: var(--color-primary);
-          font-size: var(--text-sm);
+          font-size: 18px;
           font-family: var(--font-heading);
           font-weight: 600;
           line-height: 1.43;
