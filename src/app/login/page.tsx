@@ -28,8 +28,8 @@ export default function LoginPage() {
                     <div className="login-form-inner">
                         {/* Header */}
                         <div className="login-header">
-                            <h1 className="login-title">Hi, Welcome</h1>
-                            <p className="login-subtitle">Please login to employee account</p>
+                            <h1 className="login-title">Bun venit</h1>
+                            <p className="login-subtitle">Conectează-te la contul de angajat</p>
                         </div>
 
                         {/* Social Sign-in */}
@@ -41,7 +41,7 @@ export default function LoginPage() {
                                     width={24}
                                     height={24}
                                 />
-                                <span>Sign in with Google</span>
+                                <span>Conectare cu Google</span>
                             </button>
                             <button className="login-social-btn" type="button">
                                 <Image
@@ -50,14 +50,14 @@ export default function LoginPage() {
                                     width={24}
                                     height={24}
                                 />
-                                <span>Sign in with Apple</span>
+                                <span>Conectare cu Apple</span>
                             </button>
                         </div>
 
                         {/* Divider */}
                         <div className="login-divider">
                             <div className="login-divider-line" />
-                            <span className="login-divider-text">Or Sign in with</span>
+                            <span className="login-divider-text">Sau conectează-te cu</span>
                             <div className="login-divider-line" />
                         </div>
 
@@ -76,7 +76,7 @@ export default function LoginPage() {
                                     />
                                     <input
                                         type="email"
-                                        placeholder="Input your email"
+                                        placeholder="Introdu adresa de email"
                                         className="login-input"
                                     />
                                 </div>
@@ -84,7 +84,7 @@ export default function LoginPage() {
 
                             {/* Password */}
                             <div className="login-field-group">
-                                <label className="login-label">Password</label>
+                                <label className="login-label">Parolă</label>
                                 <div className="login-input-wrapper">
                                     <Image
                                         src="/images/quality/Login/remix-icons/line/system/lock-line.svg"
@@ -95,14 +95,14 @@ export default function LoginPage() {
                                     />
                                     <input
                                         type={showPassword ? 'text' : 'password'}
-                                        placeholder="Input your password"
+                                        placeholder="Introdu parola"
                                         className="login-input"
                                     />
                                     <button
                                         type="button"
                                         className="login-eye-btn"
                                         onClick={() => setShowPassword(!showPassword)}
-                                        aria-label={showPassword ? 'Hide password' : 'Show password'}
+                                        aria-label={showPassword ? 'Ascunde parola' : 'Arată parola'}
                                     >
                                         <Image
                                             src="/images/quality/Login/remix-icons/line/system/eye-line.svg"
@@ -117,16 +117,16 @@ export default function LoginPage() {
                             {/* Login Button */}
                             <div className="login-actions">
                                 <button type="submit" className="login-submit-btn">
-                                    Login
+                                    Conectare
                                 </button>
 
                                 <div className="login-meta-row">
                                     <label className="login-remember">
                                         <input type="checkbox" className="login-checkbox" />
-                                        <span>Remember me</span>
+                                        <span>Ține-mă minte</span>
                                     </label>
                                     <Link href="#" className="login-forgot">
-                                        Forgot Password ?
+                                        Ai uitat parola?
                                     </Link>
                                 </div>
                             </div>
@@ -134,8 +134,8 @@ export default function LoginPage() {
 
                         {/* Sign Up Link */}
                         <div className="login-signup-row">
-                            <span className="login-signup-text">Don&apos;t have an account?</span>
-                            <Link href="#" className="login-signup-link">Sign Up</Link>
+                            <span className="login-signup-text">Nu ai un cont?</span>
+                            <Link href="#" className="login-signup-link">Înregistrează-te</Link>
                         </div>
                     </div>
                 </div>
@@ -163,11 +163,11 @@ export default function LoginPage() {
                             <div className="login-preview-logo-line" />
                         </div>
                         <div className="login-preview-title-block">
-                            <h2 className="login-preview-title">Simplify Medical Management</h2>
+                            <h2 className="login-preview-title">Simplifică Managementul Medical</h2>
                             <p className="login-preview-desc">
-                                Streamline patient care, appointments, and medical records in one
-                                powerful dashboard. Experience the ease of managing your healthcare
-                                services with MedKit
+                                Eficientizează îngrijirea pacienților, programările și fișele medicale
+                                într-un singur panou de control. Descoperă ușurința gestionării
+                                serviciilor tale de sănătate cu Medelise
                             </p>
                         </div>
                     </div>
@@ -178,11 +178,11 @@ export default function LoginPage() {
                             <div className="login-dashboard-logo-area">
                                 <span className="login-dashboard-brand">MEDELISE</span>
                             </div>
-                            <span className="login-dashboard-search">🔍 Search here...</span>
+                            <span className="login-dashboard-search">🔍 Caută aici...</span>
                         </div>
                         <div className="login-dashboard-content">
                             <div className="login-dashboard-heading">
-                                <span className="login-dashboard-h1">Dashboard</span>
+                                <span className="login-dashboard-h1">Panou</span>
                                 <span className="login-dashboard-h1-sub">Medical</span>
                             </div>
                             <div className="login-dashboard-stats">
