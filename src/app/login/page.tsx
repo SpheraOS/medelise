@@ -148,13 +148,18 @@ export default function LoginPage() {
                     {/* Top: Logo + Title */}
                     <div className="login-preview-header">
                         <div className="login-preview-logo-row">
-                            <Image
-                                src="/images/quality/Logo.svg"
-                                alt="MEDELISE"
-                                width={200}
-                                height={40}
-                                style={{ filter: 'brightness(0) invert(1)' }}
-                            />
+                            <span
+                                style={{
+                                    fontFamily: 'var(--font-michroma), Michroma, sans-serif',
+                                    fontSize: '24px',
+                                    textTransform: 'uppercase' as const,
+                                    color: 'white',
+                                    letterSpacing: '0.05em',
+                                    lineHeight: 1,
+                                }}
+                            >
+                                MEDELISE
+                            </span>
                             <div className="login-preview-logo-line" />
                         </div>
                         <div className="login-preview-title-block">
