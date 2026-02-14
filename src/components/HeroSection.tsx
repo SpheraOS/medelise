@@ -67,7 +67,7 @@ export default function HeroSection() {
                 .hero-subtitle-cta {
                     display: flex;
                     flex-direction: column;
-                    gap: 40px;
+                    gap: 16px;
                     position: relative;
                     z-index: 10;
                 }
@@ -139,7 +139,7 @@ export default function HeroSection() {
                 /* ── Social Proof ─────────────────────── */
                 .hero-social-proof {
                     width: 100%;
-                    display: flex;
+                    display: none;
                     flex-direction: column;
                     align-items: flex-start;
                     gap: 12px;
@@ -232,6 +232,10 @@ export default function HeroSection() {
                 @media (min-width: 641px) {
                     .hero-content {
                         padding: 68px 32px 32px;
+                    }
+
+                    .hero-social-proof {
+                        display: flex;
                     }
 
                     .hero-text-group {
