@@ -295,19 +295,19 @@ export default function HeroSection() {
                     }
 
                     .hero-text-group {
-                        max-width: 293px;
+                        max-width: 75%;
                     }
 
                     .hero-heading {
-                        max-width: 293px;
+                        max-width: 75%;
                     }
 
                     .hero-subtitle-cta {
-                        max-width: 293px;
+                        max-width: 75%;
                     }
 
                     .hero-subtitle {
-                        max-width: 293px;
+                        max-width: 75%;
                     }
                 }
 
