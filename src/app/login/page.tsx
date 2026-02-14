@@ -474,7 +474,7 @@ export default function LoginPage() {
                     overflow: hidden;
                     display: flex;
                     flex-direction: column;
-                    padding: 50px;
+                    padding: 0;
                 }
 
                 .login-preview-overlay {
