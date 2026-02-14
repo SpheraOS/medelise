@@ -9,35 +9,30 @@ export default function HeroSection() {
     return (
         <>
             <style jsx>{`
-                /* ─── Base ──────────────────────────── */
+                /* ═══════════════════════════════════════
+                 * BASE (Mobile-first — shared by all)
+                 * ═══════════════════════════════════════ */
                 .hero-section {
                     width: 100%;
-                    min-height: 800px;
+                    min-height: auto;
                     position: relative;
                     background: var(--color-white);
                     overflow: hidden;
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-start;
                     align-items: center;
                 }
 
                 .hero-background {
                     position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
+                    inset: 0;
                     z-index: 0;
-                    /* transform removed for 0deg rotation (Option 2) */
                 }
 
                 .hero-content {
                     width: 100%;
-                    /* max-width removed to allow full spread as per user request */
                     height: 100%;
-                    /* pt-210px to clear absolute navbar (Ticker 48px + TopBar ~40px + Nav ~80px) */
-                    padding: 210px var(--space-section-px) 64px var(--space-section-px);
+                    padding: 180px 16px 32px;
                     position: relative;
                     z-index: 1;
                     display: flex;
@@ -46,98 +41,68 @@ export default function HeroSection() {
                     align-items: flex-start;
                 }
 
-                /* ─── Top Block: Text + CTA ─────────── */
+                /* ── Top: Text + CTA ─────────────────── */
                 .hero-top-block {
                     align-self: stretch;
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    gap: 64px;
+                    gap: 40px;
                 }
 
                 .hero-text-group {
-                    width: 100%;
-                    max-width: 800px;
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: flex-start;
+                }
+
+                .hero-heading {
+                    color: var(--color-primary);
+                    font-size: 26px;
+                    font-family: var(--font-poppins);
+                    font-weight: 500;
+                    line-height: 33.8px;
+                    margin: 0;
                 }
 
                 .hero-subtitle-cta {
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    gap: 32px;
-                    width: 100%;
-                    max-width: 600px;
-                    align-self: flex-start;
-                    margin-top: auto;
+                    gap: 40px;
                     position: relative;
                     z-index: 10;
                 }
 
-                /* Glassmorphism blur behind subtitle for readability */
                 .hero-subtitle-cta::before {
-                    content: "";
-                    position: absolute;
-                    inset: -40px;
-                    z-index: -1;
-                    backdrop-filter: blur(12px);
-                    -webkit-backdrop-filter: blur(12px);
-                    background: rgba(255, 255, 255, 0.05);
-                    border-radius: 24px;
-                    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
-                    mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
-                }
-
-                .hero-heading {
-                    align-self: stretch;
-                    max-width: 728px;
-                    color: var(--color-primary);
-                    /* User requested 50px/65px. 
-                       --text-h1 is ~48px on desktop (clamp 32-48). Close enough, using token for consistency. */
-                    font-size: var(--text-h1); 
-                    font-family: var(--font-poppins); /* Poppins mapped to brand/heading */
-                    font-weight: 500;
-                    line-height: 1.3;
-                    word-wrap: break-word;
+                    display: none;
                 }
 
                 .hero-subtitle {
-                    width: 100%;
-                    max-width: 448px;
                     color: var(--color-primary);
-                    /* User requested 20px/28px. 
-                       --text-body-lg is ~20px on desktop. */
-                    font-size: var(--text-body-lg); 
-                    font-family: var(--font-poppins); /* Montserrat mapped via body */
+                    font-size: 12px;
+                    font-family: var(--font-heading);
                     font-weight: 500;
-                    line-height: 1.4;
-                    word-wrap: break-word;
+                    line-height: 16px;
+                    max-width: 239px;
+                    margin: 0;
                 }
 
-                /* ─── CTA Group ─────────────────────── */
+                /* ── CTA ─────────────────────────────── */
                 .hero-cta-group {
                     display: inline-flex;
-                    justify-content: flex-start;
                     align-items: center;
                     gap: 16px;
                     cursor: pointer;
                 }
 
                 .hero-btn-primary {
-                    padding: 16px 32px;
+                    padding: 8px 26px;
                     background: var(--color-primary);
-                    border-radius: 16px;
+                    border-radius: 8px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     transition: transform 0.2s ease, box-shadow 0.2s ease;
                 }
-                
+
                 .hero-cta-group:hover .hero-btn-primary {
                     transform: translateY(-2px);
                     box-shadow: var(--shadow-md);
@@ -145,14 +110,14 @@ export default function HeroSection() {
 
                 .hero-btn-text {
                     color: var(--color-white);
-                    font-size: 16px; /* User requested 16px */
-                    font-family: var(--font-poppins); /* Manrope */
+                    font-size: 16px;
+                    font-family: var(--font-poppins);
                     font-weight: 500;
-                    line-height: 1.5;
+                    line-height: 24px;
                 }
 
                 .hero-btn-icon-wrapper {
-                    padding: 12px;
+                    padding: 4px;
                     background: var(--color-primary);
                     border-radius: 100px;
                     display: flex;
@@ -160,7 +125,7 @@ export default function HeroSection() {
                     align-items: center;
                     transition: transform 0.2s ease;
                 }
-                
+
                 .hero-cta-group:hover .hero-btn-icon-wrapper {
                     transform: translateX(4px) translateY(-2px);
                 }
@@ -170,82 +135,59 @@ export default function HeroSection() {
                     height: 32px;
                 }
 
-                /* ─── Social Proof (Left Aligned, Overlapping Avatars) ──── */
+                /* ── Social Proof ─────────────────────── */
                 .hero-social-proof {
-                    width: 280px;
-                    display: inline-flex;
+                    width: 100%;
+                    display: flex;
                     flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: flex-start; /* LEFT aligned text */
-                    gap: 16px;
-                    align-self: flex-end; /* Push to RIGHT edge */
-                    margin-top: auto; /* Push to BOTTOM */
+                    align-items: flex-start;
+                    gap: 12px;
+                    align-self: flex-end;
+                    margin-top: auto;
                 }
 
                 .hero-sp-label {
-                    text-align: left;
-                    color: #213170; /* Indigo */
-                    font-size: 18px;
-                    font-family: var(--font-dm-sans);
-                    font-weight: 500;
-                    line-height: 25.2px;
-                    word-wrap: break-word;
+                    color: #213170;
+                    font-size: 16px;
+                    font-family: var(--font-heading);
+                    font-weight: 600;
+                    line-height: 24px;
                 }
 
                 .hero-avatars-group {
-                    justify-content: flex-start;
-                    align-items: center;
                     display: inline-flex;
+                    align-items: center;
                 }
 
                 .hero-avatar-wrapper {
-                    width: 64px;
-                    height: 64px;
+                    width: 40px;
+                    height: 40px;
                     border-radius: 50%;
                     overflow: hidden;
                     border: 2px solid #FFFFFF;
                     flex-shrink: 0;
                     display: flex;
-                    align-items: flex-end; /* Align doctor image to bottom of circle */
+                    align-items: flex-end;
                 }
+
                 .hero-avatar-wrapper:not(:first-child) {
-                    margin-left: -16px; /* 25% overlap of 64px */
+                    margin-left: -8px;
                 }
-                /* Z-index stacking: first on top */
-                .hero-avatar-wrapper:nth-child(1) { z-index: 3; }
-                .hero-avatar-wrapper:nth-child(2) { z-index: 2; }
-                .hero-avatar-wrapper:nth-child(3) { z-index: 1; }
+
+                .hero-avatar-wrapper:nth-child(1) { z-index: 4; }
+                .hero-avatar-wrapper:nth-child(2) { z-index: 3; }
+                .hero-avatar-wrapper:nth-child(3) { z-index: 2; }
 
                 .hero-avatar-img {
                     width: 100%;
-                    height: 56px; /* Fixed 56px height inside 64px circle */
+                    height: 36px;
                     object-fit: cover;
-                    object-position: top; /* Keep face/head visible when cropping */
-                }
-
-                .hero-sp-stat-title {
-                    text-align: left;
-                    color: #FE5D16; /* Orange highlight */
-                    font-size: 18px;
-                    font-family: var(--font-dm-sans);
-                    font-weight: 500;
-                    line-height: 25.2px;
-                    word-wrap: break-word;
-                }
-
-                .hero-sp-stat-desc {
-                    text-align: left;
-                    color: #213170; /* Indigo */
-                    font-size: 14px;
-                    font-family: var(--font-dm-sans);
-                    font-weight: 300;
-                    line-height: 21px;
-                    word-wrap: break-word;
+                    object-position: top;
                 }
 
                 .hero-avatar-count {
-                    width: 64px;
-                    height: 64px;
+                    width: 40px;
+                    height: 40px;
                     border-radius: 50%;
                     background: #F6F6F6;
                     display: flex;
@@ -253,10 +195,8 @@ export default function HeroSection() {
                     align-items: center;
                     flex-shrink: 0;
                     border: 2px solid #FFFFFF;
-                }
-
-                .hero-avatar-count:not(:first-child) {
-                    margin-left: -16px;
+                    margin-left: -8px;
+                    z-index: 1;
                 }
 
                 .hero-avatar-count-text {
@@ -265,218 +205,170 @@ export default function HeroSection() {
                     font-family: var(--font-dm-sans);
                     font-weight: 500;
                     line-height: 19.6px;
-                    text-align: center;
                 }
 
-                /* ─── Tablet (641px – 1024px) ───────── */
-                @media (min-width: 641px) and (max-width: 1024px) {
-                    .hero-section {
-                        min-height: auto;
-                    }
+                .hero-sp-stat-title {
+                    color: #FE5D16;
+                    font-size: 14px;
+                    font-family: var(--font-dm-sans);
+                    font-weight: 500;
+                    line-height: 19.6px;
+                }
 
+                .hero-sp-stat-desc {
+                    color: #213170;
+                    font-size: 12px;
+                    font-family: var(--font-heading);
+                    font-weight: 600;
+                    line-height: 16px;
+                    max-width: 232px;
+                }
+
+                /* ═══════════════════════════════════════
+                 * TABLET ≥641px
+                 * Only differences from mobile base.
+                 * ═══════════════════════════════════════ */
+                @media (min-width: 641px) {
                     .hero-content {
-                        padding: 180px 32px 32px 32px;
-                        gap: 0;
-                    }
-
-                    .hero-top-block {
-                        gap: 40px;
+                        padding: 180px 32px 32px;
                     }
 
                     .hero-text-group {
                         max-width: 293px;
-                        gap: 0;
                     }
 
                     .hero-heading {
-                        font-size: 26px;
-                        line-height: 33.8px;
                         max-width: 293px;
-                        text-align: left;
                     }
 
                     .hero-subtitle-cta {
                         max-width: 293px;
-                        gap: 40px;
-                    }
-
-                    .hero-subtitle-cta::before {
-                        display: none;
                     }
 
                     .hero-subtitle {
-                        font-size: 12px;
-                        line-height: 16px;
                         max-width: 293px;
-                        text-align: left;
-                    }
-
-                    .hero-btn-primary {
-                        padding: 8px 26px;
-                        border-radius: 8px;
-                    }
-
-                    .hero-btn-icon-wrapper {
-                        padding: 4px;
                     }
 
                     .hero-social-proof {
                         width: 252px;
                         gap: 8px;
-                        align-self: flex-end;
-                        margin-top: auto;
                     }
 
                     .hero-sp-label {
                         font-size: 18px;
+                        font-family: var(--font-dm-sans);
+                        font-weight: 500;
                         line-height: 25.2px;
-                        text-align: left;
-                    }
-
-                    .hero-avatars-group {
-                        gap: 0;
-                    }
-
-                    .hero-avatar-wrapper {
-                        width: 40px;
-                        height: 40px;
-                    }
-
-                    .hero-avatar-wrapper:not(:first-child) {
-                        margin-left: -8px;
-                    }
-
-                    .hero-avatar-img {
-                        height: 36px;
-                    }
-
-                    .hero-avatar-count {
-                        width: 40px;
-                        height: 40px;
-                    }
-
-                    .hero-avatar-count:not(:first-child) {
-                        margin-left: -8px;
-                    }
-
-                    .hero-sp-stat-title {
-                        font-size: 14px;
-                        line-height: 19.6px;
                     }
 
                     .hero-sp-stat-desc {
-                        font-size: 12px;
+                        font-family: var(--font-dm-sans);
+                        font-weight: 300;
                         line-height: 18px;
                         max-width: 252px;
                     }
                 }
 
-                /* ─── Mobile (≤640px) ─────────────────── */
-                @media (max-width: 640px) {
+                /* ═══════════════════════════════════════
+                 * DESKTOP ≥1025px
+                 * Only differences from tablet.
+                 * ═══════════════════════════════════════ */
+                @media (min-width: 1025px) {
                     .hero-section {
-                        min-height: auto;
+                        min-height: 800px;
                     }
 
                     .hero-content {
-                        padding: 180px 16px 32px 16px;
-                        gap: 0;
+                        padding: 210px var(--space-section-px) 64px;
                     }
 
                     .hero-top-block {
-                        gap: 40px;
+                        gap: 64px;
                     }
 
                     .hero-text-group {
-                        max-width: none;
-                        gap: 0;
+                        max-width: 800px;
                     }
 
                     .hero-heading {
-                        font-size: 26px;
-                        line-height: 33.8px;
-                        text-align: left;
+                        font-size: var(--text-h1);
+                        line-height: 1.3;
+                        max-width: 728px;
                     }
 
                     .hero-subtitle-cta {
-                        max-width: none;
-                        gap: 40px;
+                        max-width: 600px;
+                        gap: 32px;
                     }
 
                     .hero-subtitle-cta::before {
-                        display: none;
+                        display: block;
+                        content: "";
+                        position: absolute;
+                        inset: -40px;
+                        z-index: -1;
+                        backdrop-filter: blur(12px);
+                        -webkit-backdrop-filter: blur(12px);
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 24px;
+                        -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
+                        mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
                     }
 
                     .hero-subtitle {
-                        font-size: 12px;
-                        line-height: 16px;
-                        max-width: 239px;
-                        text-align: left;
+                        font-size: var(--text-body-lg);
+                        font-family: var(--font-poppins);
+                        line-height: 1.4;
+                        max-width: 448px;
                     }
 
                     .hero-btn-primary {
-                        padding: 8px 26px;
-                        border-radius: 8px;
+                        padding: 16px 32px;
+                        border-radius: 16px;
                     }
 
                     .hero-btn-icon-wrapper {
-                        padding: 4px;
+                        padding: 12px;
                     }
 
                     .hero-social-proof {
-                        width: 100%;
-                        gap: 12px;
-                        align-self: flex-end;
-                        align-items: flex-start;
-                        text-align: left;
-                        margin-top: auto;
+                        width: 280px;
+                        gap: 16px;
                     }
 
                     .hero-sp-label {
-                        font-size: 16px;
-                        line-height: 24px;
-                        font-family: var(--font-heading);
-                        font-weight: 600;
-                        text-align: left;
-                    }
-
-                    .hero-avatars-group {
-                        gap: 0;
+                        font-size: 18px;
+                        line-height: 25.2px;
                     }
 
                     .hero-avatar-wrapper {
-                        width: 40px;
-                        height: 40px;
+                        width: 64px;
+                        height: 64px;
                     }
 
                     .hero-avatar-wrapper:not(:first-child) {
-                        margin-left: -8px;
+                        margin-left: -16px;
                     }
 
                     .hero-avatar-img {
-                        height: 36px;
+                        height: 56px;
                     }
 
                     .hero-avatar-count {
-                        width: 40px;
-                        height: 40px;
-                    }
-
-                    .hero-avatar-count:not(:first-child) {
-                        margin-left: -8px;
+                        width: 64px;
+                        height: 64px;
+                        margin-left: -16px;
                     }
 
                     .hero-sp-stat-title {
-                        font-size: 14px;
-                        line-height: 19.6px;
+                        font-size: 18px;
+                        line-height: 25.2px;
                     }
 
                     .hero-sp-stat-desc {
-                        font-size: 12px;
-                        line-height: 16px;
-                        font-family: var(--font-heading);
-                        font-weight: 600;
-                        max-width: 232px;
-                        text-align: left;
+                        font-size: 14px;
+                        line-height: 21px;
+                        max-width: none;
                     }
                 }
             `}</style>
