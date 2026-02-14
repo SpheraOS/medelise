@@ -112,6 +112,18 @@ export default function Footer() {
                                 </nav>
                             </div>
 
+                            {/* Suport & Legal */}
+                            <div className="footer-col">
+                                <h4 className="footer-col-heading">Suport &amp; Legal</h4>
+                                <nav className="footer-col-links">
+                                    {LEGAL_LINKS.map((link) => (
+                                        <Link key={link.label} href={link.href} className="footer-link">
+                                            {link.label}
+                                        </Link>
+                                    ))}
+                                </nav>
+                            </div>
+
                             {/* Contact */}
                             <div className="footer-col">
                                 <h4 className="footer-col-heading">Contact</h4>
@@ -124,18 +136,6 @@ export default function Footer() {
                                     ))}
                                 </div>
                             </div>
-
-                            {/* Suport & Legal */}
-                            <div className="footer-col">
-                                <h4 className="footer-col-heading">Suport &amp; Legal</h4>
-                                <nav className="footer-col-links">
-                                    {LEGAL_LINKS.map((link) => (
-                                        <Link key={link.label} href={link.href} className="footer-link">
-                                            {link.label}
-                                        </Link>
-                                    ))}
-                                </nav>
-                            </div>
                         </div>
                     </div>
 
@@ -145,7 +145,8 @@ export default function Footer() {
                     {/* ── Bottom Row ── */}
                     <div className="footer-bottom">
                         <p className="footer-copyright">
-                            © 2025 MEDVITA HEALTH SOLUTIONS S.R.L - Toate drepturile rezervate
+                            © 2025 MEDVITA HEALTH SOLUTIONS S.R.L<br />
+                            Toate drepturile rezervate
                         </p>
                         <div className="footer-socials">
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-social-icon" aria-label="Instagram">
@@ -249,7 +250,7 @@ export default function Footer() {
                     color: var(--color-primary, #213170);
                     font-size: 16px;
                     font-family: var(--font-dm-sans);
-                    font-weight: 400;
+                    font-weight: 500;
                     line-height: 24px;
                     text-decoration: none;
                     transition: opacity 0.2s ease;
@@ -293,10 +294,10 @@ export default function Footer() {
 
                 .footer-copyright {
                     color: var(--color-primary, #213170);
-                    font-size: 14px;
+                    font-size: 16px;
                     font-family: var(--font-dm-sans);
                     font-weight: 500;
-                    line-height: 20px;
+                    line-height: 24px;
                     margin: 0;
                 }
 
@@ -345,15 +346,31 @@ export default function Footer() {
                  * TABLET ≥641px
                  * ═══════════════════════════════════════ */
                 @media (min-width: 641px) {
+                    .footer-container {
+                        max-width: 704px;
+                        padding: 64px 0;
+                        gap: 24px;
+                    }
+
+                    .footer-top {
+                        flex-direction: column;
+                        gap: 32px;
+                    }
+
                     .footer-columns {
                         flex-direction: row;
-                        gap: 48px;
+                        justify-content: space-between;
                     }
 
                     .footer-bottom {
                         flex-direction: row;
                         justify-content: space-between;
                         align-items: center;
+                    }
+
+                    .footer-socials {
+                        width: 176px;
+                        justify-content: space-between;
                     }
                 }
 
