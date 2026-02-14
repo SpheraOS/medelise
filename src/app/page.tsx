@@ -3,6 +3,9 @@ import MissionStatsSection from '@/components/MissionStatsSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
 import QualitySection from '@/components/QualitySection';
 import PatientPortalSection from '@/components/PatientPortalSection';
+import ServiciiSection from '@/components/ServiciiSection';
+import JourneySection from '@/components/JourneySection';
+import NewsletterSection from '@/components/NewsletterSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 
 export default function Home() {
@@ -21,6 +24,9 @@ export default function Home() {
       <QualitySection />
       <TestimonialsSection />
       <PatientPortalSection />
+      <ServiciiSection />
+      <JourneySection />
+      <NewsletterSection />
     </main>
   );
 }

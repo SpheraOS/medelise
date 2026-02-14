@@ -74,7 +74,7 @@ export default function QualitySection() {
                     />
                   </div>
                   <button type="submit" className="quality-cta-btn">
-                    Intră în contul tău Medvita
+                    Intră în contul tău Medelise
                   </button>
                 </form>
               </div>
@@ -159,6 +159,7 @@ export default function QualitySection() {
 
         .quality-text-content {
           width: 100%;
+          flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -168,6 +169,7 @@ export default function QualitySection() {
 
         .quality-heading-group {
           width: 100%;
+          flex: 1;
           display: flex;
           flex-direction: column;
           gap: var(--space-6);
@@ -389,7 +391,7 @@ export default function QualitySection() {
           .quality-row {
             flex-direction: row;
             justify-content: center;
-            align-items: center;
+            align-items: stretch;
             gap: var(--space-8);
           }
 

@@ -8,13 +8,13 @@ import { ICONS } from '@/constants/icons';
 const testimonials = [
   {
     rating: 3.75,
-    text: 'Medicul a ajuns exact la ora stabilită, a fost atent, calm și mi-a explicat totul cu răbdare. E prima dată când simt că sunt ascultat cu adevărat. Mulțumesc, Medvita!',
+    text: 'Medicul a ajuns exact la ora stabilită, a fost atent, calm și mi-a explicat totul cu răbdare. E prima dată când simt că sunt ascultat cu adevărat. Mulțumesc, Medelise!',
     name: 'Mircea Popa',
     company: 'Pacient Verificat',
   },
   {
     rating: 5.0,
-    text: 'Am apelat la Medvita pentru o evaluare la domiciliu a tatălui meu. Echipa a fost impecabil organizată și empatică. Nu știam că se poate primi îngrijire medicală de calitate acasă!',
+    text: 'Am apelat la Medelise pentru o evaluare la domiciliu a tatălui meu. Echipa a fost impecabil organizată și empatică. Nu știam că se poate primi îngrijire medicală de calitate acasă!',
     name: 'Elena Dumitrescu',
     company: 'Pacient Verificat',
   },
@@ -32,13 +32,13 @@ const testimonials = [
   },
   {
     rating: 5.0,
-    text: 'Mama mea are nevoie de îngrijiri regulate pentru escare. Echipa Medvita vine de trei ori pe săptămână și tratamentul a arătat progrese vizibile. Foarte recunoscătoare!',
+    text: 'Mama mea are nevoie de îngrijiri regulate pentru escare. Echipa Medelise vine de trei ori pe săptămână și tratamentul a arătat progrese vizibile. Foarte recunoscătoare!',
     name: 'Cristina Georgescu',
     company: 'Pacient Verificat',
   },
   {
     rating: 4.5,
-    text: 'După operația de genunchi, recuperarea cu kinetoterapistul de la Medvita a fost excelentă. Exercițiile personalizate și vizitele regulate m-au ajutat enorm.',
+    text: 'După operația de genunchi, recuperarea cu kinetoterapistul de la Medelise a fost excelentă. Exercițiile personalizate și vizitele regulate m-au ajutat enorm.',
     name: 'Alexandru Toma',
     company: 'Pacient Verificat',
   },

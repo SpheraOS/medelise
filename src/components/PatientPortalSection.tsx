@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { ICONS } from '@/constants/icons';
 import { IMAGES } from '@/constants/images';
+import Button from '@/components/ui/Button';
 
 /* ─── Tab Data ───────────────────────────────────────────────────────────── */
 const portalTabs = [
@@ -134,9 +135,9 @@ export default function PatientPortalSection() {
               </ul>
 
               {/* CTA */}
-              <button type="button" className="portal-cta-btn">
+              <Button variant="primary" isFullWidth className="portal-cta-btn">
                 Intră în contul tău Medelise
-              </button>
+              </Button>
             </div>
           </div>
         </div>

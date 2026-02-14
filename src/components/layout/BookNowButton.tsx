@@ -2,6 +2,8 @@ interface BookNowButtonProps {
     variant?: 'primary' | 'inverted';
     size?: 'default' | 'small';
     className?: string;
+    children?: React.ReactNode;
+    fullWidth?: boolean;
 }
 
 /**
@@ -19,6 +21,8 @@ export default function BookNowButton({
     variant = 'primary',
     size = 'default',
     className = '',
+    children,
+    fullWidth = false,
 }: BookNowButtonProps) {
     const dims =
         size === 'default'
@@ -34,13 +38,14 @@ export default function BookNowButton({
         <button
             className={`cursor-pointer rounded-lg font-body font-normal transition-all duration-300 hover:brightness-110 hover:scale-105 ${className}`}
             style={{
-                width: dims.width,
-                height: dims.height,
+                width: fullWidth ? '100%' : (children ? 'auto' : dims.width),
+                height: children ? 'auto' : dims.height,
                 fontSize: dims.fontSize,
+                padding: children ? '12px 32px' : undefined,
                 ...colors,
             }}
         >
-            Book Now
+            {children || 'Book Now'}
         </button>
     );
 }
