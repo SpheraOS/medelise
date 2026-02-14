@@ -169,8 +169,8 @@ export default function HeroSection() {
                 }
 
                 .hero-btn-icon-wrapper {
-                    width: 56px;
-                    height: 56px;
+                    width: 40px;
+                    height: 40px;
                     background: var(--color-primary);
                     border-radius: 100px;
                     display: flex;
