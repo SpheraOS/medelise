@@ -162,10 +162,10 @@ export default function HeroSection() {
 
                 .hero-btn-text {
                     color: var(--color-white);
-                    font-size: 14px;
+                    font-size: 16px;
                     font-family: var(--font-poppins);
                     font-weight: 500;
-                    line-height: 20px;
+                    line-height: 24px;
                 }
 
                 .hero-btn-icon-wrapper {
