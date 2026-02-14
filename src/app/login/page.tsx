@@ -502,6 +502,7 @@ export default function LoginPage() {
                     display: flex;
                     flex-direction: column;
                     gap: 24px;
+                    margin-top: 64px;
                 }
 
                 .login-preview-logo-row {
