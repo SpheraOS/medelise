@@ -56,8 +56,8 @@ export default function HeroSection() {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    align-items: flex-start;
-                    gap: 64px;
+                    align-items: flex-end;
+                    gap: 40px;
                 }
 
                 /* ── Top: Text + CTA ─────────────────── */
@@ -65,12 +65,13 @@ export default function HeroSection() {
                     align-self: stretch;
                     display: flex;
                     flex-direction: column;
-                    gap: 32px;
+                    gap: 40px;
                 }
 
                 .hero-text-group {
                     display: flex;
                     flex-direction: column;
+                    gap: 12px;
                 }
 
                 .hero-heading {
@@ -105,10 +106,10 @@ export default function HeroSection() {
 
                 .hero-subtitle {
                     color: var(--color-primary);
-                    font-size: 16px;
+                    font-size: 12px;
                     font-family: var(--font-heading);
                     font-weight: 500;
-                    line-height: 22px;
+                    line-height: 16px;
                     max-width: 239px;
                     margin: 0;
                 }
@@ -165,11 +166,11 @@ export default function HeroSection() {
 
                 /* ── Social Proof ─────────────────────── */
                 .hero-social-proof {
+                    align-self: stretch;
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-end;
+                    align-items: flex-start;
                     gap: 12px;
-                    align-self: flex-end;
                     margin-top: auto;
                 }
 
@@ -179,6 +180,7 @@ export default function HeroSection() {
                     font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: 24px;
+                    align-self: stretch;
                 }
 
                 .hero-avatars-group {
@@ -187,8 +189,8 @@ export default function HeroSection() {
                 }
 
                 .hero-avatar-wrapper {
-                    width: 24px;
-                    height: 24px;
+                    width: 40px;
+                    height: 40px;
                     border-radius: 50%;
                     overflow: hidden;
                     border: 2px solid #FFFFFF;
@@ -198,7 +200,7 @@ export default function HeroSection() {
                 }
 
                 .hero-avatar-wrapper:not(:first-child) {
-                    margin-left: -4px;
+                    margin-left: -8px;
                 }
 
                 .hero-avatar-wrapper:nth-child(1) { z-index: 4; }
@@ -207,14 +209,14 @@ export default function HeroSection() {
 
                 .hero-avatar-img {
                     width: 100%;
-                    height: 20px;
+                    height: 36px;
                     object-fit: cover;
                     object-position: top;
                 }
 
                 .hero-avatar-count {
-                    width: 24px;
-                    height: 24px;
+                    width: 40px;
+                    height: 40px;
                     border-radius: 50%;
                     background: #F6F6F6;
                     display: flex;
@@ -222,16 +224,16 @@ export default function HeroSection() {
                     align-items: center;
                     flex-shrink: 0;
                     border: 2px solid #FFFFFF;
-                    margin-left: -4px;
+                    margin-left: -8px;
                     z-index: 1;
                 }
 
                 .hero-avatar-count-text {
                     color: #CC0A00;
-                    font-size: 10px;
+                    font-size: 14px;
                     font-family: var(--font-dm-sans);
                     font-weight: 500;
-                    line-height: 14px;
+                    line-height: 19.6px;
                 }
 
                 .hero-sp-stat-title {
@@ -244,11 +246,11 @@ export default function HeroSection() {
 
                 .hero-sp-stat-desc {
                     color: #213170;
-                    font-size: 16px;
+                    font-size: 12px;
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 22px;
-                    max-width: 232px;
+                    line-height: 16px;
+                    width: 232px;
                 }
 
                 /* ═══════════════════════════════════════
@@ -258,17 +260,10 @@ export default function HeroSection() {
                 @media (min-width: 641px) {
                     .hero-content {
                         padding: 68px 32px 32px;
-                        align-items: flex-end;
-                    }
-
-                    .hero-top-block {
-                        gap: 40px;
-                        align-self: stretch;
                     }
 
                     .hero-text-group {
                         max-width: 293px;
-                        gap: 12px;
                     }
 
                     .hero-heading {
@@ -281,16 +276,11 @@ export default function HeroSection() {
 
                     .hero-subtitle {
                         max-width: 293px;
-                        font-size: 12px;
-                        font-family: var(--font-heading);
-                        font-weight: 500;
-                        line-height: 16px;
                     }
 
                     .hero-social-proof {
                         width: 252px;
                         gap: 8px;
-                        align-items: flex-start;
                         align-self: flex-end;
                     }
 
@@ -301,43 +291,11 @@ export default function HeroSection() {
                         line-height: 25.2px;
                     }
 
-                    .hero-sp-stat-title {
-                        font-size: 14px;
-                        font-family: var(--font-dm-sans);
-                        font-weight: 500;
-                        line-height: 19.6px;
-                    }
-
                     .hero-sp-stat-desc {
-                        font-size: 12px;
                         font-family: var(--font-dm-sans);
                         font-weight: 300;
                         line-height: 18px;
                         max-width: 252px;
-                    }
-
-                    .hero-avatar-wrapper {
-                        width: 40px;
-                        height: 40px;
-                    }
-
-                    .hero-avatar-wrapper:not(:first-child) {
-                        margin-left: -8px;
-                    }
-
-                    .hero-avatar-img {
-                        height: 36px;
-                    }
-
-                    .hero-avatar-count {
-                        width: 40px;
-                        height: 40px;
-                        margin-left: -8px;
-                    }
-
-                    .hero-avatar-count-text {
-                        font-size: 14px;
-                        line-height: 19.6px;
                     }
                 }
 
