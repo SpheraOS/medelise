@@ -184,21 +184,21 @@ export default function HeroSection() {
 
                 /* ── Social Proof ─────────────────────── */
                 .hero-social-proof {
-                    align-self: stretch;
+                    width: 280px;
+                    align-self: flex-end;
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-end;
-                    gap: 12px;
+                    align-items: flex-start;
+                    gap: 16px;
                     margin-top: auto;
                 }
 
                 .hero-sp-label {
                     color: #213170;
-                    font-size: 16px;
+                    font-size: 18px;
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 24px;
-                    align-self: stretch;
+                    line-height: 25.2px;
                 }
 
                 .hero-avatars-group {
@@ -207,8 +207,8 @@ export default function HeroSection() {
                 }
 
                 .hero-avatar-wrapper {
-                    width: 40px;
-                    height: 40px;
+                    width: 64px;
+                    height: 64px;
                     border-radius: 50%;
                     overflow: hidden;
                     border: 2px solid #FFFFFF;
@@ -218,7 +218,7 @@ export default function HeroSection() {
                 }
 
                 .hero-avatar-wrapper:not(:first-child) {
-                    margin-left: -8px;
+                    margin-left: -16px;
                 }
 
                 .hero-avatar-wrapper:nth-child(1) { z-index: 4; }
@@ -227,14 +227,14 @@ export default function HeroSection() {
 
                 .hero-avatar-img {
                     width: 100%;
-                    height: 36px;
+                    height: 56px;
                     object-fit: cover;
                     object-position: top;
                 }
 
                 .hero-avatar-count {
-                    width: 40px;
-                    height: 40px;
+                    width: 64px;
+                    height: 64px;
                     border-radius: 50%;
                     background: #F6F6F6;
                     display: flex;
@@ -242,7 +242,7 @@ export default function HeroSection() {
                     align-items: center;
                     flex-shrink: 0;
                     border: 2px solid #FFFFFF;
-                    margin-left: -8px;
+                    margin-left: -16px;
                     z-index: 1;
                 }
 
@@ -256,19 +256,18 @@ export default function HeroSection() {
 
                 .hero-sp-stat-title {
                     color: #FE5D16;
-                    font-size: 14px;
+                    font-size: 18px;
                     font-family: var(--font-dm-sans);
                     font-weight: 500;
-                    line-height: 19.6px;
+                    line-height: 25.2px;
                 }
 
                 .hero-sp-stat-desc {
                     color: #213170;
-                    font-size: 16px;
+                    font-size: 14px;
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 22px;
-                    width: 232px;
+                    line-height: 21px;
                 }
 
                 /* ═══════════════════════════════════════
@@ -294,26 +293,6 @@ export default function HeroSection() {
 
                     .hero-subtitle {
                         max-width: 293px;
-                    }
-
-                    .hero-social-proof {
-                        width: 252px;
-                        gap: 8px;
-                        align-self: flex-end;
-                    }
-
-                    .hero-sp-label {
-                        font-size: 18px;
-                        font-family: var(--font-dm-sans);
-                        font-weight: 500;
-                        line-height: 25.2px;
-                    }
-
-                    .hero-sp-stat-desc {
-                        font-family: var(--font-dm-sans);
-                        font-weight: 300;
-                        line-height: 18px;
-                        max-width: 252px;
                     }
                 }
 
@@ -384,45 +363,7 @@ export default function HeroSection() {
                         padding: 12px;
                     }
 
-                    .hero-social-proof {
-                        width: 280px;
-                        gap: 16px;
-                    }
 
-                    .hero-sp-label {
-                        font-size: 18px;
-                        line-height: 25.2px;
-                    }
-
-                    .hero-avatar-wrapper {
-                        width: 64px;
-                        height: 64px;
-                    }
-
-                    .hero-avatar-wrapper:not(:first-child) {
-                        margin-left: -16px;
-                    }
-
-                    .hero-avatar-img {
-                        height: 56px;
-                    }
-
-                    .hero-avatar-count {
-                        width: 64px;
-                        height: 64px;
-                        margin-left: -16px;
-                    }
-
-                    .hero-sp-stat-title {
-                        font-size: 18px;
-                        line-height: 25.2px;
-                    }
-
-                    .hero-sp-stat-desc {
-                        font-size: 14px;
-                        line-height: 21px;
-                        max-width: none;
-                    }
                 }
             `}</style>
 
