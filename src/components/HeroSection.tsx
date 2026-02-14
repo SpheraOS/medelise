@@ -145,9 +145,9 @@ export default function HeroSection() {
                 }
 
                 .hero-btn-primary {
-                    padding: 8px 26px;
+                    padding: 16px 32px;
                     background: var(--color-primary);
-                    border-radius: 8px;
+                    border-radius: 16px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -168,7 +168,7 @@ export default function HeroSection() {
                 }
 
                 .hero-btn-icon-wrapper {
-                    padding: 4px;
+                    padding: 12px;
                     background: var(--color-primary);
                     border-radius: 100px;
                     display: flex;
