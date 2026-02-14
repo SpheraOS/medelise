@@ -505,13 +505,13 @@ export default function LoginPage() {
                     flex-direction: column;
                     gap: 24px;
                     margin-top: 64px;
+                    margin-left: 32px;
                 }
 
                 .login-preview-logo-row {
                     display: flex;
                     align-items: center;
                     gap: 20px;
-                    margin-left: 32px;
                 }
 
                 .login-preview-logo-line {
