@@ -124,7 +124,8 @@ export default function Footer() {
                 <div className="footer-regulatory">
                     <div className="footer-regulatory-logos">
                         <Image src="/images/quality/anpc-sal1-1.svg" alt="ANPC SAL" width={201} height={50} />
-                        <Image src="/images/quality/anpc-sal1-1.1.svg" alt="ANPC" width={50} height={50} />
+                        <Image src="/images/quality/ea9cadf167f41d73b0c8d437bff884168863a42c.png" alt="ANPC" width={50} height={50} />
+                        <Image src="/images/quality/anpc-sal1-1.1.svg" alt="ANPC SOL" width={195} height={50} />
                     </div>
                 </div>
             </footer>
