@@ -258,12 +258,17 @@ export default function HeroSection() {
                 @media (min-width: 641px) {
                     .hero-content {
                         padding: 68px 32px 32px;
+                        align-items: flex-end;
                     }
 
-
+                    .hero-top-block {
+                        gap: 40px;
+                        align-self: stretch;
+                    }
 
                     .hero-text-group {
                         max-width: 293px;
+                        gap: 12px;
                     }
 
                     .hero-heading {
@@ -276,11 +281,17 @@ export default function HeroSection() {
 
                     .hero-subtitle {
                         max-width: 293px;
+                        font-size: 12px;
+                        font-family: var(--font-heading);
+                        font-weight: 500;
+                        line-height: 16px;
                     }
 
                     .hero-social-proof {
                         width: 252px;
                         gap: 8px;
+                        align-items: flex-start;
+                        align-self: flex-end;
                     }
 
                     .hero-sp-label {
@@ -290,7 +301,15 @@ export default function HeroSection() {
                         line-height: 25.2px;
                     }
 
+                    .hero-sp-stat-title {
+                        font-size: 14px;
+                        font-family: var(--font-dm-sans);
+                        font-weight: 500;
+                        line-height: 19.6px;
+                    }
+
                     .hero-sp-stat-desc {
+                        font-size: 12px;
                         font-family: var(--font-dm-sans);
                         font-weight: 300;
                         line-height: 18px;
