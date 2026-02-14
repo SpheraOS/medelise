@@ -246,10 +246,10 @@ export default function HeroSection() {
 
                 .hero-sp-stat-desc {
                     color: #213170;
-                    font-size: 12px;
+                    font-size: 16px;
                     font-family: var(--font-heading);
                     font-weight: 600;
-                    line-height: 16px;
+                    line-height: 22px;
                     width: 232px;
                 }
 
