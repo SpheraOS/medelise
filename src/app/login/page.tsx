@@ -202,6 +202,8 @@ export default function LoginPage() {
                     font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
                     padding-left: 64px;
                     padding-right: 64px;
+                    padding-top: 64px;
+                    padding-bottom: 64px;
                 }
 
                 /* ── LEFT PANEL ── */
