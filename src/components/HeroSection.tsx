@@ -165,7 +165,6 @@ export default function HeroSection() {
 
                 /* ── Social Proof ─────────────────────── */
                 .hero-social-proof {
-                    width: 100%;
                     display: flex;
                     flex-direction: column;
                     align-items: flex-end;
