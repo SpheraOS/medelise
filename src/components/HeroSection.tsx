@@ -47,7 +47,7 @@ export default function HeroSection() {
                     align-self: stretch;
                     display: flex;
                     flex-direction: column;
-                    gap: 40px;
+                    gap: 124px;
                 }
 
                 .hero-text-group {
