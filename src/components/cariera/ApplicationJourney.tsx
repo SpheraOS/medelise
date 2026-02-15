@@ -146,7 +146,7 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
                 .aj-header {
                     width: 100%;
                     background: var(--color-primary);
-                    padding: var(--space-16) var(--space-section-px-sm) var(--space-10);
+                    padding: var(--space-16) var(--space-section-px-lg) var(--space-10);
                 }
 
                 .aj-back-btn {
@@ -205,9 +205,8 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    padding: var(--space-8) var(--space-6);
-                    max-width: 800px;
-                    margin: 0 auto;
+                    width: 100%;
+                    padding: var(--space-8) var(--space-section-px-lg);
                 }
 
                 .aj-progress-step {
@@ -282,9 +281,8 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
                  * STEP CONTENT AREA
                  * ═══════════════════════════════════════ */
                 .aj-body {
-                    max-width: 720px;
-                    margin: 0 auto;
-                    padding: 0 var(--space-6) var(--space-16);
+                    width: 100%;
+                    padding: 0 var(--space-section-px-lg) var(--space-16);
                 }
 
                 .aj-step-wrapper {
@@ -613,6 +611,8 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
                 /* ═══════════════════════════════════════
                  * RESPONSIVE
                  * ═══════════════════════════════════════ */
+
+                /* Desktop ≥ 1025px */
                 @media (min-width: 1025px) {
                     .aj-header {
                         padding: var(--space-24) var(--space-section-px-lg) var(--space-12);
@@ -623,7 +623,31 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
                     }
                 }
 
-                @media (max-width: 640px) {
+                /* Tablet ≤ 1024px */
+                @media (max-width: 1024px) {
+                    .aj-header {
+                        padding: var(--space-16) var(--space-section-px-md) var(--space-10);
+                    }
+                    .aj-progress {
+                        padding: var(--space-8) var(--space-section-px-md);
+                    }
+                    .aj-body {
+                        padding: 0 var(--space-section-px-md) var(--space-16);
+                    }
+                }
+
+                /* Mobile ≤ 480px */
+                @media (max-width: 480px) {
+                    .aj-header {
+                        padding: var(--space-12) var(--space-section-px-sm) var(--space-8);
+                    }
+                    .aj-progress {
+                        padding: var(--space-6) var(--space-section-px-sm);
+                    }
+                    .aj-body {
+                        padding: 0 var(--space-section-px-sm) var(--space-12);
+                    }
+
                     .aj-field-row {
                         flex-direction: column;
                     }
