@@ -779,7 +779,7 @@ export default function CardScanner() {
           position: absolute;
           top: 0; left: 0;
           width: 100%; height: 100%;
-          color: rgba(220,210,255,0.6);
+          color: rgba(200,180,255,1);
           font-family: 'Courier New', monospace;
           font-size: 11px;
           line-height: 13px;
