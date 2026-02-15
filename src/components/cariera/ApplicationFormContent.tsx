@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import { JOBS } from '@/components/cariera/jobData';
 
 /* ── Props ── */
@@ -333,7 +334,7 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                 .apply-field-select:focus,
                 .apply-field-textarea:focus {
                     border-color: var(--color-primary);
-                    box-shadow: 0 0 0 3px rgba(33, 49, 112, 0.08);
+                    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 8%, transparent);
                 }
 
                 .apply-field-input::placeholder,
@@ -405,12 +406,12 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
 
                 .apply-upload-zone:hover {
                     border-color: var(--color-primary);
-                    background: rgba(33, 49, 112, 0.02);
+                    background: color-mix(in srgb, var(--color-primary) 2%, transparent);
                 }
 
                 .apply-upload-zone--drag {
                     border-color: var(--color-primary);
-                    background: rgba(33, 49, 112, 0.05);
+                    background: color-mix(in srgb, var(--color-primary) 5%, transparent);
                 }
 
                 .apply-upload-zone--error {
@@ -505,7 +506,7 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                 }
 
                 .apply-cv-remove:hover {
-                    background: rgba(225, 29, 72, 0.08);
+                    background: color-mix(in srgb, var(--color-error) 8%, transparent);
                     color: var(--color-error);
                 }
 
@@ -525,37 +526,7 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                     overflow: hidden;
                 }
 
-                /* ── Submit button ── */
-                .apply-submit {
-                    width: 100%;
-                    padding: 14px 24px;
-                    background: var(--color-primary);
-                    border-radius: 10px;
-                    border: none;
-                    color: var(--color-white);
-                    font-family: var(--font-cta);
-                    font-size: 16px;
-                    font-weight: 600;
-                    line-height: 24px;
-                    cursor: pointer;
-                    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-                    text-align: center;
-                }
-
-                .apply-submit:hover:not(:disabled) {
-                    background: var(--color-primary-hover);
-                    transform: translateY(-1px);
-                    box-shadow: 0 4px 12px rgba(33, 49, 112, 0.2);
-                }
-
-                .apply-submit:active:not(:disabled) {
-                    transform: translateY(0);
-                }
-
-                .apply-submit:disabled {
-                    opacity: 0.65;
-                    cursor: not-allowed;
-                }
+                /* Submit button — uses <Button /> component */
 
                 /* ── Status messages ── */
                 .apply-success {
@@ -570,7 +541,7 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                     width: 64px;
                     height: 64px;
                     border-radius: 50%;
-                    background: rgba(16, 185, 129, 0.1);
+                    background: color-mix(in srgb, var(--color-success) 10%, transparent);
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -614,7 +585,7 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                     text-align: center;
                     margin: 0;
                     padding: var(--space-3) var(--space-4);
-                    background: rgba(225, 29, 72, 0.06);
+                    background: color-mix(in srgb, var(--color-error) 6%, transparent);
                     border-radius: 8px;
                 }
 
@@ -707,7 +678,7 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                             <div className="apply-success">
                                 <div className="apply-success-icon">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20 6L9 17L4 12" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path d="M20 6L9 17L4 12" stroke="var(--color-success)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                 </div>
                                 <h2 className="apply-success-title">Aplicația ta a fost trimisă!</h2>
@@ -1083,13 +1054,14 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                             )}
 
                             {/* ── Submit ── */}
-                            <button
+                            <Button
                                 type="submit"
-                                className="apply-submit"
-                                disabled={formStatus === 'sending'}
+                                variant="primary"
+                                isFullWidth
+                                isLoading={formStatus === 'sending'}
                             >
                                 {formStatus === 'sending' ? 'Se trimite aplicația...' : 'Trimite aplicația'}
-                            </button>
+                            </Button>
                         </form>
                     )}
                 </div>
