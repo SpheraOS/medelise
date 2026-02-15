@@ -86,8 +86,8 @@ export default function AnimatedEyeToggle({ isVisible, onToggle, inputRef }: Ani
             const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
             const mapRange = (v: number, inMin: number, inMax: number, outMin: number, outMax: number) =>
                 outMin + ((v - inMin) / (inMax - inMin)) * (outMax - outMin);
-            const xPct = clamp(mapRange(dx, -200, 200, -30, 30), -30, 30);
-            const yPct = clamp(mapRange(dy, -200, 200, -20, 20), -20, 20);
+            const xPct = clamp(mapRange(dx, -200, 200, -15, 15), -15, 15);
+            const yPct = clamp(mapRange(dy, -200, 200, -10, 10), -10, 10);
             eyeRef.current.style.transform = `translate(${xPct}%, ${yPct}%)`;
         };
         window.addEventListener('pointermove', handleMove);
