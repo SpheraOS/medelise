@@ -1014,7 +1014,6 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                                     />
                                 </div>
                             </fieldset>
-                            </div>
 
                             {/* ═══ Secțiunea 5: GDPR ═══ */}
                             <fieldset className="apply-section">
@@ -1045,6 +1044,7 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                                     </label>
                                 </div>
                             </fieldset>
+                            </div>
 
                             {/* ── Error message ── */}
                             {formStatus === 'error' && (
