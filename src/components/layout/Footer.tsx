@@ -47,6 +47,7 @@ export default function Footer() {
     return (
         <>
             <footer className="footer">
+                <div className="footer-divider" />
                 <div className="footer-container">
                     {/* ── Top Row ── */}
                     <div className="footer-top">

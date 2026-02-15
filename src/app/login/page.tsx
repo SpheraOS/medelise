@@ -71,20 +71,22 @@ export default function LoginPage() {
                 }
 
                 .card-face {
-                    position: absolute;
-                    inset: 0;
                     backface-visibility: hidden;
                     -webkit-backface-visibility: hidden;
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    width: 100%;
                 }
 
                 .card-front {
+                    position: relative;
                     z-index: 2;
                 }
 
                 .card-back {
+                    position: absolute;
+                    inset: 0;
                     transform: rotateY(180deg);
                 }
 
