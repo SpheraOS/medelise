@@ -773,7 +773,7 @@ export default function CardScanner() {
           left: 0;
           right: 0;
           z-index: 21;
-          padding: 0 32px 40px 32px;
+          padding: 0 32px 32px 32px;
           display: flex;
           flex-direction: column;
           gap: 8px;
