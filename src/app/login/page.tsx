@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import CardScanner from '@/components/login/CardScanner';
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -140,38 +141,9 @@ export default function LoginPage() {
                     </div>
                 </div>
 
-                {/* ── Right Panel: Dashboard Preview ── */}
+                {/* ── Right Panel: Card Scanner Animation ── */}
                 <div className="login-preview-panel">
-                    {/* Gradient overlay */}
-                    <div className="login-preview-overlay" />
-
-                    {/* Top: Logo + Title */}
-                    <div className="login-preview-header">
-                        <div className="login-preview-logo-row">
-                            <span
-                                style={{
-                                    fontFamily: 'var(--font-michroma), Michroma, sans-serif',
-                                    fontSize: '24px',
-                                    textTransform: 'uppercase' as const,
-                                    color: 'white',
-                                    letterSpacing: '0.05em',
-                                    lineHeight: 1,
-                                }}
-                            >
-                                MEDELISE
-                            </span>
-                            <div className="login-preview-logo-line" />
-                        </div>
-                        <div className="login-preview-title-block">
-                            <h2 className="login-preview-title">Simplifică Managementul Medical</h2>
-                            <p className="login-preview-desc">
-                                Eficientizează îngrijirea pacienților, programările și fișele medicale
-                                într-un singur panou de control. Descoperă ușurința gestionării
-                                serviciilor tale de sănătate cu Medelise
-                            </p>
-                        </div>
-                    </div>
-
+                    <CardScanner />
                 </div>
             </div>
 
@@ -465,65 +437,7 @@ export default function LoginPage() {
                     padding: 0;
                 }
 
-                .login-preview-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background: linear-gradient(
-                        180deg,
-                        rgba(20, 20, 20, 0.5) 4%,
-                        rgba(112, 112, 112, 0) 52%,
-                        rgba(7, 7, 7, 0.04) 100%
-                    );
-                    z-index: 1;
-                    pointer-events: none;
-                }
 
-                /* Preview Header */
-                .login-preview-header {
-                    position: relative;
-                    z-index: 2;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 24px;
-                    margin-top: 64px;
-                    margin-left: 32px;
-                }
-
-                .login-preview-logo-row {
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                }
-
-                .login-preview-logo-line {
-                    flex: 1;
-                    height: 1px;
-                    background: #DFE1E7;
-                }
-
-                .login-preview-title-block {
-                    max-width: 510px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 16px;
-                }
-
-                .login-preview-title {
-                    color: white;
-                    font-size: 48px;
-                    font-weight: 500;
-                    line-height: 57.6px;
-                    margin: 0;
-                }
-
-                .login-preview-desc {
-                    color: white;
-                    font-size: 16px;
-                    font-weight: 500;
-                    line-height: 25.6px;
-                    margin: 0;
-                    opacity: 0.9;
-                }
 
 
 
