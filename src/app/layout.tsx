@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Poppins, Michroma } from "next/font/google";
+import { DM_Sans, Poppins, Michroma, Montserrat } from "next/font/google";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -18,13 +18,30 @@ const michroma = Michroma({
   subsets: ["latin"],
   weight: ["400"],
 });
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "500", "600", "700"],
+});
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Medelise - MEDVITA HEALTH SOLUTIONS",
-  description: "Premium health solutions and IV therapy services",
+  title: {
+    default: "Medvita · Soluții Medicale Premium",
+    template: "%s · Medvita",
+  },
+  description:
+    "Medvita Health Solutions — servicii medicale premium, vizite la domiciliu și abonamente EasyCare. Programează online.",
+  openGraph: {
+    title: "Medvita · Soluții Medicale Premium",
+    description:
+      "Servicii medicale premium, vizite la domiciliu și abonamente EasyCare.",
+    locale: "ro_RO",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -33,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ro" className={`${dmSans.variable} ${poppins.variable} ${michroma.variable}`}>
+    <html lang="ro" className={`${dmSans.variable} ${poppins.variable} ${michroma.variable} ${montserrat.variable}`}>
       <body className="antialiased">
         <Navbar />
         {children}
