@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import ApplicationFormContent from '@/components/cariera/ApplicationFormContent';
+import ApplicationJourney from '@/components/cariera/ApplicationJourney';
 import { JOBS, JOB_SLUGS } from '@/components/cariera/jobData';
 
 type Props = {
@@ -34,5 +34,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ApplicationPage({ params }: Props) {
     const { slug } = await params;
-    return <ApplicationFormContent slug={slug} />;
+    return <ApplicationJourney slug={slug} />;
 }
