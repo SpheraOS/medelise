@@ -165,7 +165,7 @@ export default function LoginPage() {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding: 40px 32px;
+                    padding: 0 32px;
                     background: white;
                 }
 
