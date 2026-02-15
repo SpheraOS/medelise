@@ -195,7 +195,7 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                             </div>
 
                             {/* Apply CTA */}
-                            <Link href="/contact">
+                            <Link href={`/cariera/${slug}/aplica`}>
                                 <Button variant="primary" isFullWidth iconRight={<MailIcon />}>
                                     Aplica aici
                                 </Button>
