@@ -6,7 +6,7 @@ import type { StepProps } from './Step1_DatePersonale';
  * Step 3 — Disponibilitate
  * ═══════════════════════════════════════════════════════════════════════════ */
 
-const AVAILABILITY = ['Full-time', 'Part-time', 'Colaborare', 'Weekenduri'];
+const AVAILABILITY = ['Full-time', 'Part-time'];
 
 export default function Step3_Disponibilitate({ data, onChange }: StepProps) {
     return (
