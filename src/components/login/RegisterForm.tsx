@@ -2,17 +2,46 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import AnimatedEyeToggle from '@/components/login/AnimatedEyeToggle';
 
 interface RegisterFormProps {
     /** Called when switched back to login */
     onSwitchToLogin?: () => void;
     /** Called when the form is submitted */
-    onSubmit?: (data: { name: string; email: string; password: string }) => void;
+    onSubmit?: (data: {
+        nume: string;
+        prenume: string;
+        username: string;
+        birthMonth: string;
+        birthYear: string;
+        email: string;
+        password: string;
+    }) => void;
     /** Additional className */
     className?: string;
 }
+
+/** Strip diacritics and lowercase */
+function toUsername(prenume: string, nume: string): string {
+    const strip = (s: string) =>
+        s
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-zA-Z]/g, '')
+            .toLowerCase();
+    const p = strip(prenume);
+    const n = strip(nume);
+    return p || n ? `@${p}${n}` : '';
+}
+
+const MONTHS = [
+    'Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie',
+    'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie',
+];
+
+const currentYear = new Date().getFullYear();
+const YEARS = Array.from({ length: 100 }, (_, i) => String(currentYear - i));
 
 export default function RegisterForm({
     onSwitchToLogin,
@@ -20,14 +49,23 @@ export default function RegisterForm({
     className = '',
 }: RegisterFormProps) {
     const [showPassword, setShowPassword] = useState(false);
+    const [nume, setNume] = useState('');
+    const [prenume, setPrenume] = useState('');
+    const [birthMonth, setBirthMonth] = useState('');
+    const [birthYear, setBirthYear] = useState('');
     const passwordRef = useRef<HTMLInputElement>(null);
-    const nameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
+
+    const username = useMemo(() => toUsername(prenume, nume), [prenume, nume]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         onSubmit?.({
-            name: nameRef.current?.value || '',
+            nume,
+            prenume,
+            username,
+            birthMonth,
+            birthYear,
             email: emailRef.current?.value || '',
             password: passwordRef.current?.value || '',
         });
@@ -74,23 +112,75 @@ export default function RegisterForm({
 
                     {/* Form Fields */}
                     <form className="register-fields" onSubmit={handleSubmit}>
-                        {/* Name */}
+                        {/* Nume + Prenume side by side */}
+                        <div className="register-name-row">
+                            <div className="register-field-group">
+                                <label className="register-label">Nume</label>
+                                <div className="register-input-wrapper">
+                                    <input
+                                        type="text"
+                                        placeholder="Popa"
+                                        className="register-input"
+                                        value={nume}
+                                        onChange={(e) => setNume(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <div className="register-field-group">
+                                <label className="register-label">Prenume</label>
+                                <div className="register-input-wrapper">
+                                    <input
+                                        type="text"
+                                        placeholder="Mircea"
+                                        className="register-input"
+                                        value={prenume}
+                                        onChange={(e) => setPrenume(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Auto-generated username */}
                         <div className="register-field-group">
-                            <label className="register-label">Nume complet</label>
-                            <div className="register-input-wrapper">
-                                <Image
-                                    src="/images/quality/Login/remix-icons/line/business/mail-line.svg"
-                                    alt=""
-                                    width={24}
-                                    height={24}
-                                    className="register-input-icon"
-                                />
-                                <input
-                                    ref={nameRef}
-                                    type="text"
-                                    placeholder="Introdu numele complet"
-                                    className="register-input"
-                                />
+                            <label className="register-label">Utilizator</label>
+                            <div className="register-input-wrapper register-username-wrapper">
+                                <span className="register-username-display">
+                                    {username || '@'}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Date of Birth — Month + Year */}
+                        <div className="register-name-row">
+                            <div className="register-field-group">
+                                <label className="register-label">Luna nașterii</label>
+                                <div className="register-input-wrapper">
+                                    <select
+                                        className="register-select"
+                                        value={birthMonth}
+                                        onChange={(e) => setBirthMonth(e.target.value)}
+                                    >
+                                        <option value="" disabled>Alege luna</option>
+                                        {MONTHS.map((m, i) => (
+                                            <option key={m} value={String(i + 1)}>{m}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="register-field-group">
+                                <label className="register-label">Anul nașterii</label>
+                                <div className="register-input-wrapper">
+                                    <select
+                                        className="register-select"
+                                        value={birthYear}
+                                        onChange={(e) => setBirthYear(e.target.value)}
+                                    >
+                                        <option value="" disabled>Alege anul</option>
+                                        {YEARS.map((y) => (
+                                            <option key={y} value={y}>{y}</option>
+                                        ))}
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -178,7 +268,7 @@ export default function RegisterForm({
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 24px;
+                    gap: 20px;
                 }
 
                 .register-header {
@@ -263,8 +353,17 @@ export default function RegisterForm({
                 .register-fields {
                     display: flex;
                     flex-direction: column;
-                    gap: 20px;
+                    gap: 16px;
                     align-self: stretch;
+                }
+
+                .register-name-row {
+                    display: flex;
+                    gap: 12px;
+                }
+
+                .register-name-row .register-field-group {
+                    flex: 1;
                 }
 
                 .register-field-group {
@@ -296,6 +395,19 @@ export default function RegisterForm({
                     box-shadow: var(--shadow-focus);
                 }
 
+                .register-username-wrapper {
+                    background: var(--color-surface);
+                    cursor: default;
+                }
+
+                .register-username-display {
+                    color: var(--color-primary);
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 25.6px;
+                    letter-spacing: 0.02em;
+                }
+
                 .register-input {
                     flex: 1;
                     border: none;
@@ -305,9 +417,31 @@ export default function RegisterForm({
                     line-height: 25.6px;
                     color: var(--color-primary);
                     outline: none;
+                    width: 100%;
                 }
 
                 .register-input::placeholder {
+                    color: var(--color-text-light);
+                }
+
+                .register-select {
+                    flex: 1;
+                    border: none;
+                    background: transparent;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 25.6px;
+                    color: var(--color-primary);
+                    outline: none;
+                    cursor: pointer;
+                    width: 100%;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                }
+
+                .register-select:invalid,
+                .register-select option[value=""] {
                     color: var(--color-text-light);
                 }
 
@@ -345,7 +479,7 @@ export default function RegisterForm({
                     display: flex;
                     align-items: center;
                     gap: 8px;
-                    padding: 8px 0;
+                    padding: 4px 0;
                 }
 
                 .register-login-text {
@@ -381,7 +515,8 @@ export default function RegisterForm({
                         line-height: 40px;
                     }
 
-                    .register-social-row {
+                    .register-social-row,
+                    .register-name-row {
                         flex-direction: column;
                     }
                 }
