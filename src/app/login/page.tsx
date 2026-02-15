@@ -181,7 +181,7 @@ export default function LoginPage() {
                 }
 
                 .login-title {
-                    color: #0D0D12;
+                    color: var(--color-primary);
                     font-size: 40px;
                     font-weight: 500;
                     line-height: 48px;
@@ -225,7 +225,7 @@ export default function LoginPage() {
                 }
 
                 .login-social-btn span {
-                    color: #0D0D12;
+                    color: var(--color-primary);
                     font-size: 16px;
                     font-weight: 500;
                     line-height: 25.6px;
@@ -268,7 +268,7 @@ export default function LoginPage() {
                 }
 
                 .login-label {
-                    color: #0D0D12;
+                    color: var(--color-primary);
                     font-size: 14px;
                     font-weight: 500;
                     line-height: 21.7px;
@@ -297,7 +297,7 @@ export default function LoginPage() {
                     font-size: 16px;
                     font-weight: 400;
                     line-height: 25.6px;
-                    color: #0D0D12;
+                    color: var(--color-primary);
                     font-family: inherit;
                     outline: none;
                 }
@@ -398,7 +398,7 @@ export default function LoginPage() {
                 }
 
                 .login-signup-text {
-                    color: #0D0D12;
+                    color: var(--color-primary);
                     font-size: 14px;
                     font-weight: 500;
                     line-height: 21.7px;
