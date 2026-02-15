@@ -213,7 +213,7 @@ export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) 
                 )}
             </div>
 
-            <style jsx>{`
+            <style jsx global>{`
                 /* ═══════════════════════════════════════
                  * §1 CONTAINER
                  * ═══════════════════════════════════════ */
