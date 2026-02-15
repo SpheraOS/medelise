@@ -291,7 +291,7 @@ export default function LoginForm({
 
                 .login-input-wrapper {
                     height: 48px;
-                    padding: 8px 12px;
+                    padding: 8px 16px;
                     background: var(--color-surface);
                     border-radius: var(--radius-pill);
                     border: 1px solid var(--color-border-form);

@@ -119,7 +119,7 @@ export default function RegisterForm({
                                 <div className="register-input-wrapper">
                                     <input
                                         type="text"
-                                        placeholder="Popa"
+                                        placeholder="Introdu numele"
                                         className="register-input"
                                         value={nume}
                                         onChange={(e) => setNume(e.target.value)}
@@ -131,7 +131,7 @@ export default function RegisterForm({
                                 <div className="register-input-wrapper">
                                     <input
                                         type="text"
-                                        placeholder="Mircea"
+                                        placeholder="Introdu prenumele"
                                         className="register-input"
                                         value={prenume}
                                         onChange={(e) => setPrenume(e.target.value)}
@@ -381,7 +381,7 @@ export default function RegisterForm({
 
                 .register-input-wrapper {
                     height: 48px;
-                    padding: 8px 12px;
+                    padding: 8px 16px;
                     background: var(--color-surface);
                     border-radius: var(--radius-pill);
                     border: 1px solid var(--color-border-form);
