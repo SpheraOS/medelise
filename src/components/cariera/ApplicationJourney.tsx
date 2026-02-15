@@ -147,6 +147,15 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
                     width: 100%;
                     background: var(--color-primary);
                     padding: var(--space-16) var(--space-section-px-lg) var(--space-10);
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-8);
+                }
+
+                .aj-header-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-2);
                 }
 
                 .aj-back-btn {
@@ -687,10 +696,12 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
                         </Button>
                     </Link>
 
-                    <h1 className="aj-header-title">Aplică pentru {jobTitle}</h1>
-                    <p className="aj-header-subtitle">
-                        Completează formularul în {TOTAL_STEPS} pași simpli pentru a te înscrie în procesul de selecție.
-                    </p>
+                    <div className="aj-header-group">
+                        <h1 className="aj-header-title">Aplică pentru {jobTitle}</h1>
+                        <p className="aj-header-subtitle">
+                            Completează formularul în {TOTAL_STEPS} pași simpli pentru a te înscrie în procesul de selecție.
+                        </p>
+                    </div>
                 </header>
 
                 {formStatus === 'sent' ? (
