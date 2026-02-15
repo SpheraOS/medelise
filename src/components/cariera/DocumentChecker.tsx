@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useCallback } from 'react';
 import Button from '@/components/ui/Button';
 import {
     type MedicalRole,
@@ -60,6 +60,33 @@ function CheckIcon() {
     );
 }
 
+function UploadIcon() {
+    return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M17 8L12 3L7 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M12 3V15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    );
+}
+
+function CloseIcon() {
+    return (
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+    );
+}
+
+function FileDocIcon() {
+    return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M14 2V8H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    );
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
  * HELPERS
  * ═══════════════════════════════════════════════════════════════════════════ */
@@ -77,12 +104,30 @@ function groupBySections(docs: DocumentRequirement[]) {
     return { general, specific, malpraxis };
 }
 
+function formatFileSize(bytes: number) {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function buildAcceptString(fileTypes: string[]): string {
+    const map: Record<string, string> = {
+        pdf: '.pdf',
+        jpg: '.jpg,.jpeg',
+        jpeg: '.jpeg',
+        png: '.png',
+    };
+    return fileTypes.map((t) => map[t] || `.${t}`).join(',');
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
  * COMPONENT
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) {
     const [checkedDocs, setCheckedDocs] = useState<Set<string>>(new Set());
+    const [uploadedFiles, setUploadedFiles] = useState<Record<string, File[]>>({});
+    const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
     const requirements = useMemo(() => getRequirementsForRole(selectedRole), [selectedRole]);
     const sections = useMemo(() => groupBySections(requirements), [requirements]);
@@ -102,6 +147,46 @@ export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) 
         });
     };
 
+    /* ── File upload handlers ── */
+    const handleFileUpload = useCallback((docId: string, files: FileList | null) => {
+        if (!files || files.length === 0) return;
+        const newFiles = Array.from(files);
+        setUploadedFiles((prev) => ({
+            ...prev,
+            [docId]: [...(prev[docId] || []), ...newFiles],
+        }));
+        // Auto-check the document when files are added
+        setCheckedDocs((prev) => {
+            const next = new Set(prev);
+            next.add(docId);
+            return next;
+        });
+    }, []);
+
+    const removeFile = useCallback((docId: string, fileIndex: number) => {
+        setUploadedFiles((prev) => {
+            const current = prev[docId] || [];
+            const updated = current.filter((_, i) => i !== fileIndex);
+            const result = { ...prev };
+            if (updated.length === 0) {
+                delete result[docId];
+                // Auto-uncheck when all files removed
+                setCheckedDocs((p) => {
+                    const next = new Set(p);
+                    next.delete(docId);
+                    return next;
+                });
+            } else {
+                result[docId] = updated;
+            }
+            return result;
+        });
+    }, []);
+
+    const triggerFileInput = useCallback((docId: string) => {
+        fileInputRefs.current[docId]?.click();
+    }, []);
+
     const roleLabel = ROLE_LABELS[selectedRole];
 
     /* ── Render a single document row ── */
@@ -109,6 +194,8 @@ export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) 
         const isChecked = checkedDocs.has(doc.id);
         const { hasPdf, hasImage } = getFileTypeIcons(doc.fileTypes);
         const tooltip = doc.id === 'malpraxis' ? malpraxisTooltip : doc.tooltip;
+        const files = uploadedFiles[doc.id] || [];
+        const acceptStr = buildAcceptString(doc.fileTypes);
 
         return (
             <div
@@ -153,6 +240,55 @@ export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) 
                     {doc.description && (
                         <p className="dc-row-desc">{doc.description}</p>
                     )}
+
+                    {/* ── Upload Area ── */}
+                    <div className="dc-upload-area">
+                        {/* Hidden file input */}
+                        <input
+                            ref={(el) => { fileInputRefs.current[doc.id] = el; }}
+                            type="file"
+                            multiple
+                            accept={acceptStr}
+                            className="dc-file-input-hidden"
+                            onChange={(e) => {
+                                handleFileUpload(doc.id, e.target.files);
+                                e.target.value = '';
+                            }}
+                        />
+
+                        {/* Uploaded files list */}
+                        {files.length > 0 && (
+                            <div className="dc-uploaded-list">
+                                {files.map((file, idx) => (
+                                    <div key={`${file.name}-${idx}`} className="dc-uploaded-file">
+                                        <div className="dc-uploaded-file-info">
+                                            <FileDocIcon />
+                                            <span className="dc-uploaded-file-name">{file.name}</span>
+                                            <span className="dc-uploaded-file-size">{formatFileSize(file.size)}</span>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            className="dc-uploaded-file-remove"
+                                            onClick={() => removeFile(doc.id, idx)}
+                                            aria-label={`Șterge ${file.name}`}
+                                        >
+                                            <CloseIcon />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {/* Upload button */}
+                        <button
+                            type="button"
+                            className="dc-upload-btn"
+                            onClick={() => triggerFileInput(doc.id)}
+                        >
+                            <UploadIcon />
+                            {files.length === 0 ? 'Încarcă document' : 'Adaugă alt fișier'}
+                        </button>
+                    </div>
                 </div>
             </div>
         );
@@ -341,9 +477,15 @@ export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) 
                     display: flex;
                     align-items: flex-start;
                     gap: var(--space-3);
-                    padding: var(--space-3) var(--space-4);
+                    padding: var(--space-4);
                     border-radius: var(--radius-main);
                     transition: background 0.15s ease;
+                    margin-bottom: var(--space-2);
+                    border: 1px solid transparent;
+                }
+
+                .dc-row:last-child {
+                    margin-bottom: 0;
                 }
 
                 .dc-row:hover {
@@ -352,6 +494,7 @@ export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) 
 
                 .dc-row--checked {
                     background: color-mix(in srgb, var(--color-success) 4%, transparent);
+                    border-color: color-mix(in srgb, var(--color-success) 15%, transparent);
                 }
 
                 .dc-row--checked:hover {
@@ -504,7 +647,110 @@ export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) 
                 }
 
                 /* ═══════════════════════════════════════
-                 * §5 COMPLETE STATE
+                 * §5 UPLOAD AREA (per row)
+                 * ═══════════════════════════════════════ */
+                .dc-upload-area {
+                    margin-top: var(--space-3);
+                }
+
+                .dc-file-input-hidden {
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    opacity: 0;
+                    pointer-events: none;
+                }
+
+                .dc-upload-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                    padding: var(--space-2) var(--space-3);
+                    font-family: var(--font-body);
+                    font-size: var(--text-sm);
+                    font-weight: 500;
+                    color: var(--color-primary);
+                    background: transparent;
+                    border: 1px dashed var(--color-primary);
+                    border-radius: var(--radius-main);
+                    cursor: pointer;
+                    transition: background 0.15s ease, border-color 0.15s ease;
+                }
+
+                .dc-upload-btn:hover {
+                    background: color-mix(in srgb, var(--color-primary) 5%, transparent);
+                    border-style: solid;
+                }
+
+                /* Uploaded files list */
+                .dc-uploaded-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-2);
+                    margin-bottom: var(--space-3);
+                }
+
+                .dc-uploaded-file {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: var(--space-3);
+                    padding: var(--space-2) var(--space-3);
+                    background: var(--color-surface);
+                    border: 1px solid var(--color-surface-border);
+                    border-radius: var(--radius-sm);
+                    animation: dc-fade-in 0.2s ease-out;
+                }
+
+                .dc-uploaded-file-info {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                    color: var(--color-primary);
+                    min-width: 0;
+                }
+
+                .dc-uploaded-file-name {
+                    font-family: var(--font-body);
+                    font-size: var(--text-sm);
+                    font-weight: 500;
+                    color: var(--color-text);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .dc-uploaded-file-size {
+                    font-family: var(--font-body);
+                    font-size: 11px;
+                    color: var(--color-text-muted);
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                }
+
+                .dc-uploaded-file-remove {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 24px;
+                    height: 24px;
+                    padding: 0;
+                    border: none;
+                    background: none;
+                    color: var(--color-text-muted);
+                    border-radius: var(--radius-sm);
+                    cursor: pointer;
+                    flex-shrink: 0;
+                    transition: color 0.15s ease, background 0.15s ease;
+                }
+
+                .dc-uploaded-file-remove:hover {
+                    color: var(--color-error);
+                    background: color-mix(in srgb, var(--color-error) 8%, transparent);
+                }
+
+                /* ═══════════════════════════════════════
+                 * §6 COMPLETE STATE
                  * ═══════════════════════════════════════ */
                 .dc-complete {
                     display: flex;
@@ -523,7 +769,7 @@ export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) 
                 }
 
                 /* ═══════════════════════════════════════
-                 * §6 RESPONSIVE
+                 * §7 RESPONSIVE
                  * ═══════════════════════════════════════ */
                 @media (max-width: 640px) {
                     .dc-header {
@@ -545,6 +791,10 @@ export default function DocumentChecker({ selectedRole }: DocumentCheckerProps) 
                     .dc-tooltip {
                         right: auto;
                         left: 0;
+                    }
+
+                    .dc-uploaded-file-info {
+                        overflow: hidden;
                     }
                 }
             `}</style>
