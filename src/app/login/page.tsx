@@ -172,25 +172,6 @@ export default function LoginPage() {
                         </div>
                     </div>
 
-                    {/* Dashboard mockup card */}
-                    <div className="login-dashboard-card">
-                        <div className="login-dashboard-topbar">
-                            <div className="login-dashboard-logo-area">
-                                <span className="login-dashboard-brand">MEDELISE</span>
-                            </div>
-                            <span className="login-dashboard-search">🔍 Caută aici...</span>
-                        </div>
-                        <div className="login-dashboard-content">
-                            <div className="login-dashboard-heading">
-                                <span className="login-dashboard-h1">Panou</span>
-                                <span className="login-dashboard-h1-sub">Medical</span>
-                            </div>
-                            <div className="login-dashboard-stats">
-                                <div className="login-stat-bar login-stat-bar--gold" />
-                                <div className="login-stat-bar login-stat-bar--grey" />
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -544,87 +525,7 @@ export default function LoginPage() {
                     opacity: 0.9;
                 }
 
-                /* Dashboard Card */
-                .login-dashboard-card {
-                    position: relative;
-                    z-index: 2;
-                    margin-top: auto;
-                    background: #F6F8FA;
-                    border-radius: 20px;
-                    overflow: hidden;
-                    padding: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 20px;
-                    min-height: 300px;
-                }
 
-                .login-dashboard-topbar {
-                    display: flex;
-                    align-items: center;
-                    gap: 18px;
-                }
-
-                .login-dashboard-brand {
-                    font-family: var(--font-michroma), 'Michroma', sans-serif;
-                    font-size: 18px;
-                    font-weight: 400;
-                    color: black;
-                }
-
-                .login-dashboard-search {
-                    font-size: 12px;
-                    color: #6F6F6F;
-                    background: white;
-                    padding: 8px 12px;
-                    border-radius: 100px;
-                    border: 1px solid #DFE1E7;
-                }
-
-                .login-dashboard-content {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 16px;
-                }
-
-                .login-dashboard-heading {
-                    display: flex;
-                    align-items: center;
-                    gap: 9px;
-                }
-
-                .login-dashboard-h1 {
-                    font-size: 36px;
-                    font-weight: 400;
-                    color: black;
-                }
-
-                .login-dashboard-h1-sub {
-                    font-size: 36px;
-                    font-weight: 400;
-                    color: #6F6F6F;
-                }
-
-                .login-dashboard-stats {
-                    display: flex;
-                    gap: 6px;
-                    align-items: center;
-                }
-
-                .login-stat-bar {
-                    height: 24px;
-                    border-radius: 50px;
-                }
-
-                .login-stat-bar--gold {
-                    flex: 2.5;
-                    background: #FEC337;
-                }
-
-                .login-stat-bar--grey {
-                    flex: 1;
-                    background: #C1C7D0;
-                }
 
                 /* ── RESPONSIVE ── */
                 @media (max-width: 1024px) {
