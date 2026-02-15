@@ -168,7 +168,8 @@ export default function LoginForm({
             <style jsx>{`
                 /* ── LEFT PANEL ── */
                 .login-form-panel {
-                    flex: 0 0 50%;
+                    width: 100%;
+                    height: 100%;
                     display: flex;
                     justify-content: center;
                     align-items: center;
