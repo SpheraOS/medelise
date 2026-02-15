@@ -302,7 +302,7 @@ export default function LoginPage() {
 
                 .login-divider-text {
                     color: #818898;
-                    font-size: 12px;
+                    font-size: 14px;
                     font-weight: 500;
                     line-height: 18.6px;
                     white-space: nowrap;
