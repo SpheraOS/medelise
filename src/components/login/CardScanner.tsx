@@ -810,7 +810,7 @@ export default function CardScanner() {
 
         .cs-scanning-label {
           position: absolute;
-          top: calc(50% + 107px);
+          top: calc(50% + 130px);
           left: 50%;
           transform: translateX(-50%);
           z-index: 21;
