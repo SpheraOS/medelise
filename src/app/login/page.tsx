@@ -475,7 +475,7 @@ export default function LoginPage() {
                 .login-preview-panel {
                     flex: 0 0 50%;
                     position: relative;
-                    background: linear-gradient(145deg, #ff6b35, #ff4444, #cc2200);
+                    background: url('/images/quality/Login/orange_medelise_login.svg') center center / cover no-repeat;
                     border-radius: 30px;
                     margin: 0;
                     overflow: hidden;
