@@ -685,6 +685,14 @@ export default function CardScanner() {
                 <div className="cs-card-stream">
                     <div ref={cardLineRef} className="cs-card-line" />
                 </div>
+                {/* Scanning label */}
+                <div className="cs-scanning-label">
+                    <span className="cs-scanning-text">Scanning</span>
+                    {' '}
+                    <a href="https://medelise.com/" target="_blank" rel="noopener noreferrer" className="cs-scanning-link">
+                        identity<span className="cs-dots"><span className="cs-dot cs-dot-1">.</span><span className="cs-dot cs-dot-2">.</span><span className="cs-dot cs-dot-3">.</span></span>
+                    </a>
+                </div>
                 {/* Footer: Security badges */}
                 <div className="cs-footer">
                     <div className="cs-sec-title">
@@ -798,6 +806,52 @@ export default function CardScanner() {
           font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-weight: 400;
           margin: 0;
+        }
+
+        .cs-scanning-label {
+          position: absolute;
+          top: calc(50% + 95px);
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 21;
+          font-size: 14px;
+          font-family: 'Courier New', monospace;
+          color: rgba(255,255,255,0.6);
+          animation: cs-pulse-glow 2s ease-in-out infinite;
+          white-space: nowrap;
+        }
+
+        .cs-scanning-link {
+          color: rgba(255,255,255,0.6);
+          text-decoration: none;
+        }
+
+        .cs-scanning-link:hover {
+          color: rgba(255,255,255,0.9);
+        }
+
+        .cs-dots {
+          display: inline;
+        }
+
+        .cs-dot {
+          opacity: 0;
+          animation: cs-dot-appear 1.5s ease-in-out infinite;
+        }
+
+        .cs-dot-1 { animation-delay: 0s; }
+        .cs-dot-2 { animation-delay: 0.3s; }
+        .cs-dot-3 { animation-delay: 0.6s; }
+
+        @keyframes cs-dot-appear {
+          0%, 20% { opacity: 0; }
+          30%, 70% { opacity: 1; }
+          80%, 100% { opacity: 0; }
+        }
+
+        @keyframes cs-pulse-glow {
+          0%, 100% { opacity: 0.5; text-shadow: 0 0 4px rgba(255,255,255,0.1); }
+          50% { opacity: 1; text-shadow: 0 0 12px rgba(255,255,255,0.3); }
         }
 
         .cs-card-stream {
