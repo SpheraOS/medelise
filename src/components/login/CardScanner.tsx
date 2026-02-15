@@ -677,14 +677,7 @@ export default function CardScanner() {
                         <span className="cs-logo-text">MEDELISE</span>
                         <div className="cs-logo-line" />
                     </div>
-                    <div className="cs-title-block">
-                        <h2 className="cs-title">Simplify Medical Management</h2>
-                        <p className="cs-desc">
-                            Streamline patient care, appointments, and medical records
-                            in one powerful dashboard. Experience the ease of managing
-                            your healthcare services with MedKit
-                        </p>
-                    </div>
+
                 </div>
 
                 <canvas ref={particleCanvasRef} className="cs-particle-canvas" />
@@ -753,31 +746,7 @@ export default function CardScanner() {
           background: #DFE1E7;
         }
 
-        .cs-title-block {
-          max-width: 510px;
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
 
-        .cs-title {
-          color: white;
-          font-size: 48px;
-          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-          font-weight: 500;
-          line-height: 57.6px;
-          margin: 0;
-        }
-
-        .cs-desc {
-          color: white;
-          font-size: 16px;
-          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-          font-weight: 500;
-          line-height: 25.6px;
-          margin: 0;
-          opacity: 0.9;
-        }
 
         .cs-card-stream {
           position: absolute;
