@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 const JOBS = [
     {
+        slug: 'asistent-medical-generalist',
         title: 'Asistent Medical Generalist',
         type: 'Full Time',
         location: 'Bucuresti',
@@ -12,6 +13,7 @@ const JOBS = [
         daysRemaining: 4,
     },
     {
+        slug: 'ambulantier',
         title: 'Ambulantier',
         type: 'Full Time',
         location: 'Constanta',
@@ -20,6 +22,7 @@ const JOBS = [
         daysRemaining: 4,
     },
     {
+        slug: 'medic-de-familie',
         title: 'Medic de Familie',
         type: 'Part Time',
         location: 'Bucuresti',
@@ -28,6 +31,7 @@ const JOBS = [
         daysRemaining: 5,
     },
     {
+        slug: 'asistent-coordonator',
         title: 'Asistent Coordonator',
         type: 'Full Time',
         location: 'Remote',
@@ -177,7 +181,7 @@ export default function CarieraContent() {
                                 </div>
 
                                 {/* CTA */}
-                                <a href="/contact" className="job-apply-btn">
+                                <a href={`/cariera/${job.slug}`} className="job-apply-btn">
                                     <span>Aplică acum</span>
                                     <ArrowRight />
                                 </a>
