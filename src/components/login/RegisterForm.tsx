@@ -174,7 +174,7 @@ export default function RegisterForm({
 
                 .register-form-inner {
                     width: 100%;
-                    max-width: 500px;
+                    max-width: 650px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
