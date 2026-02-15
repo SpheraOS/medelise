@@ -257,13 +257,13 @@ export default function AnimatedEyeToggle({ isVisible, onToggle, inputRef }: Ani
           align-items: center;
           justify-content: center;
           padding: 4px;
-          color: #666d80;
+          color: var(--color-text-light);
           transition: color 0.2s ease;
           outline: none;
         }
         .animated-eye-btn:hover,
         .animated-eye-btn:focus-visible {
-          color: #0d0d12;
+          color: var(--color-primary);
         }
         .eye-svg {
           overflow: visible;

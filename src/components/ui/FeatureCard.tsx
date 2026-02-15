@@ -53,7 +53,6 @@ export default function FeatureCard({
                     align-self: stretch;
                     color: var(--color-primary);
                     font-size: var(--text-h4);
-                    font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: var(--lh-heading);
                     word-wrap: break-word;
@@ -63,7 +62,6 @@ export default function FeatureCard({
                     align-self: stretch;
                     color: var(--color-primary);
                     font-size: var(--text-body-lg);
-                    font-family: var(--font-heading);
                     font-weight: 400;
                     line-height: var(--lh-body);
                     word-wrap: break-word;

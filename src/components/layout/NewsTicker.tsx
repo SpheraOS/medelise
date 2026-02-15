@@ -32,7 +32,6 @@ export default function NewsTicker() {
                 .ticker-item {
                     display: inline-block;
                     padding: 0 48px;
-                    font-family: var(--font-dm-sans);
                     font-size: 14px;
                     font-weight: 500;
                     letter-spacing: 0.5px;

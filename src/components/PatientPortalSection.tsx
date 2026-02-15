@@ -181,7 +181,6 @@ export default function PatientPortalSection() {
         .portal-display {
           color: var(--color-primary);
           font-size: var(--text-h2);
-          font-family: var(--font-heading);
           font-weight: 600;
           line-height: 1.25;
           margin: 0;
@@ -251,7 +250,6 @@ export default function PatientPortalSection() {
           flex: 1;
           color: var(--color-primary);
           font-size: var(--text-body);
-          font-family: var(--font-heading);
           font-weight: 500;
           line-height: 1.4;
         }
@@ -288,7 +286,6 @@ export default function PatientPortalSection() {
         .portal-info-heading {
           color: var(--color-primary);
           font-size: 18px;
-          font-family: var(--font-heading);
           font-weight: 600;
           line-height: 1.43;
           margin: 0;
@@ -326,7 +323,6 @@ export default function PatientPortalSection() {
           flex: 1;
           color: var(--color-primary);
           font-size: 16px;
-          font-family: var(--font-heading);
           font-weight: 400;
           line-height: 1.33;
         }
@@ -339,7 +335,6 @@ export default function PatientPortalSection() {
           border-radius: var(--radius-main);
           border: none;
           color: var(--color-white);
-          font-family: var(--font-body);
           font-size: var(--text-xs);
           font-weight: 500;
           line-height: 1.5;

@@ -28,7 +28,7 @@ export default function DesktopNav({ isHomePage = true }: { isHomePage?: boolean
     const currentMenu = activeMenu ? MEGA_MENUS[activeMenu] : null;
 
     // Determine nav background: mega menu open → full indigo, homepage → transparent, other → white
-    const navBg = isFullIndigo ? '#213170' : isHomePage ? 'transparent' : 'white';
+    const navBg = isFullIndigo ? 'var(--color-primary)' : isHomePage ? 'transparent' : 'white';
 
     // Close mega menu when clicking outside the nav
     useEffect(() => {
@@ -161,7 +161,7 @@ export default function DesktopNav({ isHomePage = true }: { isHomePage?: boolean
                     <div
                         className="overflow-hidden"
                         style={{
-                            backgroundColor: '#213170',
+                            backgroundColor: 'var(--color-primary)',
                             opacity: isAnimating ? 1 : 0,
                             transform: isAnimating ? 'translateY(0)' : 'translateY(-8px)',
                             transition: 'opacity 250ms ease-out, transform 250ms ease-out',

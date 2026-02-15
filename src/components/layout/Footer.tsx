@@ -168,9 +168,8 @@ export default function Footer() {
                 .footer-tagline {
                     max-width: 316px;
                     text-align: center;
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 16px;
-                    font-family: var(--font-dm-sans);
                     font-weight: 400;
                     line-height: 24px;
                     margin: 0;
@@ -204,9 +203,8 @@ export default function Footer() {
                 }
 
                 .footer-col-heading {
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 18px;
-                    font-family: var(--font-dm-sans);
                     font-weight: 600;
                     line-height: 28px;
                     margin: 0;
@@ -219,9 +217,8 @@ export default function Footer() {
                 }
 
                 .footer-link {
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 16px;
-                    font-family: var(--font-dm-sans);
                     font-weight: 400;
                     line-height: 24px;
                     text-decoration: none;
@@ -244,7 +241,7 @@ export default function Footer() {
                 .footer-divider {
                     width: 100%;
                     height: 1px;
-                    background: var(--color-baby-blue, #BDE0FF);
+                    background: var(--color-secondary);
                 }
 
                 /* ── Bottom Row ── */
@@ -256,9 +253,8 @@ export default function Footer() {
                 }
 
                 .footer-copyright {
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 14px;
-                    font-family: var(--font-dm-sans);
                     font-weight: 500;
                     line-height: 20px;
                     text-align: center;
@@ -277,7 +273,7 @@ export default function Footer() {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background: var(--color-primary, #213170);
+                    background: var(--color-primary);
                     border-radius: 6px;
                     transition: transform 0.2s ease, opacity 0.2s ease;
                 }
@@ -294,7 +290,7 @@ export default function Footer() {
                 /* ── Regulatory Bar ── */
                 .footer-regulatory {
                     width: 100%;
-                    background: var(--color-primary, #213170);
+                    background: var(--color-primary);
                     padding: 8px 16px;
                     display: flex;
                     justify-content: center;

@@ -84,7 +84,6 @@ export default function MissionStatsSection() {
                     text-align: center;
                     color: var(--color-primary);
                     font-size: var(--text-h2);
-                    font-family: var(--font-heading);
                     font-weight: 700;
                     line-height: var(--lh-heading);
                     word-wrap: break-word;
@@ -99,7 +98,6 @@ export default function MissionStatsSection() {
                     text-align: center;
                     color: var(--color-primary);
                     font-size: var(--text-body);
-                    font-family: var(--font-heading);
                     font-weight: 500;
                     line-height: var(--lh-body);
                     word-wrap: break-word;
@@ -116,7 +114,6 @@ export default function MissionStatsSection() {
                     text-align: center;
                     color: var(--color-primary);
                     font-size: var(--text-body);
-                    font-family: var(--font-heading);
                     font-weight: 500;
                     line-height: var(--lh-body);
                     word-wrap: break-word;

@@ -788,13 +788,11 @@ export default function CardScanner() {
           font-weight: 700;
           letter-spacing: 0.05em;
           text-transform: uppercase;
-          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
         }
 
         .cs-sec-desc {
           color: rgba(255,255,255,0.85);
           font-size: 14px;
-          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-weight: 400;
           line-height: 22px;
           margin: 0;
@@ -803,7 +801,6 @@ export default function CardScanner() {
         .cs-sec-badges {
           color: rgba(255,255,255,0.5);
           font-size: 13px;
-          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-weight: 400;
           margin: 0;
         }

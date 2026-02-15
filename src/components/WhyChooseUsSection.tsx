@@ -111,7 +111,6 @@ export default function WhyChooseUsSection() {
                 .why-heading {
                     color: var(--color-primary);
                     font-size: var(--text-h2);
-                    font-family: var(--font-heading);
                     font-weight: 700;
                     line-height: var(--lh-heading);
                     word-wrap: break-word;
@@ -124,7 +123,6 @@ export default function WhyChooseUsSection() {
                     text-align: center;
                     color: var(--color-primary);
                     font-size: var(--text-h3);
-                    font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: var(--lh-heading);
                     word-wrap: break-word;
@@ -193,7 +191,6 @@ export default function WhyChooseUsSection() {
                     text-align: center;
                     color: var(--color-primary);
                     font-size: var(--text-h4);
-                    font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: var(--lh-heading);
                     word-wrap: break-word;
@@ -279,7 +276,6 @@ export default function WhyChooseUsSection() {
                         text-align: center;
                         color: var(--color-primary);
                         font-size: var(--text-h4);
-                        font-family: var(--font-heading);
                         font-weight: 600;
                         line-height: var(--lh-heading);
                         word-wrap: break-word;

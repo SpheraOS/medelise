@@ -30,7 +30,6 @@ export default function StatCard({ label, value }: StatCardProps) {
                     text-align: center;
                     color: var(--color-white);
                     font-size: var(--text-body-lg);
-                    font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: var(--lh-body);
                 }
@@ -38,7 +37,6 @@ export default function StatCard({ label, value }: StatCardProps) {
                 .stat-value {
                     color: var(--color-white);
                     font-size: var(--text-display);
-                    font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: var(--lh-heading);
                 }

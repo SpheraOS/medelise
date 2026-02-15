@@ -180,7 +180,6 @@ export default function QualitySection() {
         .quality-heading {
           color: var(--color-primary);
           font-size: var(--text-h2);
-          font-family: var(--font-heading);
           font-weight: 600;
           line-height: var(--lh-heading);
           margin: 0;
@@ -199,7 +198,6 @@ export default function QualitySection() {
         .quality-body {
           color: var(--color-primary);
           font-size: var(--text-body-lg);
-          font-family: var(--font-heading);
           font-weight: 500;
           line-height: var(--lh-body);
           margin: 0;
@@ -236,7 +234,6 @@ export default function QualitySection() {
         .quality-check-text {
           color: var(--color-primary);
           font-size: var(--text-body);
-          font-family: var(--font-heading);
           font-weight: 500;
           line-height: var(--lh-body);
         }
@@ -274,7 +271,6 @@ export default function QualitySection() {
           border: none;
           outline: 1px var(--color-input-border) solid;
           outline-offset: -1px;
-          font-family: var(--font-heading);
           font-size: var(--text-sm);
           font-weight: 400;
           line-height: var(--lh-body);
@@ -297,7 +293,6 @@ export default function QualitySection() {
           border-radius: var(--radius-main);
           border: none;
           color: var(--color-white);
-          font-family: var(--font-heading);
           font-size: var(--text-body);
           font-weight: 600;
           line-height: var(--lh-body);

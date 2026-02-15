@@ -248,7 +248,6 @@ export default function TestimonialsSection() {
         .tm-title {
           color: var(--color-primary);
           font-size: var(--text-h2);
-          font-family: var(--font-heading);
           font-weight: 600;
           line-height: var(--lh-heading);
           margin: 0;
@@ -258,7 +257,6 @@ export default function TestimonialsSection() {
           width: 478px;
           color: var(--color-primary);
           font-size: var(--text-body-lg);
-          font-family: var(--font-heading);
           font-weight: 400;
           line-height: var(--lh-body);
           margin: 0;
@@ -361,7 +359,6 @@ export default function TestimonialsSection() {
           align-self: stretch;
           color: var(--color-primary);
           font-size: var(--text-body);
-          font-family: var(--font-heading);
           font-weight: 400;
           line-height: var(--lh-body);
           margin: 0;
@@ -389,7 +386,6 @@ export default function TestimonialsSection() {
         .tm-avatar-initials {
           color: var(--color-white);
           font-size: var(--text-body);
-          font-family: var(--font-heading);
           font-weight: 600;
           letter-spacing: 0.5px;
         }
@@ -405,7 +401,6 @@ export default function TestimonialsSection() {
         .tm-author-name {
           color: var(--color-primary);
           font-size: var(--text-body);
-          font-family: var(--font-heading);
           font-weight: 500;
           line-height: var(--lh-body);
         }
@@ -413,7 +408,6 @@ export default function TestimonialsSection() {
         .tm-author-company {
           color: var(--color-text-muted);
           font-size: var(--text-sm);
-          font-family: var(--font-heading);
           font-weight: 400;
           line-height: var(--lh-body);
         }

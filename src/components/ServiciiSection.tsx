@@ -135,7 +135,6 @@ export default function ServiciiSection() {
         .servicii-heading {
           color: var(--color-primary);
           font-size: 20px;
-          font-family: var(--font-heading);
           font-weight: 600;
           line-height: 28px;
           margin: 0;
@@ -148,7 +147,6 @@ export default function ServiciiSection() {
         .servicii-description {
           color: var(--color-primary);
           font-size: 16px;
-          font-family: var(--font-heading);
           font-weight: 400;
           line-height: 24px;
           margin: 0;
@@ -194,7 +192,6 @@ export default function ServiciiSection() {
           flex: 1;
           color: var(--color-primary);
           font-size: 16px;
-          font-family: var(--font-heading);
           font-weight: 500;
           line-height: 24px;
           margin: 0;
@@ -203,7 +200,6 @@ export default function ServiciiSection() {
         .servicii-card-desc {
           color: var(--color-primary);
           font-size: var(--text-body);
-          font-family: var(--font-heading);
           font-weight: 400;
           line-height: 24px;
           margin: 0;
@@ -212,7 +208,7 @@ export default function ServiciiSection() {
         .servicii-card-icon {
           padding: 8px;
           background: var(--color-white);
-          border-radius: 100px;
+          border-radius: var(--radius-pill);
           display: inline-flex;
           justify-content: center;
           align-items: center;

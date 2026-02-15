@@ -127,7 +127,6 @@ export default function HeroSection() {
                 .hero-subtitle {
                     color: var(--color-primary);
                     font-size: 16px;
-                    font-family: var(--font-heading);
                     font-weight: 500;
                     line-height: 22px;
                     max-width: 75%;
@@ -173,7 +172,7 @@ export default function HeroSection() {
                     width: 40px;
                     height: 40px;
                     background: var(--color-primary);
-                    border-radius: 100px;
+                    border-radius: var(--radius-pill);
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -216,9 +215,8 @@ export default function HeroSection() {
                 }
 
                 .hero-sp-label {
-                    color: #213170;
+                    color: var(--color-primary);
                     font-size: 18px;
-                    font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: 25.2px;
                 }
@@ -271,23 +269,20 @@ export default function HeroSection() {
                 .hero-avatar-count-text {
                     color: #CC0A00;
                     font-size: 14px;
-                    font-family: var(--font-dm-sans);
                     font-weight: 500;
                     line-height: 19.6px;
                 }
 
                 .hero-sp-stat-title {
-                    color: #FE5D16;
+                    color: var(--color-accent);
                     font-size: 18px;
-                    font-family: var(--font-dm-sans);
                     font-weight: 500;
                     line-height: 25.2px;
                 }
 
                 .hero-sp-stat-desc {
-                    color: #213170;
+                    color: var(--color-primary);
                     font-size: 14px;
-                    font-family: var(--font-heading);
                     font-weight: 600;
                     line-height: 21px;
                 }
@@ -418,13 +413,13 @@ export default function HeroSection() {
                         <div className="hero-sp-label">Apreciat de cei mai buni medici</div>
 
                         <div className="hero-avatars-group">
-                            <div className="hero-avatar-wrapper" style={{ background: '#FE5D16' }}>
+                            <div className="hero-avatar-wrapper" style={{ background: 'var(--color-accent)' }}>
                                 <Image src={IMAGES.hero.avatar1} alt="Medic 1" width={64} height={64} className="hero-avatar-img" style={{ width: '100%', height: '56px', objectFit: 'cover', objectPosition: 'top' }} />
                             </div>
-                            <div className="hero-avatar-wrapper" style={{ background: '#BDE0FF' }}>
+                            <div className="hero-avatar-wrapper" style={{ background: 'var(--color-secondary)' }}>
                                 <Image src={IMAGES.hero.avatar2} alt="Medic 2" width={64} height={64} className="hero-avatar-img" style={{ width: '100%', height: '56px', objectFit: 'cover', objectPosition: 'top' }} />
                             </div>
-                            <div className="hero-avatar-wrapper" style={{ background: '#213170' }}>
+                            <div className="hero-avatar-wrapper" style={{ background: 'var(--color-primary)' }}>
                                 <Image src={IMAGES.hero.avatar3} alt="Medic 3" width={64} height={64} className="hero-avatar-img" style={{ width: '100%', height: '56px', objectFit: 'cover', objectPosition: 'top' }} />
                             </div>
                             <div className="hero-avatar-count">

@@ -78,7 +78,6 @@ export default function JourneySection() {
         .journey-heading {
           color: var(--color-primary);
           font-size: 18px;
-          font-family: var(--font-heading);
           font-weight: 600;
           line-height: 28px;
           margin: 0;
@@ -91,7 +90,6 @@ export default function JourneySection() {
         .journey-description {
           color: var(--color-primary);
           font-size: 16px;
-          font-family: var(--font-heading);
           font-weight: 500;
           line-height: 24px;
           margin: 0;
@@ -103,7 +101,7 @@ export default function JourneySection() {
         .journey-divider {
           width: 100%;
           height: 1px;
-          background: var(--color-baby-blue, #BDE0FF);
+          background: var(--color-secondary);
         }
 
         /* ═══════════════════════════════════════

@@ -144,7 +144,6 @@ export default function LoginPage() {
                     display: flex;
                     min-height: 100vh;
                     background: white;
-                    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
                     padding-left: 64px;
                     padding-right: 64px;
                     padding-top: 64px;
@@ -189,7 +188,7 @@ export default function LoginPage() {
                 }
 
                 .login-subtitle {
-                    color: #666D80;
+                    color: var(--color-text-light);
                     font-size: 16px;
                     font-weight: 500;
                     line-height: 25.6px;
@@ -207,17 +206,16 @@ export default function LoginPage() {
                     flex: 1;
                     height: 48px;
                     padding: 12px 16px;
-                    background: #F8FAFB;
-                    border-radius: 100px;
-                    border: 1px solid #DFE1E7;
+                    background: var(--color-surface);
+                    border-radius: var(--radius-pill);
+                    border: 1px solid var(--color-border-form);
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     gap: 12px;
                     cursor: pointer;
-                    box-shadow: 0px 1px 2px rgba(13, 13, 18, 0.06);
+                    box-shadow: var(--shadow-sm);
                     transition: background 0.2s;
-                    font-family: inherit;
                 }
 
                 .login-social-btn:hover {
@@ -242,11 +240,11 @@ export default function LoginPage() {
                 .login-divider-line {
                     flex: 1;
                     height: 1px;
-                    background: #C1C7D0;
+                    background: var(--color-border-light);
                 }
 
                 .login-divider-text {
-                    color: #818898;
+                    color: var(--color-text-muted);
                     font-size: 16px;
                     font-weight: 500;
                     line-height: 18.6px;
@@ -277,17 +275,17 @@ export default function LoginPage() {
                 .login-input-wrapper {
                     height: 48px;
                     padding: 8px 12px;
-                    background: #F8FAFB;
-                    border-radius: 100px;
-                    border: 1px solid #DFE1E7;
+                    background: var(--color-surface);
+                    border-radius: var(--radius-pill);
+                    border: 1px solid var(--color-border-form);
                     display: flex;
                     align-items: center;
                     gap: 8px;
                 }
 
                 .login-input-wrapper:focus-within {
-                    border-color: #1A275A;
-                    box-shadow: 0 0 0 2px rgba(26, 39, 90, 0.12);
+                    border-color: var(--color-primary-hover);
+                    box-shadow: var(--shadow-focus);
                 }
 
                 .login-input {
@@ -298,12 +296,11 @@ export default function LoginPage() {
                     font-weight: 400;
                     line-height: 25.6px;
                     color: var(--color-primary);
-                    font-family: inherit;
                     outline: none;
                 }
 
                 .login-input::placeholder {
-                    color: #666D80;
+                    color: var(--color-text-light);
                 }
 
                 .login-eye-btn {
@@ -325,21 +322,20 @@ export default function LoginPage() {
                 .login-submit-btn {
                     width: 100%;
                     padding: 14px 24px;
-                    background: #1A275A;
-                    border-radius: 100px;
+                    background: var(--color-primary);
+                    border-radius: var(--radius-pill);
                     border: none;
-                    color: white;
+                    color: var(--color-white);
                     font-size: 16px;
                     font-weight: 500;
                     line-height: 25.6px;
-                    font-family: inherit;
                     cursor: pointer;
                     transition: background 0.2s, transform 0.15s;
                     text-align: center;
                 }
 
                 .login-submit-btn:hover {
-                    background: #0f1a40;
+                    background: var(--color-primary-hover);
                     transform: translateY(-1px);
                 }
 
@@ -364,21 +360,21 @@ export default function LoginPage() {
                     width: 20px;
                     height: 20px;
                     border-radius: 6px;
-                    border: 1px solid #DFE1E7;
-                    background: #F8FAFB;
+                    border: 1px solid var(--color-border-form);
+                    background: var(--color-surface);
                     cursor: pointer;
-                    accent-color: #1A275A;
+                    accent-color: var(--color-primary);
                 }
 
                 .login-remember span {
-                    color: #666D80;
+                    color: var(--color-text-light);
                     font-size: 16px;
                     font-weight: 500;
                     line-height: 21.7px;
                 }
 
                 .login-forgot {
-                    color: #6F6F6F;
+                    color: var(--color-text-muted);
                     font-size: 16px;
                     font-weight: 500;
                     line-height: 21.7px;
@@ -405,7 +401,7 @@ export default function LoginPage() {
                 }
 
                 .login-signup-link {
-                    color: #1A275A;
+                    color: var(--color-primary);
                     font-size: 16px;
                     font-weight: 500;
                     line-height: 25.6px;

@@ -112,7 +112,6 @@ export default function NewsletterSection() {
         .newsletter-heading {
           color: var(--color-primary);
           font-size: 24px;
-          font-family: var(--font-heading);
           font-weight: 600;
           line-height: 32px;
           margin: 0;
@@ -121,7 +120,6 @@ export default function NewsletterSection() {
         .newsletter-description {
           color: var(--color-primary);
           font-size: 16px;
-          font-family: var(--font-heading);
           font-weight: 500;
           line-height: 24px;
           margin: 0;
@@ -157,7 +155,6 @@ export default function NewsletterSection() {
           border: none;
           color: var(--color-primary);
           font-size: 16px;
-          font-family: var(--font-heading);
           font-weight: 400;
           line-height: 24px;
           outline: none;
