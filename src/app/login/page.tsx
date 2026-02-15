@@ -2,11 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import CardScanner from '@/components/login/CardScanner';
+import AnimatedEyeToggle from '@/components/login/AnimatedEyeToggle';
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
+    const passwordRef = useRef<HTMLInputElement>(null);
 
     return (
         <>
@@ -92,23 +94,16 @@ export default function LoginPage() {
                                         className="login-input-icon"
                                     />
                                     <input
+                                        ref={passwordRef}
                                         type={showPassword ? 'text' : 'password'}
                                         placeholder="Introdu parola"
                                         className="login-input"
                                     />
-                                    <button
-                                        type="button"
-                                        className="login-eye-btn"
-                                        onClick={() => setShowPassword(!showPassword)}
-                                        aria-label={showPassword ? 'Ascunde parola' : 'Arată parola'}
-                                    >
-                                        <Image
-                                            src="/images/quality/Login/remix-icons/line/system/eye-line.svg"
-                                            alt=""
-                                            width={24}
-                                            height={24}
-                                        />
-                                    </button>
+                                    <AnimatedEyeToggle
+                                        isVisible={showPassword}
+                                        onToggle={() => setShowPassword(!showPassword)}
+                                        inputRef={passwordRef}
+                                    />
                                 </div>
                             </div>
 
