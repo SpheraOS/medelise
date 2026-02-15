@@ -13,7 +13,7 @@ export default function JobSidebarCard({ job, className }: { job: JobDetail; cla
                 <div className="sidebar-company">
                     <div className="sidebar-logo-wrap">
                         <Image
-                            src="/icons/icon employee/Logo (Replace with your own)/Black Solid/icon 1.svg"
+                            src="/icons/icon employee/logo-medvita/Black Solid/icon 1.svg"
                             alt="Medvita"
                             width={36}
                             height={20}

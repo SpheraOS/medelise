@@ -90,7 +90,7 @@ export default function CarieraContent() {
                                     const isExpired = daysLeft === 0;
 
                                     return (
-                                        <article key={job.slug} className="job-card">
+                                        <article key={job.slug} className={`job-card ${isExpired ? 'job-card-expired' : ''}`}>
                                             <div className="job-card-body">
                                                 {/* Title + Type */}
                                                 <div className="job-row-title">
@@ -159,7 +159,7 @@ export default function CarieraContent() {
                                                             : `${daysLeft} ${daysLeft === 1 ? 'zi rămasă' : 'zile rămase'}`}
                                                     </span>
                                                     <Image
-                                                        src="/icons/icon employee/Logo (Replace with your own)/Black Solid/icon 1.svg"
+                                                        src="/icons/icon employee/logo-medvita/Black Solid/icon 1.svg"
                                                         alt="Logo Medvita Health Solutions"
                                                         width={36}
                                                         height={20}
@@ -168,12 +168,18 @@ export default function CarieraContent() {
                                                 </div>
                                             </div>
 
-                                            {/* CTA */}
-                                            <Link href={`/cariera/${job.slug}`}>
-                                                <Button variant="primary" iconRight={<ArrowRight />}>
-                                                    Aplică acum
+                                            {/* CTA — disabled on expired jobs */}
+                                            {isExpired ? (
+                                                <Button variant="primary" iconRight={<ArrowRight />} disabled>
+                                                    Poziție expirată
                                                 </Button>
-                                            </Link>
+                                            ) : (
+                                                <Link href={`/cariera/${job.slug}`}>
+                                                    <Button variant="primary" iconRight={<ArrowRight />}>
+                                                        Aplică acum
+                                                    </Button>
+                                                </Link>
+                                            )}
                                         </article>
                                     );
                                 })}
@@ -219,21 +225,21 @@ export default function CarieraContent() {
 
                 .cariera-hero-content {
                     width: 100%;
-                    padding: 40px 0;
+                    padding: var(--space-10) 0;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: flex-start;
-                    gap: 32px;
+                    gap: var(--space-8);
                 }
 
                 .cariera-hero-text {
                     width: 100%;
-                    padding: 16px;
+                    padding: var(--space-4);
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 32px;
+                    gap: var(--space-8);
                 }
 
                 .cariera-hero-title {
@@ -284,7 +290,7 @@ export default function CarieraContent() {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 12px;
+                    gap: var(--space-3);
                     text-align: center;
                 }
 
@@ -310,13 +316,13 @@ export default function CarieraContent() {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 24px;
-                    padding: 48px 24px;
+                    gap: var(--space-6);
+                    padding: var(--space-12) var(--space-6);
                     text-align: center;
                 }
 
                 .jobs-empty-text {
-                    color: var(--color-text-secondary);
+                    color: var(--color-text-muted);
                     font-size: 18px;
                     line-height: 28px;
                     max-width: 500px;
@@ -328,25 +334,48 @@ export default function CarieraContent() {
                     width: 100%;
                     display: grid;
                     grid-template-columns: 1fr 1fr;
-                    gap: 32px;
+                    gap: var(--space-8);
                 }
 
                 .job-card {
-                    padding: 24px;
+                    padding: var(--space-6);
                     background: white;
                     overflow: hidden;
-                    border-radius: 8px;
+                    border-radius: var(--space-2);
                     outline: 1px solid var(--color-surface-border);
                     outline-offset: -1px;
                     display: flex;
                     flex-direction: column;
-                    gap: 24px;
+                    gap: var(--space-6);
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                    cursor: pointer;
+                }
+
+                .job-card:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 24px rgba(33, 49, 112, 0.10);
+                }
+
+                .job-card:focus-within {
+                    outline: 2px solid var(--color-primary);
+                    outline-offset: 2px;
+                }
+
+                /* ── Expired card visual state ── */
+                .job-card-expired {
+                    opacity: 0.6;
+                    cursor: default;
+                }
+
+                .job-card-expired:hover {
+                    transform: none;
+                    box-shadow: none;
                 }
 
                 .job-card-body {
                     display: flex;
                     flex-direction: column;
-                    gap: 12px;
+                    gap: var(--space-3);
                 }
 
                 /* Title row: name + type badge */
@@ -354,7 +383,7 @@ export default function CarieraContent() {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    gap: 16px;
+                    gap: var(--space-4);
                 }
 
                 .job-name {
@@ -369,7 +398,7 @@ export default function CarieraContent() {
                 .job-type {
                     display: flex;
                     align-items: center;
-                    gap: 4px;
+                    gap: var(--space-1);
                     color: var(--color-accent);
                     font-size: 14px;
                     font-weight: 400;
@@ -381,14 +410,14 @@ export default function CarieraContent() {
                 .job-meta {
                     display: flex;
                     align-items: center;
-                    gap: 16px;
+                    gap: var(--space-4);
                     flex-wrap: wrap;
                 }
 
                 .job-meta-item {
                     display: flex;
                     align-items: center;
-                    gap: 4px;
+                    gap: var(--space-1);
                     color: var(--color-primary);
                     font-size: 14px;
                     font-weight: 400;
@@ -397,7 +426,7 @@ export default function CarieraContent() {
                 }
 
                 .job-expired {
-                    color: var(--color-error, #dc2626);
+                    color: var(--color-error);
                     font-weight: 500;
                 }
 
@@ -413,6 +442,10 @@ export default function CarieraContent() {
                     justify-content: space-between;
                 }
 
+                .job-logo {
+                    opacity: 0.5;
+                }
+
                 /* ═══════════════════════════════════
                    §3  TABLET (max 1024px)
                    Single-column cards, fluid width
@@ -423,27 +456,19 @@ export default function CarieraContent() {
                     }
 
                     .cariera-hero-inner {
-                        max-width: 100%;
                         width: 100%;
-                        padding: 64px 0;
-                    }
-
-                    .cariera-hero-content {
-                        padding: 40px 0;
-                        gap: 32px;
+                        padding: var(--space-16) 0;
                     }
 
                     .cariera-hero-text {
                         flex-direction: column;
                         align-items: flex-start;
-                        gap: 32px;
                         padding: 0;
                     }
 
                     .cariera-hero-title {
                         max-width: 596px;
                     }
-
 
                     .jobs-section {
                         padding: var(--space-16) var(--space-section-px-md);
@@ -452,14 +477,14 @@ export default function CarieraContent() {
 
                     .jobs-header {
                         width: 100%;
-                        padding-top: 16px;
-                        padding-bottom: 48px;
+                        padding-top: var(--space-4);
+                        padding-bottom: var(--space-12);
                     }
 
                     .jobs-grid {
                         width: 100%;
                         grid-template-columns: 1fr;
-                        gap: 24px;
+                        gap: var(--space-6);
                     }
 
                     .job-card {
@@ -477,17 +502,16 @@ export default function CarieraContent() {
                     }
 
                     .cariera-hero-inner {
-                        max-width: 100%;
-                        padding: 48px 0;
+                        padding: var(--space-12) 0;
                     }
 
                     .cariera-hero-content {
                         padding: 0;
-                        gap: 16px;
+                        gap: var(--space-4);
                     }
 
                     .cariera-hero-text {
-                        gap: 16px;
+                        gap: var(--space-4);
                     }
 
                     .cariera-hero-title {
@@ -508,7 +532,7 @@ export default function CarieraContent() {
 
                     .jobs-header {
                         width: 100%;
-                        padding-bottom: 32px;
+                        padding-bottom: var(--space-8);
                     }
 
                     .jobs-title {
@@ -526,19 +550,19 @@ export default function CarieraContent() {
                     }
 
                     .job-card {
-                        padding: 16px;
+                        padding: var(--space-4);
                     }
 
                     .job-row-title {
                         flex-direction: column;
                         align-items: flex-start;
-                        gap: 8px;
+                        gap: var(--space-2);
                     }
 
                     .job-meta {
                         flex-direction: column;
                         align-items: flex-start;
-                        gap: 8px;
+                        gap: var(--space-2);
                     }
                 }
             `}</style>
