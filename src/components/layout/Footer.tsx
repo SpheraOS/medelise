@@ -143,9 +143,7 @@ export default function Footer() {
 
                 .footer-container {
                     width: 100%;
-                    max-width: 343px;
-                    margin: 0 auto;
-                    padding: 48px 0;
+                    padding: 48px 16px;
                     display: flex;
                     flex-direction: column;
                     gap: 32px;
@@ -308,8 +306,7 @@ export default function Footer() {
                  * ═══════════════════════════════════════ */
                 @media (min-width: 641px) {
                     .footer-container {
-                        max-width: 704px;
-                        padding: 64px 0;
+                        padding: 64px 32px;
                         gap: 32px;
                     }
 
@@ -362,7 +359,6 @@ export default function Footer() {
                  * ═══════════════════════════════════════ */
                 @media (min-width: 1025px) {
                     .footer-container {
-                        max-width: 1440px;
                         padding: 32px 64px;
                         gap: 16px;
                     }
