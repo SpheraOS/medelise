@@ -67,12 +67,7 @@ export default function CarieraContent() {
                     <div className="jobs-header">
                         <h2 className="jobs-title">Joburi disponibile</h2>
                         <p className="jobs-desc">
-                            Medvita oferă servicii în următoarele domenii: medicină de prevenție,
-                            medicină generală, medicină de urgență și kinetoterapie.
-                            <br /><br />
-                            Te invităm să explorezi diversele noastre serviciile medicale. Facem
-                            tot posibilul să oferim cât mai multe servicii, așa încât sa facem
-                            totul accesibil pentru pacienții noștri.
+                            Construim echipe medicale de excelență în homecare și telemedicină. Dacă îți dorești un mediu profesional care pune accent pe inovație, flexibilitate și impactul real asupra pacienților, explorează pozițiile disponibile.
                         </p>
                     </div>
 
@@ -260,7 +255,6 @@ export default function CarieraContent() {
                     font-weight: 400;
                     line-height: 28px;
                     margin: 0;
-                    max-width: 556px;
                     word-wrap: break-word;
                 }
 
@@ -450,9 +444,6 @@ export default function CarieraContent() {
                         max-width: 596px;
                     }
 
-                    .cariera-hero-desc {
-                        max-width: 100%;
-                    }
 
                     .jobs-section {
                         padding: var(--space-16) var(--space-section-px-md);
