@@ -722,7 +722,7 @@ export default function CardScanner() {
           display: flex;
           flex-direction: column;
           gap: 24px;
-          padding: 64px 0 0 32px;
+          padding: 64px 0 0 250px;
         }
 
         .cs-logo-row {
