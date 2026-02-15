@@ -46,7 +46,7 @@ export default function LoginPage() {
                     display: flex;
                     min-height: 100vh;
                     background: white;
-                    padding: 64px;
+                    padding: 32px;
                 }
 
                 /* ── FLIP CARD CONTAINER ── */
