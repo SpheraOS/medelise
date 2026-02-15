@@ -144,7 +144,7 @@ export default function LoginPage() {
                     display: flex;
                     min-height: 100vh;
                     background: white;
-                    padding-left: 0;
+                    padding-left: 64px;
                     padding-right: 64px;
                     padding-top: 64px;
                     padding-bottom: 64px;
@@ -153,6 +153,10 @@ export default function LoginPage() {
                 /* ── LEFT PANEL ── */
                 .login-form-panel {
                     flex: 0 0 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0 32px;
                     background: white;
                 }
 
