@@ -787,14 +787,8 @@ export default function CardScanner() {
           white-space: pre;
           margin: 0; padding: 0;
           animation: cs-glitch 0.1s infinite linear alternate-reverse;
-          -webkit-mask-image: url('/images/security/Touch ID.png');
-          mask-image: url('/images/security/Touch ID.png');
-          -webkit-mask-size: contain;
-          mask-size: contain;
-          -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-          -webkit-mask-position: center;
-          mask-position: center;
+          -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 70%);
+          mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 70%);
         }
 
         @keyframes cs-glitch {
