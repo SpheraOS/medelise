@@ -248,7 +248,6 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
 
                 .apply-form {
                     width: 100%;
-                    max-width: 960px;
                     display: flex;
                     flex-direction: column;
                     gap: var(--space-10);
@@ -259,6 +258,7 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                     display: flex;
                     gap: var(--space-6);
                     align-items: flex-start;
+                    padding: 0 var(--space-16);
                 }
 
                 .apply-section-row > .apply-section {
