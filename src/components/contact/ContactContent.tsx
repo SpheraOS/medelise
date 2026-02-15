@@ -288,12 +288,17 @@ export default function ContactContent() {
                             Te ajutăm să ai grijă de sănătatea ta, fără să pierzi ore întregi pe drum.
                         </p>
                     </div>
-                    <a href="/programeaza" className="cta-btn">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M6.66667 1.66667V4.16667M13.3333 1.66667V4.16667M2.91667 7.57500H17.0833M17.5 7.08333V14.1667C17.5 16.6667 16.25 18.3333 13.3333 18.3333H6.66667C3.75 18.3333 2.5 16.6667 2.5 14.1667V7.08333C2.5 4.58333 3.75 2.91667 6.66667 2.91667H13.3333C16.25 2.91667 17.5 4.58333 17.5 7.08333Z" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        <span>Programează</span>
-                    </a>
+                    <div className="cta-buttons">
+                        <a href="/programeaza" className="cta-btn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M6.66667 1.66667V4.16667M13.3333 1.66667V4.16667M2.91667 7.57500H17.0833M17.5 7.08333V14.1667C17.5 16.6667 16.25 18.3333 13.3333 18.3333H6.66667C3.75 18.3333 2.5 16.6667 2.5 14.1667V7.08333C2.5 4.58333 3.75 2.91667 6.66667 2.91667H13.3333C16.25 2.91667 17.5 4.58333 17.5 7.08333Z" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            <span>Programează</span>
+                        </a>
+                        <a href="/login" className="cta-btn cta-btn--secondary">
+                            Intră în contul tău Medelise
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -727,6 +732,13 @@ export default function ContactContent() {
                     gap: 40px;
                 }
 
+                .cta-buttons {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    flex-wrap: wrap;
+                }
+
                 .cta-text {
                     display: flex;
                     flex-direction: column;
@@ -777,6 +789,18 @@ export default function ContactContent() {
 
                 .cta-btn svg {
                     flex-shrink: 0;
+                }
+
+                .cta-btn--secondary {
+                    background: transparent;
+                    border: 2px solid var(--color-primary, #213170);
+                    color: var(--color-primary, #213170);
+                }
+
+                .cta-btn--secondary:hover {
+                    background: var(--color-primary, #213170);
+                    color: white;
+                    transform: translateY(-1px);
                 }
 
                 /* ═══════════════════════════════════
