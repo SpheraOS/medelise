@@ -525,8 +525,6 @@ export default function LoginPage() {
                     display: flex;
                     flex-direction: column;
                     gap: 16px;
-                    padding-left: 16px;
-                    padding-right: 16px;
                 }
 
                 .login-preview-title {
