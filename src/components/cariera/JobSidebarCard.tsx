@@ -5,7 +5,7 @@ import MailIcon from '@/components/icons/MailIcon';
 import { JobDetail } from './jobData';
 
 /* ─── Sidebar card (reused in desktop sidebar & tablet inline) ─── */
-export default function JobSidebarCard({ job, className }: { job: JobDetail; className?: string }) {
+export default function JobSidebarCard({ job, slug, className }: { job: JobDetail; slug: string; className?: string }) {
     return (
         <>
             <div className={`job-sidebar-card ${className || ''}`}>
@@ -32,7 +32,7 @@ export default function JobSidebarCard({ job, className }: { job: JobDetail; cla
                 </div>
 
                 {/* Apply button */}
-                <Link href="/contact">
+                <Link href={`/cariera/${slug}/aplica`}>
                     <Button variant="primary" isFullWidth iconRight={<MailIcon />}>
                         Aplica aici
                     </Button>

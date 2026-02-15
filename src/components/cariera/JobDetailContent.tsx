@@ -155,7 +155,7 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                             </div>
 
                             {/* ── Sidebar card (INLINE version — visible tablet/mobile only) ── */}
-                            <JobSidebarCard job={job} className="sidebar-inline" />
+                            <JobSidebarCard job={job} slug={slug} className="sidebar-inline" />
 
                             {/* Content sections */}
                             <div className="job-detail-body">
@@ -204,7 +204,7 @@ export default function JobDetailContent({ slug }: { slug: string }) {
 
                         {/* ── RIGHT SIDEBAR (desktop only) ── */}
                         <aside className="job-detail-sidebar">
-                            <JobSidebarCard job={job} className="sidebar-desktop" />
+                            <JobSidebarCard job={job} slug={slug} className="sidebar-desktop" />
                         </aside>
                     </div>
                 </div>
