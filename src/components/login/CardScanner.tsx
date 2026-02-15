@@ -717,7 +717,7 @@ export default function CardScanner() {
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          background: #000;
+          background: var(--color-primary);
           border-radius: inherit;
         }
 
