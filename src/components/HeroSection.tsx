@@ -16,7 +16,7 @@ export default function HeroSection() {
                  * ═══════════════════════════════════════ */
                 .hero-section {
                     width: 100%;
-                    height: 100svh;
+                    min-height: 100svh;
                     position: relative;
                     background: var(--color-white);
                     overflow: hidden;
@@ -72,13 +72,14 @@ export default function HeroSection() {
                 .hero-content {
                     width: 100%;
                     flex: 1;
-                    padding: clamp(64px, 12vh, 210px) 16px 24px;
+                    padding: clamp(64px, 12vh, 210px) var(--space-section-px-sm) var(--space-6);
                     position: relative;
                     z-index: 1;
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-end;
+                    gap: var(--space-10);
                 }
 
                 /* ── Top: Text + CTA ─────────────────── */
@@ -151,7 +152,7 @@ export default function HeroSection() {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
-                    gap: 16px;
+                    gap: var(--space-4);
                     margin-top: auto;
                     position: relative;
                     z-index: 2;
@@ -249,7 +250,7 @@ export default function HeroSection() {
                  * ═══════════════════════════════════════ */
                 @media (min-width: 641px) {
                     .hero-content {
-                        padding: clamp(68px, 14vh, 210px) 32px 32px;
+                        padding: clamp(68px, 14vh, 210px) var(--space-section-px-md) var(--space-8);
                     }
 
                     .hero-text-group {
@@ -279,11 +280,11 @@ export default function HeroSection() {
                     }
 
                     .hero-section {
-                        height: 100svh;
+                        min-height: 100svh;
                     }
 
                     .hero-content {
-                        padding: 210px var(--space-section-px) 64px;
+                        padding: 210px var(--space-section-px-lg) var(--space-16);
                     }
 
                     .hero-top-block {
