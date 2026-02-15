@@ -14,11 +14,8 @@ export default function LoginPage() {
                 /* Hide navbar + footer on the login route */
                 body > nav,
                 body > .navbar-wrapper,
-                body > footer,
-                body > .footer,
                 header,
-                .navbar,
-                .footer {
+                .navbar {
                     display: none !important;
                 }
             `}</style>
