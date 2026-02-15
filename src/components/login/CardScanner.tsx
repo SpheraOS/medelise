@@ -685,6 +685,19 @@ export default function CardScanner() {
                 <div className="cs-card-stream">
                     <div ref={cardLineRef} className="cs-card-line" />
                 </div>
+                {/* Footer: Security badges */}
+                <div className="cs-footer">
+                    <div className="cs-sec-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                        <span>SECURITATE DE NIVEL MILITAR</span>
+                    </div>
+                    <p className="cs-sec-desc">
+                        Datele tale sunt protejate cu criptare AES-256 și autentificare biometrică avansată. Fiecare acces este monitorizat și validat în timp real.
+                    </p>
+                    <p className="cs-sec-badges">
+                        🔒 Conexiune securizată • Certificat SSL/TLS • Conformitate GDPR
+                    </p>
+                </div>
             </div>
 
             <style jsx>{`
@@ -746,7 +759,46 @@ export default function CardScanner() {
           background: #DFE1E7;
         }
 
+        .cs-footer {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 21;
+          padding: 0 32px 40px 32px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
 
+        .cs-sec-title {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #22c55e;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+        }
+
+        .cs-sec-desc {
+          color: rgba(255,255,255,0.85);
+          font-size: 14px;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+          font-weight: 400;
+          line-height: 22px;
+          margin: 0;
+        }
+
+        .cs-sec-badges {
+          color: rgba(255,255,255,0.5);
+          font-size: 13px;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+          font-weight: 400;
+          margin: 0;
+        }
 
         .cs-card-stream {
           position: absolute;
