@@ -209,14 +209,13 @@ export default function CarieraContent() {
                    ═══════════════════════════════════ */
                 .cariera-hero {
                     width: 100%;
-                    padding: 0 max(16px, 6vw);
+                    padding: 0 var(--space-section-px-lg);
                     background: white;
                 }
 
                 .cariera-hero-inner {
-                    max-width: 1216px;
                     margin: 0 auto;
-                    padding: 48px 0;
+                    padding: var(--space-12) 0;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -276,19 +275,18 @@ export default function CarieraContent() {
                    ═══════════════════════════════════ */
                 .jobs-section {
                     width: 100%;
-                    padding: 16px max(16px, 6vw) 64px;
+                    padding: var(--space-4) var(--space-section-px-lg) var(--space-16);
                     background: white;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 24px;
+                    gap: var(--space-6);
                 }
 
                 .jobs-header {
                     width: 100%;
-                    max-width: 1216px;
-                    padding-top: 16px;
-                    padding-bottom: 48px;
+                    padding-top: var(--space-4);
+                    padding-bottom: var(--space-12);
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -334,7 +332,6 @@ export default function CarieraContent() {
                 /* ── Cards Grid: 2×2 on desktop ── */
                 .jobs-grid {
                     width: 100%;
-                    max-width: 1216px;
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: 32px;
@@ -428,11 +425,11 @@ export default function CarieraContent() {
                    ═══════════════════════════════════ */
                 @media (max-width: 1024px) {
                     .cariera-hero {
-                        padding: 0 max(16px, 4vw);
+                        padding: 0 var(--space-section-px-md);
                     }
 
                     .cariera-hero-inner {
-                        max-width: 704px;
+                        max-width: 100%;
                         width: 100%;
                         padding: 64px 0;
                     }
@@ -458,19 +455,17 @@ export default function CarieraContent() {
                     }
 
                     .jobs-section {
-                        padding: 64px max(16px, 4vw);
+                        padding: var(--space-16) var(--space-section-px-md);
                         align-items: center;
                     }
 
                     .jobs-header {
-                        max-width: 704px;
                         width: 100%;
                         padding-top: 16px;
                         padding-bottom: 48px;
                     }
 
                     .jobs-grid {
-                        max-width: 704px;
                         width: 100%;
                         grid-template-columns: 1fr;
                         gap: 24px;
@@ -487,7 +482,7 @@ export default function CarieraContent() {
                    ═══════════════════════════════════ */
                 @media (max-width: 480px) {
                     .cariera-hero {
-                        padding: 0 16px;
+                        padding: 0 var(--space-section-px-sm);
                     }
 
                     .cariera-hero-inner {
@@ -517,7 +512,7 @@ export default function CarieraContent() {
                     }
 
                     .jobs-section {
-                        padding: 40px 16px;
+                        padding: var(--space-10) var(--space-section-px-sm);
                     }
 
                     .jobs-header {

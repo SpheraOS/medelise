@@ -219,7 +219,7 @@ export default function JobDetailContent({ slug }: { slug: string }) {
 
                 .job-detail-container {
                     width: 100%;
-                    padding: 64px max(16px, 6vw);
+                    padding: var(--space-16) var(--space-section-px-lg);
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -227,12 +227,11 @@ export default function JobDetailContent({ slug }: { slug: string }) {
 
                 .job-detail-row {
                     width: 100%;
-                    max-width: 1216px;
-                    padding: 32px 0;
+                    padding: var(--space-8) 0;
                     display: flex;
                     justify-content: center;
                     align-items: flex-start;
-                    gap: 32px;
+                    gap: var(--space-8);
                 }
 
                 .job-detail-main {
@@ -347,20 +346,18 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                 /* ─── TABLET (max 1024px) ─── */
                 @media (max-width: 1024px) {
                     .job-detail-container {
-                        padding: 32px max(16px, 4vw);
+                        padding: var(--space-8) var(--space-section-px-md);
                     }
 
                     .job-detail-row {
                         flex-direction: column;
-                        align-items: center;
+                        align-items: stretch;
                         gap: 0;
-                        max-width: 704px;
                     }
 
                     .job-detail-main {
                         width: 100%;
-                        max-width: 704px;
-                        gap: 24px;
+                        gap: var(--space-6);
                     }
 
                     .job-detail-sidebar {
@@ -375,20 +372,19 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                         flex-direction: row;
                         justify-content: space-between;
                         align-items: flex-start;
-                        padding: 0 8px;
-                        gap: 8px;
+                        padding: 0 var(--space-2);
+                        gap: var(--space-2);
                     }
                 }
 
                 /* ─── MOBILE (max 480px) ─── */
                 @media (max-width: 480px) {
                     .job-detail-container {
-                        padding: 16px;
+                        padding: var(--space-section-px-sm);
                     }
 
                     .job-detail-row {
-                        max-width: 100%;
-                        padding: 16px 0;
+                        padding: var(--space-4) 0;
                     }
 
                     .job-detail-main {
