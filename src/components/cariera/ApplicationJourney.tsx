@@ -690,17 +690,20 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
                 {/* ── Header ── */}
                 <header className="aj-header">
                     <Link href={`/cariera/${slug}`} style={{ textDecoration: 'none' }}>
-                        <Button variant="secondary" type="button">
+                        <Button
+                            variant="secondary"
+                            type="button"
+                            style={{
+                                '--btn-bg': '#ffffff',
+                                '--btn-bg-hover': '#f0f0f0',
+                                '--btn-text': 'var(--color-primary)',
+                                '--btn-border': 'transparent',
+                            } as React.CSSProperties}
+                        >
                             ← Înapoi
                         </Button>
                     </Link>
-                    <nav className="aj-breadcrumb">
-                        <Link href="/cariera" className="aj-breadcrumb-link">Carieră</Link>
-                        <span className="aj-breadcrumb-sep">›</span>
-                        <Link href={`/cariera/${slug}`} className="aj-breadcrumb-link">{jobTitle}</Link>
-                        <span className="aj-breadcrumb-sep">›</span>
-                        <span className="aj-breadcrumb-current">Aplică</span>
-                    </nav>
+
                     <h1 className="aj-header-title">Aplică pentru {jobTitle}</h1>
                     <p className="aj-header-subtitle">
                         Completează formularul în {TOTAL_STEPS} pași simpli pentru a te înscrie în procesul de selecție.
