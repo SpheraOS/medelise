@@ -139,6 +139,7 @@ export default function Footer() {
                     background: white;
                     display: flex;
                     flex-direction: column;
+                    font-family: var(--font-body);
                 }
 
                 .footer-container {
