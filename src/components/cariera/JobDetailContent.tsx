@@ -631,38 +631,61 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                 }
 
                 /* ═══════════════════════════════════
-                   MOBILE (max 480px)
+                   MOBILE (max 480px) — 375px viewport
+                   343px content (16px padding each side)
                    ═══════════════════════════════════ */
                 @media (max-width: 480px) {
                     .job-detail-container {
-                        padding: 32px 16px;
+                        padding: 16px;
                     }
 
                     .job-detail-row {
-                        max-width: 343px;
+                        max-width: 375px;
+                        padding: 16px 0;
+                    }
+
+                    .job-detail-main {
+                        gap: 24px;
+                    }
+
+                    /* Header: tighter gaps */
+                    .job-detail-header {
+                        gap: 12px;
                     }
 
                     .job-detail-category {
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+
+                    .job-detail-title {
                         font-size: 18px;
                         line-height: 28px;
                     }
 
-                    .job-detail-title {
-                        font-size: 24px;
-                        line-height: 32px;
-                    }
-
+                    /* Social buttons: equal width, compact */
                     .job-social-row {
-                        flex-wrap: wrap;
-                        gap: 8px;
+                        gap: 16px;
+                        width: 100%;
                     }
 
                     .job-social-btn {
+                        flex: 1 1 0;
                         padding: 8px 16px;
-                        font-size: 13px;
+                        font-size: 14px;
+                    }
+
+                    /* Body sections: tighter gap, smaller text */
+                    .job-detail-body {
+                        gap: 16px;
                     }
 
                     .job-detail-section {
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+
+                    .job-section-heading {
                         font-size: 16px;
                         line-height: 24px;
                     }
@@ -672,9 +695,16 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                         line-height: 24px;
                     }
 
+                    /* Apply button: full width */
                     .job-apply-main-btn {
                         width: 100%;
                         align-self: stretch;
+                    }
+
+                    /* Sidebar card: company name smaller */
+                    :global(.sidebar-inline .sidebar-company-name) {
+                        font-size: 18px;
+                        line-height: 28px;
                     }
 
                     /* Info items stack vertically on mobile */
