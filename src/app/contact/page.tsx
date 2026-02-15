@@ -1,9 +1,62 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+
+// TODO: Replace static FAQ data with CMS/API fetch (e.g. /api/faq) for dynamic content management
+const FAQ_ITEMS = [
+    {
+        q: 'Cât de repede primesc un răspuns după ce trimit formularul?',
+        a: 'Răspundem în general în maximum 24 de ore lucrătoare. În cazul urgențelor medicale, folosește numărul de suport dedicat din abonamentul tău EasyCare.',
+    },
+    {
+        q: 'Pot să fac o programare direct prin formularul de contact?',
+        a: 'Formularul este destinat întrebărilor generale. Pentru programări rapide, folosește butonul „Programează acum" din meniu sau platforma ta de pacient.',
+    },
+    {
+        q: 'Pot modifica sau anula o vizită deja programată?',
+        a: 'Da, te rugăm să ne scrii din timp sau să folosești contul de pacient pentru modificări directe.',
+    },
+    {
+        q: 'Există o linie de suport telefonic activă?',
+        a: 'Da, ne poți suna de luni până vineri, între orele 08:00–17:00 la 031 630 81 00. În afara acestui interval, pentru abonați EasyCare există linie de suport 24/7.',
+    },
+    {
+        q: 'Pot beneficia de serviciile Medvita fără abonament?',
+        a: 'Da, oferim și servicii individuale la cerere, însă abonamentele EasyCare sunt mai avantajoase din punct de vedere financiar și operațional.',
+    },
+    {
+        q: 'Pot primi răspuns pe WhatsApp sau SMS?',
+        a: 'Da, menționează în mesaj dacă preferi să fii contactat prin WhatsApp sau SMS, iar echipa noastră se va adapta.',
+    },
+    {
+        q: 'Ce specialiști pot veni acasă în funcție de serviciu?',
+        a: 'La domiciliu pot ajunge medici specialiști, asistenți medicali generaliști, kinetoterapeuți și terapeuți acreditați. Sistemul Medvita recomandă automat specialistul potrivit în funcție de procedură și starea pacientului.',
+    },
+    {
+        q: 'Ce echipamente aduce echipa Medvita la vizită?',
+        a: 'Specialistul vine cu trusă medicală completă, consumabile sterile, echipamente de monitorizare, instrumente pentru perfuzii sau proceduri specifice și materiale de protecție. Totul este sigilat și conform standardelor Medvita.',
+    },
+    {
+        q: 'Este nevoie de recomandare medicală pentru orice procedură?',
+        a: 'Pentru perfuzii IV, tratamente și proceduri invazive este necesar un scurt triaj sau recomandare. Pentru masaj terapeutic, kinetoterapie, recoltări sau consulturi generale nu este obligatoriu.',
+    },
+    {
+        q: 'Pot solicita același specialist la fiecare vizită?',
+        a: 'Da. Dacă specialistul este disponibil, îl poți selecta direct la programare. Medvita încurajează continuitatea pentru confort și siguranță.',
+    },
+    {
+        q: 'Care este zona de acoperire și timpul mediu de sosire?',
+        a: 'Acoperim București și Ilfov. Timpul mediu de sosire este 60–120 minute, în funcție de trafic, disponibilitate și tipul procedurii. Îți comunicăm în timp real statusul vizitei.',
+    },
+];
 
 export default function Contact() {
     const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+    const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+    const toggleFaq = useCallback((i: number) => {
+        setOpenFaq((prev) => (prev === i ? null : i));
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -178,12 +231,57 @@ export default function Contact() {
                 </div>
             </section>
 
+            {/* ── FAQ Section ── */}
+            <section className="faq-section">
+                <div className="faq-header">
+                    <span className="faq-subtitle">Frequently Asked Questions</span>
+                    <h2 className="faq-title">
+                        Ai o întrebare?
+                        <br />
+                        Uite ce ne întreabă cel mai des pacienții Medvita
+                    </h2>
+                </div>
+
+                <div className="faq-list">
+                    {FAQ_ITEMS.map((item, i) => {
+                        const isOpen = openFaq === i;
+                        return (
+                            <button
+                                key={i}
+                                className={`faq-card${isOpen ? ' faq-card--open' : ''}`}
+                                onClick={() => toggleFaq(i)}
+                                aria-expanded={isOpen}
+                                type="button"
+                            >
+                                <div className="faq-card-header">
+                                    <svg className="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        {/* Horizontal line (always visible) */}
+                                        <line x1="4" y1="12" x2="20" y2="12" stroke="var(--color-primary, #213170)" strokeWidth="1.5" strokeLinecap="round" />
+                                        {/* Vertical line (hidden when open) */}
+                                        <line
+                                            x1="12" y1="4" x2="12" y2="20"
+                                            stroke="var(--color-primary, #213170)" strokeWidth="1.5" strokeLinecap="round"
+                                            className="faq-icon-vertical"
+                                        />
+                                    </svg>
+                                    <span className="faq-question">{item.q}</span>
+                                </div>
+                                <div className="faq-answer-wrapper">
+                                    <p className="faq-answer">{item.a}</p>
+                                </div>
+                            </button>
+                        );
+                    })}
+                </div>
+            </section>
+
             <style jsx>{`
                 /* ═══════════════════════════════════
                    GLOBAL — DRY font-family
                    ═══════════════════════════════════ */
                 .contact-hero,
-                .contact-section {
+                .contact-section,
+                .faq-section {
                     font-family: var(--font-body), 'Montserrat', sans-serif;
                 }
 
@@ -468,6 +566,126 @@ export default function Contact() {
                 }
 
                 /* ═══════════════════════════════════
+                   FAQ SECTION
+                   ═══════════════════════════════════ */
+                .faq-section {
+                    width: 100%;
+                    padding: 80px 64px;
+                    background: white;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 32px;
+                }
+
+                .faq-header {
+                    width: 100%;
+                    padding: 16px 0 64px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 32px;
+                }
+
+                .faq-subtitle {
+                    color: var(--contact-border, #CED2DA);
+                    font-size: 36px;
+                    font-weight: 600;
+                    line-height: 44px;
+                }
+
+                .faq-title {
+                    color: var(--color-primary, #213170);
+                    font-size: 36px;
+                    font-weight: 600;
+                    line-height: 44px;
+                    text-align: center;
+                    margin: 0;
+                }
+
+                .faq-list {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                }
+
+                .faq-card {
+                    width: 100%;
+                    padding: 32px;
+                    background: white;
+                    border-radius: 8px;
+                    border: 1px solid var(--contact-border, #CED2DA);
+                    cursor: pointer;
+                    text-align: left;
+                    font-family: inherit;
+                    transition: border-color 0.2s;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .faq-card:hover {
+                    border-color: var(--color-primary, #213170);
+                }
+
+                .faq-card-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                }
+
+                .faq-icon {
+                    flex-shrink: 0;
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .faq-icon-vertical {
+                    transition: transform 0.3s ease, opacity 0.3s ease;
+                    transform-origin: center;
+                }
+
+                .faq-card--open .faq-icon-vertical {
+                    transform: rotate(90deg);
+                    opacity: 0;
+                }
+
+                .faq-question {
+                    flex: 1;
+                    color: var(--color-primary, #213170);
+                    font-size: 24px;
+                    font-weight: 600;
+                    line-height: 32px;
+                }
+
+                .faq-answer-wrapper {
+                    display: grid;
+                    grid-template-rows: 0fr;
+                    transition: grid-template-rows 0.35s ease;
+                    overflow: hidden;
+                }
+
+                .faq-card--open .faq-answer-wrapper {
+                    grid-template-rows: 1fr;
+                }
+
+                .faq-answer {
+                    min-height: 0;
+                    overflow: hidden;
+                    color: var(--color-primary, #213170);
+                    font-size: 18px;
+                    font-weight: 400;
+                    line-height: 28px;
+                    margin: 0;
+                    padding-top: 0;
+                    transition: padding-top 0.35s ease;
+                }
+
+                .faq-card--open .faq-answer {
+                    padding-top: 16px;
+                }
+
+                /* ═══════════════════════════════════
                    TABLET (max 1024px)
                    ═══════════════════════════════════ */
                 @media (max-width: 1024px) {
@@ -543,6 +761,47 @@ export default function Contact() {
 
                     .contact-info-card {
                         gap: 12px;
+                    }
+
+                    /* FAQ — Tablet */
+                    .faq-section {
+                        padding: 32px 0;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .faq-header {
+                        padding: 16px 0 48px;
+                        gap: 12px;
+                        max-width: min(704px, 100%);
+                    }
+
+                    .faq-subtitle {
+                        font-size: 36px;
+                        line-height: 44px;
+                    }
+
+                    .faq-title {
+                        font-size: 24px;
+                        line-height: 32px;
+                    }
+
+                    .faq-list {
+                        max-width: min(704px, 100%);
+                    }
+
+                    .faq-card {
+                        padding: 24px 32px;
+                    }
+
+                    .faq-question {
+                        font-size: 20px;
+                        line-height: 28px;
+                    }
+
+                    .faq-answer {
+                        font-size: 16px;
+                        line-height: 24px;
                     }
                 }
 
@@ -620,6 +879,47 @@ export default function Contact() {
 
                     .contact-form-card {
                         padding: 16px;
+                    }
+
+                    /* FAQ — Mobile */
+                    .faq-section {
+                        padding: 16px 16px;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .faq-header {
+                        padding: 16px 0 32px;
+                        gap: 8px;
+                        max-width: min(343px, 100%);
+                    }
+
+                    .faq-subtitle {
+                        font-size: 24px;
+                        line-height: 32px;
+                    }
+
+                    .faq-title {
+                        font-size: 18px;
+                        line-height: 28px;
+                    }
+
+                    .faq-list {
+                        max-width: min(343px, 100%);
+                    }
+
+                    .faq-card {
+                        padding: 16px;
+                    }
+
+                    .faq-question {
+                        font-size: 18px;
+                        line-height: 28px;
+                    }
+
+                    .faq-answer {
+                        font-size: 16px;
+                        line-height: 24px;
                     }
                 }
             `}</style>
