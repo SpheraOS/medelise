@@ -2,116 +2,7 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 import * as THREE from 'three';
-
-/* ─── helpers ─── */
-const CODE_CHARS =
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789(){}[]<>;:,._-+=!@#$%^&*|\\/"\x27`~?';
-
-function randInt(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-function pick<T>(arr: T[]): T {
-    return arr[randInt(0, arr.length - 1)];
-}
-function randomFloat(min: number, max: number) {
-    return Math.random() * (max - min) + min;
-}
-
-/* ─── code generation for ASCII overlay ─── */
-function generateCode(width: number, height: number): string {
-    const header = [
-        '// compiled preview • scanner demo',
-        '/* generated for visual effect – not executed */',
-        'const SCAN_WIDTH = 8;',
-        'const FADE_ZONE = 35;',
-        'const MAX_PARTICLES = 2500;',
-        'const TRANSITION = 0.05;',
-    ];
-    const helpers = [
-        'function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }',
-        'function lerp(a, b, t) { return a + (b - a) * t; }',
-        'const now = () => performance.now();',
-        'function rng(min, max) { return Math.random() * (max - min) + min; }',
-    ];
-    const particleBlock = (idx: number) => [
-        `class Particle${idx} {`,
-        '  constructor(x, y, vx, vy, r, a) {',
-        '    this.x = x; this.y = y;',
-        '    this.vx = vx; this.vy = vy;',
-        '    this.r = r; this.a = a;',
-        '  }',
-        '  step(dt) { this.x += this.vx * dt; this.y += this.vy * dt; }',
-        '}',
-    ];
-    const scannerBlock = [
-        'const scanner = {',
-        '  x: Math.floor(window.innerWidth / 2),',
-        '  width: SCAN_WIDTH,',
-        '  glow: 3.5,',
-        '};',
-        '',
-        'function drawParticle(ctx, p) {',
-        '  ctx.globalAlpha = clamp(p.a, 0, 1);',
-        '  ctx.drawImage(gradient, p.x - p.r, p.y - p.r, p.r * 2, p.r * 2);',
-        '}',
-    ];
-    const loopBlock = [
-        'function tick(t) {',
-        '  const dt = 0.016;',
-        '}',
-    ];
-    const misc = [
-        "const state = { intensity: 1.2, particles: MAX_PARTICLES };",
-        "const bounds = { w: window.innerWidth, h: 300 };",
-        "const gradient = document.createElement('canvas');",
-        "const ctx = gradient.getContext('2d');",
-        "ctx.globalCompositeOperation = 'lighter';",
-    ];
-
-    const library: string[] = [];
-    header.forEach(l => library.push(l));
-    helpers.forEach(l => library.push(l));
-    for (let b = 0; b < 3; b++) particleBlock(b).forEach(l => library.push(l));
-    scannerBlock.forEach(l => library.push(l));
-    loopBlock.forEach(l => library.push(l));
-    misc.forEach(l => library.push(l));
-    for (let i = 0; i < 40; i++) {
-        library.push(`const v${i} = (${randInt(1, 9)} + ${randInt(10, 99)}) * 0.${randInt(1, 9)};`);
-    }
-
-    let flow = library.join(' ').replace(/\s+/g, ' ').trim();
-    const totalChars = width * height;
-    while (flow.length < totalChars + width) {
-        flow += ' ' + pick(library).replace(/\s+/g, ' ').trim();
-    }
-
-    let out = '';
-    let offset = 0;
-    for (let row = 0; row < height; row++) {
-        let line = flow.slice(offset, offset + width);
-        if (line.length < width) line += ' '.repeat(width - line.length);
-        out += line + (row < height - 1 ? '\n' : '');
-        offset += width;
-    }
-    return out;
-}
-
-function calcCodeDims(cardW: number, cardH: number) {
-    const fontSize = 11;
-    const lineHeight = 13;
-    const charWidth = 6;
-    return {
-        width: Math.floor(cardW / charWidth),
-        height: Math.floor(cardH / lineHeight),
-        fontSize,
-        lineHeight,
-    };
-}
-
-/* ─── card images ─── */
-const CARD_IMAGES = [
-    '/images/security/Touch ID.png',
-];
+import { randomFloat, generateCode, calcCodeDims, CARD_IMAGES } from './cardScannerUtils';
 
 /* ═══════════════════════════════════════════════════════
    CardScanner  —  self-contained React component
@@ -696,7 +587,7 @@ export default function CardScanner() {
                 {/* Footer: Security badges */}
                 <div className="cs-footer">
                     <div className="cs-sec-title">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
                         <span>SECURITATE DE NIVEL MILITAR</span>
                     </div>
                     <p className="cs-sec-desc">
@@ -717,7 +608,7 @@ export default function CardScanner() {
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          background: #000;
+          background: var(--color-text);
           border-radius: inherit;
         }
 
@@ -753,7 +644,7 @@ export default function CardScanner() {
         }
 
         .cs-logo-text {
-          font-family: var(--font-michroma), Michroma, sans-serif;
+          font-family: var(--font-brand);
           font-size: 24px;
           text-transform: uppercase;
           color: white;
@@ -764,7 +655,7 @@ export default function CardScanner() {
         .cs-logo-line {
           flex: 1;
           height: 1px;
-          background: #DFE1E7;
+          background: var(--color-surface-border);
         }
 
         .cs-footer {
@@ -783,7 +674,7 @@ export default function CardScanner() {
           display: flex;
           align-items: center;
           gap: 8px;
-          color: #22c55e;
+          color: var(--color-success);
           font-size: 14px;
           font-weight: 700;
           letter-spacing: 0.05em;
@@ -924,7 +815,7 @@ export default function CardScanner() {
           height: 100%;
           object-fit: contain;
           border-radius: 10px;
-          background: #0a0a0a;
+          background: var(--color-text);
           filter: brightness(1.1) contrast(1.1);
           transition: filter 0.3s ease;
         }

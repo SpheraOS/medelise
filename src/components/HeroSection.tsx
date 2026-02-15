@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import { IMAGES } from '@/constants/images';
 import { ICONS } from '@/constants/icons';
 
@@ -97,7 +98,7 @@ export default function HeroSection() {
                 .hero-heading {
                     color: var(--color-primary);
                     font-size: 26px;
-                    font-family: var(--font-poppins);
+                    font-family: var(--font-display);
                     font-weight: 500;
                     line-height: 33.8px;
                     margin: 0;
@@ -133,59 +134,14 @@ export default function HeroSection() {
                     margin: 0;
                 }
 
-                /* ── CTA ─────────────────────────────── */
+                /* ── CTA Group — TECH DEBT ELIMINATED: replaced custom .hero-btn-primary
+                   with unified <Button> component ── */
                 .hero-cta-group {
                     display: inline-flex;
                     align-items: center;
-                    gap: 16px;
                     cursor: pointer;
                     text-decoration: none;
                     align-self: stretch;
-                    flex-wrap: nowrap;
-                }
-
-                .hero-btn-primary {
-                    width: 100%;
-                    padding: 6px 18px;
-                    background: var(--color-primary);
-                    border-radius: 8px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    transition: transform 0.2s ease, box-shadow 0.2s ease;
-                }
-
-                .hero-cta-group:hover .hero-btn-primary {
-                    transform: translateY(-2px);
-                    box-shadow: var(--shadow-md);
-                }
-
-                .hero-btn-text {
-                    color: var(--color-white);
-                    font-size: 16px;
-                    font-family: var(--font-poppins);
-                    font-weight: 500;
-                    line-height: 24px;
-                }
-
-                .hero-btn-icon-wrapper {
-                    width: 40px;
-                    height: 40px;
-                    background: var(--color-primary);
-                    border-radius: var(--radius-pill);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    transition: transform 0.2s ease;
-                }
-
-                .hero-cta-group:hover .hero-btn-icon-wrapper {
-                    transform: translateX(4px) translateY(-2px);
-                }
-
-                .hero-icon {
-                    width: 32px;
-                    height: 32px;
                 }
 
                 /* ── Social Proof ─────────────────────── */
@@ -231,7 +187,7 @@ export default function HeroSection() {
                     height: 64px;
                     border-radius: 50%;
                     overflow: hidden;
-                    border: 2px solid #FFFFFF;
+                    border: 2px solid var(--color-white);
                     flex-shrink: 0;
                     display: flex;
                     align-items: flex-end;
@@ -256,18 +212,18 @@ export default function HeroSection() {
                     width: 64px;
                     height: 64px;
                     border-radius: 50%;
-                    background: #F6F6F6;
+                    background: var(--color-surface-card);
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     flex-shrink: 0;
-                    border: 2px solid #FFFFFF;
+                    border: 2px solid var(--color-white);
                     margin-left: -16px;
                     z-index: 1;
                 }
 
                 .hero-avatar-count-text {
-                    color: #CC0A00;
+                    color: var(--color-error);
                     font-size: 14px;
                     font-weight: 500;
                     line-height: 19.6px;
@@ -356,19 +312,13 @@ export default function HeroSection() {
 
                     .hero-subtitle {
                         font-size: var(--text-body-lg);
-                        font-family: var(--font-poppins);
+                        font-family: var(--font-display);
                         line-height: 1.4;
                         max-width: 448px;
                     }
 
-                    .hero-btn-primary {
-                        padding: 16px 32px;
-                        border-radius: 16px;
-                    }
-
-                    .hero-btn-icon-wrapper {
-                        padding: 12px;
-                    }
+                    /* TECH DEBT ELIMINATED: .hero-btn-primary desktop overrides removed
+                       — <Button> component handles responsive sizing via tokens */
 
 
                 }
@@ -400,10 +350,11 @@ export default function HeroSection() {
                             <p className="hero-subtitle">
                                 Creează-ți contul gratuit în Portalul MEDELISE și programează o vizită medicală acasă, fără apeluri sau cozi.
                             </p>
+                            {/* TECH DEBT ELIMINATED: custom .hero-btn-primary replaced with <Button> */}
                             <Link href="/login" className="hero-cta-group">
-                                <div className="hero-btn-primary">
-                                    <span className="hero-btn-text">Creeaza contul gratuit</span>
-                                </div>
+                                <Button variant="primary" isFullWidth>
+                                    Creeaza contul gratuit
+                                </Button>
                             </Link>
                         </div>
                     </div>

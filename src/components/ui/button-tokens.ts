@@ -60,6 +60,12 @@ export const BUTTON_VARIANTS = {
         text: 'var(--color-primary)',
         border: 'transparent',
     },
+    accent: {
+        bg: 'var(--color-accent)',
+        bgHover: 'var(--color-accent-hover)',
+        text: 'var(--color-white)',
+        border: 'transparent',
+    },
 } as const;
 
 export type ButtonVariant = keyof typeof BUTTON_VARIANTS;

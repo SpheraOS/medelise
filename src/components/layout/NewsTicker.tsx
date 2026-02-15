@@ -9,7 +9,7 @@ export default function NewsTicker() {
         <div className="news-ticker-container">
             <style jsx>{`
                 .news-ticker-container {
-                    background-color: #F5F5F5; /* Light Grey */
+                    background-color: var(--color-surface-card); /* Light Grey */
                     color: var(--color-primary);
                     overflow: hidden;
                     white-space: nowrap;

@@ -236,7 +236,7 @@ export default function LoginForm({
                 }
 
                 .login-social-btn:hover {
-                    background: #EEF0F4;
+                    background: var(--color-surface-card);
                 }
 
                 .login-social-btn span {

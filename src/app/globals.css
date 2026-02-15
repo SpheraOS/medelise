@@ -10,7 +10,8 @@
  * ║   1. CTA principal → Indigo (#213170) cu text alb                     ║
  * ║   2. Orange (#FE5D16) pentru highlights, eyebrow, accente vizuale     ║
  * ║   3. Pe Indigo (#213170) DOAR alb sau Baby Blue (#BDE0FF)             ║
- * ║   4. Michroma pt branding, Inter pt body, DM Sans pt CTA text        ║
+ * ║   4. Michroma pt brand, Montserrat pt headings, Poppins pt display   ║
+ * ║      DM Sans pt body + CTA text                                      ║
  * ║   5. GRID: Strict 8pt — every value = N × var(--base-unit)           ║
  * ╚══════════════════════════════════════════════════════════════════════════╝
  */
@@ -91,9 +92,10 @@
   --color-text-light: #666D80;
   --color-border-form: #DFE1E7;
 
-  /* ─── Typography Families (unified: DM Sans for best readability) ── */
-  --font-brand: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  /* ─── Typography Families ─────────────────────────────────────────── */
+  --font-brand: var(--font-michroma), Michroma, sans-serif;
+  --font-heading: var(--font-montserrat), Montserrat, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-poppins), Poppins, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-cta: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
 

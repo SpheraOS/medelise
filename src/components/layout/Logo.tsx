@@ -14,7 +14,7 @@ export default function Logo({ variant = 'full', white = false, className = '' }
   return (
     <Link href="/" className={`flex-shrink-0 flex items-center ${className}`}>
       <span style={{
-        fontFamily: 'var(--font-michroma)',
+        fontFamily: 'var(--font-brand)',
         fontSize: '24px',
         textTransform: 'uppercase',
         color: white ? 'var(--color-white)' : 'var(--color-primary)',

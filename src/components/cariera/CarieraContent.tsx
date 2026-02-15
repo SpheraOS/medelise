@@ -1,45 +1,20 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import Button from '@/components/ui/Button';
+import { JOBS, getDaysRemaining } from './jobData';
 
-const JOBS = [
-    {
-        slug: 'asistent-medical-generalist',
-        title: 'Asistent Medical Generalist',
-        type: 'Full Time',
-        location: 'Bucuresti',
-        salary: '7K - 9K Lei',
-        experience: '5-6 Years',
-        daysRemaining: 4,
-    },
-    {
-        slug: 'ambulantier',
-        title: 'Ambulantier',
-        type: 'Full Time',
-        location: 'Constanta',
-        salary: '5K-6K',
-        experience: '2-3 Years',
-        daysRemaining: 4,
-    },
-    {
-        slug: 'medic-de-familie',
-        title: 'Medic de Familie',
-        type: 'Part Time',
-        location: 'Bucuresti',
-        salary: '9K-12K',
-        experience: '5-6 Years',
-        daysRemaining: 5,
-    },
-    {
-        slug: 'asistent-coordonator',
-        title: 'Asistent Coordonator',
-        type: 'Full Time',
-        location: 'Remote',
-        salary: '30K-35K',
-        experience: '4 Years',
-        daysRemaining: 2,
-    },
-];
+/* ─── Derive listing array from the single source of truth ─── */
+const jobList = Object.entries(JOBS).map(([slug, job]) => ({
+    slug,
+    title: job.title,
+    type: job.type,
+    location: job.location,
+    salary: job.salary,
+    experience: job.experience,
+    deadline: job.deadline,
+}));
 
 /* Right-arrow chevron for buttons */
 function ArrowRight() {
@@ -68,7 +43,7 @@ export default function CarieraContent() {
         <>
             <main className="cariera-page">
                 {/* ── Hero Section ── */}
-                <section className="cariera-hero">
+                <section className="cariera-hero" aria-label="Carieră Hero">
                     <div className="cariera-hero-inner">
                         <div className="cariera-hero-content">
                             <div className="cariera-hero-text">
@@ -87,7 +62,7 @@ export default function CarieraContent() {
                 </section>
 
                 {/* ── Jobs Section ── */}
-                <section className="jobs-section">
+                <section className="jobs-section" id="joburi">
                     {/* Header */}
                     <div className="jobs-header">
                         <h2 className="jobs-title">Joburi disponibile</h2>
@@ -101,112 +76,131 @@ export default function CarieraContent() {
                         </p>
                     </div>
 
-                    {/* Cards Grid */}
-                    <div className="jobs-grid">
-                        {JOBS.map((job, i) => (
-                            <article key={i} className="job-card">
-                                <div className="job-card-body">
-                                    {/* Title + Type */}
-                                    <div className="job-row-title">
-                                        <h3 className="job-name">{job.title}</h3>
-                                        <span className="job-type">
-                                            <Image
-                                                src="/icons/icon employee/Flag.svg"
-                                                alt=""
-                                                width={20}
-                                                height={20}
-                                                aria-hidden="true"
-                                            />
-                                            {job.type}
-                                        </span>
-                                    </div>
+                    {/* Empty state */}
+                    {jobList.length === 0 ? (
+                        <div className="jobs-empty">
+                            <p className="jobs-empty-text">
+                                Momentan nu avem poziții deschise. Revino în curând sau trimite-ne un CV la pagina de contact!
+                            </p>
+                            <Link href="/contact">
+                                <Button variant="primary">Contactează-ne</Button>
+                            </Link>
+                        </div>
+                    ) : (
+                        <>
+                            {/* Cards Grid */}
+                            <div className="jobs-grid">
+                                {jobList.map((job) => {
+                                    const daysLeft = getDaysRemaining(job.deadline);
+                                    const isExpired = daysLeft === 0;
 
-                                    {/* Meta: Location · Salary · Experience */}
-                                    <div className="job-meta">
-                                        <span className="job-meta-item">
-                                            <Image
-                                                src="/icons/icon employee/Location Point.svg"
-                                                alt=""
-                                                width={20}
-                                                height={20}
-                                                aria-hidden="true"
-                                            />
-                                            {job.location}
-                                        </span>
-                                        <span className="job-meta-item">
-                                            <Image
-                                                src="/icons/icon employee/Money Dollar.svg"
-                                                alt=""
-                                                width={20}
-                                                height={20}
-                                                aria-hidden="true"
-                                            />
-                                            {job.salary}
-                                        </span>
-                                        <span className="job-meta-item">
-                                            <Image
-                                                src="/icons/icon employee/Suitcase.svg"
-                                                alt=""
-                                                width={20}
-                                                height={20}
-                                                aria-hidden="true"
-                                            />
-                                            {job.experience}
-                                        </span>
-                                    </div>
+                                    return (
+                                        <article key={job.slug} className="job-card">
+                                            <div className="job-card-body">
+                                                {/* Title + Type */}
+                                                <div className="job-row-title">
+                                                    <h3 className="job-name">{job.title}</h3>
+                                                    <span className="job-type">
+                                                        <Image
+                                                            src="/icons/icon employee/Flag.svg"
+                                                            alt=""
+                                                            width={20}
+                                                            height={20}
+                                                            aria-hidden="true"
+                                                        />
+                                                        {job.type}
+                                                    </span>
+                                                </div>
 
-                                    {/* Divider */}
-                                    <div className="job-divider" />
+                                                {/* Meta: Location · Salary · Experience */}
+                                                <div className="job-meta">
+                                                    <span className="job-meta-item">
+                                                        <Image
+                                                            src="/icons/icon employee/Location Point.svg"
+                                                            alt=""
+                                                            width={20}
+                                                            height={20}
+                                                            aria-hidden="true"
+                                                        />
+                                                        {job.location}
+                                                    </span>
+                                                    <span className="job-meta-item">
+                                                        <Image
+                                                            src="/icons/icon employee/Money Dollar.svg"
+                                                            alt=""
+                                                            width={20}
+                                                            height={20}
+                                                            aria-hidden="true"
+                                                        />
+                                                        {job.salary}
+                                                    </span>
+                                                    <span className="job-meta-item">
+                                                        <Image
+                                                            src="/icons/icon employee/Suitcase.svg"
+                                                            alt=""
+                                                            width={20}
+                                                            height={20}
+                                                            aria-hidden="true"
+                                                        />
+                                                        {job.experience}
+                                                    </span>
+                                                </div>
 
-                                    {/* Footer: Days remaining + Logo */}
-                                    <div className="job-footer">
-                                        <span className="job-meta-item">
-                                            <Image
-                                                src="/icons/icon employee/Calendar.svg"
-                                                alt=""
-                                                width={20}
-                                                height={20}
-                                                aria-hidden="true"
-                                            />
-                                            {job.daysRemaining} Days remaining
-                                        </span>
-                                        <Image
-                                            src="/icons/icon employee/Logo (Replace with your own)/Black Solid/icon 1.svg"
-                                            alt="Medvita"
-                                            width={36}
-                                            height={20}
-                                            className="job-logo"
-                                        />
-                                    </div>
-                                </div>
+                                                {/* Divider */}
+                                                <div className="job-divider" />
 
-                                {/* CTA */}
-                                <a href={`/cariera/${job.slug}`} className="job-apply-btn">
-                                    <span>Aplică acum</span>
-                                    <ArrowRight />
-                                </a>
-                            </article>
-                        ))}
-                    </div>
+                                                {/* Footer: Days remaining + Logo */}
+                                                <div className="job-footer">
+                                                    <span className={`job-meta-item ${isExpired ? 'job-expired' : ''}`}>
+                                                        <Image
+                                                            src="/icons/icon employee/Calendar.svg"
+                                                            alt=""
+                                                            width={20}
+                                                            height={20}
+                                                            aria-hidden="true"
+                                                        />
+                                                        {isExpired
+                                                            ? 'Expirat'
+                                                            : `${daysLeft} ${daysLeft === 1 ? 'zi rămasă' : 'zile rămase'}`}
+                                                    </span>
+                                                    <Image
+                                                        src="/icons/icon employee/Logo (Replace with your own)/Black Solid/icon 1.svg"
+                                                        alt="Logo Medvita Health Solutions"
+                                                        width={36}
+                                                        height={20}
+                                                        className="job-logo"
+                                                    />
+                                                </div>
+                                            </div>
 
-                    {/* Bottom CTA */}
-                    <a href="/cariera#joburi" className="jobs-view-all-btn">
-                        <span>Vezi toate postările</span>
-                        <ArrowRight />
-                    </a>
+                                            {/* CTA */}
+                                            <Link href={`/cariera/${job.slug}`}>
+                                                <Button variant="primary" iconRight={<ArrowRight />}>
+                                                    Aplică acum
+                                                </Button>
+                                            </Link>
+                                        </article>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Bottom CTA */}
+                            <Link href="/cariera#joburi">
+                                <Button variant="primary" iconRight={<ArrowRight />}>
+                                    Vezi toate postările
+                                </Button>
+                            </Link>
+                        </>
+                    )}
                 </section>
             </main>
 
             <style jsx>{`
                 /* ═══════════════════════════════════
-                   GLOBAL — Montserrat for entire page
+                   GLOBAL — Font inheritance
                    ═══════════════════════════════════ */
-                .cariera-page,
-                .cariera-page * {
-                    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
-                }
-
                 .cariera-page {
+                    font-family: var(--font-heading);
                     min-height: 100vh;
                 }
 
@@ -215,11 +209,13 @@ export default function CarieraContent() {
                    ═══════════════════════════════════ */
                 .cariera-hero {
                     width: 100%;
-                    padding: 0 112px;
+                    padding: 0 max(16px, 6vw);
                     background: white;
                 }
 
                 .cariera-hero-inner {
+                    max-width: 1216px;
+                    margin: 0 auto;
                     padding: 48px 0;
                     display: flex;
                     flex-direction: column;
@@ -247,9 +243,10 @@ export default function CarieraContent() {
                 }
 
                 .cariera-hero-title {
-                    width: 596px;
+                    max-width: 596px;
+                    width: 100%;
                     flex-shrink: 0;
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 36px;
                     font-weight: 600;
                     line-height: 44px;
@@ -259,7 +256,7 @@ export default function CarieraContent() {
 
                 .cariera-hero-desc {
                     flex: 1;
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 20px;
                     font-weight: 400;
                     line-height: 28px;
@@ -271,7 +268,7 @@ export default function CarieraContent() {
                 .cariera-hero-divider {
                     width: 100%;
                     height: 1px;
-                    background: var(--color-baby-blue, #BDE0FF);
+                    background: var(--color-secondary);
                 }
 
                 /* ═══════════════════════════════════
@@ -279,7 +276,7 @@ export default function CarieraContent() {
                    ═══════════════════════════════════ */
                 .jobs-section {
                     width: 100%;
-                    padding: 16px 112px 64px;
+                    padding: 16px max(16px, 6vw) 64px;
                     background: white;
                     display: flex;
                     flex-direction: column;
@@ -300,7 +297,7 @@ export default function CarieraContent() {
                 }
 
                 .jobs-title {
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 36px;
                     font-weight: 600;
                     line-height: 44px;
@@ -308,7 +305,7 @@ export default function CarieraContent() {
                 }
 
                 .jobs-desc {
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 18px;
                     font-weight: 400;
                     line-height: 28px;
@@ -316,9 +313,28 @@ export default function CarieraContent() {
                     max-width: 800px;
                 }
 
+                /* ── Empty state ── */
+                .jobs-empty {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 24px;
+                    padding: 48px 24px;
+                    text-align: center;
+                }
+
+                .jobs-empty-text {
+                    color: var(--color-text-secondary);
+                    font-size: 18px;
+                    line-height: 28px;
+                    max-width: 500px;
+                    margin: 0;
+                }
+
                 /* ── Cards Grid: 2×2 on desktop ── */
                 .jobs-grid {
                     width: 100%;
+                    max-width: 1216px;
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: 32px;
@@ -329,7 +345,7 @@ export default function CarieraContent() {
                     background: white;
                     overflow: hidden;
                     border-radius: 8px;
-                    outline: 1px solid #E4E7EC;
+                    outline: 1px solid var(--color-surface-border);
                     outline-offset: -1px;
                     display: flex;
                     flex-direction: column;
@@ -352,7 +368,7 @@ export default function CarieraContent() {
 
                 .job-name {
                     flex: 1;
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 20px;
                     font-weight: 600;
                     line-height: 28px;
@@ -363,7 +379,7 @@ export default function CarieraContent() {
                     display: flex;
                     align-items: center;
                     gap: 4px;
-                    color: var(--color-vivid-orange, #FD5D16);
+                    color: var(--color-accent);
                     font-size: 14px;
                     font-weight: 400;
                     line-height: 20px;
@@ -382,17 +398,22 @@ export default function CarieraContent() {
                     display: flex;
                     align-items: center;
                     gap: 4px;
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 14px;
                     font-weight: 400;
                     line-height: 20px;
                     white-space: nowrap;
                 }
 
+                .job-expired {
+                    color: var(--color-error, #dc2626);
+                    font-weight: 500;
+                }
+
                 .job-divider {
                     width: 100%;
                     height: 1px;
-                    background: #E4E7EC;
+                    background: var(--color-surface-border);
                 }
 
                 .job-footer {
@@ -401,64 +422,18 @@ export default function CarieraContent() {
                     justify-content: space-between;
                 }
 
-                /* Apply button */
-                .job-apply-btn {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 8px;
-                    padding: 10px 20px;
-                    background: var(--color-primary, #213170);
-                    color: white;
-                    border-radius: 8px;
-                    font-size: 16px;
-                    font-weight: 600;
-                    line-height: 24px;
-                    text-decoration: none;
-                    transition: background 0.2s, transform 0.15s;
-                }
-
-                .job-apply-btn:hover {
-                    background: #1a2759;
-                    transform: translateY(-1px);
-                }
-
-                /* "Vezi toate postările" CTA */
-                .jobs-view-all-btn {
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 8px;
-                    padding: 10px 20px;
-                    background: var(--color-primary, #213170);
-                    color: white;
-                    border-radius: 8px;
-                    font-size: 16px;
-                    font-weight: 600;
-                    line-height: 24px;
-                    text-decoration: none;
-                    transition: background 0.2s, transform 0.15s;
-                }
-
-                .jobs-view-all-btn:hover {
-                    background: #1a2759;
-                    transform: translateY(-1px);
-                }
-
                 /* ═══════════════════════════════════
                    §3  TABLET (max 1024px)
-                   704px centered, single-column cards
+                   Single-column cards, fluid width
                    ═══════════════════════════════════ */
                 @media (max-width: 1024px) {
                     .cariera-hero {
-                        padding: 0;
-                        display: flex;
-                        justify-content: center;
+                        padding: 0 max(16px, 4vw);
                     }
 
                     .cariera-hero-inner {
-                        width: 704px;
-                        max-width: 100%;
+                        max-width: 704px;
+                        width: 100%;
                         padding: 64px 0;
                     }
 
@@ -475,7 +450,6 @@ export default function CarieraContent() {
                     }
 
                     .cariera-hero-title {
-                        width: 100%;
                         max-width: 596px;
                     }
 
@@ -484,20 +458,20 @@ export default function CarieraContent() {
                     }
 
                     .jobs-section {
-                        padding: 64px 0;
+                        padding: 64px max(16px, 4vw);
                         align-items: center;
                     }
 
                     .jobs-header {
-                        width: 704px;
-                        max-width: 100%;
+                        max-width: 704px;
+                        width: 100%;
                         padding-top: 16px;
                         padding-bottom: 48px;
                     }
 
                     .jobs-grid {
-                        width: 704px;
-                        max-width: 100%;
+                        max-width: 704px;
+                        width: 100%;
                         grid-template-columns: 1fr;
                         gap: 24px;
                     }
@@ -509,7 +483,7 @@ export default function CarieraContent() {
 
                 /* ═══════════════════════════════════
                    §4  MOBILE (max 480px)
-                   343px, compact
+                   Compact layout
                    ═══════════════════════════════════ */
                 @media (max-width: 480px) {
                     .cariera-hero {
@@ -517,7 +491,6 @@ export default function CarieraContent() {
                     }
 
                     .cariera-hero-inner {
-                        width: 343px;
                         max-width: 100%;
                         padding: 48px 0;
                     }
@@ -580,10 +553,6 @@ export default function CarieraContent() {
                         flex-direction: column;
                         align-items: flex-start;
                         gap: 8px;
-                    }
-
-                    .jobs-view-all-btn {
-                        width: 100%;
                     }
                 }
             `}</style>

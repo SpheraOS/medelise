@@ -1,92 +1,12 @@
 'use client';
 
+import { useState, useCallback } from 'react';
 import Image from 'next/image';
-
-/* ───────────────────────────────────────
-   Data — static for now, can be replaced with
-   API / CMS later
-   ─────────────────────────────────────── */
-interface JobDetail {
-    category: string;
-    title: string;
-    overviewTitle: string;
-    overviewBody: string;
-    profileTitle: string;
-    profileBody: string;
-    tasksTitle: string;
-    tasksBody: string;
-    benefitsTitle: string;
-    benefitsBody: string;
-    closingText: string;
-    sidebar: {
-        companyName: string;
-        locations: string[];
-        website: string;
-        jobType: string;
-        salary: string;
-        workLocation: string;
-        datePosted: string;
-    };
-}
-
-const JOBS: Record<string, JobDetail> = {
-    'asistent-medical-generalist': {
-        category: 'Servicii Medicale la Domiciliu',
-        title: 'Asistent medical Generalist',
-        overviewTitle: 'Company Overview:',
-        overviewBody:
-            'Suntem o companie medicală orientată spre viitor, cu misiunea de a oferi îngrijire medicală de calitate, direct la pacient acasă.\nCu ajutorul platformei noastre digitale – careOS – organizăm, planificăm și livrăm servicii medicale personalizate, eficiente și empatice.\nCredem că adevărata schimbare în sănătate începe cu oameni bine pregătiți, bine plătiți și profund motivați.',
-        tasksTitle: 'Ce vei face concret?',
-        tasksBody:
-            'Vei efectua vizite medicale la domiciliul pacienților (evaluări, tratamente, monitorizare post-operatorie etc.)\nVei colabora cu medici specialiști pentru planul de îngrijire personalizat\nVei introduce date clinice și observații direct în aplicația Medvita (tablete oferite de companie)\nVei educa pacienții și aparținătorii în privința tratamentului și recuperării\nVei avea un program flexibil, stabilit împreună cu coordonatorul regional',
-        profileTitle: 'Profilul tău ideal:',
-        profileBody:
-            'Ești asistent medical generalist, cu diplomă recunoscută (minim 2 ani experiență)\nDeții Certificat de Membru OAMGMAMR și aviz anual valabil\nAi carnet de conducere categoria B (avantaj important)\nÎți place să lucrezi autonom și să iei decizii rapide în teren\nEști empatic, atent la detalii și vrei să faci diferența',
-        benefitsTitle: 'Ce îți oferim:',
-        benefitsBody:
-            'Pachet salarial competitiv (fix + bonusuri per caz + diurne)\nTraininguri periodice (inclusiv cu parteneri internaționali)\nTehnologie modernă – totul digitalizat (fără hârtii, fără pierdere de timp)\nEchipamente și consumabile medicale de calitate, asigurate de companie\nProgram de lucru flexibil, adaptabil stilului tău de viață\nPosibilitatea de a avansa spre roluri de coordonare sau specializare',
-        closingText:
-            'Dacă ești gata să redai demnitatea îngrijirii medicale și vrei să lucrezi într-un sistem care respectă profesioniștii, te așteptăm în echipa Medvita.',
-        sidebar: {
-            companyName: 'Medvita Health Solutions',
-            locations: ['București – Ilfov', 'Cluj', 'Timisoara'],
-            website: 'www.medvita.ro',
-            jobType: 'Full Time / Part Time',
-            salary: '3K- 9K Lei',
-            workLocation: 'Teren',
-            datePosted: '27.04.2025',
-        },
-    },
-};
-
-/* ─── Mail icon for "Aplica aici" button ─── */
-function MailIcon() {
-    return (
-        <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-        >
-            <path
-                d="M3 7C3 5.89543 3.89543 5 5 5H19C20.1046 5 21 5.89543 21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-            <path
-                d="M3 7L12 13L21 7"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-        </svg>
-    );
-}
+import Link from 'next/link';
+import Button from '@/components/ui/Button';
+import MailIcon from '@/components/icons/MailIcon';
+import { JOBS } from './jobData';
+import JobSidebarCard from './JobSidebarCard';
 
 /* ─── Helper: render \n as <br/> ─── */
 function TextBlock({ text }: { text: string }) {
@@ -102,97 +22,77 @@ function TextBlock({ text }: { text: string }) {
     );
 }
 
-/* ─── Sidebar card (reused in desktop sidebar & tablet inline) ─── */
-function SidebarCard({ job, className }: { job: JobDetail; className?: string }) {
-    return (
-        <div className={`job-sidebar-card ${className || ''}`}>
-            {/* Company logo + name */}
-            <div className="sidebar-company">
-                <div className="sidebar-logo-wrap">
-                    <Image
-                        src="/icons/icon employee/Logo (Replace with your own)/Black Solid/icon 1.svg"
-                        alt="Medvita"
-                        width={36}
-                        height={20}
-                    />
-                </div>
-                <h3 className="sidebar-company-name">{job.sidebar.companyName}</h3>
-            </div>
-
-            {/* Location badges */}
-            <div className="sidebar-badges">
-                {job.sidebar.locations.map((loc, i) => (
-                    <span key={i} className="sidebar-badge">
-                        {loc}
-                    </span>
-                ))}
-            </div>
-
-            {/* Apply button */}
-            <a href="/contact" className="sidebar-apply-btn">
-                <span>Aplica aici</span>
-                <MailIcon />
-            </a>
-
-            {/* Info rows */}
-            <div className="sidebar-info">
-                <div className="sidebar-info-item">
-                    <span className="sidebar-info-label">Website Companie</span>
-                    <a
-                        href="https://www.medvita.ro"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="sidebar-info-value"
-                    >
-                        {job.sidebar.website}
-                    </a>
-                </div>
-                <div className="sidebar-info-item">
-                    <span className="sidebar-info-label">Tip job:</span>
-                    <span className="sidebar-info-value">{job.sidebar.jobType}</span>
-                </div>
-                <div className="sidebar-info-item">
-                    <span className="sidebar-info-label">Salariu</span>
-                    <span className="sidebar-info-value">{job.sidebar.salary}</span>
-                </div>
-                <div className="sidebar-info-item">
-                    <span className="sidebar-info-label">Locatie</span>
-                    <span className="sidebar-info-value">{job.sidebar.workLocation}</span>
-                </div>
-                <div className="sidebar-info-item">
-                    <span className="sidebar-info-label">Data Postare</span>
-                    <span className="sidebar-info-value">{job.sidebar.datePosted}</span>
-                </div>
-            </div>
-        </div>
-    );
-}
-
+/* ═══════════════════════════════════════════════════════════
+ * JobDetailContent — Orchestrator
+ *
+ * Composes the job detail page from:
+ *   • Header (inline — small)
+ *   • JobSidebarCard (extracted component)
+ *   • Content sections (inline — data-driven)
+ *   • Apply CTA button
+ * ═══════════════════════════════════════════════════════════ */
 export default function JobDetailContent({ slug }: { slug: string }) {
     const job = JOBS[slug];
+    const [copyLabel, setCopyLabel] = useState('Copy');
+
+    const handleCopy = useCallback(() => {
+        if (typeof navigator === 'undefined') return;
+        navigator.clipboard
+            .writeText(window.location.href)
+            .then(() => {
+                setCopyLabel('Copiat ✓');
+                setTimeout(() => setCopyLabel('Copy'), 2000);
+            })
+            .catch(() => {
+                /* Fallback: silent fail on non-HTTPS */
+            });
+    }, []);
 
     if (!job) {
         return (
-            <div style={{ padding: '100px 20px', textAlign: 'center', fontFamily: 'Montserrat, sans-serif' }}>
-                <h1 style={{ color: '#213170', fontSize: 36 }}>Job negăsit</h1>
-                <p style={{ color: '#213170', fontSize: 18, marginTop: 16 }}>
+            <div className="job-not-found">
+                <h1 className="job-not-found-title">Job negăsit</h1>
+                <p className="job-not-found-desc">
                     Poziția căutată nu a fost găsită.
                 </p>
-                <a
-                    href="/cariera"
-                    style={{
-                        display: 'inline-block',
-                        marginTop: 24,
-                        padding: '10px 20px',
-                        background: '#213170',
-                        color: 'white',
-                        borderRadius: 8,
-                        textDecoration: 'none',
-                        fontWeight: 600,
-                    }}
-                >
+                <Link href="/cariera" className="job-not-found-link">
                     Înapoi la Carieră
-                </a>
+                </Link>
+                <style jsx>{`
+                    .job-not-found {
+                        padding: 100px 20px;
+                        text-align: center;
+                        font-family: var(--font-heading);
+                    }
+                    .job-not-found-title {
+                        color: var(--color-primary);
+                        font-size: 36px;
+                        margin: 0;
+                    }
+                    .job-not-found-desc {
+                        color: var(--color-primary);
+                        font-size: 18px;
+                        margin-top: 16px;
+                    }
+                    .job-not-found-link {
+                        display: inline-block;
+                        margin-top: 24px;
+                        padding: 10px 20px;
+                        background: var(--color-primary);
+                        color: white;
+                        border-radius: 8px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        transition: opacity 0.15s;
+                    }
+                    .job-not-found-link:hover {
+                        opacity: 0.9;
+                    }
+                    .job-not-found-link:focus-visible {
+                        outline: 2px solid var(--color-primary);
+                        outline-offset: 2px;
+                    }
+                `}</style>
             </div>
         );
     }
@@ -241,11 +141,7 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                                     </a>
                                     <button
                                         className="job-social-btn"
-                                        onClick={() => {
-                                            if (typeof navigator !== 'undefined') {
-                                                navigator.clipboard.writeText(window.location.href);
-                                            }
-                                        }}
+                                        onClick={handleCopy}
                                     >
                                         <Image
                                             src="/icons/icon employee/Copy.svg"
@@ -253,13 +149,13 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                                             width={20}
                                             height={20}
                                         />
-                                        <span>Copy</span>
+                                        <span>{copyLabel}</span>
                                     </button>
                                 </div>
                             </div>
 
                             {/* ── Sidebar card (INLINE version — visible tablet/mobile only) ── */}
-                            <SidebarCard job={job} className="sidebar-inline" />
+                            <JobSidebarCard job={job} className="sidebar-inline" />
 
                             {/* Content sections */}
                             <div className="job-detail-body">
@@ -298,42 +194,32 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                                 <p className="job-closing-text">{job.closingText}</p>
                             </div>
 
-                            {/* Apply button (bottom) */}
-                            <a href="/contact" className="job-apply-main-btn">
-                                <span>Aplica aici</span>
-                                <MailIcon />
-                            </a>
+                            {/* Apply CTA */}
+                            <Link href="/contact">
+                                <Button variant="primary" isFullWidth iconRight={<MailIcon />}>
+                                    Aplica aici
+                                </Button>
+                            </Link>
                         </div>
 
                         {/* ── RIGHT SIDEBAR (desktop only) ── */}
                         <aside className="job-detail-sidebar">
-                            <SidebarCard job={job} className="sidebar-desktop" />
+                            <JobSidebarCard job={job} className="sidebar-desktop" />
                         </aside>
                     </div>
                 </div>
             </main>
 
             <style jsx>{`
-                /* ═══════════════════════════════════
-                   FONT
-                   ═══════════════════════════════════ */
-                .job-detail-page,
-                .job-detail-page * {
-                    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
-                }
-
                 .job-detail-page {
+                    font-family: var(--font-heading);
                     min-height: 100vh;
                     background: white;
                 }
 
-                /* ═══════════════════════════════════
-                   DESKTOP LAYOUT (>1024px)
-                   Two-column: left content + right sidebar
-                   ═══════════════════════════════════ */
                 .job-detail-container {
                     width: 100%;
-                    padding: 64px 112px;
+                    padding: 64px max(16px, 6vw);
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -349,9 +235,9 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                     gap: 32px;
                 }
 
-                /* Left column */
                 .job-detail-main {
                     flex: 1;
+                    min-width: 0;
                     display: flex;
                     flex-direction: column;
                     gap: 32px;
@@ -364,7 +250,7 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                 }
 
                 .job-detail-category {
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 24px;
                     font-weight: 600;
                     line-height: 32px;
@@ -372,14 +258,13 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                 }
 
                 .job-detail-title {
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 36px;
                     font-weight: 600;
                     line-height: 44px;
                     margin: 0;
                 }
 
-                /* Social buttons */
                 .job-social-row {
                     display: flex;
                     align-items: center;
@@ -393,10 +278,10 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                     gap: 8px;
                     padding: 10px 20px;
                     border-radius: 8px;
-                    outline: 1px solid #CED2DA;
+                    outline: 1px solid var(--color-border-light);
                     outline-offset: -1px;
                     background: white;
-                    color: #344051;
+                    color: var(--color-text-secondary);
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 20px;
@@ -404,19 +289,23 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                     cursor: pointer;
                     border: none;
                     font-family: inherit;
-                    transition: background 0.15s;
+                    transition: background 0.15s, color 0.15s;
                 }
 
                 .job-social-btn:hover {
-                    background: #f5f6f8;
+                    background: var(--color-surface-card);
                 }
 
-                /* ── Inline sidebar: HIDDEN on desktop ── */
+                .job-social-btn:focus-visible {
+                    outline: 2px solid var(--color-primary);
+                    outline-offset: 2px;
+                }
+
+                /* Inline sidebar: HIDDEN on desktop */
                 :global(.sidebar-inline) {
                     display: none !important;
                 }
 
-                /* Body content */
                 .job-detail-body {
                     display: flex;
                     flex-direction: column;
@@ -424,7 +313,7 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                 }
 
                 .job-detail-section {
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 18px;
                     line-height: 28px;
                     word-wrap: break-word;
@@ -439,163 +328,26 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                 }
 
                 .job-closing-text {
-                    color: var(--color-primary, #213170);
+                    color: var(--color-primary);
                     font-size: 18px;
                     font-weight: 400;
                     line-height: 28px;
                     margin: 0;
                 }
 
-                /* Apply CTA */
-                .job-apply-main-btn {
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 8px;
-                    padding: 10px 20px;
-                    background: var(--color-primary, #213170);
-                    color: white;
-                    border-radius: 8px;
-                    font-size: 16px;
-                    font-weight: 600;
-                    line-height: 24px;
-                    text-decoration: none;
-                    align-self: flex-start;
-                    transition: background 0.2s, transform 0.15s;
-                }
-
-                .job-apply-main-btn:hover {
-                    background: #1a2759;
-                    transform: translateY(-1px);
-                }
-
-                /* ── RIGHT SIDEBAR (desktop) ── */
                 .job-detail-sidebar {
-                    width: 375px;
+                    max-width: 375px;
+                    width: 100%;
                     flex-shrink: 0;
                     display: flex;
                     flex-direction: column;
                     gap: 24px;
                 }
 
-                /* ── Shared sidebar card styles ── */
-                :global(.job-sidebar-card) {
-                    padding: 24px;
-                    background: white;
-                    border-radius: 10px;
-                    outline: 1px solid #E4E7EC;
-                    outline-offset: -1px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 16px;
-                }
-
-                :global(.sidebar-company) {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 8px;
-                    width: 100%;
-                }
-
-                :global(.sidebar-logo-wrap) {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                :global(.sidebar-company-name) {
-                    text-align: center;
-                    color: var(--color-primary, #213170);
-                    font-size: 20px;
-                    font-weight: 600;
-                    line-height: 28px;
-                    margin: 0;
-                }
-
-                /* Location badges */
-                :global(.sidebar-badges) {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    gap: 8px;
-                }
-
-                :global(.sidebar-badge) {
-                    padding: 2px 10px;
-                    background: var(--color-primary, #213170);
-                    border-radius: 8px;
-                    color: white;
-                    font-size: 14px;
-                    font-weight: 500;
-                    line-height: 20px;
-                    text-align: center;
-                }
-
-                /* Apply button (sidebar) */
-                :global(.sidebar-apply-btn) {
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 8px;
-                    padding: 10px 20px;
-                    background: var(--color-primary, #213170);
-                    color: white;
-                    border-radius: 8px;
-                    font-size: 16px;
-                    font-weight: 600;
-                    line-height: 24px;
-                    text-decoration: none;
-                    transition: background 0.2s;
-                }
-
-                :global(.sidebar-apply-btn:hover) {
-                    background: #1a2759;
-                }
-
-                /* Info rows — VERTICAL on desktop */
-                :global(.sidebar-info) {
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 16px;
-                }
-
-                :global(.sidebar-info-item) {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 4px;
-                }
-
-                :global(.sidebar-info-label) {
-                    color: var(--color-primary, #213170);
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 20px;
-                }
-
-                :global(.sidebar-info-value) {
-                    color: #FE5D16;
-                    font-size: 14px;
-                    font-weight: 400;
-                    line-height: 20px;
-                    text-decoration: none;
-                }
-
-                :global(.sidebar-info-value:hover) {
-                    text-decoration: underline;
-                }
-
-                /* ═══════════════════════════════════
-                   TABLET (max 1024px)
-                   704px single column, sidebar card inline
-                   above content, info items horizontal
-                   ═══════════════════════════════════ */
+                /* ─── TABLET (max 1024px) ─── */
                 @media (max-width: 1024px) {
                     .job-detail-container {
-                        padding: 32px 32px;
+                        padding: 32px max(16px, 4vw);
                     }
 
                     .job-detail-row {
@@ -611,7 +363,6 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                         gap: 24px;
                     }
 
-                    /* Hide desktop sidebar, show inline card */
                     .job-detail-sidebar {
                         display: none;
                     }
@@ -620,7 +371,6 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                         display: flex !important;
                     }
 
-                    /* Info items go HORIZONTAL on tablet */
                     :global(.sidebar-inline .sidebar-info) {
                         flex-direction: row;
                         justify-content: space-between;
@@ -630,17 +380,14 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                     }
                 }
 
-                /* ═══════════════════════════════════
-                   MOBILE (max 480px) — 375px viewport
-                   343px content (16px padding each side)
-                   ═══════════════════════════════════ */
+                /* ─── MOBILE (max 480px) ─── */
                 @media (max-width: 480px) {
                     .job-detail-container {
                         padding: 16px;
                     }
 
                     .job-detail-row {
-                        max-width: 375px;
+                        max-width: 100%;
                         padding: 16px 0;
                     }
 
@@ -648,7 +395,6 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                         gap: 24px;
                     }
 
-                    /* Header: tighter gaps */
                     .job-detail-header {
                         gap: 12px;
                     }
@@ -663,7 +409,6 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                         line-height: 28px;
                     }
 
-                    /* Social buttons: equal width, compact */
                     .job-social-row {
                         gap: 16px;
                         width: 100%;
@@ -675,7 +420,6 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                         font-size: 14px;
                     }
 
-                    /* Body sections: tighter gap, smaller text */
                     .job-detail-body {
                         gap: 16px;
                     }
@@ -695,19 +439,11 @@ export default function JobDetailContent({ slug }: { slug: string }) {
                         line-height: 24px;
                     }
 
-                    /* Apply button: full width */
-                    .job-apply-main-btn {
-                        width: 100%;
-                        align-self: stretch;
-                    }
-
-                    /* Sidebar card: company name smaller */
                     :global(.sidebar-inline .sidebar-company-name) {
                         font-size: 18px;
                         line-height: 28px;
                     }
 
-                    /* Info items stack vertically on mobile */
                     :global(.sidebar-inline .sidebar-info) {
                         flex-direction: column;
                         padding: 0;

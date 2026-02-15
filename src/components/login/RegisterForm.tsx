@@ -42,11 +42,11 @@ function getPasswordStrength(pw: string): { score: number; label: string; color:
     if (/[0-9]/.test(pw)) s++;
     if (/[^A-Za-z0-9]/.test(pw)) s++;
     const map: Record<number, { label: string; color: string }> = {
-        0: { label: 'Foarte slabă', color: '#ef4444' },
-        1: { label: 'Slabă', color: '#f97316' },
-        2: { label: 'Medie', color: '#eab308' },
-        3: { label: 'Bună', color: '#22c55e' },
-        4: { label: 'Puternică', color: '#16a34a' },
+        0: { label: 'Foarte slabă', color: 'var(--color-error)' },
+        1: { label: 'Slabă', color: 'var(--color-error)' },
+        2: { label: 'Medie', color: 'var(--color-warning)' },
+        3: { label: 'Bună', color: 'var(--color-success)' },
+        4: { label: 'Puternică', color: 'var(--color-success)' },
     };
     return { score: s, ...map[s] };
 }
@@ -279,7 +279,7 @@ export default function RegisterForm({
                                                 key={i}
                                                 className="register-strength-segment"
                                                 style={{
-                                                    background: i < strength.score ? strength.color : '#e5e7eb',
+                                                    background: i < strength.score ? strength.color : 'var(--color-surface-border)',
                                                 }}
                                             />
                                         ))}
@@ -417,7 +417,7 @@ export default function RegisterForm({
                 }
 
                 .register-social-btn:hover {
-                    background: #EEF0F4;
+                    background: var(--color-surface-card);
                 }
 
                 .register-social-btn span {
@@ -512,11 +512,11 @@ export default function RegisterForm({
                 }
 
                 .register-input-error {
-                    border-color: #ef4444 !important;
+                    border-color: var(--color-error) !important;
                 }
 
                 .register-input-success {
-                    border-color: #22c55e !important;
+                    border-color: var(--color-success) !important;
                 }
 
                 .register-username-wrapper {
@@ -599,14 +599,14 @@ export default function RegisterForm({
                 }
 
                 .register-error-text {
-                    color: #ef4444;
+                    color: var(--color-error);
                     font-size: 12px;
                     font-weight: 500;
                     margin-top: 2px;
                 }
 
                 .register-match-text {
-                    color: #22c55e;
+                    color: var(--color-success);
                     font-size: 12px;
                     font-weight: 500;
                     margin-top: 2px;

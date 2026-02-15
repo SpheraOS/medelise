@@ -150,7 +150,7 @@ export default function NewsletterSection() {
         .newsletter-input {
           width: 100%;
           padding: 10px 12px;
-          background: #F2F4F7;
+          background: var(--color-surface-card);
           border-radius: 8px;
           border: none;
           color: var(--color-primary);
