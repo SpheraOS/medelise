@@ -247,7 +247,7 @@ export default function LoginPage() {
 
                 .login-divider-text {
                     color: #818898;
-                    font-size: 14px;
+                    font-size: 16px;
                     font-weight: 500;
                     line-height: 18.6px;
                     white-space: nowrap;
@@ -269,7 +269,7 @@ export default function LoginPage() {
 
                 .login-label {
                     color: var(--color-primary);
-                    font-size: 14px;
+                    font-size: 16px;
                     font-weight: 500;
                     line-height: 21.7px;
                 }
@@ -372,14 +372,14 @@ export default function LoginPage() {
 
                 .login-remember span {
                     color: #666D80;
-                    font-size: 14px;
+                    font-size: 16px;
                     font-weight: 500;
                     line-height: 21.7px;
                 }
 
                 .login-forgot {
                     color: #6F6F6F;
-                    font-size: 14px;
+                    font-size: 16px;
                     font-weight: 500;
                     line-height: 21.7px;
                     text-decoration: none;
@@ -399,7 +399,7 @@ export default function LoginPage() {
 
                 .login-signup-text {
                     color: var(--color-primary);
-                    font-size: 14px;
+                    font-size: 16px;
                     font-weight: 500;
                     line-height: 21.7px;
                 }
