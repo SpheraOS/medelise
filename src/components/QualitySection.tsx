@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { IMAGES } from '@/constants/images';
+import Button from '@/components/ui/Button';
 
 const checklistItems = [
   'Răspuns rapid, fără așteptare',
@@ -74,8 +75,10 @@ export default function QualitySection() {
                       placeholder="Introduceti adresa dumneavoastra de email"
                     />
                   </div>
-                  <Link href="/login" className="quality-cta-btn">
-                    Intră în contul tău Medelise
+                  <Link href="/login">
+                    <Button variant="primary" isFullWidth className="quality-cta-btn">
+                      Intră în contul tău Medelise
+                    </Button>
                   </Link>
                 </form>
               </div>
