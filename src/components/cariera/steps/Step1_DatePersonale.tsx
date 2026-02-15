@@ -1,5 +1,14 @@
 'use client';
 
+import { useState, useRef, useEffect, useCallback } from 'react';
+import {
+    COUNTRIES,
+    ROMANIAN_JUDETE,
+    getJudeteNames,
+    getCitiesForJudet,
+    type Country,
+} from '../countryData';
+
 /* ═══════════════════════════════════════════════════════════════════════════
  * Step 1 — Date Personale
  * ═══════════════════════════════════════════════════════════════════════════ */
@@ -11,90 +20,487 @@ export interface StepProps {
     jobTitle: string;
 }
 
+/* ── Default phone country ── */
+const DEFAULT_COUNTRY = COUNTRIES[0]; // România
+
 export default function Step1_DatePersonale({ data, onChange }: StepProps) {
+    const [phoneDropdownOpen, setPhoneDropdownOpen] = useState(false);
+    const [phoneSearch, setPhoneSearch] = useState('');
+    const phoneDropdownRef = useRef<HTMLDivElement>(null);
+    const phoneSearchRef = useRef<HTMLInputElement>(null);
+
+    /* ── Derived ── */
+    const selectedPhoneCountry: Country =
+        COUNTRIES.find(c => c.code === data.phoneCountryCode) ?? DEFAULT_COUNTRY;
+
+    const selectedCountry = data.tara ?? 'RO';
+    const isRomania = selectedCountry === 'RO';
+    const judete = getJudeteNames();
+    const selectedJudet = data.judet ?? '';
+    const cities = selectedJudet ? getCitiesForJudet(selectedJudet) : [];
+
+    /* ── Close phone dropdown on outside click ── */
+    useEffect(() => {
+        const handler = (e: MouseEvent) => {
+            if (phoneDropdownRef.current && !phoneDropdownRef.current.contains(e.target as Node)) {
+                setPhoneDropdownOpen(false);
+                setPhoneSearch('');
+            }
+        };
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+    }, []);
+
+    /* ── Focus search when dropdown opens ── */
+    useEffect(() => {
+        if (phoneDropdownOpen) phoneSearchRef.current?.focus();
+    }, [phoneDropdownOpen]);
+
+    /* ── Filter countries for phone dropdown ── */
+    const filteredCountries = phoneSearch.trim()
+        ? COUNTRIES.filter(c =>
+            c.name.toLowerCase().includes(phoneSearch.toLowerCase()) ||
+            c.dial.includes(phoneSearch) ||
+            c.code.toLowerCase().includes(phoneSearch.toLowerCase())
+        )
+        : COUNTRIES;
+
+    /* ── Select phone country ── */
+    const selectPhoneCountry = useCallback((c: Country) => {
+        onChange('phoneCountryCode', c.code);
+        onChange('phoneDial', c.dial);
+        setPhoneDropdownOpen(false);
+        setPhoneSearch('');
+    }, [onChange]);
+
+    /* ── Handle country change ── */
+    const handleCountryChange = useCallback((code: string) => {
+        onChange('tara', code);
+        // Reset judet/city when country changes
+        onChange('judet', '');
+        onChange('oras', '');
+        onChange('localitate', '');
+    }, [onChange]);
+
+    /* ── Handle județ change ── */
+    const handleJudetChange = useCallback((judet: string) => {
+        onChange('judet', judet);
+        onChange('oras', '');
+    }, [onChange]);
+
     return (
-        <fieldset className="aj-step-card">
-            <legend className="aj-step-card-title">Date personale</legend>
+        <>
+            <style jsx global>{`
+                /* ── Phone Prefix Dropdown ── */
+                .aj-phone-wrapper {
+                    display: flex;
+                    gap: 0;
+                }
 
-            <div className="aj-field-row">
-                <div className="aj-field">
-                    <label className="aj-label" htmlFor="aj-nume">
-                        Nume <span className="aj-req">*</span>
-                    </label>
-                    <input
-                        id="aj-nume"
-                        type="text"
-                        required
-                        minLength={2}
-                        placeholder="Popescu"
-                        className="aj-input"
-                        value={data.nume ?? ''}
-                        onChange={(e) => onChange('nume', e.target.value)}
-                    />
-                </div>
-                <div className="aj-field">
-                    <label className="aj-label" htmlFor="aj-prenume">
-                        Prenume <span className="aj-req">*</span>
-                    </label>
-                    <input
-                        id="aj-prenume"
-                        type="text"
-                        required
-                        minLength={2}
-                        placeholder="Maria"
-                        className="aj-input"
-                        value={data.prenume ?? ''}
-                        onChange={(e) => onChange('prenume', e.target.value)}
-                    />
-                </div>
-            </div>
+                .aj-phone-prefix {
+                    position: relative;
+                    flex-shrink: 0;
+                }
 
-            <div className="aj-field-row">
-                <div className="aj-field">
-                    <label className="aj-label" htmlFor="aj-email">
-                        E-mail <span className="aj-req">*</span>
-                    </label>
-                    <input
-                        id="aj-email"
-                        type="email"
-                        required
-                        placeholder="maria.popescu@email.com"
-                        className="aj-input"
-                        value={data.email ?? ''}
-                        onChange={(e) => onChange('email', e.target.value)}
-                    />
-                </div>
-                <div className="aj-field">
-                    <label className="aj-label" htmlFor="aj-telefon">
-                        Telefon <span className="aj-req">*</span>
-                    </label>
-                    <input
-                        id="aj-telefon"
-                        type="tel"
-                        required
-                        placeholder="+40 7XX XXX XXX"
-                        className="aj-input"
-                        value={data.telefon ?? ''}
-                        onChange={(e) => onChange('telefon', e.target.value)}
-                    />
-                </div>
-            </div>
+                .aj-phone-prefix-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                    height: 100%;
+                    padding: var(--space-3) var(--space-3);
+                    font-family: var(--font-body);
+                    font-size: var(--text-sm);
+                    color: var(--color-text);
+                    background: var(--color-surface);
+                    border: 1px solid var(--color-border-form);
+                    border-right: none;
+                    border-radius: var(--radius-main) 0 0 var(--radius-main);
+                    cursor: pointer;
+                    transition: background 0.15s ease;
+                    white-space: nowrap;
+                    min-width: 100px;
+                }
 
-            <div className="aj-field-row">
-                <div className="aj-field">
-                    <label className="aj-label" htmlFor="aj-oras">
-                        Oraș / Localitate <span className="aj-req">*</span>
-                    </label>
-                    <input
-                        id="aj-oras"
-                        type="text"
-                        required
-                        placeholder="București"
-                        className="aj-input"
-                        value={data.oras ?? ''}
-                        onChange={(e) => onChange('oras', e.target.value)}
-                    />
+                .aj-phone-prefix-btn:hover {
+                    background: color-mix(in srgb, var(--color-primary) 5%, var(--color-surface));
+                }
+
+                .aj-phone-prefix-flag {
+                    font-size: 18px;
+                    line-height: 1;
+                }
+
+                .aj-phone-prefix-dial {
+                    font-weight: 500;
+                    color: var(--color-text);
+                    font-size: var(--text-sm);
+                }
+
+                .aj-phone-prefix-chevron {
+                    color: var(--color-text-muted);
+                    transition: transform 0.2s ease;
+                    flex-shrink: 0;
+                }
+
+                .aj-phone-prefix-chevron--open {
+                    transform: rotate(180deg);
+                }
+
+                .aj-phone-input {
+                    flex: 1;
+                    border-radius: 0 var(--radius-main) var(--radius-main) 0 !important;
+                    min-width: 0;
+                }
+
+                /* ── Dropdown Panel ── */
+                .aj-phone-dropdown {
+                    position: absolute;
+                    top: calc(100% + var(--space-1));
+                    left: 0;
+                    width: 320px;
+                    max-height: 280px;
+                    background: var(--color-white);
+                    border: 1px solid var(--color-surface-border);
+                    border-radius: var(--radius-main);
+                    box-shadow: var(--shadow-lg);
+                    z-index: 100;
+                    display: flex;
+                    flex-direction: column;
+                    animation: aj-dropdown-in 0.15s ease-out;
+                }
+
+                @keyframes aj-dropdown-in {
+                    from { opacity: 0; transform: translateY(-4px); }
+                    to   { opacity: 1; transform: translateY(0); }
+                }
+
+                .aj-phone-dropdown-search {
+                    padding: var(--space-2) var(--space-3);
+                    border-bottom: 1px solid var(--color-surface-border);
+                    flex-shrink: 0;
+                }
+
+                .aj-phone-dropdown-search input {
+                    width: 100%;
+                    padding: var(--space-2) var(--space-3);
+                    font-family: var(--font-body);
+                    font-size: var(--text-sm);
+                    border: 1px solid var(--color-surface-border);
+                    border-radius: var(--radius-sm);
+                    outline: none;
+                    background: var(--color-surface);
+                }
+
+                .aj-phone-dropdown-search input:focus {
+                    border-color: var(--color-primary);
+                }
+
+                .aj-phone-dropdown-list {
+                    flex: 1;
+                    overflow-y: auto;
+                    padding: var(--space-1) 0;
+                }
+
+                .aj-phone-dropdown-item {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-3);
+                    padding: var(--space-2) var(--space-3);
+                    cursor: pointer;
+                    transition: background 0.1s ease;
+                    border: none;
+                    background: none;
+                    width: 100%;
+                    text-align: left;
+                    font-family: var(--font-body);
+                    font-size: var(--text-sm);
+                }
+
+                .aj-phone-dropdown-item:hover {
+                    background: var(--color-surface);
+                }
+
+                .aj-phone-dropdown-item--active {
+                    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+                }
+
+                .aj-phone-dropdown-flag {
+                    font-size: 18px;
+                    line-height: 1;
+                    flex-shrink: 0;
+                }
+
+                .aj-phone-dropdown-name {
+                    flex: 1;
+                    color: var(--color-text);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .aj-phone-dropdown-dial {
+                    color: var(--color-text-muted);
+                    font-weight: 500;
+                    flex-shrink: 0;
+                    font-size: var(--text-sm);
+                }
+
+                /* ── Scrollbar for dropdown ── */
+                .aj-phone-dropdown-list::-webkit-scrollbar {
+                    width: 6px;
+                }
+
+                .aj-phone-dropdown-list::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+
+                .aj-phone-dropdown-list::-webkit-scrollbar-thumb {
+                    background: var(--color-surface-border);
+                    border-radius: var(--radius-full);
+                }
+
+                /* ── Mobile responsive ── */
+                @media (max-width: 480px) {
+                    .aj-phone-dropdown {
+                        width: calc(100vw - var(--space-section-px-sm) * 2 - var(--space-12));
+                    }
+
+                    .aj-phone-prefix-btn {
+                        min-width: 90px;
+                        padding: var(--space-2) var(--space-2);
+                    }
+                }
+            `}</style>
+
+            <fieldset className="aj-step-card">
+                <legend className="aj-step-card-title">Date personale</legend>
+
+                {/* ── Row 1: Nume + Prenume ── */}
+                <div className="aj-field-row">
+                    <div className="aj-field">
+                        <label className="aj-label" htmlFor="aj-nume">
+                            Nume <span className="aj-req">*</span>
+                        </label>
+                        <input
+                            id="aj-nume"
+                            type="text"
+                            required
+                            minLength={2}
+                            placeholder="Popescu"
+                            className="aj-input"
+                            value={data.nume ?? ''}
+                            onChange={(e) => onChange('nume', e.target.value)}
+                        />
+                    </div>
+                    <div className="aj-field">
+                        <label className="aj-label" htmlFor="aj-prenume">
+                            Prenume <span className="aj-req">*</span>
+                        </label>
+                        <input
+                            id="aj-prenume"
+                            type="text"
+                            required
+                            minLength={2}
+                            placeholder="Maria"
+                            className="aj-input"
+                            value={data.prenume ?? ''}
+                            onChange={(e) => onChange('prenume', e.target.value)}
+                        />
+                    </div>
                 </div>
+
+                {/* ── Row 2: Email + Phone (with prefix) ── */}
+                <div className="aj-field-row">
+                    <div className="aj-field">
+                        <label className="aj-label" htmlFor="aj-email">
+                            E-mail <span className="aj-req">*</span>
+                        </label>
+                        <input
+                            id="aj-email"
+                            type="email"
+                            required
+                            placeholder="maria.popescu@email.com"
+                            className="aj-input"
+                            value={data.email ?? ''}
+                            onChange={(e) => onChange('email', e.target.value)}
+                        />
+                    </div>
+                    <div className="aj-field">
+                        <label className="aj-label" htmlFor="aj-telefon">
+                            Telefon <span className="aj-req">*</span>
+                        </label>
+                        <div className="aj-phone-wrapper">
+                            <div className="aj-phone-prefix" ref={phoneDropdownRef}>
+                                <button
+                                    type="button"
+                                    className="aj-phone-prefix-btn"
+                                    onClick={() => setPhoneDropdownOpen(!phoneDropdownOpen)}
+                                    aria-expanded={phoneDropdownOpen}
+                                    aria-haspopup="listbox"
+                                >
+                                    <span className="aj-phone-prefix-flag">{selectedPhoneCountry.flag}</span>
+                                    <span className="aj-phone-prefix-dial">{selectedPhoneCountry.dial}</span>
+                                    <svg
+                                        className={`aj-phone-prefix-chevron ${phoneDropdownOpen ? 'aj-phone-prefix-chevron--open' : ''}`}
+                                        width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    >
+                                        <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </button>
+
+                                {phoneDropdownOpen && (
+                                    <div className="aj-phone-dropdown" role="listbox">
+                                        <div className="aj-phone-dropdown-search">
+                                            <input
+                                                ref={phoneSearchRef}
+                                                type="text"
+                                                placeholder="Caută țara..."
+                                                value={phoneSearch}
+                                                onChange={(e) => setPhoneSearch(e.target.value)}
+                                            />
+                                        </div>
+                                        <div className="aj-phone-dropdown-list">
+                                            {filteredCountries.map((c) => (
+                                                <button
+                                                    key={c.code}
+                                                    type="button"
+                                                    className={`aj-phone-dropdown-item ${c.code === selectedPhoneCountry.code ? 'aj-phone-dropdown-item--active' : ''}`}
+                                                    onClick={() => selectPhoneCountry(c)}
+                                                    role="option"
+                                                    aria-selected={c.code === selectedPhoneCountry.code}
+                                                >
+                                                    <span className="aj-phone-dropdown-flag">{c.flag}</span>
+                                                    <span className="aj-phone-dropdown-name">{c.name}</span>
+                                                    <span className="aj-phone-dropdown-dial">{c.dial}</span>
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            <input
+                                id="aj-telefon"
+                                type="tel"
+                                required
+                                placeholder="7XX XXX XXX"
+                                className="aj-input aj-phone-input"
+                                value={data.telefon ?? ''}
+                                onChange={(e) => onChange('telefon', e.target.value)}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* ── Row 3: Țara + Județ/Regiune ── */}
+                <div className="aj-field-row">
+                    <div className="aj-field">
+                        <label className="aj-label" htmlFor="aj-tara">
+                            Țara <span className="aj-req">*</span>
+                        </label>
+                        <select
+                            id="aj-tara"
+                            className="aj-select"
+                            value={selectedCountry}
+                            onChange={(e) => handleCountryChange(e.target.value)}
+                        >
+                            {COUNTRIES.map(c => (
+                                <option key={c.code} value={c.code}>
+                                    {c.flag} {c.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="aj-field">
+                        {isRomania ? (
+                            <>
+                                <label className="aj-label" htmlFor="aj-judet">
+                                    Județ <span className="aj-req">*</span>
+                                </label>
+                                <select
+                                    id="aj-judet"
+                                    className="aj-select"
+                                    value={selectedJudet}
+                                    onChange={(e) => handleJudetChange(e.target.value)}
+                                >
+                                    <option value="">Selectează județul</option>
+                                    {judete.map(j => (
+                                        <option key={j} value={j}>{j}</option>
+                                    ))}
+                                </select>
+                            </>
+                        ) : (
+                            <>
+                                <label className="aj-label" htmlFor="aj-regiune">
+                                    Regiune / Stat
+                                </label>
+                                <input
+                                    id="aj-regiune"
+                                    type="text"
+                                    placeholder="Regiune sau stat"
+                                    className="aj-input"
+                                    value={data.regiune ?? ''}
+                                    onChange={(e) => onChange('regiune', e.target.value)}
+                                />
+                            </>
+                        )}
+                    </div>
+                </div>
+
+                {/* ── Row 4: Oraș + Localitate ── */}
+                <div className="aj-field-row">
+                    <div className="aj-field">
+                        {isRomania && cities.length > 0 ? (
+                            <>
+                                <label className="aj-label" htmlFor="aj-oras">
+                                    Oraș <span className="aj-req">*</span>
+                                </label>
+                                <select
+                                    id="aj-oras"
+                                    className="aj-select"
+                                    value={data.oras ?? ''}
+                                    onChange={(e) => onChange('oras', e.target.value)}
+                                >
+                                    <option value="">Selectează orașul</option>
+                                    {cities.map(city => (
+                                        <option key={city} value={city}>{city}</option>
+                                    ))}
+                                </select>
+                            </>
+                        ) : (
+                            <>
+                                <label className="aj-label" htmlFor="aj-oras">
+                                    Oraș <span className="aj-req">*</span>
+                                </label>
+                                <input
+                                    id="aj-oras"
+                                    type="text"
+                                    required
+                                    placeholder={isRomania ? 'Selectează mai întâi județul' : 'Oraș'}
+                                    className="aj-input"
+                                    value={data.oras ?? ''}
+                                    onChange={(e) => onChange('oras', e.target.value)}
+                                    disabled={isRomania && !selectedJudet}
+                                />
+                            </>
+                        )}
+                    </div>
+                    <div className="aj-field">
+                        <label className="aj-label" htmlFor="aj-localitate">
+                            Localitate / Sector
+                        </label>
+                        <input
+                            id="aj-localitate"
+                            type="text"
+                            placeholder="Localitate, sector sau comună"
+                            className="aj-input"
+                            value={data.localitate ?? ''}
+                            onChange={(e) => onChange('localitate', e.target.value)}
+                        />
+                    </div>
+                </div>
+
+                {/* ── Row 5: Data nașterii ── */}
                 <div className="aj-field">
                     <label className="aj-label" htmlFor="aj-data-nastere">
                         Data nașterii
@@ -105,17 +511,23 @@ export default function Step1_DatePersonale({ data, onChange }: StepProps) {
                         className="aj-input"
                         value={data.dataNasterii ?? ''}
                         onChange={(e) => onChange('dataNasterii', e.target.value)}
+                        style={{ maxWidth: '240px' }}
                     />
                 </div>
-            </div>
-        </fieldset>
+            </fieldset>
+        </>
     );
 }
 
 /* ─── Validation: all required fields filled + valid email ─── */
 export function validateStep1(data: Record<string, any>): boolean {
-    const { nume, prenume, email, telefon, oras } = data;
+    const { nume, prenume, email, telefon, oras, tara } = data;
     if (!nume?.trim() || !prenume?.trim() || !telefon?.trim() || !oras?.trim()) return false;
     if (!email?.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return false;
+
+    // For Romania, require județ
+    const isRomania = (tara ?? 'RO') === 'RO';
+    if (isRomania && !data.judet?.trim()) return false;
+
     return true;
 }
