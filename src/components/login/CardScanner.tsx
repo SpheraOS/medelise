@@ -129,8 +129,8 @@ export default function CardScanner() {
         if (!line) return;
         line.innerHTML = '';
 
-        const CARD_W = 400;
-        const CARD_H = 250;
+        const CARD_W = 240;
+        const CARD_H = 150;
         const count = 30;
 
         for (let i = 0; i < count; i++) {
@@ -198,7 +198,7 @@ export default function CardScanner() {
         const minVelocity = 45;
         let lastTime = performance.now();
 
-        const cardWidth = 400;
+        const cardWidth = 240;
         const cardGap = 60;
         const cardCount = cardLine.children.length;
         let cardLineWidth = (cardWidth + cardGap) * cardCount;
@@ -329,7 +329,7 @@ export default function CardScanner() {
         const asciiTimer = setInterval(() => {
             cardLine.querySelectorAll('.cs-ascii-content').forEach(el => {
                 if (Math.random() < 0.15) {
-                    const dims = calcCodeDims(400, 250);
+                    const dims = calcCodeDims(240, 150);
                     el.textContent = generateCode(dims.width, dims.height);
                 }
             });
@@ -691,7 +691,7 @@ export default function CardScanner() {
         .cs-card-stream {
           position: absolute;
           width: 100%;
-          height: 180px;
+          height: 150px;
           display: flex;
           align-items: center;
           overflow: visible;
@@ -735,17 +735,17 @@ export default function CardScanner() {
             <style jsx global>{`
         .cs-card-wrapper {
           position: relative;
-          width: 400px;
-          height: 250px;
+          width: 240px;
+          height: 150px;
           flex-shrink: 0;
         }
 
         .cs-card {
           position: absolute;
           top: 0; left: 0;
-          width: 400px;
-          height: 250px;
-          border-radius: 15px;
+          width: 240px;
+          height: 150px;
+          border-radius: 10px;
           overflow: hidden;
         }
 
@@ -760,7 +760,7 @@ export default function CardScanner() {
           width: 100%;
           height: 100%;
           object-fit: contain;
-          border-radius: 15px;
+          border-radius: 10px;
           background: #0a0a0a;
           filter: brightness(1.1) contrast(1.1);
           transition: filter 0.3s ease;
