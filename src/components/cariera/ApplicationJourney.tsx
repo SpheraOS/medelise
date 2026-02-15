@@ -163,24 +163,7 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
 
                 .aj-back-btn:hover { opacity: 0.8; }
 
-                .aj-breadcrumb {
-                    display: flex;
-                    align-items: center;
-                    gap: var(--space-2);
-                    margin-bottom: var(--space-4);
-                    font-size: var(--text-sm);
-                }
 
-                .aj-breadcrumb-link {
-                    color: var(--color-secondary);
-                    text-decoration: none;
-                    opacity: 0.7;
-                    transition: opacity 0.2s;
-                }
-
-                .aj-breadcrumb-link:hover { opacity: 1; }
-                .aj-breadcrumb-sep { color: var(--color-secondary); opacity: 0.4; }
-                .aj-breadcrumb-current { color: var(--color-white); font-weight: 500; }
 
                 .aj-header-title {
                     font-family: var(--font-heading);
