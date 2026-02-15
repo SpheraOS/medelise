@@ -690,7 +690,7 @@ export default function ApplicationJourney({ slug }: ApplicationJourneyProps) {
                 {/* ── Header ── */}
                 <header className="aj-header">
                     <Link href={`/cariera/${slug}`} style={{ textDecoration: 'none' }}>
-                        <Button variant="primary" type="button">
+                        <Button variant="secondary" type="button">
                             ← Înapoi
                         </Button>
                     </Link>

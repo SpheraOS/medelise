@@ -386,7 +386,12 @@ export default function Step1_DatePersonale({ data, onChange }: StepProps) {
                                 placeholder="7XX XXX XXX"
                                 className="aj-input aj-phone-input"
                                 value={data.telefon ?? ''}
-                                onChange={(e) => onChange('telefon', e.target.value)}
+                                onChange={(e) => {
+                                    const digits = e.target.value.replace(/\D/g, '').slice(0, 9);
+                                    const formatted = digits.replace(/(\d{3})(?=\d)/g, '$1 ').trim();
+                                    onChange('telefon', formatted);
+                                }}
+                                maxLength={11}
                             />
                         </div>
                     </div>
