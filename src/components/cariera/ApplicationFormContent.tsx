@@ -697,7 +697,8 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                                 <input type="text" name="website" tabIndex={-1} autoComplete="off" />
                             </div>
 
-                            {/* ═══ Secțiunea 1: Date Personale ═══ */}
+                            {/* ═══ Secțiunile 1+2: Date Personale + Experiență (side-by-side) ═══ */}
+                            <div className="apply-section-row">
                             <fieldset className="apply-section">
                                 <legend className="apply-section-title">Date personale</legend>
 
@@ -876,8 +877,9 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                                     </div>
                                 </div>
                             </fieldset>
+                            </div>
 
-                            {/* ═══ Secțiunile 3+4: Disponibilitate + Documente (side-by-side) ═══ */}
+                            {/* ═══ Secțiunile 3+4+5: Disponibilitate + Documente + Consimțământ (side-by-side) ═══ */}
                             <div className="apply-section-row">
                             <fieldset className="apply-section">
                                 <legend className="apply-section-title">Disponibilitate</legend>
