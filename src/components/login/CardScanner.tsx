@@ -188,7 +188,7 @@ export default function CardScanner() {
 
         /* ── Card Stream Controller ── */
         let position = cW;
-        let velocity = 180;
+        let velocity = 70;
         let direction = -1;
         let isAnimating = true;
         let isDragging = false;
@@ -289,7 +289,7 @@ export default function CardScanner() {
             if (Math.abs(mouseVelocity) > minVelocity) {
                 velocity = Math.abs(mouseVelocity);
                 direction = mouseVelocity > 0 ? 1 : -1;
-            } else { velocity = 180; }
+            } else { velocity = 70; }
             isAnimating = true;
         }
 
