@@ -53,6 +53,20 @@ export const ROLE_LABELS: Record<MedicalRole, string> = {
     coordonator: 'Coordonator Medical',
 };
 
+/* ─── Slug → MedicalRole mapping (synced with jobData.ts slugs) ─── */
+
+export const SLUG_TO_ROLE: Record<string, MedicalRole> = {
+    'asistent-medical-generalist': 'asistent',
+    'ambulantier': 'ambulantier',
+    'medic-de-familie': 'medic',
+    'asistent-coordonator': 'coordonator',
+};
+
+/** Get the medical role for a job slug, with fallback */
+export function getRoleForSlug(slug: string): MedicalRole {
+    return SLUG_TO_ROLE[slug] ?? 'asistent';
+}
+
 /* ─── Document Requirements ─── */
 
 export const DOCUMENT_REQUIREMENTS: DocumentRequirement[] = [

@@ -4,6 +4,8 @@ import { useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { JOBS } from '@/components/cariera/jobData';
+import DocumentChecker from '@/components/cariera/DocumentChecker';
+import { getRoleForSlug } from '@/components/cariera/documentRequirements';
 
 /* ── Props ── */
 interface ApplicationFormContentProps {
@@ -1047,6 +1049,9 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                                     </label>
                                 </div>
                             </fieldset>
+
+                            {/* ═══ Secțiunea 6: Document Checker ═══ */}
+                            <DocumentChecker selectedRole={getRoleForSlug(slug)} />
 
                             {/* ── Error message ── */}
                             {formStatus === 'error' && (
