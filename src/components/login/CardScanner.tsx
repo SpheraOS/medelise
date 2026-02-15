@@ -759,8 +759,9 @@ export default function CardScanner() {
         .cs-card-image {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           border-radius: 15px;
+          background: #0a0a0a;
           filter: brightness(1.1) contrast(1.1);
           transition: filter 0.3s ease;
         }
