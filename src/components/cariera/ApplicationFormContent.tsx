@@ -168,6 +168,33 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                     padding: var(--space-16) var(--space-section-px-sm) var(--space-10);
                 }
 
+                /* ── Back button ── */
+                .apply-back-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                    background: rgba(255, 255, 255, 0.12);
+                    border: 1px solid rgba(255, 255, 255, 0.18);
+                    border-radius: 8px;
+                    padding: var(--space-2) var(--space-4);
+                    color: var(--color-white);
+                    font-size: 14px;
+                    font-weight: 500;
+                    text-decoration: none;
+                    cursor: pointer;
+                    transition: background 0.2s, border-color 0.2s;
+                    margin-bottom: var(--space-5);
+                }
+
+                .apply-back-btn:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                    border-color: rgba(255, 255, 255, 0.3);
+                }
+
+                .apply-back-btn svg {
+                    flex-shrink: 0;
+                }
+
                 .apply-breadcrumb {
                     display: flex;
                     align-items: center;
@@ -220,10 +247,22 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
 
                 .apply-form {
                     width: 100%;
-                    max-width: 720px;
+                    max-width: 960px;
                     display: flex;
                     flex-direction: column;
                     gap: var(--space-10);
+                }
+
+                /* ── Side-by-side section row ── */
+                .apply-section-row {
+                    display: flex;
+                    gap: var(--space-6);
+                    align-items: flex-start;
+                }
+
+                .apply-section-row > .apply-section {
+                    flex: 1;
+                    min-width: 0;
                 }
 
                 /* ── Section groups ── */
@@ -627,7 +666,8 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                  * MOBILE <480px
                  * ═══════════════════════════════════════ */
                 @media (max-width: 480px) {
-                    .apply-field-row {
+                    .apply-field-row,
+                    .apply-section-row {
                         flex-direction: column;
                     }
 
@@ -641,6 +681,13 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
             <main className="apply-page">
                 {/* ── Header ── */}
                 <header className="apply-header">
+                    <Link href={`/cariera/${slug}`} className="apply-back-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 12H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M12 19L5 12L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        Înapoi la {jobTitle}
+                    </Link>
                     <nav className="apply-breadcrumb">
                         <Link href="/cariera" className="apply-breadcrumb-link">Carieră</Link>
                         <span className="apply-breadcrumb-sep">›</span>
@@ -859,7 +906,8 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                                 </div>
                             </fieldset>
 
-                            {/* ═══ Secțiunea 3: Disponibilitate ═══ */}
+                            {/* ═══ Secțiunile 3+4: Disponibilitate + Documente (side-by-side) ═══ */}
+                            <div className="apply-section-row">
                             <fieldset className="apply-section">
                                 <legend className="apply-section-title">Disponibilitate</legend>
 
@@ -918,8 +966,6 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                                     </label>
                                 </div>
                             </fieldset>
-
-                            {/* ═══ Secțiunea 4: Documente ═══ */}
                             <fieldset className="apply-section">
                                 <legend className="apply-section-title">Documente</legend>
 
@@ -997,6 +1043,7 @@ export default function ApplicationFormContent({ slug }: ApplicationFormContentP
                                     />
                                 </div>
                             </fieldset>
+                            </div>
 
                             {/* ═══ Secțiunea 5: GDPR ═══ */}
                             <fieldset className="apply-section">
